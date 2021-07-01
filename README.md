@@ -1,4 +1,4 @@
-# govuk-flask-prototyping
+# GOVUK Flask Prototype Kit
 
 ## Getting started
 
