@@ -1,0 +1,40 @@
+{% extends "layouts/layout.html" %}
+{% block page_title %}Flask prototyping index{% endblock %}
+{%- from "digital-land-frontend/components/feedback-panel/macro.html" import dlFeedbackPanel %}
+{% block content %}
+
+{{ dlFeedbackPanel({
+    "title": "Is there a problem with this data?",
+    "html": 'If you have spotted an issue with the data or have a question email the digital land team on
+    <a href="mailto:email@email.com">email@email.com</a>.'
+    })
+}}
+
+<main id="content" role="main">
+
+  <h1 class="govuk-heading-xl">Digital Land Prototype Kit</h1>
+
+  <p class="govuk-body">This is the <em>index.html</em> page, useful for adding page links, resources and the like</p>
+
+  <h2 class="govuk-heading-l">Pages</h2>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>
+      <a class="govuk-link" href="{{ url_for('base.about', name='Paul') }}">
+        About Paul
+      </a>
+    </li>
+    <li>
+      <a class="govuk-link" href="{{ url_for('base.about', name='Colm') }}">
+        About Colm
+      </a>
+    </li>
+  </ul>
+
+</main>
+{% endblock %}
+
+{% block bodyEnd %}
+{{ super() }}
+<script src="/static/js/test.js"></script>
+{% endblock bodyEnd %}

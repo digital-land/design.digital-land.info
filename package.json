@@ -1,0 +1,25 @@
+{
+  "name": "govuk-flask-prototyping",
+  "version": "1.0.0",
+  "description": "## Getting started",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colmjude/govuk-flask-prototyping.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/colmjude/govuk-flask-prototyping/issues"
+  },
+  "homepage": "https://github.com/colmjude/govuk-flask-prototyping#readme",
+  "dependencies": {
+    "govuk-frontend": "^3.13.0"
+  }
+}
