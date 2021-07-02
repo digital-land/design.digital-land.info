@@ -17,5 +17,6 @@ def about(name):
 
 @base.route('/resource')
 @base.route('/resource/')
-def resource():
-  return render_template('resource.html')
+@base.route('/resource/<id>')
+def resource(id):
+  return render_template('resource.html', id=id)
