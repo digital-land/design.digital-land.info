@@ -5,7 +5,95 @@
 
 <main id="content" role="main">
 
-  <h1 class="govuk-heading-xl">Resouce page</h1
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">Resource</span>
+        <h1 class="govuk-heading-xl">View the data</h1>
+        <p class="govuk-body-l">Explore the resource data on this page, which has been collected and processed by the Digital Land pipeline.</p>
+    </div>
+  </div>
+
+  <div class="metadata-panel">
+      <dl class="def-list--basic">
+          <dt>URL of the register:</dt>
+          <dd>
+              <a class="long-link" href="#">https://www.teignbridge.gov.uk/media/8834/brownfieldlandregisterteignbridge2019.csv</a>
+          </dd>
+      </dl>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+    
+      <dl class="govuk-summary-list dl-summary-list--data">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            URL of the register
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <a href="https://www.teignbridge.gov.uk/media/8834/brownfieldlandregisterteignbridge2019.csv">https://www.teignbridge.gov.uk/media/8834/brownfieldlandregisterteignbridge2019.csv</a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Published
+          </dt>
+          <dd class="govuk-summary-list__value">
+            09 December 2020
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Last collected
+          </dt>
+          <dd class="govuk-summary-list__value">
+            10 June 2021
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            From
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <a href="#">Teignbridge District Council</a>
+          </dd>
+        </div>
+      </dl>  
+
+    </div>
+  </div>
+
+  <hr class="govuk-section-break govuk-section-break--m">
+
+  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-l">How we've processed this data</h2>
+          <p class="govuk-body">The <a href="https://digital-land.github.io/guidance/pipeline/">Digital Land pipeline</a> collects the data and fixes common errors that do not align with the <a href="https://www.gov.uk/government/publications/brownfield-land-registers-data-standard/publish-your-brownfield-land-data">data standard</a>.</p>
+          <p class="govuk-body">You can download the data as it was
+              <a href="https://raw.githubusercontent.com/digital-land/brownfield-land-collection/main/collection/resource/0001a1baf9ddd7505cfef2e671292122de73a44299e5f5e584e9ec1514c0181c" download="0001a1baf9ddd7505cfef2e671292122de73a44299e5f5e584e9ec1514c0181c_collected">collected</a>,
+              after it has been
+              <a href="https://github.com/digital-land/brownfield-land-collection/blob/main/harmonised/brownfield-land/0001a1baf9ddd7505cfef2e671292122de73a44299e5f5e584e9ec1514c0181c.csv">harmonised</a>
+              (<a href="https://raw.githubusercontent.com/digital-land/brownfield-land-collection/main/harmonised/brownfield-land/0001a1baf9ddd7505cfef2e671292122de73a44299e5f5e584e9ec1514c0181c.csv" download="0001a1baf9ddd7505cfef2e671292122de73a44299e5f5e584e9ec1514c0181c_harmonised.csv">CSV</a>)
+              to meet the data standard, and 
+              <a href="https://github.com/digital-land/brownfield-land-collection/blob/main/transformed/brownfield-land/0001a1baf9ddd7505cfef2e671292122de73a44299e5f5e584e9ec1514c0181c.csv">transformed</a>
+              (<a href="https://raw.githubusercontent.com/digital-land/brownfield-land-collection/main/transformed/brownfield-land/0001a1baf9ddd7505cfef2e671292122de73a44299e5f5e584e9ec1514c0181c.csv" download="0001a1baf9ddd7505cfef2e671292122de73a44299e5f5e584e9ec1514c0181c_transformed.csv">CSV</a>) into the <a href="https://digital-land.github.io/specification/schema/brownfield-land/">Digital Land data model</a>.
+          </p>
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      </div>
+      <div class="govuk-grid-column-one-third">
+          <aside class="app-related-items app-related-items--small" role="complementary">
+              <h2 class="govuk-heading-m" id="subsection-title">
+                  Related content
+              </h2>
+              <nav role="navigation" aria-labelledby="subsection-title">
+                  <ul class="govuk-list govuk-!-font-size-16">
+                      <li><a href="https://www.gov.uk/government/publications/brownfield-land-registers-data-standard/publish-your-brownfield-land-data">Brownfield land data standard</a></li>
+                      <li><a href="http://www.legislation.gov.uk/uksi/2017/403/made">Brownfield land register regulations (2017)</a></li>
+                  </ul>
+              </nav>
+          </aside>
+      </div>
+  </div>
 
 </main>
 {% endblock %}
