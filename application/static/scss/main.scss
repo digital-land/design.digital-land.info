@@ -2,11 +2,34 @@
 @import "node_modules/govuk-frontend/govuk/all";
 
 .dl-summary-list--data {
-    font-size: 1rem;
     .govuk-summary-list__key, 
     .govuk-summary-list__value, 
     .govuk-summary-list__actions {
-        padding: 0.25em;
+        padding: 0.5em;
+    }
+    @include govuk-font(19, $weight: "regular", $tabular: false, $line-height: false);
+}
+
+.dl-summary-list__row--highlighted {
+     background: #1d70b8;
+    .govuk-summary-list__key, 
+    .govuk-summary-list__value, 
+    .govuk-summary-list__actions {
+        margin: 0;
+        padding: 1em;
+        font-weight: bold;
+        color: #fff;
+        a:link, a:visited, a:hover, a:active { color: inherit; }
+        @include govuk-media-query($from: tablet) {
+            padding: 1.25em 1em;
+        }
+    }
+    .govuk-summary-list__key {
+        padding-bottom: 0;
     }
 }
 
+
+.dl-link--mono {
+    font-family: monospace;
+}
