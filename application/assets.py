@@ -19,6 +19,7 @@ css_govuk = Bundle(
   filters=(libsass_output,),
   output='gen/css/main.css',
   depends=[
+        'scss/**/*.scss',
         'node_modules/govuk-frontend/govuk/**/*.scss'
     ]
 )

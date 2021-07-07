@@ -1,0 +1,27 @@
+.dl-summary-list--data {
+    .govuk-summary-list__key, 
+    .govuk-summary-list__value, 
+    .govuk-summary-list__actions {
+        padding: 0.5em;
+    }
+    @include govuk-font(19, $weight: "regular", $tabular: false, $line-height: false);
+}
+
+.dl-summary-list__row--highlighted {
+     background: #1d70b8;
+    .govuk-summary-list__key, 
+    .govuk-summary-list__value, 
+    .govuk-summary-list__actions {
+        margin: 0;
+        padding: govuk-spacing(2);
+        font-weight: bold;
+        color: #fff;
+        a:link, a:visited, a:hover, a:active { color: inherit; }
+        @include govuk-media-query($from: tablet) {
+            padding: govuk-spacing(2) govuk-spacing(2);
+        }
+    }
+    .govuk-summary-list__key {
+        padding-bottom: 0;
+    }
+}

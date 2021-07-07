@@ -9,7 +9,7 @@
     <div class="govuk-grid-column-two-thirds">
         <span class="govuk-caption-xl">Resource</span>
         <h1 class="govuk-heading-xl">View the data</h1>
-        <p class="govuk-body-l">Explore the resource data on this page, which has been collected and processed by the Digital Land pipeline.</p>
+        <p class="govuk-body-l">Explore the resource data on this page, which has been collected and processed by MHCLG.</p>
     </div>
   </div>
 
@@ -57,33 +57,109 @@
   <hr class="govuk-section-break govuk-section-break--m">
 
   <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-l">How we've processed this data</h2>
-          <p class="govuk-body">Data proccessing software developed by MHCLG known as the '<a href="https://digital-land.github.io/guidance/pipeline/">Pipeline</a>' collects the data from the resource URL and fixes common errors that do not align with the <a href="https://www.gov.uk/government/publications/brownfield-land-registers-data-standard/publish-your-brownfield-land-data">data standard</a>.</p>
-          <p class="govuk-body">You can download the data as it was
-              <a href="https://raw.githubusercontent.com/digital-land/brownfield-land-collection/main/collection/resource/0001a1baf9ddd7505cfef2e671292122de73a44299e5f5e584e9ec1514c0181c" download="0001a1baf9ddd7505cfef2e671292122de73a44299e5f5e584e9ec1514c0181c_collected">collected</a>,
-              after it has been
-              <a href="https://github.com/digital-land/brownfield-land-collection/blob/main/harmonised/brownfield-land/0001a1baf9ddd7505cfef2e671292122de73a44299e5f5e584e9ec1514c0181c.csv">harmonised</a>
-              (<a href="https://raw.githubusercontent.com/digital-land/brownfield-land-collection/main/harmonised/brownfield-land/0001a1baf9ddd7505cfef2e671292122de73a44299e5f5e584e9ec1514c0181c.csv" download="0001a1baf9ddd7505cfef2e671292122de73a44299e5f5e584e9ec1514c0181c_harmonised.csv">CSV</a>)
-              to meet the data standard, and 
-              <a href="https://github.com/digital-land/brownfield-land-collection/blob/main/transformed/brownfield-land/0001a1baf9ddd7505cfef2e671292122de73a44299e5f5e584e9ec1514c0181c.csv">transformed</a>
-              (<a href="https://raw.githubusercontent.com/digital-land/brownfield-land-collection/main/transformed/brownfield-land/0001a1baf9ddd7505cfef2e671292122de73a44299e5f5e584e9ec1514c0181c.csv" download="0001a1baf9ddd7505cfef2e671292122de73a44299e5f5e584e9ec1514c0181c_transformed.csv">CSV</a>) into the <a href="https://digital-land.github.io/specification/schema/brownfield-land/">Digital Land data model</a>.
-          </p>
-          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-      </div>
-      <div class="govuk-grid-column-one-third">
-          <aside class="app-related-items app-related-items--small" role="complementary">
-              <h2 class="govuk-heading-m" id="subsection-title">
-                  Related content
-              </h2>
-              <nav role="navigation" aria-labelledby="subsection-title">
-                  <ul class="govuk-list govuk-!-font-size-16">
-                      <li><a href="https://www.gov.uk/government/publications/brownfield-land-registers-data-standard/publish-your-brownfield-land-data">Brownfield land data standard</a></li>
-                      <li><a href="http://www.legislation.gov.uk/uksi/2017/403/made">Brownfield land register regulations (2017)</a></li>
-                  </ul>
-              </nav>
-          </aside>
-      </div>
+    <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l" id="#download">How we proccessed this data</h2>
+        <p class="govuk-body govuk-!-margin-bottom-6">Software developed by MHCLG downloads the data from the URL of the resource, it then automatically identifies and fixes common errors that do not align with the data standard.</p>
+        <p class="govuk-body govuk-!-margin-bottom-6">You can download a snapshot of the data for this resource from each key stage of our data proccess. Read more about <a href="https://digital-land.github.io/guidance/pipeline/">how we collect and process data</a></p>
+        <section class="dl-attachment">
+          <div class="dl-attachment__thumbnail">
+            <a class="govuk-link" target="_self" tabindex="-1" aria-hidden="true" href="#">
+              <svg class="dl-attachment__thumbnail-image" version="1.1" viewBox="0 0 99 140" width="99" height="140" aria-hidden="true" preserveAspectRatio="none">
+                <path d="M12 12h75v27H12zm0 47h18.75v63H12zm55 2v59H51V61h16m2-2H49v63h20V59z" stroke-width="0"></path>
+                <path d="M49 61.05V120H32.8V61.05H49m2-2H30.75v63H51V59zm34 2V120H69.05V61.05H85m2-2H67v63h20V59z" stroke-width="0"></path>
+                <path d="M30 68.5h56.5M30 77.34h56.5M30 112.7h56.5M30 95.02h56.5M30 86.18h56.5M30 103.86h56.5" fill="none" stroke-miterlimit="10" stroke-width="2"></path>
+              </svg>
+            </a>
+          </div>
+          <div class="dl-attachment__details">
+            <h3 class="dl-attachment__title">
+              <a href="#" class="govuk-link dl-attachment__link">Collected data</a>
+            </h3>
+            <p class="dl-attachment__metadata">
+              <span class="dl-attachment__attribute"><abbr title="Comma-separated Values" class="dl-attachment__abbr">CSV</abbr></span>, 
+              <span class="dl-attachment__attribute">19.5 KB</span>
+            </p>
+            <p class="govuk-body">This file contains a copy of data as it was collected on {% raw %}{{ lastCollectedDate }}{% endraw %}.</p>
+          </div>
+        </section>
+        <section class="dl-attachment">
+          <div class="dl-attachment__thumbnail">
+            <a class="govuk-link" target="_self" tabindex="-1" aria-hidden="true" href="#">
+              <svg class="dl-attachment__thumbnail-image" version="1.1" viewBox="0 0 99 140" width="99" height="140" aria-hidden="true">
+                <path d="M12 12h75v27H12zm0 47h18.75v63H12zm55 2v59H51V61h16m2-2H49v63h20V59z" stroke-width="0"></path>
+                <path d="M49 61.05V120H32.8V61.05H49m2-2H30.75v63H51V59zm34 2V120H69.05V61.05H85m2-2H67v63h20V59z" stroke-width="0"></path>
+                <path d="M30 68.5h56.5M30 77.34h56.5M30 112.7h56.5M30 95.02h56.5M30 86.18h56.5M30 103.86h56.5" fill="none" stroke-miterlimit="10" stroke-width="2"></path>
+              </svg>
+            </a>
+          </div>
+          <div class="dl-attachment__details">
+            <h3 class="dl-attachment__title">
+              <a href="#" class="govuk-link dl-attachment__link">Harmonised data</a>
+            </h3>
+            <p class="dl-attachment__metadata">
+              <span class="dl-attachment__attribute"><abbr title="Comma-separated Values" class="dl-attachment__abbr">CSV</abbr></span>, 
+              <span class="dl-attachment__attribute">19.5 KB</span>
+            </p>
+            <p class="govuk-body">This file contains the data after our pipeline software has harmonised it.</p>
+          </div>
+        </section>
+        <section class="dl-attachment">
+          <div class="dl-attachment__thumbnail">
+            <a class="govuk-link" target="_self" tabindex="-1" aria-hidden="true" href="#">
+              <svg class="dl-attachment__thumbnail-image" version="1.1" viewBox="0 0 99 140" width="99" height="140" aria-hidden="true">
+                <path d="M12 12h75v27H12zm0 47h18.75v63H12zm55 2v59H51V61h16m2-2H49v63h20V59z" stroke-width="0"></path>
+                <path d="M49 61.05V120H32.8V61.05H49m2-2H30.75v63H51V59zm34 2V120H69.05V61.05H85m2-2H67v63h20V59z" stroke-width="0"></path>
+                <path d="M30 68.5h56.5M30 77.34h56.5M30 112.7h56.5M30 95.02h56.5M30 86.18h56.5M30 103.86h56.5" fill="none" stroke-miterlimit="10" stroke-width="2"></path>
+              </svg>
+            </a>
+          </div>
+          <div class="dl-attachment__details">
+            <h3 class="dl-attachment__title">
+              <a href="#" class="govuk-link dl-attachment__link">Transformed data</a>
+            </h3>
+            <p class="dl-attachment__metadata">
+              <span class="dl-attachment__attribute"><abbr title="Comma-separated Values" class="dl-attachment__abbr">CSV</abbr></span>, 
+              <span class="dl-attachment__attribute">19.5 KB</span>
+            </p>
+            <p class="govuk-body">This file contains the data after our pipeline has transformed it into the Digital Land data model.</p>
+          </div>
+        </section>
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    </div>
+    <div class="govuk-grid-column-one-third">
+        <aside class="app-related-items app-related-items--small" role="complementary">
+            <h2 class="govuk-heading-m" id="releated-content">
+                Related content
+            </h2>
+            <nav role="navigation" aria-labelledby="subsection-title">
+                <ul class="govuk-list govuk-!-font-size-16">
+                    <li><a href="https://www.gov.uk/government/publications/brownfield-land-registers-data-standard/publish-your-brownfield-land-data">Brownfield land data standard</a></li>
+                    <li><a href="http://www.legislation.gov.uk/uksi/2017/403/made">Brownfield land register regulations (2017)</a></li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">What this data told us</h2>
+        <p class="govuk-body">The following information has been extracted from this resource.</p>
+        <p class="govuk-body">The register references <span class="govuk-!-font-weight-bold">1</span> organisation.</p>
+        <p class="govuk-body">It reports <span class="govuk-!-font-weight-bold">38 brownfield sites</span>. <span class="govuk-!-font-weight-bold">0</span> of these have an <a href="https://digital-land.github.io/guidance/data-principles/#end-dates">end date</a> and are no longer considered brownfield land.</p>
+        <p class="govuk-body">Not including sites with an end date, there are:</p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>
+                <span class="govuk-!-font-weight-bold">64.79
+                hectares</span> of brownfield land
+            </li><li>between <span class="govuk-!-font-weight-bold">838</span> and <span class="govuk-!-font-weight-bold">861</span> potential dwellings that could be built
+            </li>
+            <li><span class="govuk-!-font-weight-bold">0
+                </span> sites have <a href="https://www.gov.uk/guidance/permission-in-principle">permission in principle</a>
+            </li>
+
+        </ul>
+    </div>
   </div>
 
   <h3 class="govuk-heading-m govuk-!-margin-top-6">Site locations</h3>
@@ -106,7 +182,7 @@
   <h3 class="govuk-heading-m">Records</h3>
   <p class="govuk-body">There are <strong>10</strong> records after harmonising this brownfield register.</p>
 
-<div class="data-table__wrapper" data-module="data-table data-linkable-table">
+  <div class="data-table__wrapper" data-module="data-table data-linkable-table">
     <div class="data-table-left-shadow"></div>
     <div class="wide-table">
         <table class="data-table">
