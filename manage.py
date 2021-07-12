@@ -3,7 +3,7 @@
 from flask import Flask
 from flask_script import Manager
 
-from app.factory import create_app
+from application.factory import create_app
 
 app = Flask(__name__)
 
