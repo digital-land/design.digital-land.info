@@ -4,6 +4,7 @@ Flask-Assets
 Flask-BasicAuth
 Flask-Script
 -e git+https://github.com/digital-land/govuk-jinja-components.git#egg=govuk_jinja_components
+-e git+https://github.com/digital-land/digital-land-frontend.git#egg=digital_land_frontend
 gunicorn
 itsdangerous
 Jinja2==2.11.3
