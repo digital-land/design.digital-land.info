@@ -1,0 +1,56 @@
+{
+    "dataset": "brownfield-land",
+    "resource": "",
+    "summary": {
+        "records": {
+            "total": 38,
+            "end-date": 0
+        },
+        "organisations": [
+            {
+                "name": "Teignbridge District Council",
+                "id": "local-authority-eng:TEI"
+            }
+        ],
+        "stats": {
+            "hectares": 64.79,
+            "dwellings": {
+                "min": 838,
+                "max": 861
+            },
+            "permissioned_in_principle": 0
+        }
+    },
+    "endpoints": [
+        {
+            "endpoint": "https://www.teignbridge.gov.uk/media/8834/brownfieldlandregisterteignbridge2019.csv",
+            "start_date": "2020-12-09",
+            "last_collected": "2021-06-10",
+            "organisations": [
+                {
+                    "name": "Teignbridge District Council",
+                    "id": "local-authority-eng:TEI"
+                }
+            ]
+        }
+    ],
+    "files": [
+        {
+            "name": "Collected",
+            "format": "CSV",
+            "size": "19.5 KB"
+        },
+        {
+            "name": "Harmonised",
+            "format": "CSV",
+            "size": "19.5 KB",
+            "comment": "only needed for brownfield land"
+        },
+        {
+            "name": "Transformed",
+            "format": "CSV",
+            "size": "19.5 KB"
+        }
+    ],
+    "geojson_url": ""
+}
