@@ -1,5 +1,11 @@
-{% extends "layouts/layout.html" %}
+{% extends "digital-land-frontend/dlf-base.html" %}
 {% block page_title %}Resource page template{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <!-- local generated css -->
+    <link rel="stylesheet" href="/static/gen/css/main.css">
+{% endblock  %}
 
 {% block content %}
 
