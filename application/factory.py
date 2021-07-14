@@ -19,6 +19,7 @@ def create_app(config_filename):
 
     register_blueprints(app)
     register_context_processors(app)
+    register_filters(app)
     register_extensions(app)
 
     return app
@@ -41,6 +42,10 @@ def register_context_processors(app):
           'asset_path': '/static/'}
 
     app.context_processor(base_context_processor)
+
+def register_filters(app):
+    from application.filters import hex_to_rgb_string
+    app.add_template_filter(hex_to_rgb_string, name="hex_to_rgb")
 
 def register_extensions(app):
     """
