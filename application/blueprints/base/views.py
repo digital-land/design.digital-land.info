@@ -69,12 +69,11 @@ def map():
             "type": "point",
         },
         {
-            "dataset": "parish",
-            "label": "Parishes",
+            "dataset": "open-space",
+            "label": "Open spaces",
             "paint_options": {
                 "colour": "#5694ca",
             },
         }
   ]
   return render_template('map.html', layers=all_layers)
-  

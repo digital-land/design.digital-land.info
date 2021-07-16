@@ -82,6 +82,8 @@
 
 {% block bodyEnd %}
 {{ super() }}
+<script src='https://unpkg.com/@turf/turf@6.3.0/turf.min.js'></script>
+<script src="/static/js/dl-maps.js"></script>
 <script src="/static/js/dl-national-map-controller.js"></script>
 <script>
   // grab html elements
@@ -94,24 +96,36 @@
 
   const map = mapController.getMap()
 
-  map.on('load', function() {
+  const datasets = ['brownfield-land', 'conservation-area', 'local-authority-district', 'open-space']
+  const tileSources = datasets.map(function (d) {
+      return `https://datasette-tiles.digital-land.info/-/tiles/${d}/{z}/{x}/{y}.vector.pbf`
+  })
+
+  function addDatasetSource(map, dataset) {
     map.addSource(
-        'new-source', {
+        `${dataset}-source`, {
             type: 'vector',
-            tiles: ['https://vector-tile-spike.herokuapp.com/-/tiles/brownfield-land/{z}/{x}/{y}.vector.pbf', 'https://vector-tile-spike.herokuapp.com/-/tiles/conservation-area/{z}/{x}/{y}.vector.pbf', 'https://vector-tile-spike.herokuapp.com/-/tiles/local-authority-district/{z}/{x}/{y}.vector.pbf'],
+            tiles: [`https://datasette-tiles.digital-land.info/-/tiles/${dataset}/{z}/{x}/{y}.vector.pbf`],
             minzoom: 5,
             maxzoom: 18
         }
     )
+  }
+
+  map.on('load', function() {
+    datasets.forEach(function(dataset) {
+        addDatasetSource(map, dataset)
+        //  can use map.getSource('') is undefined to see if source has been loaded
+    })
 
     map.addLayer({
       id: 'bfs',
       type: 'circle',
-      source: 'new-source',
+      source: 'brownfield-land-source',
       'source-layer': 'brownfield-land',
       paint: {
-          'circle-color': 'red',
-          'circle-opacity': 0.5,
+          'circle-color': '#745729',
+          'circle-opacity': 0.3,
           'circle-radius': {
             base: 1.5,
             stops: [
@@ -119,34 +133,57 @@
               [22, 180]
             ]
           },
-          'circle-stroke-color': 'red',
+          'circle-stroke-color': '#745729',
           'circle-stroke-width': 2
       },
-      //'filter': ['==', 'organisation', 'local-authority-eng:ESK']
+      'filter': ['==', 'organisation', 'local-authority-eng:ESK']
     })
 
     map.addLayer({
       id: 'conarea',
       type: 'fill',
-      source: 'new-source', // not using conservation area source (con-area-source)
+      source: 'conservation-area-source', // not using conservation area source (con-area-source)
       'source-layer': 'conservation-area',
       paint: {
-          'fill-color': 'black',
-          'fill-opacity': 0.6
+          'fill-color': '#78AA00',
+          'fill-opacity': 0.5
       },
-      //'filter': ['==', 'organisation', 'local-authority-eng:ESK']
+      'filter': ['==', 'organisation', 'local-authority-eng:ESK']
     })
 
     map.addLayer({
       id: 'labs',
       type: 'fill',
-      source: 'new-source',
+      source: 'local-authority-district-source',
       'source-layer': 'local-authority-district',
       paint: {
-          'fill-color': 'orange',
-          'fill-opacity': 0.6
+          'fill-color': '#0b0c0c',
+          'fill-opacity': 0.1
       },
       'filter': ['in', 'E07000244', ['get', 'slug']]
+    })
+
+    map.addLayer({
+      id: 'labs-line',
+      type: 'line',
+      source: 'local-authority-district-source',
+      'source-layer': 'local-authority-district',
+      paint: {
+          'line-color': '#0b0c0c',
+          'line-width': 2
+      },
+      'filter': ['in', 'E07000244', ['get', 'slug']]
+    })
+
+    map.addLayer({
+      id: 'open-spaces',
+      type: 'fill',
+      source: 'open-space-source',
+      'source-layer': 'open-space',
+      paint: {
+          'fill-color': '#00703c',
+          'fill-opacity': 0.3
+      }
     })
 
     function clickHandler (e) {
@@ -156,7 +193,7 @@
       ]
 
       var features = map.queryRenderedFeatures(bbox, {
-        layers: ['conarea', 'labs']
+        layers: ['conarea', 'labs', 'bfs']
       })
 
       features.forEach(function (feature) {
@@ -185,14 +222,36 @@
     console.log('Brownfield-l', countFeatures('bfs'))
     console.log('Con areas', countFeatures('conarea'))
   })
-  })
 
+  }) // end load
+
+//   map.on('sourcedata', function(e) {
+//     if (e.sourceId === 'new-source') {
+//       console.log('A sourcedata event occurred.', e, e.isSourceLoaded);
+//     }
+//   });
+
+  let flownToBoundary = false
   map.on('sourcedata', function(e) {
-    if (e.sourceId === 'new-source') {
-      console.log('A sourcedata event occurred.', e, e.isSourceLoaded);
+    // assuming 'map' is defined globally, or you can use 'this'
+    if (!flownToBoundary) {
+        if (map.getSource('local-authority-district-source') && map.isSourceLoaded('local-authority-district-source')) {
+            console.log('source loaded!');
+            // ZOOM to local authority boundary
+            const laBoundaryFeatures = map.querySourceFeatures('local-authority-district-source', {filter: ['in', 'E07000244', ['get', 'slug']], sourceLayer: 'local-authority-district'})
+            console.log("Matched boundaries", laBoundaryFeatures) // returns more than one feature
+            if (laBoundaryFeatures.length) {
+                const collection = turf.featureCollection(laBoundaryFeatures)
+                console.log('collection', collection)
+                const laEnvelope = turf.envelope(collection)
+                const laBBox = laEnvelope.bbox
+                console.log('BBOX', laBBox)
+                map.fitBounds([[laBBox[0],laBBox[1]], [laBBox[2],laBBox[3]]])
+                flownToBoundary = true
+            }
+        }
     }
-  });
-  
+  }); 
   
 </script>
 {% endblock %}
