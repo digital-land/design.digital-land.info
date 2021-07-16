@@ -28,7 +28,7 @@
             <h2 class="govuk-heading-l">What this data told us</h2>
             <p class="govuk-body">The following information has been extracted from this resource.</p>
             <p class="govuk-body">The data references <span class="govuk-!-font-weight-bold">{{ summary.organisations|length }}</span> {{ "organisation" if summary.organisations|length == 1 else "organisations" }}.</p>
-            <p class="govuk-body">It reports <span class="govuk-!-font-weight-bold">{{ summary.records.total }} {{ "brownfield sites" if resource.dataset == "brownfield-land" else "records" }}</span>. <span class="govuk-!-font-weight-bold">{{ summary.records['end-date'] }}</span> of these have an <a href="https://digital-land.github.io/guidance/data-principles/#end-dates">end date</a> and are {{ "no longer considered brownfield land" if resource.dataset == "brownfield-land" else "classed as historical" }}.</p>
+            <p class="govuk-body">It reports <span class="govuk-!-font-weight-bold">{{ summary.records.total }} {{ "brownfield sites" if resource.dataset == "brownfield-land" else "records" }}</span>. <span class="govuk-!-font-weight-bold">{{ summary.records['ended'] }}</span> of these have an <a href="https://digital-land.github.io/guidance/data-principles/#end-dates">end date</a> and are {{ "no longer considered brownfield land" if resource.dataset == "brownfield-land" else "classed as historical" }}.</p>
             {% if resource.dataset == "brownfield-land" %}
             <p class="govuk-body">Not including sites with an end date, there are:</p>
             <ul class="govuk-list govuk-list--bullet">
@@ -70,7 +70,7 @@
                         Endpoint URL
                     </dt>
                     <dd class="govuk-summary-list__value">
-                        <a href="{{ endpoint.endpoint }}" class="dl-link">{{ endpoint.endpoint }}</a>
+                        <a href="{{ endpoint.endpoint_url }}" class="dl-link">{{ endpoint.endpoint_url }}</a>
                     </dd>
                 </div>
                 <div class="govuk-summary-list__row">
@@ -129,7 +129,7 @@
             </div>
             <div class="dl-attachment__details">
               <h3 class="dl-attachment__title">
-                <a href="#" class="govuk-link dl-attachment__link">{{ file.name }} data</a>
+                <a href={{ file.href }} class="govuk-link dl-attachment__link">{{ file.name }} data</a>
               </h3>
               <p class="dl-attachment__metadata">
                   {# need filter to map file types to proper titles #}

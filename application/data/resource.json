@@ -1,10 +1,10 @@
 {
-    "dataset": "brownfield-land",
+    "collection": "brownfield-land",
     "resource": "",
     "summary": {
         "records": {
             "total": 38,
-            "end-date": 0
+            "ended": 0
         },
         "organisations": [
             {
@@ -23,7 +23,7 @@
     },
     "endpoints": [
         {
-            "endpoint": "https://www.teignbridge.gov.uk/media/8834/brownfieldlandregisterteignbridge2019.csv",
+            "endpoint_url": "https://www.teignbridge.gov.uk/media/8834/brownfieldlandregisterteignbridge2019.csv",
             "start_date": "2020-12-09",
             "last_collected": "2021-06-10",
             "organisations": [
@@ -38,18 +38,21 @@
         {
             "name": "Collected",
             "format": "CSV",
-            "size": "19.5 KB"
+            "size": "19.5 KB",
+            "href": "http://some_url/"
         },
         {
             "name": "Harmonised",
             "format": "CSV",
             "size": "19.5 KB",
-            "comment": "only needed for brownfield land"
+            "comment": "only needed for brownfield land",
+            "href": "http://some_url/"
         },
         {
             "name": "Transformed",
             "format": "CSV",
-            "size": "19.5 KB"
+            "size": "19.5 KB",
+            "href": "http://some_url/"
         }
     ],
     "geojson_url": ""
