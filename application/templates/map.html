@@ -98,51 +98,101 @@
     map.addSource(
         'new-source', {
             type: 'vector',
-            tiles: ['https://vector-tile-spike.herokuapp.com/-/tiles/brownfield-land/{z}/{x}/{y}.vector.pbf'],
+            tiles: ['https://vector-tile-spike.herokuapp.com/-/tiles/brownfield-land/{z}/{x}/{y}.vector.pbf', 'https://vector-tile-spike.herokuapp.com/-/tiles/conservation-area/{z}/{x}/{y}.vector.pbf', 'https://vector-tile-spike.herokuapp.com/-/tiles/local-authority-district/{z}/{x}/{y}.vector.pbf'],
             minzoom: 5,
             maxzoom: 18
         }
     )
-    map.addSource(
-        'con-area-source', {
-            type: 'vector',
-            tiles: ['https://vector-tile-spike.herokuapp.com/-/tiles/conservation-area/{z}/{x}/{y}.vector.pbf'],
-            minzoom: 5,
-            maxzoom: 18
-        }
-    )
+
     map.addLayer({
-    id: 'bfs',
-    type: 'circle',
-    source: 'new-source',
-    'source-layer': 'brownfield-land',
-    paint: {
-        'circle-color': 'red',
-        'circle-opacity': 0.5,
-        'circle-radius': {
-          base: 1.5,
-          stops: [
-            [6, 1],
-            [22, 180]
-          ]
-        },
-        'circle-stroke-color': 'red',
-        'circle-stroke-width': 2
-    },
-    'filter': ['in', 'slug', 'ESK']
+      id: 'bfs',
+      type: 'circle',
+      source: 'new-source',
+      'source-layer': 'brownfield-land',
+      paint: {
+          'circle-color': 'red',
+          'circle-opacity': 0.5,
+          'circle-radius': {
+            base: 1.5,
+            stops: [
+              [6, 1],
+              [22, 180]
+            ]
+          },
+          'circle-stroke-color': 'red',
+          'circle-stroke-width': 2
+      },
+      //'filter': ['==', 'organisation', 'local-authority-eng:ESK']
+    })
+
+    map.addLayer({
+      id: 'conarea',
+      type: 'fill',
+      source: 'new-source', // not using conservation area source (con-area-source)
+      'source-layer': 'conservation-area',
+      paint: {
+          'fill-color': 'black',
+          'fill-opacity': 0.6
+      },
+      //'filter': ['==', 'organisation', 'local-authority-eng:ESK']
+    })
+
+    map.addLayer({
+      id: 'labs',
+      type: 'fill',
+      source: 'new-source',
+      'source-layer': 'local-authority-district',
+      paint: {
+          'fill-color': 'orange',
+          'fill-opacity': 0.6
+      },
+      'filter': ['in', 'E07000244', ['get', 'slug']]
+    })
+
+    function clickHandler (e) {
+      var bbox = [
+        [e.point.x - 5, e.point.y - 5],
+        [e.point.x + 5, e.point.y + 5]
+      ]
+
+      var features = map.queryRenderedFeatures(bbox, {
+        layers: ['conarea', 'labs']
+      })
+
+      features.forEach(function (feature) {
+        console.log(feature.properties.name, feature)
+      })
+    }
+
+    map.on('click', clickHandler)
+
+    map.on('moveend', function (e) {
+      var bbox = map.getBounds()
+      console.log('move ended', bbox)
+      var f = map.queryRenderedFeatures([[bbox._sw[0], bbox._sw[1]], [bbox._ne[0], bbox._ne[1]]], { layers: ['bfs', 'conarea'] })
+      console.log(f)
+    })
+
+    function countFeatures (layerName) {
+    const l = map.getLayer(layerName)
+    if (l) {
+      return map.queryRenderedFeatures({ layers: [layerName] }).length
+    }
+    return 0
+  }
+  map.on('moveend', function (e) {
+    console.log('moveend')
+    console.log('Brownfield-l', countFeatures('bfs'))
+    console.log('Con areas', countFeatures('conarea'))
+  })
   })
 
-  map.addLayer({
-    id: 'conarea',
-    type: 'fill',
-    source: 'con-area-source',
-    'source-layer': 'conservation-area',
-    paint: {
-        'fill-color': 'black',
-        'fill-opacity': 0.6
+  map.on('sourcedata', function(e) {
+    if (e.sourceId === 'new-source') {
+      console.log('A sourcedata event occurred.', e, e.isSourceLoaded);
     }
-  })
-  })
+  });
+  
   
 </script>
 {% endblock %}
