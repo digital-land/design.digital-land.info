@@ -63,6 +63,21 @@ MapController.prototype.addSource = function () {
     minzoom: this.minMapZoom,
     maxzoom: this.maxMapZoom
   });
+
+  var map = this.map
+  // add the other layers
+  var datasets = ['brownfield-land', 'conservation-area', 'local-authority-district', 'open-space']
+  console.log('Datasets', datasets)
+  datasets.forEach(function(d){
+    map.addSource(
+      `${d}-source`, {
+          type: 'vector',
+          tiles: [`https://datasette-tiles.digital-land.info/-/tiles/${d}/{z}/{x}/{y}.vector.pbf`],
+          minzoom: 5,
+          maxzoom: 18
+      }
+    )
+  })
 };
 
 MapController.prototype.createPopupHTML = function (feature) {

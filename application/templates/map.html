@@ -11,11 +11,11 @@
 {% block content %}
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-full">
-  	<h1 class="govuk-heading-xl">National map of planning data</h1>
+  	<h1 class="govuk-heading-xl">East Suffolk</h1>
     </div>
 </div>
 
-<p id="aria-label-national-map" class="govuk-body-l">National map of the planning data collected and collated by Digital Land.</p>
+<p id="aria-label-national-map" class="govuk-body-l">A map of the planning data published by East Suffolk and collected by Digital Land.</p>
 
 <div class="dl-map__wrapper" style="min-height: 700px;">
 
@@ -113,78 +113,89 @@
   }
 
   map.on('load', function() {
-    datasets.forEach(function(dataset) {
-        addDatasetSource(map, dataset)
-        //  can use map.getSource('') is undefined to see if source has been loaded
-    })
+    // datasets.forEach(function(dataset) {
+    //     addDatasetSource(map, dataset)
+    //     //  can use map.getSource('') is undefined to see if source has been loaded
+    // })
 
-    map.addLayer({
-      id: 'bfs',
-      type: 'circle',
-      source: 'brownfield-land-source',
-      'source-layer': 'brownfield-land',
-      paint: {
-          'circle-color': '#745729',
-          'circle-opacity': 0.3,
-          'circle-radius': {
-            base: 1.5,
-            stops: [
-              [6, 1],
-              [22, 180]
-            ]
-          },
-          'circle-stroke-color': '#745729',
-          'circle-stroke-width': 2
-      },
-      'filter': ['==', 'organisation', 'local-authority-eng:ESK']
-    })
+    // map.addLayer({
+    //   id: 'bfs',
+    //   type: 'circle',
+    //   source: 'brownfield-land-source',
+    //   'source-layer': 'brownfield-land',
+    //   paint: {
+    //       'circle-color': '#745729',
+    //       'circle-opacity': 0.3,
+    //       'circle-radius': {
+    //         base: 1.5,
+    //         stops: [
+    //           [6, 1],
+    //           [22, 180]
+    //         ]
+    //       },
+    //       'circle-stroke-color': '#745729',
+    //       'circle-stroke-width': 2
+    //   },
+    //   'filter': ['==', 'organisation', 'local-authority-eng:ESK']
+    // })
 
-    map.addLayer({
-      id: 'conarea',
-      type: 'fill',
-      source: 'conservation-area-source', // not using conservation area source (con-area-source)
-      'source-layer': 'conservation-area',
-      paint: {
-          'fill-color': '#78AA00',
-          'fill-opacity': 0.5
-      },
-      'filter': ['==', 'organisation', 'local-authority-eng:ESK']
-    })
+    // single filter for points
+    map.setFilter('brownfield-land', ['==', 'organisation', 'local-authority-eng:ESK'])
+    // filter both fills and lines for polygons
+    map.setFilter('conservation-areaFill', ['==', 'organisation', 'local-authority-eng:ESK'])
+    map.setFilter('conservation-areaLine', ['==', 'organisation', 'local-authority-eng:ESK'])
+    map.setFilter('open-spaceFill', ['==', 'organisation', 'local-authority-eng:ESK'])
+    map.setFilter('open-spaceLine', ['==', 'organisation', 'local-authority-eng:ESK'])
 
-    map.addLayer({
-      id: 'labs',
-      type: 'fill',
-      source: 'local-authority-district-source',
-      'source-layer': 'local-authority-district',
-      paint: {
-          'fill-color': '#0b0c0c',
-          'fill-opacity': 0.1
-      },
-      'filter': ['in', 'E07000244', ['get', 'slug']]
-    })
+    map.setFilter('local-authority-districtFill', ['in', 'E07000244', ['get', 'slug']])
+    map.setFilter('local-authority-districtLine', ['in', 'E07000244', ['get', 'slug']])
 
-    map.addLayer({
-      id: 'labs-line',
-      type: 'line',
-      source: 'local-authority-district-source',
-      'source-layer': 'local-authority-district',
-      paint: {
-          'line-color': '#0b0c0c',
-          'line-width': 2
-      },
-      'filter': ['in', 'E07000244', ['get', 'slug']]
-    })
+    // map.addLayer({
+    //   id: 'conarea',
+    //   type: 'fill',
+    //   source: 'conservation-area-source', // not using conservation area source (con-area-source)
+    //   'source-layer': 'conservation-area',
+    //   paint: {
+    //       'fill-color': '#78AA00',
+    //       'fill-opacity': 0.5
+    //   },
+    //   'filter': ['==', 'organisation', 'local-authority-eng:ESK']
+    // })
 
-    map.addLayer({
-      id: 'open-spaces',
-      type: 'fill',
-      source: 'open-space-source',
-      'source-layer': 'open-space',
-      paint: {
-          'fill-color': '#00703c',
-          'fill-opacity': 0.3
-      }
-    })
+    // map.addLayer({
+    //   id: 'labs',
+    //   type: 'fill',
+    //   source: 'local-authority-district-source',
+    //   'source-layer': 'local-authority-district',
+    //   paint: {
+    //       'fill-color': '#0b0c0c',
+    //       'fill-opacity': 0.1
+    //   },
+    //   'filter': ['in', 'E07000244', ['get', 'slug']]
+    // })
+
+    // map.addLayer({
+    //   id: 'labs-line',
+    //   type: 'line',
+    //   source: 'local-authority-district-source',
+    //   'source-layer': 'local-authority-district',
+    //   paint: {
+    //       'line-color': '#0b0c0c',
+    //       'line-width': 2
+    //   },
+    //   'filter': ['in', 'E07000244', ['get', 'slug']]
+    // })
+
+    // map.addLayer({
+    //   id: 'open-space',
+    //   type: 'fill',
+    //   source: 'open-space-source',
+    //   'source-layer': 'open-space',
+    //   paint: {
+    //       'fill-color': '#00703c',
+    //       'fill-opacity': 0.3
+    //   }
+    // })
 
     function clickHandler (e) {
       var bbox = [
@@ -193,7 +204,7 @@
       ]
 
       var features = map.queryRenderedFeatures(bbox, {
-        layers: ['conarea', 'labs', 'bfs']
+        layers: ['conarea', 'labs', 'open-spaces']
       })
 
       features.forEach(function (feature) {
