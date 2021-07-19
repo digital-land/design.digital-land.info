@@ -1,59 +1,160 @@
 {
-    "collection": "brownfield-land",
-    "resource": "",
-    "summary": {
-        "records": {
-            "total": 38,
-            "ended": 0
-        },
-        "organisations": [
-            {
-                "name": "Teignbridge District Council",
-                "id": "local-authority-eng:TEI"
-            }
-        ],
-        "stats": {
-            "hectares": 64.79,
-            "dwellings": {
-                "min": 838,
-                "max": 861
-            },
-            "permissioned_in_principle": 0
-        }
+  "collection": "brownfield-land",
+  "resource": "",
+  "summary": {
+    "records": {
+      "total": 38,
+      "ended": 0
     },
-    "endpoints": [
-        {
-            "endpoint_url": "https://www.teignbridge.gov.uk/media/8834/brownfieldlandregisterteignbridge2019.csv",
-            "start_date": "2020-12-09",
-            "last_collected": "2021-06-10",
-            "organisations": [
-                {
-                    "name": "Teignbridge District Council",
-                    "id": "local-authority-eng:TEI"
-                }
-            ]
-        }
+    "organisations": [
+      {
+        "name": "Teignbridge District Council",
+        "id": "local-authority-eng:TEI"
+      }
     ],
-    "files": [
+    "stats": {
+      "hectares": 64.79,
+      "dwellings": {
+        "min": 838,
+        "max": 861
+      },
+      "permissioned_in_principle": 0
+    }
+  },
+  "endpoints": [
+    {
+      "endpoint_url": "https://www.teignbridge.gov.uk/media/8834/brownfieldlandregisterteignbridge2019.csv",
+      "start_date": "2020-12-09",
+      "last_collected": "2021-06-10",
+      "organisations": [
         {
-            "name": "Collected",
-            "format": "CSV",
-            "size": "19.5 KB",
-            "href": "http://some_url/"
+          "name": "Teignbridge District Council",
+          "id": "local-authority-eng:TEI"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "name": "Collected",
+      "format": "CSV",
+      "size": "19.5 KB",
+      "href": "http://some_url/"
+    },
+    {
+      "name": "Harmonised",
+      "format": "CSV",
+      "size": "19.5 KB",
+      "comment": "only needed for brownfield land",
+      "href": "http://some_url/"
+    },
+    {
+      "name": "Transformed",
+      "format": "CSV",
+      "size": "19.5 KB",
+      "href": "http://some_url/"
+    }
+  ],
+  "geojson_url": "",
+  "issues": {
+    "default": {
+      "rows": [
+        3,
+        15,
+        23
+      ],
+      "issues": [
+        {
+          "row-number": "3",
+          "field": "NetDwellingsRangeTo",
+          "issue-type": "default",
+          "value": "0"
         },
         {
-            "name": "Harmonised",
-            "format": "CSV",
-            "size": "19.5 KB",
-            "comment": "only needed for brownfield land",
-            "href": "http://some_url/"
+          "row-number": "15",
+          "field": "NetDwellingsRangeTo",
+          "issue-type": "default",
+          "value": "0"
         },
         {
-            "name": "Transformed",
-            "format": "CSV",
-            "size": "19.5 KB",
-            "href": "http://some_url/"
+          "row-number": "23",
+          "field": "NetDwellingsRangeTo",
+          "issue-type": "default",
+          "value": "0"
         }
-    ],
-    "geojson_url": ""
+      ],
+      "total": 3,
+      "samples": [
+        {
+          "name": "BF000007",
+          "site-address": "Building next to Kings Head Hotel, Station Road, Hoveton.",
+          "deliverable": "yes",
+          "end-date": "",
+          "entry-date": "2018-12-20",
+          "hazardous-substances": "",
+          "hectares": "0.03",
+          "maximum-net-dwellings": "0",
+          "minimum-net-dwellings": "0",
+          "notes": "",
+          "organisation": "national-park-authority:Q4972284",
+          "ownership-status": "not owned by a public authority",
+          "planning-permission-date": "",
+          "planning-permission-history": "",
+          "planning-permission-status": "not permissioned",
+          "planning-permission-type": "",
+          "point": "POINT(1.409031 52.712724)",
+          "site": "BF000007",
+          "site-plan-url": "https://www.broads-authority.gov.uk/__data/assets/pdf_file/0007/995569/11_HOVETON-and-WROXHAM-new.pdf",
+          "start-date": "2017-11-23",
+          "slug": "/brownfield-land/national-park-authority/Q4972284/BF000007"
+        },
+        {
+          "name": "BF000006",
+          "site-address": "Former Waterside Rooms, Station Road, Hoveton.",
+          "deliverable": "yes",
+          "end-date": "",
+          "entry-date": "2018-12-20",
+          "hazardous-substances": "",
+          "hectares": "0.1",
+          "maximum-net-dwellings": "0",
+          "minimum-net-dwellings": "0",
+          "notes": "",
+          "organisation": "national-park-authority:Q4972284",
+          "ownership-status": "not owned by a public authority",
+          "planning-permission-date": "",
+          "planning-permission-history": "",
+          "planning-permission-status": "not permissioned",
+          "planning-permission-type": "",
+          "point": "POINT(1.40878 52.712854)",
+          "site": "BF000006",
+          "site-plan-url": "https://www.broads-authority.gov.uk/__data/assets/pdf_file/0007/995569/11_HOVETON-and-WROXHAM-new.pdf",
+          "start-date": "2017-11-23",
+          "slug": "/brownfield-land/national-park-authority/Q4972284/BF000006"
+        },
+        {
+          "name": "BF000005",
+          "site-address": "Old Broads Hotel Site, Station Road, Hoveton",
+          "deliverable": "yes",
+          "end-date": "",
+          "entry-date": "2018-12-20",
+          "hazardous-substances": "",
+          "hectares": "0.11",
+          "maximum-net-dwellings": "0",
+          "minimum-net-dwellings": "0",
+          "notes": "",
+          "organisation": "national-park-authority:Q4972284",
+          "ownership-status": "not owned by a public authority",
+          "planning-permission-date": "",
+          "planning-permission-history": "",
+          "planning-permission-status": "not permissioned",
+          "planning-permission-type": "",
+          "point": "POINT(1.408405 52.713662)",
+          "site": "BF000005",
+          "site-plan-url": "https://www.broads-authority.gov.uk/__data/assets/pdf_file/0007/995569/11_HOVETON-and-WROXHAM-new.pdf",
+          "start-date": "2017-11-23",
+          "slug": "/brownfield-land/national-park-authority/Q4972284/BF000005"
+        }
+      ]
+    }
+  }
 }
