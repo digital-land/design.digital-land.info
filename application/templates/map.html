@@ -91,7 +91,8 @@
   const $zoomMod = document.querySelector('[data-module="zoom-controls"]')
   // init national map
   const mapController = new MapController($controlsList, $zoomMod).init({
-    baseTileStyleFilePath: "https://digital-land.github.io/map/base-tile.json"
+    //baseTileStyleFilePath: "https://digital-land.github.io/map/base-tile.json"
+    baseTileStyleFilePath: "https://api.maptiler.com/maps/918166e5-9890-4e18-8f18-4ef96be1a2d4/style.json?key=kira3KM2jYGvDA4xNkYt"
   })
 
   const map = mapController.getMap()
