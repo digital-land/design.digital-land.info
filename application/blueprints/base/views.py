@@ -48,18 +48,11 @@ def resource_no_table(id):
 @base.route('/map')
 def map():
   all_layers = [
-        {
-            "dataset": "local-authority-district",
-            "label": "Local authority districts",
-            "paint_options": {"colour": "#0b0c0c", "opacity": "0.1", "weight": 5},
-        },
-        {
-            "dataset": "conservation-area",
-            "label": "Conservation areas",
-            "paint_options": {
-                "colour": "#78AA00",
-            },
-        },
+        # {
+        #     "dataset": "local-authority-district",
+        #     "label": "Local authority districts",
+        #     "paint_options": {"colour": "#0b0c0c", "opacity": "0.1", "weight": 5},
+        # },
         {
             "dataset": "brownfield-land",
             "label": "Brownfield land",
@@ -67,6 +60,13 @@ def map():
                 "colour": "#745729",
             },
             "type": "point",
+        },
+        {
+            "dataset": "conservation-area",
+            "label": "Conservation areas",
+            "paint_options": {
+                "colour": "#78AA00",
+            },
         },
         {
             "dataset": "open-space",
