@@ -3,6 +3,23 @@
 @import "component/attachment";
 @import "component/summary-list";
 
+.govuk-tabs--basic {
+
+    // with javascript
+    .js-enabled & {
+        .govuk-tabs {
+            &__list {
+                &-item {
+                    &--selected {
+                        border: 0;
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .dl-link--mono {
     font-family: monospace;
 }
