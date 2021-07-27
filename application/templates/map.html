@@ -1,4 +1,4 @@
-{% extends "digital-land-frontend/dlf-base--full-width.html" %}
+{% extends "digital-land-frontend/dlf-base.html" %}
 
 {% set includesMap = true %}
 {% block pageTitle %}National map of planning data | Digital Land{% endblock %}
@@ -9,13 +9,13 @@
 {% endblock -%}
 
 {% block content %}
-<div class="govuk-grid-row">
-	<div class="govuk-grid-column-full">
-  	<h1 class="govuk-heading-xl">East Suffolk</h1>
-    </div>
-</div>
+{% include 'partials/organisation-data-attributes.html' %}
 
-<p id="aria-label-national-map" class="govuk-body-l">A map of the planning data published by East Suffolk and collected by Digital Land.</p>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<h3 class="govuk-heading-l">East Suffolk planning data</h3>
+
+<p id="aria-label-national-map" class="govuk-body">A map of the planning data published by East Suffolk and collected by Digital Land.</p>
 
 <a class="brownfield-btn" href="#">brownfield</a>
 <a class="local-authority-btn" href="#">brownfield</a>
@@ -63,7 +63,7 @@
       <ul class="govuk-list govuk-!-margin-bottom-0" data-module="layer-controls">
         <li class="dl-map__layer-item govuk-!-margin-bottom-2" data-layer-control="local-authority-district" data-style-options="#0b0c0c,0.1" data-layer-control-active="true">
             <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="local-authority-district" name="local-authority-district" type="checkbox" value="local-authority-district">
+              <input class="govuk-checkboxes__input" id="local-authority-district" name="local-authority-district" type="checkbox" value="local-authority-district" checked=checked>
               <label class="govuk-label govuk-checkboxes__label" for="local-authority-district">
                 <span class="dl-label__key">
                   <span class="dl-label__key__symbol" style="border-color: #0b0c0c; background: rgba(11,12,12,0.1);"></span>
@@ -100,6 +100,18 @@
 <script src='https://unpkg.com/@turf/turf@6.3.0/turf.min.js'></script>
 <script src="/static/js/dl-maps.js"></script>
 <script src="/static/js/dl-national-map-controller.js"></script>
+
+<script>
+  const $mapElement = document.querySelector('[data-module="boundary-map"]')
+  new DLMaps.Map($mapElement).init({})
+</script>
+<script>
+  const $inputCopyElements = document.querySelectorAll('[data-module*="input-copy"]')
+  $inputCopyElements.forEach(function(el) {
+      new window.DLFrontend.InputCopy(el).init()
+  })
+</script>
+
 <script>
   // grab html elements
   const $controlsList = document.querySelector('[data-module="layer-controls"]')
@@ -275,29 +287,29 @@
     })
 
 
-  let flownToBoundary = false
-  map.on('sourcedata', function(e) {
-    // assuming 'map' is defined globally, or you can use 'this'
-    if (!flownToBoundary) {
-        //if (map.getSource('local-authority-district-source') && map.isSourceLoaded('local-authority-district-source')) {
-        if (map.getSource('brownfield-land-source') && map.isSourceLoaded('brownfield-land-source')) {
-            console.log('source loaded!');
-            // ZOOM to local authority boundary
-            //const laBoundaryFeatures = map.querySourceFeatures('local-authority-district-source', {filter: ['in', 'E07000244', ['get', 'slug']], sourceLayer: 'local-authority-district'})
-            const laBoundaryFeatures = map.querySourceFeatures('brownfield-land-source', {filter: ['==', 'organisation', 'local-authority-eng:ESK'], sourceLayer: 'brownfield-land'})
-            console.log("Matched boundaries", laBoundaryFeatures) // returns more than one feature
-            if (laBoundaryFeatures.length) {
-                const collection = turf.featureCollection(laBoundaryFeatures)
-                console.log('collection', collection)
-                const laEnvelope = turf.envelope(collection)
-                const laBBox = laEnvelope.bbox
-                console.log('BBOX', laBBox)
-                map.fitBounds([[laBBox[0],laBBox[1]], [laBBox[2],laBBox[3]]])
-                flownToBoundary = true
-            }
-        }
-    }
-  }); 
+  // let flownToBoundary = false
+  // map.on('sourcedata', function(e) {
+  //   // assuming 'map' is defined globally, or you can use 'this'
+  //   if (!flownToBoundary) {
+  //       //if (map.getSource('local-authority-district-source') && map.isSourceLoaded('local-authority-district-source')) {
+  //       if (map.getSource('brownfield-land-source') && map.isSourceLoaded('brownfield-land-source')) {
+  //           console.log('source loaded!');
+  //           // ZOOM to local authority boundary
+  //           //const laBoundaryFeatures = map.querySourceFeatures('local-authority-district-source', {filter: ['in', 'E07000244', ['get', 'slug']], sourceLayer: 'local-authority-district'})
+  //           const laBoundaryFeatures = map.querySourceFeatures('brownfield-land-source', {filter: ['==', 'organisation', 'local-authority-eng:ESK'], sourceLayer: 'brownfield-land'})
+  //           console.log("Matched boundaries", laBoundaryFeatures) // returns more than one feature
+  //           if (laBoundaryFeatures.length) {
+  //               const collection = turf.featureCollection(laBoundaryFeatures)
+  //               console.log('collection', collection)
+  //               const laEnvelope = turf.envelope(collection)
+  //               const laBBox = laEnvelope.bbox
+  //               console.log('BBOX', laBBox)
+  //               map.fitBounds([[laBBox[0],laBBox[1]], [laBBox[2],laBBox[3]]])
+  //               flownToBoundary = true
+  //           }
+  //       }
+  //   }
+  // }); 
   
 </script>
 {% endblock %}

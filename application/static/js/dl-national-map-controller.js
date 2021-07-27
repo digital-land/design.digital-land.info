@@ -64,8 +64,9 @@ MapController.prototype.setup = function () {
   this.map.on('click', boundClickHandler)
 
   // if org id provided and flyToDataset
-  if (this.organisationId && this.flyToDataset) {
-
+  if (this.organisationId && !this.layerControlsComponent._initialLoadWithLayers) {
+    console.log("no initial layers")
+    this.registerInitialFlyTo()
   }
 }
 
@@ -153,7 +154,7 @@ MapController.prototype.clickHandler = function (e) {
   })
 }
 
-MapController.prototype.flyToFeatureSet = function (dataset, filter) {
+MapController.prototype.flyToFeatureSet = function (dataset, filter, returnFeatures) {
   const matchedFeatures = this.map.querySourceFeatures(dataset + '-source', { filter: filter, sourceLayer: dataset })
   if (matchedFeatures.length) {
     const collection = turf.featureCollection(matchedFeatures)
@@ -161,6 +162,26 @@ MapController.prototype.flyToFeatureSet = function (dataset, filter) {
     const bbox = envelope.bbox
     this.map.fitBounds([[bbox[0], bbox[1]], [bbox[2], bbox[3]]])
   }
+  if (returnFeatures) {
+    return matchedFeatures
+  }
+}
+
+MapController.prototype.registerInitialFlyTo = function () {
+  let flownTo = false
+  var that = this
+  const sourceName = this.flyToDataset + '-source'
+  this.map.on('sourcedata', function (e) {
+    if (!flownTo) {
+      if (that.map.getSource(sourceName) && that.map.isSourceLoaded(sourceName)) {
+        const filter = (that.flyToDataset === 'local-authority-district') ? ['in', that.statisticalGeography, ['get', 'slug']] : ['==', 'organisation', that.organisationId]
+        const features = that.flyToFeatureSet(that.flyToDataset, filter, true)
+        if (features.length) {
+          flownTo = true
+        }
+      }
+    }
+  })
 }
 
 MapController.prototype.getMap = function () {
