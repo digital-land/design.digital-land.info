@@ -3,8 +3,9 @@
 
 {% block head %}
     {{ super() }}
-    <!-- local generated css -->
+    {% assets "css_govuk" %}
     <link rel="stylesheet" href="{{ ASSET_URL }}">
+    {% endassets %}
 {% endblock  %}
 
 {% block content %}
