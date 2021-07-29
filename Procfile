@@ -1,1 +1,1 @@
-web: python gunicorn -b 0.0.0.0:$PORT 'app.factory:create_app("config_prod.py")'
+web: gunicorn -b 0.0.0.0:$PORT application.wsgi:app
