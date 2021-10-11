@@ -2,12 +2,13 @@
 @import "node_modules/govuk-frontend/govuk/all";
 @import "component/attachment";
 @import "component/summary-list";
+@import "component/hero";
 
 .dl-link--mono {
     font-family: monospace;
 }
 
 abbr {
-    speak:spell-out;
+    speak-as:spell-out;
     text-decoration: none;
 }

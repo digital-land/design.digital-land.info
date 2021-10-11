@@ -26,6 +26,10 @@ def read_json_file(data_file_path):
 def index():
   return render_template('index.html')
 
+@base.route('/homepage')
+def homepage():
+  return render_template('homepage.html')
+
 @base.route('/about/<name>')
 def about(name):
   return render_template('index.html', name=name)

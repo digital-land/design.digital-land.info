@@ -1,0 +1,19 @@
+.app-hero {
+    background: $govuk-brand-colour;
+    margin-top: -10px;
+    position: relative;
+    color: #fff;
+    padding: govuk-spacing(6) 0;
+}
+
+.app-hero__content {
+    margin: 0 auto;
+}
+
+.app-hero * {
+    color: inherit;
+}
+
+.app-hero__image {
+    max-width: 100%;
+}

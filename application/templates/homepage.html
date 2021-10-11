@@ -1,0 +1,29 @@
+{% extends "layouts/layout.html" %}
+{% block page_title %}Homepage prototype{% endblock %}
+{%- from "digital-land-frontend/components/feedback-panel/macro.html" import dlFeedbackPanel %}
+
+{% block main %}
+<main id="content" role="main">
+
+    <section class="app-hero">
+        <div class="app-hero__content govuk-width-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Find planning and housing data that is easy to understand, use and trust</h1>
+                    <p class="govuk-body-l">We are a platform to help you build services and unlock answers to key questions about land in the UK.</p>
+                    <p class="govuk-body-l">We are a platform to help you build services and unlock answers to key questions about land in the UK.</p>
+                </div>
+                <div class="govuk-grid-column-one-third">
+                    <img src="{{url_for('static', filename='images/proposition-image.png')}}" alt="" class="app-hero__image">
+                </div>
+            </div>            
+		</div>
+    </section>
+
+</main>
+{% endblock %}
+
+{% block bodyEnd %}
+{{ super() }}
+<script src="/static/js/test.js"></script>
+{% endblock bodyEnd %}
