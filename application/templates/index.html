@@ -9,6 +9,11 @@
   <h2 class="govuk-heading-l">Templates</h2>
   <ul class="govuk-list govuk-list--bullet">
     <li>
+      <a class="govuk-link" href="{{ url_for('base.homepage', version='1') }}">
+        Homepage
+      </a>
+    </li>
+    <li>
       <a class="govuk-link" href="{{ url_for('base.resource', id='123456') }}">
         Resource page
       </a>
