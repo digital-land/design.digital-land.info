@@ -1,4 +1,4 @@
-{% extends "digital-land-frontend/dlf-base.html" %}
+{% extends "digital-land-frontend/layouts/base.jinja" %}
 {% block page_title %}Resource page template{% endblock %}
 
 {% block head %}
@@ -178,10 +178,10 @@
     <h3 class="govuk-heading-m">Records</h3>
     <p class="govuk-body">There are <strong>10</strong> records after harmonising the data in this resource.</p>
 
-    <div class="data-table__wrapper" data-module="data-table data-linkable-table">
-    <div class="data-table-left-shadow"></div>
+    <div class="dl-data-table__wrapper" data-module="data-table data-linkable-table">
+    <div class="dl-data-table-left-shadow"></div>
     <div class="wide-table">
-    <table class="data-table">
+    <table class="dl-data-table">
     <thead>
         <tr>
         <th scope="col" aria-sort="none">SiteReference</th>
@@ -211,7 +211,7 @@
         <td data-sort-value="BR/03/001">BR/03/001</td>
         <td
         data-sort-value="Former Bere Regis primary school, Rye Hill, Bere Regis"
-        class="data-table__cell--max-width"
+        class="dl-data-table__cell--max-width"
         >
         Former Bere Regis primary school, Rye Hill, Bere Regis
         </td>
@@ -220,21 +220,21 @@
         <td data-sort-value="0.3">0.3</td>
         <td
         tabindex="0"
-        class="data-table__issue data-table__issue--wide"
+        class="dl-data-table__issue dl-data-table__issue--wide"
         data-sort-value="9"
         >
         9
 
-        <span class="data-table__issue__item">
-        <div class="data-table__issue__item__text issue__part">
+        <span class="dl-data-table__issue__item">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">original &rarr;</span
             ><span></span>
         </div>
-        <div class="data-table__issue__item__text issue__part">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">processed &rarr;</span>9
         </div>
 
-        <div class="data-table__issue__info">
+        <div class="dl-data-table__issue__info">
             <strong class="govuk-tag govuk-!-margin-right-1">amended</strong>
             <span
             >No value provided for NetDwellingsRangeFrom. Using value from
@@ -246,21 +246,21 @@
 
         <td
         tabindex="0"
-        class="data-table__issue data-table__issue--wide"
+        class="dl-data-table__issue dl-data-table__issue--wide"
         data-sort-value="9"
         >
         9
 
-        <span class="data-table__issue__item">
-        <div class="data-table__issue__item__text issue__part">
+        <span class="dl-data-table__issue__item">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">original &rarr;</span
             ><span></span>
         </div>
-        <div class="data-table__issue__item__text issue__part">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">processed &rarr;</span>9
         </div>
 
-        <div class="data-table__issue__info">
+        <div class="dl-data-table__issue__info">
             <strong class="govuk-tag govuk-!-margin-right-1">amended</strong>
             <span
             >No value provided for NetDwellingsRangeTo. Setting to
@@ -299,7 +299,7 @@
         >
         </td>
 
-        <td class="data-table__notes-cell" style="min-width: 200px;">
+        <td class="dl-data-table__notes-cell" style="min-width: 200px;">
         <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">See notes</span>
@@ -317,7 +317,7 @@
 
         <td
         data-sort-value="Binnegar Hall, East Stoke, Wareham"
-        class="data-table__cell--max-width"
+        class="dl-data-table__cell--max-width"
         >
         Binnegar Hall, East Stoke, Wareham
         </td>
@@ -330,22 +330,22 @@
 
         <td
         tabindex="0"
-        class="data-table__issue data-table__issue--wide"
+        class="dl-data-table__issue dl-data-table__issue--wide"
         data-sort-value="50"
         >
         50
 
-        <span class="data-table__issue__item">
-        <div class="data-table__issue__item__text issue__part">
+        <span class="dl-data-table__issue__item">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">original &rarr;</span
             ><span></span>
         </div>
-        <div class="data-table__issue__item__text issue__part">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">processed &rarr;</span
             >50
         </div>
 
-        <div class="data-table__issue__info">
+        <div class="dl-data-table__issue__info">
             <strong class="govuk-tag govuk-!-margin-right-1">amended</strong>
             <span
             >No value provided for NetDwellingsRangeFrom. Using value from
@@ -357,22 +357,22 @@
 
         <td
         tabindex="0"
-        class="data-table__issue data-table__issue--wide"
+        class="dl-data-table__issue dl-data-table__issue--wide"
         data-sort-value="50"
         >
         50
 
-        <span class="data-table__issue__item">
-        <div class="data-table__issue__item__text issue__part">
+        <span class="dl-data-table__issue__item">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">original &rarr;</span
             ><span></span>
         </div>
-        <div class="data-table__issue__item__text issue__part">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">processed &rarr;</span
             >50
         </div>
 
-        <div class="data-table__issue__info">
+        <div class="dl-data-table__issue__info">
             <strong class="govuk-tag govuk-!-margin-right-1">amended</strong>
             <span
             >No value provided for NetDwellingsRangeTo. Setting to
@@ -417,7 +417,7 @@
         >
         </td>
 
-        <td class="data-table__notes-cell" style="min-width: 200px;">
+        <td class="dl-data-table__notes-cell" style="min-width: 200px;">
         <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">See notes</span>
@@ -437,7 +437,7 @@
 
         <td
         data-sort-value="Kemps Country House Hotel, East Stoke, Wareham"
-        class="data-table__cell--max-width"
+        class="dl-data-table__cell--max-width"
         >
         Kemps Country House Hotel, East Stoke, Wareham
         </td>
@@ -450,21 +450,21 @@
 
         <td
         tabindex="0"
-        class="data-table__issue data-table__issue--wide"
+        class="dl-data-table__issue dl-data-table__issue--wide"
         data-sort-value="6"
         >
         6
 
-        <span class="data-table__issue__item">
-        <div class="data-table__issue__item__text issue__part">
+        <span class="dl-data-table__issue__item">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">original &rarr;</span
             ><span></span>
         </div>
-        <div class="data-table__issue__item__text issue__part">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">processed &rarr;</span>6
         </div>
 
-        <div class="data-table__issue__info">
+        <div class="dl-data-table__issue__info">
             <strong class="govuk-tag govuk-!-margin-right-1">amended</strong>
             <span
             >No value provided for NetDwellingsRangeFrom. Using value from
@@ -476,21 +476,21 @@
 
         <td
         tabindex="0"
-        class="data-table__issue data-table__issue--wide"
+        class="dl-data-table__issue dl-data-table__issue--wide"
         data-sort-value="6"
         >
         6
 
-        <span class="data-table__issue__item">
-        <div class="data-table__issue__item__text issue__part">
+        <span class="dl-data-table__issue__item">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">original &rarr;</span
             ><span></span>
         </div>
-        <div class="data-table__issue__item__text issue__part">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">processed &rarr;</span>6
         </div>
 
-        <div class="data-table__issue__info">
+        <div class="dl-data-table__issue__info">
             <strong class="govuk-tag govuk-!-margin-right-1">amended</strong>
             <span
             >No value provided for NetDwellingsRangeTo. Setting to
@@ -535,7 +535,7 @@
         >
         </td>
 
-        <td class="data-table__notes-cell" style="min-width: 200px;">
+        <td class="dl-data-table__notes-cell" style="min-width: 200px;">
         <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">See notes</span>
@@ -555,7 +555,7 @@
 
         <td
         data-sort-value="Bere Farm, Lytchett Minster"
-        class="data-table__cell--max-width"
+        class="dl-data-table__cell--max-width"
         >
         Bere Farm, Lytchett Minster
         </td>
@@ -568,22 +568,22 @@
 
         <td
         tabindex="0"
-        class="data-table__issue data-table__issue--wide"
+        class="dl-data-table__issue dl-data-table__issue--wide"
         data-sort-value="15"
         >
         15
 
-        <span class="data-table__issue__item">
-        <div class="data-table__issue__item__text issue__part">
+        <span class="dl-data-table__issue__item">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">original &rarr;</span
             ><span></span>
         </div>
-        <div class="data-table__issue__item__text issue__part">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">processed &rarr;</span
             >15
         </div>
 
-        <div class="data-table__issue__info">
+        <div class="dl-data-table__issue__info">
             <strong class="govuk-tag govuk-!-margin-right-1">amended</strong>
             <span
             >No value provided for NetDwellingsRangeFrom. Using value from
@@ -595,22 +595,22 @@
 
         <td
         tabindex="0"
-        class="data-table__issue data-table__issue--wide"
+        class="dl-data-table__issue dl-data-table__issue--wide"
         data-sort-value="15"
         >
         15
 
-        <span class="data-table__issue__item">
-        <div class="data-table__issue__item__text issue__part">
+        <span class="dl-data-table__issue__item">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">original &rarr;</span
             ><span></span>
         </div>
-        <div class="data-table__issue__item__text issue__part">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">processed &rarr;</span
             >15
         </div>
 
-        <div class="data-table__issue__info">
+        <div class="dl-data-table__issue__info">
             <strong class="govuk-tag govuk-!-margin-right-1">amended</strong>
             <span
             >No value provided for NetDwellingsRangeTo. Setting to
@@ -649,7 +649,7 @@
         >
         </td>
 
-        <td class="data-table__notes-cell" style="min-width: 200px;">
+        <td class="dl-data-table__notes-cell" style="min-width: 200px;">
         <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">See notes</span>
@@ -665,7 +665,7 @@
 
         <td
         data-sort-value="32 Poole Road, Upton"
-        class="data-table__cell--max-width"
+        class="dl-data-table__cell--max-width"
         >
         32 Poole Road, Upton
         </td>
@@ -678,21 +678,21 @@
 
         <td
         tabindex="0"
-        class="data-table__issue data-table__issue--wide"
+        class="dl-data-table__issue dl-data-table__issue--wide"
         data-sort-value="6"
         >
         6
 
-        <span class="data-table__issue__item">
-        <div class="data-table__issue__item__text issue__part">
+        <span class="dl-data-table__issue__item">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">original &rarr;</span
             ><span></span>
         </div>
-        <div class="data-table__issue__item__text issue__part">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">processed &rarr;</span>6
         </div>
 
-        <div class="data-table__issue__info">
+        <div class="dl-data-table__issue__info">
             <strong class="govuk-tag govuk-!-margin-right-1">amended</strong>
             <span
             >No value provided for NetDwellingsRangeFrom. Using value from
@@ -704,21 +704,21 @@
 
         <td
         tabindex="0"
-        class="data-table__issue data-table__issue--wide"
+        class="dl-data-table__issue dl-data-table__issue--wide"
         data-sort-value="6"
         >
         6
 
-        <span class="data-table__issue__item">
-        <div class="data-table__issue__item__text issue__part">
+        <span class="dl-data-table__issue__item">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">original &rarr;</span
             ><span></span>
         </div>
-        <div class="data-table__issue__item__text issue__part">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">processed &rarr;</span>6
         </div>
 
-        <div class="data-table__issue__info">
+        <div class="dl-data-table__issue__info">
             <strong class="govuk-tag govuk-!-margin-right-1">amended</strong>
             <span
             >No value provided for NetDwellingsRangeTo. Setting to
@@ -763,7 +763,7 @@
         >
         </td>
 
-        <td class="data-table__notes-cell" style="min-width: 200px;">
+        <td class="dl-data-table__notes-cell" style="min-width: 200px;">
         <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">See notes</span>
@@ -784,7 +784,7 @@
 
         <td
         data-sort-value="Former Police Station Premises, Argyle Road and Kings Road West, Swanage"
-        class="data-table__cell--max-width"
+        class="dl-data-table__cell--max-width"
         >
         Former Police Station Premises, Argyle Road and Kings Road West, Swanage
         </td>
@@ -797,21 +797,21 @@
 
         <td
         tabindex="0"
-        class="data-table__issue data-table__issue--wide"
+        class="dl-data-table__issue dl-data-table__issue--wide"
         data-sort-value="6"
         >
         6
 
-        <span class="data-table__issue__item">
-        <div class="data-table__issue__item__text issue__part">
+        <span class="dl-data-table__issue__item">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">original &rarr;</span
             ><span></span>
         </div>
-        <div class="data-table__issue__item__text issue__part">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">processed &rarr;</span>6
         </div>
 
-        <div class="data-table__issue__info">
+        <div class="dl-data-table__issue__info">
             <strong class="govuk-tag govuk-!-margin-right-1">amended</strong>
             <span
             >No value provided for NetDwellingsRangeFrom. Using value from
@@ -823,21 +823,21 @@
 
         <td
         tabindex="0"
-        class="data-table__issue data-table__issue--wide"
+        class="dl-data-table__issue dl-data-table__issue--wide"
         data-sort-value="6"
         >
         6
 
-        <span class="data-table__issue__item">
-        <div class="data-table__issue__item__text issue__part">
+        <span class="dl-data-table__issue__item">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">original &rarr;</span
             ><span></span>
         </div>
-        <div class="data-table__issue__item__text issue__part">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">processed &rarr;</span>6
         </div>
 
-        <div class="data-table__issue__info">
+        <div class="dl-data-table__issue__info">
             <strong class="govuk-tag govuk-!-margin-right-1">amended</strong>
             <span
             >No value provided for NetDwellingsRangeTo. Setting to
@@ -882,7 +882,7 @@
         >
         </td>
 
-        <td class="data-table__notes-cell" style="min-width: 200px;">
+        <td class="dl-data-table__notes-cell" style="min-width: 200px;">
         <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">See notes</span>
@@ -901,7 +901,7 @@
 
         <td
         data-sort-value="Cauldron Barn caravan site, Swanage"
-        class="data-table__cell--max-width"
+        class="dl-data-table__cell--max-width"
         >
         Cauldron Barn caravan site, Swanage
         </td>
@@ -914,21 +914,21 @@
 
         <td
         tabindex="0"
-        class="data-table__issue data-table__issue--wide"
+        class="dl-data-table__issue dl-data-table__issue--wide"
         data-sort-value="6"
         >
         6
 
-        <span class="data-table__issue__item">
-        <div class="data-table__issue__item__text issue__part">
+        <span class="dl-data-table__issue__item">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">original &rarr;</span
             ><span></span>
         </div>
-        <div class="data-table__issue__item__text issue__part">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">processed &rarr;</span>6
         </div>
 
-        <div class="data-table__issue__info">
+        <div class="dl-data-table__issue__info">
             <strong class="govuk-tag govuk-!-margin-right-1">amended</strong>
             <span
             >No value provided for NetDwellingsRangeFrom. Using value from
@@ -940,21 +940,21 @@
 
         <td
         tabindex="0"
-        class="data-table__issue data-table__issue--wide"
+        class="dl-data-table__issue dl-data-table__issue--wide"
         data-sort-value="6"
         >
         6
 
-        <span class="data-table__issue__item">
-        <div class="data-table__issue__item__text issue__part">
+        <span class="dl-data-table__issue__item">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">original &rarr;</span
             ><span></span>
         </div>
-        <div class="data-table__issue__item__text issue__part">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">processed &rarr;</span>6
         </div>
 
-        <div class="data-table__issue__info">
+        <div class="dl-data-table__issue__info">
             <strong class="govuk-tag govuk-!-margin-right-1">amended</strong>
             <span
             >No value provided for NetDwellingsRangeTo. Setting to
@@ -993,7 +993,7 @@
         >
         </td>
 
-        <td class="data-table__notes-cell" style="min-width: 200px;">
+        <td class="dl-data-table__notes-cell" style="min-width: 200px;">
         <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">See notes</span>
@@ -1009,7 +1009,7 @@
 
         <td
         data-sort-value="former grammar school, Northbrook Road, Swanage"
-        class="data-table__cell--max-width"
+        class="dl-data-table__cell--max-width"
         >
         former grammar school, Northbrook Road, Swanage
         </td>
@@ -1022,22 +1022,22 @@
 
         <td
         tabindex="0"
-        class="data-table__issue data-table__issue--wide"
+        class="dl-data-table__issue dl-data-table__issue--wide"
         data-sort-value="40"
         >
         40
 
-        <span class="data-table__issue__item">
-        <div class="data-table__issue__item__text issue__part">
+        <span class="dl-data-table__issue__item">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">original &rarr;</span
             ><span></span>
         </div>
-        <div class="data-table__issue__item__text issue__part">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">processed &rarr;</span
             >40
         </div>
 
-        <div class="data-table__issue__info">
+        <div class="dl-data-table__issue__info">
             <strong class="govuk-tag govuk-!-margin-right-1">amended</strong>
             <span
             >No value provided for NetDwellingsRangeFrom. Using value from
@@ -1049,22 +1049,22 @@
 
         <td
         tabindex="0"
-        class="data-table__issue data-table__issue--wide"
+        class="dl-data-table__issue dl-data-table__issue--wide"
         data-sort-value="40"
         >
         40
 
-        <span class="data-table__issue__item">
-        <div class="data-table__issue__item__text issue__part">
+        <span class="dl-data-table__issue__item">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">original &rarr;</span
             ><span></span>
         </div>
-        <div class="data-table__issue__item__text issue__part">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">processed &rarr;</span
             >40
         </div>
 
-        <div class="data-table__issue__info">
+        <div class="dl-data-table__issue__info">
             <strong class="govuk-tag govuk-!-margin-right-1">amended</strong>
             <span
             >No value provided for NetDwellingsRangeTo. Setting to
@@ -1103,7 +1103,7 @@
         >
         </td>
 
-        <td class="data-table__notes-cell" style="min-width: 200px;">
+        <td class="dl-data-table__notes-cell" style="min-width: 200px;">
         <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">See notes</span>
@@ -1117,12 +1117,12 @@
         <td></td>
         </tr>
 
-        <tr id="row9" class="data-table__row--bottom">
+        <tr id="row9" class="dl-data-table__row--bottom">
         <td data-sort-value="BR/20/009">BR/20/009</td>
 
         <td
         data-sort-value="1 The Pier Head, High St, Swanage"
-        class="data-table__cell--max-width"
+        class="dl-data-table__cell--max-width"
         >
         1 The Pier Head, High St, Swanage
         </td>
@@ -1135,21 +1135,21 @@
 
         <td
         tabindex="0"
-        class="data-table__issue data-table__issue--wide"
+        class="dl-data-table__issue dl-data-table__issue--wide"
         data-sort-value="8"
         >
         8
 
-        <span class="data-table__issue__item">
-        <div class="data-table__issue__item__text issue__part">
+        <span class="dl-data-table__issue__item">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">original &rarr;</span
             ><span></span>
         </div>
-        <div class="data-table__issue__item__text issue__part">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">processed &rarr;</span>8
         </div>
 
-        <div class="data-table__issue__info">
+        <div class="dl-data-table__issue__info">
             <strong class="govuk-tag govuk-!-margin-right-1">amended</strong>
             <span
             >No value provided for NetDwellingsRangeFrom. Using value from
@@ -1161,21 +1161,21 @@
 
         <td
         tabindex="0"
-        class="data-table__issue data-table__issue--wide"
+        class="dl-data-table__issue dl-data-table__issue--wide"
         data-sort-value="8"
         >
         8
 
-        <span class="data-table__issue__item">
-        <div class="data-table__issue__item__text issue__part">
+        <span class="dl-data-table__issue__item">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">original &rarr;</span
             ><span></span>
         </div>
-        <div class="data-table__issue__item__text issue__part">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">processed &rarr;</span>8
         </div>
 
-        <div class="data-table__issue__info">
+        <div class="dl-data-table__issue__info">
             <strong class="govuk-tag govuk-!-margin-right-1">amended</strong>
             <span
             >No value provided for NetDwellingsRangeTo. Setting to
@@ -1220,7 +1220,7 @@
         >
         </td>
 
-        <td class="data-table__notes-cell" style="min-width: 200px;">
+        <td class="dl-data-table__notes-cell" style="min-width: 200px;">
         <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">See notes</span>
@@ -1236,12 +1236,12 @@
         <td></td>
         </tr>
 
-        <tr id="row10" class="data-table__row--bottom">
+        <tr id="row10" class="dl-data-table__row--bottom">
         <td data-sort-value="BR/23/010">BR/23/010</td>
 
         <td
         data-sort-value="Wareham Autopoint, North Street, Wareham"
-        class="data-table__cell--max-width"
+        class="dl-data-table__cell--max-width"
         >
         Wareham Autopoint, North Street, Wareham
         </td>
@@ -1254,22 +1254,22 @@
 
         <td
         tabindex="0"
-        class="data-table__issue data-table__issue--wide"
+        class="dl-data-table__issue dl-data-table__issue--wide"
         data-sort-value="10"
         >
         10
 
-        <span class="data-table__issue__item">
-        <div class="data-table__issue__item__text issue__part">
+        <span class="dl-data-table__issue__item">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">original &rarr;</span
             ><span></span>
         </div>
-        <div class="data-table__issue__item__text issue__part">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">processed &rarr;</span
             >10
         </div>
 
-        <div class="data-table__issue__info">
+        <div class="dl-data-table__issue__info">
             <strong class="govuk-tag govuk-!-margin-right-1">amended</strong>
             <span
             >No value provided for NetDwellingsRangeFrom. Using value from
@@ -1281,22 +1281,22 @@
 
         <td
         tabindex="0"
-        class="data-table__issue data-table__issue--wide"
+        class="dl-data-table__issue dl-data-table__issue--wide"
         data-sort-value="10"
         >
         10
 
-        <span class="data-table__issue__item">
-        <div class="data-table__issue__item__text issue__part">
+        <span class="dl-data-table__issue__item">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">original &rarr;</span
             ><span></span>
         </div>
-        <div class="data-table__issue__item__text issue__part">
+        <div class="dl-data-table__issue__item__text issue__part">
             <span class="secondary-text issue__part__label">processed &rarr;</span
             >10
         </div>
 
-        <div class="data-table__issue__info">
+        <div class="dl-data-table__issue__info">
             <strong class="govuk-tag govuk-!-margin-right-1">amended</strong>
             <span
             >No value provided for NetDwellingsRangeTo. Setting to
@@ -1335,13 +1335,13 @@
         >
         </td>
 
-        <td class="data-table__notes-cell" style="min-width: 200px;"></td>
+        <td class="dl-data-table__notes-cell" style="min-width: 200px;"></td>
         <td></td>
         </tr>
     </tbody>
     </table>
     </div>
-    <div class="data-table-right-shadow"></div>
+    <div class="dl-data-table-right-shadow"></div>
     </div>
 
     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
@@ -1392,7 +1392,7 @@
         var sTable = new MOJFrontend.SortableTable({
             table: $('table')[0],
             statusVisible: true,
-            tableWrapperSelector: ".data-table__wrapper"
+            tableWrapperSelector: ".dl-data-table__wrapper"
         });
     });
 }(jQuery));
@@ -1575,7 +1575,7 @@ $linkable_tables.forEach(function(linkable_table) {
 
 </script>
 <style>
-    .data-table__cell--max-width {
+    .dl-data-table__cell--max-width {
         white-space: pre-wrap !important;
     }
 </style>

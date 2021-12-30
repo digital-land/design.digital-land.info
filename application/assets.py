@@ -9,10 +9,13 @@ from lib.sass_filter import LibSass
 def static(*path):
     return os.path.join(os.path.dirname(__file__), 'static', *path)
 
-libsass_output = LibSass(include_paths=[
-    static('scss'),
-    static('node_modules/govuk-frontend/')
-])
+libsass_output = LibSass(
+    include_paths=[
+        static('scss'),
+        'node_modules/govuk-frontend/',
+        "node_modules/digital-land-frontend",
+    ]
+)
 
 css_govuk = Bundle(
   'scss/main.scss',
