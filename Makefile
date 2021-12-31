@@ -4,3 +4,6 @@ init:
 
 run:
 	flask run
+
+javascripts:
+	npm run copyjs

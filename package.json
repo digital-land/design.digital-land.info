@@ -9,6 +9,7 @@
   "scripts": {
     "flask": "flask run",
     "bs": "browser-sync start --proxy http://localhost:5000 --files 'application/templates' 'application/static'",
+    "copyjs": "rsync -ar assets/javascripts/ application/static/javascripts",
     "start": "run-p flask bs"
   },
   "repository": {
