@@ -39,8 +39,7 @@ def register_context_processors(app):
     """
 
     def base_context_processor():
-      return {
-          'asset_path': '/static/'}
+        return {"assetPath": "/static"}
 
     app.context_processor(base_context_processor)
 
