@@ -10,7 +10,9 @@
     "flask": "flask run",
     "bs": "browser-sync start --proxy http://localhost:5000 --files 'application/templates' 'application/static'",
     "copyjs": "rsync -ar assets/javascripts/ application/static/javascripts",
-    "start": "run-p flask bs"
+    "start": "run-p flask bs",
+    "nps": "nps -c ./node_modules/digital-land-frontend/package-scripts.js",
+    "postinstall": "npm run copyjs && npm run nps copy.javascripts && npm run nps build.javascripts"
   },
   "repository": {
     "type": "git",
