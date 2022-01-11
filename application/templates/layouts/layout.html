@@ -1,9 +1,10 @@
 {% extends "govuk_frontend_jinja/template.html" %}
 
 {% block head %}
-  {% assets "css_govuk" %}
-    <link rel="stylesheet" href="{{ ASSET_URL }}">
-  {% endassets %}
+{# template extends govuk base template so need to wrap this block in head block #}
+{% block stylesheets %}
+  <link rel="stylesheet" href="/static/stylesheets/application.css">
+{% endblock %}
 {% endblock %}
 
 {% block header %}

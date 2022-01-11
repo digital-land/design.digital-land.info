@@ -1,12 +1,9 @@
 {% extends "digital-land-frontend/layouts/base.jinja" %}
 {% block page_title %}Resource page template{% endblock %}
 
-{% block head %}
-    {{ super() }}
-    {% assets "css_govuk" %}
-        <link rel="stylesheet" href="{{ ASSET_URL }}">
-    {% endassets %}
-{% endblock  %}
+{% block stylesheets %}
+  <link rel="stylesheet" href="/static/stylesheets/application.css">
+{% endblock %}
 
 {% block content %}
 
