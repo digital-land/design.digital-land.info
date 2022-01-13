@@ -23,3 +23,9 @@ black-check:
 
 flake8:
 	flake8 --exclude .venv,node_modules
+
+watch-assets:
+	npm run nps watch.assets
+
+watch-pages:
+	npm run nps watch.pages
