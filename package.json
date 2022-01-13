@@ -7,12 +7,12 @@
     "lib": "lib"
   },
   "scripts": {
-    "flask": "flask run",
-    "bs": "browser-sync start --proxy http://localhost:5000 --files 'application/templates' 'application/static'",
     "copyjs": "rsync -ar assets/javascripts/ application/static/javascripts",
-    "start": "run-p flask bs",
     "nps": "nps -c ./node_modules/digital-land-frontend/package-scripts.js",
-    "postinstall": "npm run copyjs && npm run nps copy.javascripts && npm run nps build.javascripts && npm run nps build.stylesheets"
+    "postinstall": "npm run copyjs && npm run nps copy.javascripts && npm run nps build.javascripts && npm run nps build.stylesheets",
+    "watch:assets": "npm run nps watch.assets",
+    "watch:pages": "npm run nps watch.pages",
+    "watch": "npm-run-all --parallel watch:*"
   },
   "repository": {
     "type": "git",
