@@ -35,16 +35,12 @@ def match_template(path):
     if os.path.exists(file):
         return render_template(path)
     
-    # else go to homepage
+    # else show no template
     return redirect(url_for('base.notemplate')) 
 
 @base.route("/template-note-found")
 def notemplate():
     return render_template("pages/no-template.html")
-
-@base.route("/index")
-def index():
-    return render_template("index.html")
 
 @base.route("/homepage")
 def homepage():
