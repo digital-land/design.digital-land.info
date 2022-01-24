@@ -1,47 +1,97 @@
-@import "node_modules/govuk-frontend/govuk/base";
-
-$dl-attachment-settings: (
-    "thumnail-max-width": (99px/1.25),
-    "thumbail-height": (140px/1.25)
-);
+.dl-attachment:after {
+  content: "";
+  display: block;
+  clear: both;
+}
 
 .dl-attachment {
-    @include govuk-clearfix;
+	font-family: $govuk-font-family;
 }
 
 .dl-attachment__thumbnail {
-    position: relative;
-    width: auto;
-    margin-bottom: govuk-spacing(2);
-    padding: govuk-spacing(1);
-    float: left;
+  position: relative;
+  width: auto;
+  margin-bottom: 10px;
+  padding: 5px;
+  float: left;
 }
 
 .dl-attachment__thumbnail-image {
-    display: block; 
-    width: auto;
-    max-width: map-get($dl-attachment-settings, "thumnail-max-width");
-    height:auto;
-    border: rgba(11,12,12,0.1);
-    outline: 5px solid rgba(11,12,12,0.1);
-    background: #fff;
-    box-shadow: 0 2px 2px rgb(11, 12, 12 / 40%);
-    fill: #b1b4b6;
-    stroke: #b1b4b6;
+  display: block;
+  width: auto;
+  max-width: 79.2px;
+  height: auto;
+  border: rgba(11, 12, 12, 0.1);
+  outline: 5px solid rgba(11, 12, 12, 0.1);
+  background: #fff;
+  box-shadow: 0 2px 2px #0b0c00;
+  fill: #b1b4b6;
+  stroke: #b1b4b6;
 }
 
 .dl-attachment__title {
-    @include govuk-font($size: 24);
-    margin-bottom: govuk-spacing(1);
+  font-weight: 400;
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.11111;
+  margin-bottom: 5px;
+}
+
+@media print {
+  .dl-attachment__title {
+    font-family: sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .dl-attachment__title {
+    font-size: 24px;
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+}
+
+@media print {
+  .dl-attachment__title {
+    font-size: 18pt;
+    line-height: 1.15;
+  }
 }
 
 .dl-attachment__metadata {
-    @include govuk-font($size: 14);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 12px;
+  font-size: 0.75rem;
+  line-height: 1.25;
 }
+
+@media print {
+  .dl-attachment__metadata {
+    font-family: sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .dl-attachment__metadata {
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 1.42857;
+  }
+}
+
+@media print {
+  .dl-attachment__metadata {
+    font-size: 12pt;
+    line-height: 1.2;
+  }
+}
+
 .dl-attachment__title + .dl-attachment__metadata {
-    margin-top: govuk-spacing(1);
+  margin-top: 5px;
 }
 
 .dl-attachment__details {
-    padding-left: map-get($dl-attachment-settings, "thumnail-max-width") + govuk-spacing(6);
+  padding-left: 109.2px;
 }

@@ -1,29 +1,22 @@
-{% extends "digital-land-frontend/layouts/base--full-width.jinja" %}
+{% extends "layouts/layout--full-width.html" %}
 
 {% set includesMap = true %}
 {% block pageTitle %}National map of planning data | Digital Land{% endblock %}
 
 {%- block mapAssets %}
-{{ super() }}
 <script src="https://unpkg.com/maplibre-gl@1.14.0-rc.1/dist/maplibre-gl.js"></script>
 <link href="https://unpkg.com/maplibre-gl@1.14.0-rc.1/dist/maplibre-gl.css" rel="stylesheet" />
+{{ super() }}
 {% endblock -%}
 
-{% block stylesheets %}
-  <link rel="stylesheet" href="/static/stylesheets/application.css">
-{% endblock %}
-
 {% block content %}
-{% include 'partials/organisation-data-attributes.html' %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-full">
+  	<h1 class="govuk-heading-xl">National map of planning data</h1>
+    </div>
+</div>
 
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
-<h3 class="govuk-heading-l">East Suffolk planning data</h3>
-
-<p id="aria-label-national-map" class="govuk-body">A map of the planning data published by East Suffolk and collected by Digital Land.</p>
-
-<a class="brownfield-btn" href="#">brownfield</a>
-<a class="local-authority-btn" href="#">brownfield</a>
+<p id="aria-label-national-map" class="govuk-body-l">National map of the planning data collected and collated by Digital Land.</p>
 
 <div class="dl-map__wrapper" style="min-height: 700px;">
 
@@ -43,16 +36,16 @@
   </div>
 
   {% macro layerControlItem(layer) %}
-  <li class="dl-map__layer-item govuk-!-margin-bottom-2" data-layer-control="{{ layer.dataset }}" 
-  {% if layer.type %}data-layer-data-type={{layer.type}}{% endif %} 
-  {% if layer.paint_options %}data-style-options="{{ layer.paint_options.colour }},{{ layer.paint_options.opacity }}"{% endif %}>
+  <li class="dl-map__layer-item govuk-!-margin-bottom-2" data-layer-control="{{ layer.dataset }}"
+  {% if layer.paint_options.type %}data-layer-data-type={{layer.paint_options.type}}{% endif %}
+   data-style-options="{% if layer.paint_options %}{{ layer.paint_options.colour }},{{ layer.paint_options.opacity }}{% endif %}">
     <div class="govuk-checkboxes__item">
       <input class="govuk-checkboxes__input" id="{{ layer.dataset }}" name="{{ layer.dataset }}" type="checkbox" value="{{ layer.dataset }}" {{ "checked='checked'" if layer.checked }}>
       <label class="govuk-label govuk-checkboxes__label" for="{{ layer.dataset }}">
         <span class="dl-label__key">
-          <span class="dl-label__key__symbol{{ ' dl-label__key__symbol--circle' if layer.type and layer.type == 'point' }}"
+          <span class="dl-label__key__symbol{{ ' dl-label__key__symbol--circle' if layer.paint_options.type and layer.paint_options.type == 'point' }}"
           style="border-color: {{layer.paint_options.colour|default('#003078')}}; background: rgba({{layer.paint_options.colour|default('#003078')|hex_to_rgb}},{{ layer.paint_options.opacity|default('0.5') }});"></span>
-          {{ layer.label }}
+          {{ layer.name }}
         </span>
       </label>
     </div>
@@ -65,30 +58,28 @@
       <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Data layers</h3>
     </div>
     <div class="dl-map__side-panel__content">
-      <ul class="govuk-list govuk-!-margin-bottom-0" data-module="layer-controls">
-        <li class="dl-map__layer-item govuk-!-margin-bottom-2" data-layer-control="local-authority-district" data-style-options="#0b0c0c,0.1" data-layer-control-active="true">
-            <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="local-authority-district" name="local-authority-district" type="checkbox" value="local-authority-district" checked=checked>
-              <label class="govuk-label govuk-checkboxes__label" for="local-authority-district">
-                <span class="dl-label__key">
-                  <span class="dl-label__key__symbol" style="border-color: #0b0c0c; background: rgba(11,12,12,0.1);"></span>
-                  Local authority district
-                </span>
-              </label>
-            </div>
-        </li>
-        <h3 class="govuk-heading-s">Published by local authority</h3>
-        {% for layer in layers %}
-        {{ layerControlItem(layer) }}
-        {% endfor %}
-      </ul>
+      <div class="govuk-checkboxes" data-module="filter-checkboxes">
+        <div class="dl-filter-group__auto-filter">
+          <label for="input-71108" class="govuk-label govuk-visually-hidden">
+          Filter Show only
+          </label>
+          <input id="input-71108" class="govuk-input dl-filter-group__auto-filter__input" type="text" aria-describedby="checkbox-filter-71108" aria-controls="checkboxes-71108">
+        </div>
+        <ul class="govuk-list govuk-!-margin-bottom-0" data-module="layer-controls" role="group">
+        <span id="checkbox-filter-71108" class="dl-filter-group__auto-filter__desc govuk-visually-hidden" aria-live="polite" data-single="option found" data-multiple="options found" data-selected="selected">{{ layers|length }} options found, 0 selected</span>
+        <span class="app-filter-group__status-update js-hidden govuk-!-padding-bottom-3 dl-secondary-text" aria-live="polite" data-single="dataset" data-multiple="datasets">0 datasets hidden</span>
+          {% for layer in layers %}
+          {{ layerControlItem(layer) }}
+          {% endfor %}
+        </ul>
+      </div>
     </div>
   </div>
 </div>
 {% endblock %}
 
 {% block feedbackPrompt %}
-    {%- from "digital-land-frontend/components/feedback/macro.jinja" import dlFeedback %}
+    {%- from "digital-land-frontend/components/feedback/macro.html" import dlFeedback %}
     {{ dlFeedback({
         "text": "Spotted an issue? Let us know so we can improve the map.",
         "action": {
@@ -102,219 +93,27 @@
 
 {% block bodyEnd %}
 {{ super() }}
-<script src='https://unpkg.com/@turf/turf@6.3.0/turf.min.js'></script>
-<script src="/static/javascripts/dl-maps.js"></script>
 <script src="/static/javascripts/dl-national-map-controller.js"></script>
-
-<script>
-  const $mapElement = document.querySelector('[data-module="boundary-map"]')
-  new DLMaps.Map($mapElement).init({})
-</script>
-<script>
-  const $inputCopyElements = document.querySelectorAll('[data-module*="input-copy"]')
-  $inputCopyElements.forEach(function(el) {
-      new window.DLFrontend.InputCopy(el).init()
-  })
-</script>
-
+<script src="/static/javascripts/filter-checkbox-extension.js"></script>
 <script>
   // grab html elements
   const $controlsList = document.querySelector('[data-module="layer-controls"]')
   const $zoomMod = document.querySelector('[data-module="zoom-controls"]')
-
-  const datasets = [
-      { name: 'brownfield-land', type: 'point' },
-      { name: 'conservation-area', type: 'shape' },
-      { name: 'local-authority-district', type: 'shape' },
-      { name: 'open-space', type: 'shape' }
-  ]
   // init national map
-  const mapController = new MapController($controlsList, $zoomMod, datasets, 'local-authority-eng:ESK', 'E07000244').init({
-    //baseTileStyleFilePath: "https://digital-land.github.io/map/base-tile.json"
-    baseTileStyleFilePath: "https://api.maptiler.com/maps/918166e5-9890-4e18-8f18-4ef96be1a2d4/style.json?key=kira3KM2jYGvDA4xNkYt"
+  const mapController = new MapController($controlsList, $zoomMod).init({
+    baseTileStyleFilePath: "/static/javascripts/base-tile.json",
+    LayerControlOptions: {
+      layerURLParamName: "dataset"
+    }
   })
 
-  const map = mapController.getMap()
-  const tileSources = datasets.map(function (d) {
-      return `https://datasette-tiles.digital-land.info/-/tiles/${d}/{z}/{x}/{y}.vector.pbf`
+  // extend the filter checkbox component to work with the map
+  const $fgStatusUpdate = $controlsList.querySelector('.app-filter-group__status-update')
+  extendFilterCheckboxes($fgStatusUpdate)
+
+  var $filterCheckboxes = document.querySelectorAll('[data-module="filter-checkboxes"]')
+  $filterCheckboxes.forEach(el => {
+    new window.DLFrontend.FilterCheckboxes(el).init()
   })
-
-  function addDatasetSource(map, dataset) {
-    map.addSource(
-        `${dataset}-source`, {
-            type: 'vector',
-            tiles: [`https://datasette-tiles.digital-land.info/-/tiles/${dataset}/{z}/{x}/{y}.vector.pbf`],
-            minzoom: 5,
-            maxzoom: 18
-        }
-    )
-  }
-
-  map.on('load', function() {
-    // datasets.forEach(function(dataset) {
-    //     addDatasetSource(map, dataset)
-    //     //  can use map.getSource('') is undefined to see if source has been loaded
-    // })
-
-    // map.addLayer({
-    //   id: 'bfs',
-    //   type: 'circle',
-    //   source: 'brownfield-land-source',
-    //   'source-layer': 'brownfield-land',
-    //   paint: {
-    //       'circle-color': '#745729',
-    //       'circle-opacity': 0.3,
-    //       'circle-radius': {
-    //         base: 1.5,
-    //         stops: [
-    //           [6, 1],
-    //           [22, 180]
-    //         ]
-    //       },
-    //       'circle-stroke-color': '#745729',
-    //       'circle-stroke-width': 2
-    //   },
-    //   'filter': ['==', 'organisation', 'local-authority-eng:ESK']
-    // })
-
-    // single filter for points
-    // map.setFilter('brownfield-land', ['==', 'organisation', 'local-authority-eng:ESK'])
-    // // filter both fills and lines for polygons
-    // map.setFilter('conservation-areaFill', ['==', 'organisation', 'local-authority-eng:ESK'])
-    // map.setFilter('conservation-areaLine', ['==', 'organisation', 'local-authority-eng:ESK'])
-    // map.setFilter('open-spaceFill', ['==', 'organisation', 'local-authority-eng:ESK'])
-    // map.setFilter('open-spaceLine', ['==', 'organisation', 'local-authority-eng:ESK'])
-
-    // map.setFilter('local-authority-districtFill', ['in', 'E07000244', ['get', 'slug']])
-    // map.setFilter('local-authority-districtLine', ['in', 'E07000244', ['get', 'slug']])
-
-    // map.addLayer({
-    //   id: 'conarea',
-    //   type: 'fill',
-    //   source: 'conservation-area-source', // not using conservation area source (con-area-source)
-    //   'source-layer': 'conservation-area',
-    //   paint: {
-    //       'fill-color': '#78AA00',
-    //       'fill-opacity': 0.5
-    //   },
-    //   'filter': ['==', 'organisation', 'local-authority-eng:ESK']
-    // })
-
-    // map.addLayer({
-    //   id: 'labs',
-    //   type: 'fill',
-    //   source: 'local-authority-district-source',
-    //   'source-layer': 'local-authority-district',
-    //   paint: {
-    //       'fill-color': '#0b0c0c',
-    //       'fill-opacity': 0.1
-    //   },
-    //   'filter': ['in', 'E07000244', ['get', 'slug']]
-    // })
-
-    // map.addLayer({
-    //   id: 'labs-line',
-    //   type: 'line',
-    //   source: 'local-authority-district-source',
-    //   'source-layer': 'local-authority-district',
-    //   paint: {
-    //       'line-color': '#0b0c0c',
-    //       'line-width': 2
-    //   },
-    //   'filter': ['in', 'E07000244', ['get', 'slug']]
-    // })
-
-    // map.addLayer({
-    //   id: 'open-space',
-    //   type: 'fill',
-    //   source: 'open-space-source',
-    //   'source-layer': 'open-space',
-    //   paint: {
-    //       'fill-color': '#00703c',
-    //       'fill-opacity': 0.3
-    //   }
-    // })
-
-//     function clickHandler (e) {
-//       var bbox = [
-//         [e.point.x - 5, e.point.y - 5],
-//         [e.point.x + 5, e.point.y + 5]
-//       ]
-
-//       var features = map.queryRenderedFeatures(bbox, {
-//         layers: ['conarea', 'labs', 'open-spaces']
-//       })
-
-//       features.forEach(function (feature) {
-//         console.log(feature.properties.name, feature)
-//       })
-//     }
-
-//     map.on('click', clickHandler)
-
-//     map.on('moveend', function (e) {
-//       var bbox = map.getBounds()
-//       console.log('move ended', bbox)
-//       var f = map.queryRenderedFeatures([[bbox._sw[0], bbox._sw[1]], [bbox._ne[0], bbox._ne[1]]], { layers: ['bfs', 'conarea'] })
-//       console.log(f)
-//     })
-
-//     function countFeatures (layerName) {
-//     const l = map.getLayer(layerName)
-//     if (l) {
-//       return map.queryRenderedFeatures({ layers: [layerName] }).length
-//     }
-//     return 0
-//   }
-//   map.on('moveend', function (e) {
-//     console.log('moveend')
-//     console.log('Brownfield-l', countFeatures('bfs'))
-//     console.log('Con areas', countFeatures('conarea'))
-//   })
-
-  }) // end load
-
-//   map.on('sourcedata', function(e) {
-//     if (e.sourceId === 'new-source') {
-//       console.log('A sourcedata event occurred.', e, e.isSourceLoaded);
-//     }
-//   });
-
-    const laBtn = document.querySelector('.local-authority-btn')
-    const bfBtn = document.querySelector('.brownfield-btn')
-
-    bfBtn.addEventListener('click', function(e) {
-        mapController.flyToFeatureSet('brownfield-land', ['==', 'organisation', 'local-authority-eng:ESK'])
-    })
-
-    laBtn.addEventListener('click', function(e) {
-        mapController.flyToFeatureSet('local-authority-district', ['in', 'E07000244', ['get', 'slug']])
-    })
-
-
-  // let flownToBoundary = false
-  // map.on('sourcedata', function(e) {
-  //   // assuming 'map' is defined globally, or you can use 'this'
-  //   if (!flownToBoundary) {
-  //       //if (map.getSource('local-authority-district-source') && map.isSourceLoaded('local-authority-district-source')) {
-  //       if (map.getSource('brownfield-land-source') && map.isSourceLoaded('brownfield-land-source')) {
-  //           console.log('source loaded!');
-  //           // ZOOM to local authority boundary
-  //           //const laBoundaryFeatures = map.querySourceFeatures('local-authority-district-source', {filter: ['in', 'E07000244', ['get', 'slug']], sourceLayer: 'local-authority-district'})
-  //           const laBoundaryFeatures = map.querySourceFeatures('brownfield-land-source', {filter: ['==', 'organisation', 'local-authority-eng:ESK'], sourceLayer: 'brownfield-land'})
-  //           console.log("Matched boundaries", laBoundaryFeatures) // returns more than one feature
-  //           if (laBoundaryFeatures.length) {
-  //               const collection = turf.featureCollection(laBoundaryFeatures)
-  //               console.log('collection', collection)
-  //               const laEnvelope = turf.envelope(collection)
-  //               const laBBox = laEnvelope.bbox
-  //               console.log('BBOX', laBBox)
-  //               map.fitBounds([[laBBox[0],laBBox[1]], [laBBox[2],laBBox[3]]])
-  //               flownToBoundary = true
-  //           }
-  //       }
-  //   }
-  // }); 
-  
 </script>
 {% endblock %}

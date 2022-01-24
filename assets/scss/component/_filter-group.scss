@@ -1,0 +1,24 @@
+// this is only required because we are re-importing all govuk styles in main.css
+// we can sort this out in the reconcile frontend work
+
+.dl-filter-group {
+  & > .dl-filter-group__heading {
+    padding: 5px 10px 10px;
+  }
+
+  & > .app-filter-group__body {
+    padding: 10px;
+  }
+}
+
+.app-filter-group__body {
+  background: govuk-colour('white');
+
+  .govuk-form-group {
+    @include govuk-responsive-margin(3, 'bottom');
+  }
+
+  .govuk-form-group:last-child {
+    margin-bottom: 0;
+  }
+}
