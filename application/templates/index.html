@@ -1,5 +1,4 @@
 {% extends "layouts/layout.html" %}
-{% block page_title %}Flask prototyping index{% endblock %}
 {% block content %}
 
 <main id="content" role="main">
@@ -10,16 +9,6 @@
     <li>
       <a class="govuk-link" href="{{ url_for('base.homepage', version='1') }}">
         Homepage
-      </a>
-    </li>
-    <li>
-      <a class="govuk-link" href="{{ url_for('base.resource', id='123456') }}">
-        Resource page
-      </a>
-    </li>
-    <li>
-      <a class="govuk-link" href="{{ url_for('base.resource_no_table', id='123456') }}">
-        Resource page (no table)
       </a>
     </li>
     <li>
