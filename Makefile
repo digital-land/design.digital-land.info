@@ -5,7 +5,10 @@ init:
 run:
 	flask run
 
-frontend-assets: javascripts stylesheets
+frontend-assets: javascripts stylesheets govassets
+
+govassets:
+	npm run copygovuk
 
 javascripts:
 	npm run copyjs
