@@ -14,17 +14,11 @@ When returning run `workon <name>` to activate the virtualenv you just created.
 To install flask and all the other dependencies run:
 
 ```
-pip install -r requirements.txt
+make init
 ```
 
-Install npm requirements
+To run the Prototype Kit
 
 ```
-npm install
-```
-
-Finally to start the it run:
-
-```
-flask run
+make run
 ```

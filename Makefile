@@ -3,12 +3,9 @@ init:
 	npm install
 
 run:
-	flask run
+	npm start
 
 frontend-assets: javascripts stylesheets govassets
-
-govassets:
-	npm run copygovuk
 
 javascripts:
 	npm run copyjs
@@ -18,6 +15,9 @@ javascripts:
 stylesheets:
 	npm run nps build.stylesheets
 
+govassets:
+	npm run copygovuk
+	
 black:
 	black .
 
@@ -26,6 +26,3 @@ black-check:
 
 flake8:
 	flake8 --exclude .venv,node_modules
-
-watch:
-	npm run watch
