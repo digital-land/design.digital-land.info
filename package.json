@@ -1,7 +1,7 @@
 {
   "name": "govuk-flask-prototyping",
   "version": "1.0.0",
-  "description": "## Getting started",
+  "description": "A Flask version of the GOVUK Prototype Kit - Not at feature parity yet",
   "main": "index.js",
   "directories": {
     "lib": "lib"
