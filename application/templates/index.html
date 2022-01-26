@@ -7,7 +7,7 @@
   <h2 class="govuk-heading-l">Templates</h2>
   <ul class="govuk-list govuk-list--bullet">
     <li>
-      <a class="govuk-link" href="{{ url_for('base.homepage', version='1') }}">
+      <a class="govuk-link" href="{{ url_for('base.homepage') }}">
         Homepage
       </a>
     </li>
@@ -22,5 +22,4 @@
 
 {% block bodyEnd %}
 {{ super() }}
-<script src="/static/javascripts/test.js"></script>
 {% endblock bodyEnd %}
