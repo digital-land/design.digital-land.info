@@ -1,0 +1,257 @@
+{% extends "layouts/layout.html" %}
+{%- from 'govuk_frontend_jinja/components/table/macro.html' import govukTable -%}
+{% block content %}
+
+  <main id="content" role="main">
+    <div class="govuk-grid-row govuk-!-margin-bottom-6">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl" id="heading-1">How to publish your data</h1>
+        <p>The Digital Land platform is able to consume data in a variety of formats and structures providing that the data is on a URL that is publicly accessible.</p>
+        <p>Once we’ve configured the initial collection of data and tested that everything works as expected we’ll routinely attempt to collect any new or amended data that you have published.</p>
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-6">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l" id="data-specifications">Data specifications</h2>
+        <p>Each dataset comprises some common fields such as a name, a reference and some geospatial data such as a boundary or point.</p>
+        <p>There are some fields that are only relevant to a particular dataset, such as the building grade of listed buildings.</p>
+        <p>There are also some additional fields which whilst they’re not required they do enhance the quality and trustworthiness of the data, so if they are available in your existing data we will add them into our collection.</p>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        {% set notApplicableHTML = '<span arial-hidden>-</span><span class="govuk-visually-hidden">Not applicable</span>' %}
+
+        {{ govukTable({
+          "caption": "Dataset fields",
+          "captionClasses": "govuk-table__caption--m",
+          "firstCellIsHeader": true,
+          "head": [
+            {
+              "text": "Field name",
+              "classes": 'govuk-visually-hidden'
+            },
+            {
+              "text": "Article 4 Directions",
+              "classes": 'app-custom-class'
+            },
+            {
+              "text": "Conservation Areas",
+              "classes": 'app-custom-class'
+            },
+            {
+              "text": "Listed and locally listed buildings",
+              "classes": 'app-custom-class'
+            },
+            {
+              "text": "Tree preservation orders",
+              "classes": 'app-custom-class'
+            }
+          ],
+          "rows": [
+            [
+              {
+                "text": "Reference"
+              },
+              {
+                "text": "required"
+              },
+              {
+                "text": "required"
+              },
+              {
+                "text": "required"
+              },
+              {
+                "text": "required"
+              }
+            ],
+            [
+              {
+                "text": "Name"
+              },
+              {
+                "text": "required"
+              },
+              {
+                "text": "required"
+              },
+              {
+                "text": "required"
+              },
+              {
+                "text": "required"
+              }
+            ],
+            [
+              {
+                "text": "Geometry"
+              },
+              {
+                "text": "required"
+              },
+              {
+                "text": "required"
+              },
+              {
+                "text": "required"
+              },
+              {
+                "text": "required"
+              }
+            ],
+            [
+              {
+                "text": "Start date"
+              },
+              {
+                "text": "required"
+              },
+              {
+                "text": "required"
+              },
+              {
+                "text": "required"
+              },
+              {
+                "text": "required"
+              }
+            ],
+            [
+              {
+                "text": "Building grade"
+              },
+              {
+                "html": notApplicableHTML
+              },
+              {
+                "html": notApplicableHTML
+              },
+              {
+                "text": "required"
+              },
+              {
+                "html": notApplicableHTML
+              }
+            ],
+            [
+              {
+                "text": "Tree species"
+              },
+              {
+                "html": notApplicableHTML
+              },
+              {
+                "html": notApplicableHTML
+              },
+              {
+                "html": notApplicableHTML
+              },
+              {
+                "text": "required"
+              }
+            ],
+            [
+              {
+                "text": "Document URL"
+              },
+              {
+                "text": "optional"
+              },
+              {
+                "text": "optional"
+              },
+              {
+                "text": "optional"
+              },
+              {
+                "text": "optional"
+              }
+            ],
+            [
+              {
+                "text": "End-dataset"
+              },
+              {
+                "text": "optional"
+              },
+              {
+                "text": "optional"
+              },
+              {
+                "text": "optional"
+              },
+              {
+                "text": "optional"
+              }
+            ],
+            [
+              {
+                "text": "Point"
+              },
+              {
+                "text": "optional"
+              },
+              {
+                "text": "optional"
+              },
+              {
+                "text": "optional"
+              },
+              {
+                "text": "Point required for individual trees"
+              }
+            ],
+            [
+              {
+                "text": "Notes"
+              },
+              {
+                "text": "optional"
+              },
+              {
+                "text": "optional"
+              },
+              {
+                "text": "optional"
+              },
+              {
+                "text": "optional"
+              }
+            ],
+          ]
+        }) }}
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h3 class="govuk-heading-m">Field definitions</h3>
+        <h4 class="govuk-heading-s">Reference</h4>
+        <p>A reference or ID that is unique to each record within a dataset.</p>
+        <h4 class="govuk-heading-s">Name</h4>
+        <p>The name of the area or boundary which your organisation uses. This will be used as the name that users see and refer to.</p>
+        <h4 class="govuk-heading-s">Geometry</h4>
+        <p>Polygon coordinates that represent the boundaries of a site or areas.</p>
+        <h4 class="govuk-heading-s">Start date</h4>
+        <p>The date when the site or area was first designated.</p>
+        <h4 class="govuk-heading-s">Building grade</h4>
+        <p>The identified grade of the building. This is for listed buildings only.</p>
+        <h4 class="govuk-heading-s">Tree species</h4>
+        <p>The species of an individual tree or the species of tree contained within a tree area or zone.</p>
+        <h4 class="govuk-heading-s">Document URL</h4>
+        <p>The url to a document or web page that is the authoritative source and can be used as evidence.</p>
+        <h4 class="govuk-heading-s">End date</h4>
+        <p>The date on which the site or area was no longer officially designated.</p>
+        <h4 class="govuk-heading-s">Point</h4>
+        <p>A pair of coordinates that represent a specific point on a map.</p>
+        <h4 class="govuk-heading-s">Notes</h4>
+        <p>Any supplementary comments or notes related to the site or area.</p>
+      </div>
+    </div>
+  </main>
+{% endblock %}
+
+{% block bodyEnd %}
+  {{ super() }}
+{% endblock bodyEnd %}
