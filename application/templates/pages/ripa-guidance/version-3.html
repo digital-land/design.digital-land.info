@@ -1,0 +1,18 @@
+{% extends "layouts/layout.html" %}
+{%- from 'govuk_frontend_jinja/components/table/macro.html' import govukTable -%}
+{% block content %}
+
+  <main id="content" role="main">
+    <div class="govuk-grid-row govuk-!-margin-bottom-6">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl" id="heading-1">How to publish your data</h1>
+        <p>The Digital Land platform is able to consume data in a variety of formats and structures providing that the data is on a URL that is publicly accessible.</p>
+        <p>Once we’ve configured the initial collection of data and tested that everything works as expected we’ll routinely attempt to collect any new or amended data that you have published.</p>
+      </div>
+    </div>
+  </main>
+{% endblock %}
+
+{% block bodyEnd %}
+  {{ super() }}
+{% endblock bodyEnd %}
