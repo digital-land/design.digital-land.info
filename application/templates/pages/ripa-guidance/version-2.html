@@ -3,9 +3,64 @@
 {% block content %}
 
   <main id="content" role="main">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+        <h1 class="govuk-heading-xl" id="heading-1">Guidance for publishing datasets needed by RIPA</h1>
+
+        <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">Contents</p>
+        <ul class="govuk-list">
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#dataset-required-by-ripa">Datasets required by RIPA</a>
+          </li>
+          <li>
+            <a href="#how-to-publish-your-data">How to publish your data</a>
+          </li>
+          <li>
+            <a href="#data-specifications">Data specifications</a>
+          </li>
+          <li>
+            <a href="#field-definitions">Field definitions</a>
+          </li>
+        </ul>
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+        <h2 class="govuk-heading-l" id="introduction">Introduction</h2>
+
+        <p>In order for the <a href="https://www.ripa.digital/" target="_blank" rel="noopener">RIPA service</a> to determine whether planning permission is required it needs to know whether there are any applicable planning constraints that relate to the site of the planning application.</p>
+        <p>RIPA will get this information via the <a href="https://www.digital-land.info/" target="_blank" rel="noopener">Digital Land platform</a> which in turn will be collecting data from local planning authorities, ensuring that it has the most up-to-date information.</p>
+
+        <h2 class="govuk-heading-l" id="dataset-required-by-ripa">Datasets required by RIPA</h2>
+        <p>For the first phase of RIPA, the service needs to know about a subset of planning constraints. Some of these we will be able to collect from a national source (such as Historic England or Natural England) but others will need to come from local planning authorities.</p>
+        <p>It is possible that some datasets will not be applicable to every local planning authority.</p>
+        <h3 class="govuk-heading-m">Datasets needed from local planning authorities</h3>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Article 4 directions</li>
+          <li>Conservation areas</li>
+          <li>Listed buildings and locally listed buildings (shape files)</li>
+          <li>Tree preservation orders</li>
+        </ul>
+
+        <h3 class="govuk-heading-m">Datasets we can collect from a national source</h3>
+        <p>These datasets we can collect from a national source, but local planning authorities may have supplementary information.</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Areas of outstanding natural beauty</li>
+          <li>Listed buildings (point data)</li>
+          <li>National parks and the broads</li>
+          <li>Scheduled monuments</li>
+          <li>Sites of special scientific interest</li>
+          <li>World heritage sites</li>
+        </ul>
+      </div>
+    </div>
+
     <div class="govuk-grid-row govuk-!-margin-bottom-6">
       <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl" id="heading-1">How to publish your data</h1>
+        <h2 class="govuk-heading-l" id="heading-1">How to publish your data</h2>
         <p>The Digital Land platform is able to consume data in a variety of formats and structures providing that the data is on a URL that is publicly accessible.</p>
         <p>Once we’ve configured the initial collection of data and tested that everything works as expected we’ll routinely attempt to collect any new or amended data that you have published.</p>
       </div>
@@ -19,7 +74,7 @@
       </div>
     </div>
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
 
         {% set notApplicableHTML = '<span arial-hidden>-</span><span class="govuk-visually-hidden">Not applicable</span>' %}
 
@@ -226,7 +281,7 @@
     </div>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h3 class="govuk-heading-m">Field definitions</h3>
+        <h3 class="govuk-heading-m" id="field-definitions">Field definitions</h3>
         <h4 class="govuk-heading-s">Reference</h4>
         <p>A reference or ID that is unique to each record within a dataset.</p>
         <h4 class="govuk-heading-s">Name</h4>
