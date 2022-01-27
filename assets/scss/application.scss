@@ -1,32 +1,56 @@
 // Override the govuk-frontend font stack
-$govuk-font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
-$govuk-assets-path: "/static/govuk/assets/";
+$govuk-font-family: 'HelveticaNeue', 'Helvetica Neue', 'Arial', 'Helvetica',
+  sans-serif;
+$govuk-assets-path: '/static/govuk/assets/';
+$govuk-global-styles: true;
+$govuk-new-link-styles: true;
 
 // import all govuk frontend scss
-@import "node_modules/digital-land-frontend/digital-land-frontend/dl-frontend";
+@import 'node_modules/digital-land-frontend/digital-land-frontend/dl-frontend';
 
 // digital-land.info specific styles
 // --------------------------------------------------------
 // ITCSS levels
-@import "base";
-@import "utilities/buttons";
-@import "utilities/layout";
-@import "utilities/typography";
-@import "utilities/list";
-@import "unbranded";
+@import 'base';
+@import 'utilities/buttons';
+@import 'utilities/layout';
+@import 'utilities/typography';
+@import 'utilities/list';
+@import 'unbranded';
 
 // digital-land.info components
 // --------------------------------------------------------
 // components
-@import "component/hero";
-@import "component/attachment";
-@import "component/summary-list";
-@import "component/search";
-@import "component/card";
-@import "component/filter-group";
-@import "component/applied-filters";
-@import "component/feedback-panel";
-@import "component/map-filter-checkboxes";
-@import "component/map-popup";
-@import "component/pagination";
-@import "component/prose";
+@import 'component/hero';
+@import 'component/attachment';
+@import 'component/summary-list';
+@import 'component/search';
+@import 'component/card';
+@import 'component/filter-group';
+@import 'component/applied-filters';
+@import 'component/feedback-panel';
+@import 'component/map-filter-checkboxes';
+@import 'component/map-popup';
+@import 'component/pagination';
+@import 'component/prose';
+
+.js-enabled .app-back-to-top--fixed {
+  position: fixed;
+  top: calc(100% - 50px);
+  bottom: auto;
+  left: auto;
+}
+
+.app-back-to-top__link {
+  margin-top: auto;
+  margin-bottom: 50px;
+}
+
+.app-back-to-top__icon {
+  display: inline-block;
+  width: 0.8em;
+  height: 1em;
+  margin-top: -5px;
+  margin-right: 10px;
+  vertical-align: middle;
+}

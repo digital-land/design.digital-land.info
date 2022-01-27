@@ -1,22 +1,28 @@
 {% extends "layouts/layout.html" %}
 {% block content %}
 
-<main id="content" role="main">
-  <h1 class="govuk-heading-xl">Digital Land Prototype Kit</h1>
-  <p class="govuk-body">A place to create in-browser prototypes and design experiments for digital land</p>
-  <h2 class="govuk-heading-l">Templates</h2>
-  <ul class="govuk-list govuk-list--bullet">
-    <li>
-      <a class="govuk-link" href="{{ url_for('base.homepage') }}">
-        Homepage
-      </a>
-    </li>
-    <li>
-      <a class="govuk-link" href="{{ url_for('base.map') }}">
-        Map test
-      </a>
-    </li>
-  </ul>
+  <main id="content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Guidance prototypes</h1>
+        <h3 class="govuk-heading-m">
+          <a href="pages/ripa-guidance/version-1.html" class="govuk-link">How to publish your data - Version 1</a>
+        </h3>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>A plain content version of the guidance</li>
+        </ul>
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+        <h3 class="govuk-heading-m">
+          <a href="pages/ripa-guidance/version-1-b.html" class="govuk-link">How to publish your data - Version 1B</a>
+        </h3>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Uses the GOVUK Design System <a href="https://design-system.service.gov.uk/components/summary-list/">'Summary List' component</a> to display the data specifications</li>
+          <li>Adds a 'contents' list at the top</li>
+          <li>Adds a 'back to top' link at the bottom</li>
+        </ul>
+    </ul>
+  </div>
+</div>
 </main>
 {% endblock %}
 

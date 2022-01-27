@@ -1,0 +1,399 @@
+{% extends "layouts/layout.html" %}
+{%- from 'govuk_frontend_jinja/components/summary-list/macro.html' import govukSummaryList -%}
+
+{% block content %}
+
+  <main id="content" role="main">
+    <div class="govuk-grid-row govuk-!-margin-bottom-6">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl" id="heading-1">How to publish your data</h1>
+
+        <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">Contents</p>
+        <ul class="govuk-list">
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#data-specifications">Data specifications</a>
+          </li>
+          <li>
+            <a href="#article-4-directions">Article 4 directions</a>
+          </li>
+          <li>
+            <a href="#conservation-areas">Conservation areas</a>
+          </li>
+          <li>
+            <a href="#listed-buildings">Listed buildings and locally listed buildings</a>
+          </li>
+          <li>
+            <a href="#tree-preservation-orders">Tree preservation orders</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-6">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l" id="introduction">Introduction</h2>
+        <p>The Digital Land platform is able to consume data in a variety of formats and structures providing that the data is on a URL that is publicly accessible.</p>
+        <p>Once we’ve configured the initial collection of data and tested that everything works as expected we’ll routinely attempt to collect any new or amended data that you have published.</p>
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-9">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l" id="data-specifications">Data specifications</h2>
+        <p>For each dataset there are certain required fields as well as some additional information that will make the dataset more complete.</p>
+        <p>Providing that the fields are contained within the dataset you won’t need to rename the headers to match the specification, the Digital Land platform is able to manage that translation.</p>
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-9">
+      <div class="govuk-grid-column-two-thirds">
+        <h3 class="govuk-heading-m" id="article-4-directions">Article 4 Directions</h3>
+        <h4 class="govuk-body" id="article-4-required-fields">Required fields</h4>
+        {{ govukSummaryList({
+          "rows": [
+            {
+              "key": {
+                "text": "Reference"
+              },
+              "value": {
+                "text": "a reference or ID that is unique to each article 4 direction"
+              }
+            },
+            {
+              "key": {
+                "text": "Name"
+              },
+              "value": {
+                "text": "the name of the article 4 direction"
+              }
+            },
+            {
+              "key": {
+                "text": "Geometry"
+              },
+              "value": {
+                "text": "polygon coordinates for each article 4 direction site boundary"
+              }
+            },
+            {
+              "key": {
+                "text": "Start date"
+              },
+              "value": {
+                "text": "the date that the article 4 direction was officially designated"
+              }
+            }
+          ]
+        }) }}
+        <h4 class="govuk-body" id="article-4-additonal-fields">Additional fields</h4>
+        {{ govukSummaryList({
+          "rows": [
+            {
+              "key": {
+                "text": "Point"
+              },
+              "value": {
+                "text": "if your GIS application provides additional point data then we can add this to the data we collect alongside the geometry"
+              }
+            },
+            {
+              "key": {
+                "text": "Document URL"
+              },
+              "value": {
+                "text": "the url to an authoritative document or web page that details the article 4 direction"
+              }
+            },
+            {
+              "key": {
+                "text": "End date"
+              },
+              "value": {
+                "text": "the data on which an article 4 direction ceased to be designated"
+              }
+            },
+          ]
+        }) }}
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-9">
+      <div class="govuk-grid-column-two-thirds">
+        <h3 class="govuk-heading-m" id="conservation-areas">Conservation areas</h3>
+        <h4 class="govuk-body" id="conservation-areas-required-fields">Required fields</h4>
+        {{ govukSummaryList({
+          "rows": [
+            {
+              "key": {
+                "text": "Reference"
+              },
+              "value": {
+                "text": "a reference or ID that is unique to each conservation area"
+              }
+            },
+            {
+              "key": {
+                "text": "Name"
+              },
+              "value": {
+                "text": "the name of the conservation area"
+              }
+            },
+            {
+              "key": {
+                "text": "Geometry"
+              },
+              "value": {
+                "text": "polygon coordinates for each conservation area site boundary"
+              }
+            },
+            {
+              "key": {
+                "text": "Start date"
+              },
+              "value": {
+                "text": "the date that the conservation area was officially designated"
+              }
+            }
+          ]
+        }) }}
+        <h4 class="govuk-body" id="conservation-areas-additonal-fields">Additional fields</h4>
+        {{ govukSummaryList({
+          "rows": [
+            {
+              "key": {
+                "text": "Legislation"
+              },
+              "value": {
+                "text": "the act of legislation that was used to define the conservation area"
+              }
+            },
+            {
+              "key": {
+                "text": "Notes"
+              },
+              "value": {
+                "text": "any notes related to a conservation area"
+              }
+            },
+            {
+              "key": {
+                "text": "Point"
+              },
+              "value": {
+                "text": "if your GIS application provides additional point data then we can add this to the data we collect alongside the geometry"
+              }
+            },
+            {
+              "key": {
+                "text": "End date"
+              },
+              "value": {
+                "text": "the data on which an article 4 direction ceased to be designated"
+              }
+            },
+            {
+              "key": {
+                "text": "Document URL"
+              },
+              "value": {
+                "text": "the url to an authoritative document or web page that details the conservation area"
+              }
+            },
+          ]
+        }) }}
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-9">
+      <div class="govuk-grid-column-two-thirds">
+        <h3 class="govuk-heading-m" id="listed-buildings">Listed buildings and locally listed buildings</h3>
+        <h4 class="govuk-body" id="listed-buildings-required-fields">Required fields</h4>
+        {{ govukSummaryList({
+          "rows": [
+            {
+              "key": {
+                "text": "Reference"
+              },
+              "value": {
+                "text": "a reference or ID that is unique to each listed building"
+              }
+            },
+            {
+              "key": {
+                "text": "Name"
+              },
+              "value": {
+                "text": "the name of the listed building"
+              }
+            },
+            {
+              "key": {
+                "text": "Geometry"
+              },
+              "value": {
+                "text": "polygon coordinates for each listed building boundary"
+              }
+            },
+            {
+              "key": {
+                "text": "Grade"
+              },
+              "value": {
+                "text": "the grade of the listed building"
+              }
+            },
+            {
+              "key": {
+                "text": "Start date"
+              },
+              "value": {
+                "text": "the date that the listed building was officially designated"
+              }
+            },
+          ]
+        }) }}
+        <h4 class="govuk-body" id="listed-buildings-additonal-fields">Additional fields</h4>
+
+        {{ govukSummaryList({
+          "rows": [
+            {
+              "key": {
+                "text": "Document URL"
+              },
+              "value": {
+                "text": "the url to an authoritative document or web page that details the listed building"
+              }
+            },
+            {
+              "key": {
+                "text": "Point"
+              },
+              "value": {
+                "text": "if your GIS application provides additional point data then we can add this to the data we collect alongside the geometry"
+              }
+            },
+            {
+              "key": {
+                "text": "End date"
+              },
+              "value": {
+                "text": "the data on which the listed building ceased to be designated"
+              }
+            }
+          ]
+        }) }}
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-6">
+      <div class="govuk-grid-column-two-thirds">
+        <h3 class="govuk-heading-m" id="tree-preservation-orders">Tree preservation orders</h3>
+        <h4 class="govuk-body" id="tree-preservation-orders-required-fields">Required fields</h4>
+
+        {{ govukSummaryList({
+          "rows": [
+            {
+              "key": {
+                "text": "Reference"
+              },
+              "value": {
+                "text": "a reference or ID that is unique to each tree preservation order, tree or tree zone/area"
+              }
+            },
+            {
+              "key": {
+                "text": "Name"
+              },
+              "value": {
+                "text": "the name of the tree preservation order, tree or tree zone/area"
+              }
+            },
+            {
+              "key": {
+                "text": "Document URL"
+              },
+              "value": {
+                "text": "the url to an official document or web page that details the tree preservation order"
+              }
+            },
+            {
+              "key": {
+                "text": "Species"
+              },
+              "value": {
+                "text": "the species of the tree, or the species of tree within a tree zone/area"
+              }
+            },
+            {
+              "key": {
+                "text": "Tree preservation order type"
+              },
+              "value": {
+                "text": "whether the data relates to an individual tree or a tree zone/area"
+              }
+            },
+            {
+              "key": {
+                "text": "Geometry"
+              },
+              "value": {
+                "text": "polygon coordinates for each tree zone/area"
+              }
+            },
+            {
+              "key": {
+                "text": "Point"
+              },
+              "value": {
+                "text": "the point coordinates of an individual tree"
+              }
+            }
+          ]
+        }) }}
+        <h4 class="govuk-body" id="tree-preservation-orders-additonal-fields">Additional fields</h4>
+        {{ govukSummaryList({
+          "rows": [
+            {
+              "key": {
+                "text": "UPRN"
+              },
+              "value": {
+                "text": "the unique property reference"
+              }
+            },
+            {
+              "key": {
+                "text": "Address"
+              },
+              "value": {
+                "text": ""
+              }
+            },
+            {
+              "key": {
+                "text": "End date"
+              },
+              "value": {
+                "text": ""
+              }
+            }
+          ]
+        }) }}
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-bottom-3">
+      <div class="govuk-grid-column-two-thirds">
+        <p>
+          <a class="govuk-link govuk-link--no-visited-state app-back-to-top__link" href="#top">
+            <svg role="presentation" focusable="false" class="app-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+              <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+            </svg>Back to top
+        </a>
+        </p>
+      </div>
+    </div>
+
+  </main>
+{% endblock %}
+
+{% block bodyEnd %}
+  {{ super() }}
+{% endblock bodyEnd %}

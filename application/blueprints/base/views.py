@@ -18,16 +18,13 @@ def read_json_file(data_file_path):
     return data
 
 # this attempts to take a URL path and render a matching template
-@base.route('/', defaults={'path': 'index'})
+@base.route('/', defaults={'path': 'index.html'})
 @base.route("/<path:path>")
 def match_template(path):
 
     # if URL ends in a slash append index.html
     if path[-1] == '/':
         path += 'index.html'
-    # otherwise just append.html
-    else:
-        path += '.html'
 
     file = 'application/templates/' + path
 
