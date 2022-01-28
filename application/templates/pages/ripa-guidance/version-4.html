@@ -1,41 +1,74 @@
 {% extends "layouts/layout.html" %}
 {%- from 'govuk_frontend_jinja/components/summary-list/macro.html' import govukSummaryList -%}
 
+{% set backToTop %}
+  <p>
+    <a class="govuk-link govuk-link--no-visited-state app-back-to-top__link" href="#top">
+      <svg role="presentation" focusable="false" class="app-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+        <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+      </svg>Back to top
+    </a>
+  </p>
+{% endset %}
+
 {% block content %}
 
   <main id="content" role="main">
 
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
+      <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl" id="heading-1">Guidance for publishing datasets needed by RIPA</h1>
+       
+        <div class="govuk-!-margin-bottom-">
+          <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">Contents</p>
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="#introduction">Introduction</a>
+            </li>
+            <li>
+              <a href="#dataset-required-by-ripa">Datasets you need to publish</a>
+            </li>
+            <li>
+              <a href="#how-to-publish-your-data">How to publish your data</a>
+            </li>
+            <li>
+              <a href="#data-specifications">Data fields for each data set</a>
+              <ul class="govuk-list govuk-!-margin-left-2 govuk-!-font-size-16">
+                <li>
+                  <a href="#article-4-directions">Article 4 Directions</a>
+                </li>
+                <li>
+                  <a href="#conservation-areas">Conservation areas</a>
+                </li>
+                <li>
+                  <a href="#listed-buildings">Listed buildings and locally listed buildings</a>
+                </li>
+                <li>
+                  <a href="#tree-preservation-orders">Tree Preservation orders</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
 
-        <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">Contents</p>
-        <ul class="govuk-list">
-          <li>
-            <a href="#introduction">Introduction</a>
-          </li>
-          <li>
-            <a href="#dataset-required-by-ripa">Datasets required by RIPA</a>
-          </li>
-          <li>
-            <a href="#how-to-publish-your-data">How to publish your data</a>
-          </li>
-          <li>
-            <a href="#data-specifications">Data specifications</a>
-          </li>
-        </ul>
+      </div>
+      <!-- /.govuk-grid-column-two-thirds -->
+    </div>
 
-        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <div class="govuk-grid-row govuk-!-margin-bottom-3">
+      <div class="govuk-grid-column-two-thirds">
 
         <h2 class="govuk-heading-l" id="introduction">Introduction</h2>
 
-        <p>In order for the <a href="https://www.ripa.digital/" target="_blank" rel="noopener">RIPA service</a> to determine whether planning permission is required it needs to know whether there are any applicable planning constraints that relate to the site of the planning application.</p>
-        <p>RIPA will get this information via the <a href="https://www.digital-land.info/" target="_blank" rel="noopener">Digital Land platform</a> which in turn will be collecting data from local planning authorities, ensuring that it has the most up-to-date information.</p>
+        <p>For the <a href="https://www.ripa.digital/">RIPA service</a> to determine if planning permission is needed for a development, it needs to know whether there are any planning constraints that relate to the site of the planning application.</p>
+        <p>RIPA will get this information from the <a href="https://www.digital-land.info/">Digital Land platform</a> which in turn will be collecting data from local planning authorities and national sources such as Historic England, ensuring that it has the most up-to-date information.</p>
 
-        <h2 class="govuk-heading-l" id="dataset-required-by-ripa">Datasets required by RIPA</h2>
-        <p>For the first phase of RIPA, the service needs to know about a subset of planning constraints. Some of these we will be able to collect from a national source (such as Historic England or Natural England) but others will need to come from local planning authorities.</p>
-        <p>It is possible that some datasets will not be applicable to every local planning authority.</p>
-        <h3 class="govuk-heading-m">Datasets needed from local planning authorities</h3>
+        <hr class="govuk-section-break govuk-section-break--l">
+
+        <h2 class="govuk-heading-l" id="dataset-you-need-to-publish">Datasets you need to publish</h2>
+
         <ul class="govuk-list govuk-list--bullet">
           <li>Article 4 directions</li>
           <li>Conservation areas</li>
@@ -43,36 +76,20 @@
           <li>Tree preservation orders</li>
         </ul>
 
-        <h3 class="govuk-heading-m">Datasets we can collect from a national source</h3>
-        <p>These datasets we can collect from a national source, but local planning authorities may have supplementary information.</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>Areas of outstanding natural beauty</li>
-          <li>Listed buildings (point data)</li>
-          <li>National parks and the broads</li>
-          <li>Scheduled monuments</li>
-          <li>Sites of special scientific interest</li>
-          <li>World heritage sites</li>
-        </ul>
-      </div>
-    </div>
+        <hr class="govuk-section-break govuk-section-break--l">
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
-        <h2 class="govuk-heading-l" id="how-to-publish-your-data">How to publish your data</h2>
-        <p>The Digital Land platform is able to consume data in a variety of formats and structures providing that the data is on a URL that is publicly accessible.</p>
-        <p>Once we’ve configured the initial collection of data and tested that everything works as expected we’ll routinely attempt to collect any new or amended data that you have published.</p>
-      </div>
-    </div>
+        <h2 class="govuk-heading-l" id="how-publish-your-data">How to publish your data</h2>
+        <p>Your data needs to be on a url or website that is open to the public. The Digital Land platform will then access that data and routinely collect anything that is new or has changed. The platform can consume data in different formats, you just need to ensure its published. </p>
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds govuk-!-margin-bottom-6">
-        <h2 class="govuk-heading-l" id="data-specifications">Data specifications</h2>
+        <hr class="govuk-section-break govuk-section-break--l">
+
+        <h2 class="govuk-heading-l" id="data-fields-you-can-provide">Data fields you can provide</h2>
+
         <p>For each dataset there are certain required fields as well as some additional information that will make the dataset more complete.</p>
-        <p>Providing that the fields are contained within the dataset you won’t need to rename the headers to match the specification, the Digital Land platform is able to manage that translation.</p>
-      </div>
-    </div>
-    <div class="govuk-grid-row govuk-!-margin-bottom-9">
-      <div class="govuk-grid-column-two-thirds">
+        <p>Providing you publish the right fields, it doesn’t matter if you call them something else.  All we ask that you provide what you have out of the list and in the format you currently publish it. We do not expect you to create something new for Digital Land.</p>
+
+        <hr class="govuk-section-break govuk-section-break--l">
+
         <h3 class="govuk-heading-m" id="article-4-directions">Article 4 Directions</h3>
         <h4 class="govuk-body" id="article-4-required-fields">Required fields</h4>
         {{ govukSummaryList({
@@ -140,10 +157,10 @@
             },
           ]
         }) }}
-      </div>
-    </div>
-    <div class="govuk-grid-row govuk-!-margin-bottom-9">
-      <div class="govuk-grid-column-two-thirds">
+        {{ backToTop }}
+
+        <hr class="govuk-section-break govuk-section-break--xl">
+
         <h3 class="govuk-heading-m" id="conservation-areas">Conservation areas</h3>
         <h4 class="govuk-body" id="conservation-areas-required-fields">Required fields</h4>
         {{ govukSummaryList({
@@ -227,10 +244,10 @@
             },
           ]
         }) }}
-      </div>
-    </div>
-    <div class="govuk-grid-row govuk-!-margin-bottom-9">
-      <div class="govuk-grid-column-two-thirds">
+        {{ backToTop }}
+
+        <hr class="govuk-section-break govuk-section-break--xl">
+
         <h3 class="govuk-heading-m" id="listed-buildings">Listed buildings and locally listed buildings</h3>
         <h4 class="govuk-body" id="listed-buildings-required-fields">Required fields</h4>
         {{ govukSummaryList({
@@ -307,10 +324,10 @@
             }
           ]
         }) }}
-      </div>
-    </div>
-    <div class="govuk-grid-row govuk-!-margin-bottom-6">
-      <div class="govuk-grid-column-two-thirds">
+        {{ backToTop }}
+
+        <hr class="govuk-section-break govuk-section-break--xl">
+
         <h3 class="govuk-heading-m" id="tree-preservation-orders">Tree preservation orders</h3>
         <h4 class="govuk-body" id="tree-preservation-orders-required-fields">Required fields</h4>
 
@@ -403,20 +420,23 @@
             }
           ]
         }) }}
-      </div>
-    </div>
-    <div class="govuk-grid-row govuk-!-margin-bottom-3">
-      <div class="govuk-grid-column-two-thirds">
-        <p>
-          <a class="govuk-link govuk-link--no-visited-state app-back-to-top__link" href="#top">
-            <svg role="presentation" focusable="false" class="app-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
-              <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
-            </svg>Back to top
-          </a>
-        </p>
-      </div>
-    </div>
 
+        {{ backToTop }}
+
+      </div>
+      <!-- /.govuk-grid-column-two-thirds -->
+      <div class="govuk-grid-column-one-third">
+
+      <aside class="app-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Get support
+        </h2>
+        <p class="govuk-!-font-size-16">If have questions or need support publishing datasets you can <a href="mailto:digitalland@levellingup.gov.uk?subject=support">email the Digital Land team</a>.</p>
+      </aside>
+
+      </div>
+      <!-- /.govuk-grid-column-two-thirds -->
+    </div>
   </main>
 {% endblock %}
 
