@@ -1,0 +1,130 @@
+{% extends "layouts/layout.html" %}
+{% block content %}
+
+  <main id="content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl" id="heading-1">Guidance for publishing datasets needed by RIPA</h1>
+
+        <p>In order for the <a href="https://www.ripa.digital/" target="_blank" rel="noopener">RIPA service</a> to determine whether planning permission is required it needs to know whether there are any applicable planning constraints that relate to the site of the planning application.</p>
+        <p>RIPA will get this information via the <a href="https://www.digital-land.info/" target="_blank" rel="noopener">Digital Land platform</a> which in turn will be collecting data from local planning authorities, ensuring that it has the most up-to-date information.</p>
+        <h2 class="govuk-heading-l">Datasets required by RIPA</h2>
+        <p>For the first phase of RIPA, the service needs to know about a subset of planning constraints. Some of these we will be able to collect from a national source (such as Historic England or Natural England) but others will need to come from local planning authorities.</p>
+        <p>It is possible that some datasets will not be applicable to every local planning authority.</p>
+        <h3 class="govuk-heading-m">Datasets needed from local planning authorities</h3>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Article 4 directions</li>
+          <li>Conservation areas</li>
+          <li>Listed buildings and locally listed buildings (shape files)</li>
+          <li>Tree preservation orders</li>
+        </ul>
+        <h3 class="govuk-heading-m">Datasets we can collect from a national source</h3>
+        <p>These datasets we can collect from a national source, but local planning authorities may have supplementary information.</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Areas of outstanding natural beauty</li>
+          <li>Listed buildings (point data)</li>
+          <li>National parks and the broads</li>
+          <li>Scheduled monuments</li>
+          <li>Sites of special scientific interest</li>
+          <li>World heritage sites</li>
+        </ul>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">How to publish your data</h2>
+        <p>The Digital Land platform is able to consume data in a variety of formats and structures providing that the data is on a URL that is publicly accessible.</p>
+        <p>Once we’ve configured the initial collection of data and tested that everything works as expected we’ll routinely attempt to collect any new or amended data that you have published.</p>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l" id="data-specifications">Data specifications</h2>
+        <p>For each dataset there are certain required fields as well as some additional information that will make the dataset more complete.</p>
+        <p>Providing that the fields are contained within the dataset you won’t need to rename the headers to match the specification, the Digital Land platform is able to manage that translation.</p>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h3 class="govuk-heading-m" id="article-4-directions">Article 4 Directions</h3>
+        <h4 class="govuk-heading-s" id="article-4-required-fields">Required fields</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li class="govuk-list__item">Reference – a reference or ID that is unique to each article 4 direction</li>
+          <li class="govuk-list__item">Name – the name of the article 4 direction</li>
+          <li class="govuk-list__item">Geometry – polygon coordinates for each article 4 direction site boundary</li>
+          <li class="govuk-list__item">Start date – the date that the article 4 direction was officially designated</li>
+        </ul>
+        <h4 class="govuk-heading-s" id="article-4-additonal-fields">Additional fields</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Point – if your GIS application provides additional point data then we can add this to the data we collect alongside the geometry</li>
+          <li>Document URL – the url to an authoritative document or web page that details the article 4 direction</li>
+          <li>End date – the data on which an article 4 direction ceased to be designated</li>
+        </ul>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h3 class="govuk-heading-m" id="conversation-areas">Conservation areas</h3>
+        <h4 class="govuk-heading-s" id="conversation-areas-required-fields">Required fields</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li class="govuk-list__item">Reference – a reference or ID that is unique to each conservation area</li>
+          <li class="govuk-list__item">Name – the name of the conservation area</li>
+          <li class="govuk-list__item">Geometry – polygon coordinates for each conservation area site boundary</li>
+          <li class="govuk-list__item">Start date – the date that the conservation area was officially designated</li>
+        </ul>
+        <h4 class="govuk-heading-s" id="conversation-areas-additonal-fields">Additional fields</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Legislation – the act of legislation that was used to define the conservation area</li>
+          <li>Notes – any notes related to a conservation area</li>
+          <li>Point – if your GIS application provides additional point data then we can add this to the data we collect alongside the geometry</li>
+          <li>End date – the data on which an article 4 direction ceased to be designated</li>
+          <li>Document URL – the url to an authoritative document or web page that details the conservation area</li>
+        </ul>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h3 class="govuk-heading-m" id="listed-buildings">Listed buildings and locally listed buildings</h3>
+        <h4 class="govuk-heading-s" id="listed-buildings-required-fields">Required fields</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Reference – a reference or ID that is unique to each listed building</li>
+          <li>Name – the name of the listed building</li>
+          <li>Geometry – polygon coordinates for each listed building boundary</li>
+          <li>Grade – the grade of the listed building</li>
+          <li>Start date – the date that the listed building was officially designated</li>
+        </ul>
+        <h4 class="govuk-heading-s" id="listed-buildings-additonal-fields">Additional fields</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Document URL – the url to an authoritative document or web page that details the listed building</li>
+          <li>Point – if your GIS application provides additional point data then we can add this to the data we collect alongside the geometry</li>
+          <li>End date – the data on which the listed building ceased to be designated</li>
+        </ul>
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h3 class="govuk-heading-m" id="tree-preservation-orders">Listed buildings and locally listed buildings</h3>
+        <h4 class="govuk-heading-s" id="tree-preservation-orders-required-fields">Required fields</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Reference – a reference or ID that is unique to each tree preservation order, tree or tree zone/area</li>
+          <li>Name – the name of the tree preservation order, tree or tree zone/area</li>
+          <li>Document URL – the url to an official document or web page that details the tree preservation order</li>
+          <li>Species – the species of the tree, or the species of tree within a tree zone/area</li>
+          <li>Tree preservation order type – whether the data relates to an individual tree or a tree zone/area</li>
+          <li>Geometry – polygon coordinates for each tree zone/area</li>
+          <li>Point – the point coordinates of an individual tree</li>
+        </ul>
+        <h4 class="govuk-heading-s" id="tree-preservation-orders-additonal-fields">Additional fields</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>UPRN – the unique property reference </li>
+          <li>Address – </li>
+          <li>End date – </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+{% endblock %}
+
+{% block bodyEnd %}
+  {{ super() }}
+{% endblock bodyEnd %}

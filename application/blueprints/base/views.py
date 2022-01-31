@@ -18,22 +18,42 @@ def read_json_file(data_file_path):
     return data
 
 # this attempts to take a URL path and render a matching template
-@base.route('/', defaults={'path': 'index'})
+@base.route('/', defaults={'path': 'index.html'})
 @base.route("/<path:path>")
 def match_template(path):
 
     # if URL ends in a slash append index.html
     if path[-1] == '/':
         path += 'index.html'
-    # otherwise just append.html
-    else:
-        path += '.html'
-
+    
     file = 'application/templates/' + path
+    
+    # this code is a quick and messy was of giving each template
+    # a distinc class to hook off when trying different versions
+    # of prototypes
+    versionClasses = ''
+    # split the path variable on '/' slashes
+    splitPath = path.split('/')
+    # get length of split path array/list
+    length = len(splitPath)
+
+    ## if length is 1 then we know we're not in a subdirectory
+    if length == 1:
+        versionClasses += 'agnostic'
+    # else assume in a subdirectory for a specific prototype
+    else:
+        for i in range(length):
+            # if item is after the 1st we know it is not the /pages/ directory
+            if i > 0:
+                versionClasses += splitPath[i]
+                if i < length-1:
+                    versionClasses += "-"
+
+    versionClasses = 'app-' + versionClasses.replace(".html", "", 1)
 
     print('look for: ', path, file)
     if os.path.exists(file):
-        return render_template(path)
+        return render_template(path, versionClasses=versionClasses)
     
     # else show no template
     return redirect(url_for('base.notemplate')) 
@@ -41,6 +61,12 @@ def match_template(path):
 @base.route("/template-note-found")
 def notemplate():
     return render_template("pages/no-template.html")
+
+@base.route("/pages/ripa-guidance")
+@base.route("/pages/ripa-guidance/")
+@base.route("/pages/ripa-guidance/index.html")
+def prototype1():
+    return render_template("pages/ripa-guidance/version-4.html")
 
 @base.route("/homepage")
 def homepage():

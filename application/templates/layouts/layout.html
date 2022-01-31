@@ -1,5 +1,7 @@
 {% extends "digital-land-frontend/layouts/base.jinja" %}
 
+{% set htmlClasses = (htmlClasses | d('')) + (versionClasses | d('')) %}
+
 {% block headIcons %}
   <link rel="icon" type="image/svg+xml" href="{{ assetPath | default('/assets') }}/images/favicon.svg">
   <link rel="shortcut icon" href="{{ assetPath | default('/assets') }}/images/favicon.ico" type="image/x-icon">
