@@ -34,6 +34,7 @@ def match_template(path):
     versionClasses = ''
     # split the path variable on '/' slashes
     splitPath = path.split('/')
+    print(splitPath)
     # get length of split path array/list
     length = len(splitPath)
 
@@ -66,7 +67,7 @@ def notemplate():
 @base.route("/pages/ripa-guidance/")
 @base.route("/pages/ripa-guidance/index.html")
 def prototype1():
-    return render_template("pages/ripa-guidance/version-4.html")
+    return render_template("pages/ripa-guidance/version-4.html", versionClasses="app-ripa-guidance-version-4")
 
 @base.route("/homepage")
 def homepage():
