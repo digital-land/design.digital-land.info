@@ -1,0 +1,52 @@
+.app-v-ripa-guidance {
+  .test {
+    background: transparent;
+  }
+}
+
+.js-enabled .app-back-to-top--fixed {
+  position: fixed;
+  top: calc(100% - 50px);
+  bottom: auto;
+  left: auto;
+}
+
+.app-back-to-top__link {
+  margin-top: auto;
+  margin-bottom: 50px;
+}
+
+.app-back-to-top__icon {
+  display: inline-block;
+  width: 0.8em;
+  height: 1em;
+  margin-top: -5px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.app-related-items {
+  padding-top: 10px;
+  border-top: 2px solid #1d70b8;
+  margin-left: 1em;
+}
+
+.app-list-contents {
+  padding-left: 1em;
+  li {
+    padding-left: 0.75em;
+    list-style-type: '—' !important;
+  }
+}
+
+.app-table--matrix {
+  td {
+    text-align: center;
+  }
+  tbody {
+    td {
+      padding-top: 1em;
+      padding-bottom: 1em;
+    }
+  }
+}
