@@ -39,6 +39,12 @@ def match_template(path):
 def notemplate():
     return render_template("pages/no-template.html")
 
+@base.route("/pages/ripa-guidance")
+@base.route("/pages/ripa-guidance/")
+@base.route("/pages/ripa-guidance/index.html")
+def prototype1():
+    return render_template("pages/ripa-guidance/version-4.html")
+
 @base.route("/homepage")
 def homepage():
     return render_template("pages/homepage.html")
