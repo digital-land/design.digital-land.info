@@ -1,4 +1,5 @@
 {% extends "layouts/layout.html" %}
+{% block pageTitle %}How to publish your data - Digital Land{% endblock %}
 {%- from 'govuk_frontend_jinja/components/table/macro.html' import govukTable -%}
 {% block content %}
 
@@ -13,41 +14,41 @@
 
         {% set notApplicableHTML = '<span arial-hidden>-</span><span class="govuk-visually-hidden">Not applicable</span>' %}
         {% set optionalHTML %}
-          <div class="app-table-icon app-table-icon--required" aria-hidden="true">          
-            <svg width="30px" height="23px" viewBox="0 0 30 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g id="check-(1)" fill="#00703C" fill-rule="nonzero">
-                        <polygon id="Path" points="26.0259247 0 10.7405091 14.1803742 4.27619936 7.28187562 0 11.2889099 10.4434204 22.4338532 30 4.30778502"></polygon>
-                    </g>
-                </g>
-            </svg>
-          </div>
-          <span class="govuk-visually-hidden">Optional</span>
+        <div class="app-table-icon app-table-icon--required" aria-hidden="true">
+          <svg width="30px" height="23px" viewBox="0 0 30 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="check-(1)" fill="#00703C" fill-rule="nonzero">
+                <polygon id="Path" points="26.0259247 0 10.7405091 14.1803742 4.27619936 7.28187562 0 11.2889099 10.4434204 22.4338532 30 4.30778502"></polygon>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <span class="govuk-visually-hidden">Optional</span>
         {% endset %}
         {% set requiredHTML %}
-          <div class="app-table-icon app-table-icon--required" aria-hidden="true">          
-            <svg width="30px" height="23px" viewBox="0 0 30 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g id="check-(1)" fill="#00703C" fill-rule="nonzero">
-                        <polygon id="Path" points="26.0259247 0 10.7405091 14.1803742 4.27619936 7.28187562 0 11.2889099 10.4434204 22.4338532 30 4.30778502"></polygon>
-                    </g>
-                </g>
-            </svg>
-          </div>
-          <span class="govuk-visually-hidden">Required</span>
+        <div class="app-table-icon app-table-icon--required" aria-hidden="true">
+          <svg width="30px" height="23px" viewBox="0 0 30 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="check-(1)" fill="#00703C" fill-rule="nonzero">
+                <polygon id="Path" points="26.0259247 0 10.7405091 14.1803742 4.27619936 7.28187562 0 11.2889099 10.4434204 22.4338532 30 4.30778502"></polygon>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <span class="govuk-visually-hidden">Required</span>
         {% endset %}
         {% set pointTreeHTML %}
-          <div class="app-table-icon app-table-icon--required" aria-hidden="true">          
-            <svg width="30px" height="23px" viewBox="0 0 30 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g id="check-(1)" fill="#00703C" fill-rule="nonzero">
-                        <polygon id="Path" points="26.0259247 0 10.7405091 14.1803742 4.27619936 7.28187562 0 11.2889099 10.4434204 22.4338532 30 4.30778502"></polygon>
-                    </g>
-                </g>
-            </svg>
-          </div>
-          <div class="govuk-visually-hidden">Required</div>
-          <div class="govuk-!-margin-top-3">
+        <div class="app-table-icon app-table-icon--required" aria-hidden="true">
+          <svg width="30px" height="23px" viewBox="0 0 30 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="check-(1)" fill="#00703C" fill-rule="nonzero">
+                <polygon id="Path" points="26.0259247 0 10.7405091 14.1803742 4.27619936 7.28187562 0 11.2889099 10.4434204 22.4338532 30 4.30778502"></polygon>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="govuk-visually-hidden">Required</div>
+        <div class="govuk-!-margin-top-3">
             for individual trees
           </div>
         {% endset %}
