@@ -1,11 +1,101 @@
 {% extends "layouts/layout.html" %}
-{% block pageTitle %}How to publish your data - Digital Land{% endblock %}
+{% block pageTitle %}Provenance - Digital Land{% endblock %}
 {% block content %}
 
   <main id="content" role="main">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl" id="heading-1">Title here</h1>
+        <span class="govuk-caption-xl">Conservation area</span>
+        <h1 class="govuk-heading-xl">Wheathampstead</h1>
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+        <section class="app-summary-card govuk-!-margin-bottom-6">
+          <header class="app-summary-card__header">
+            <h2 class="app-summary-card__title">
+              Record
+            </h2>
+            <div class="app-summary-card__actions">
+              <ul class="app-summary-card__actions-list">
+                <li class="app-summary-card__actions-list-item">
+                  <a class="govuk-link" href="#">
+                      View history<span class="govuk-visually-hidden"> (The University of Bristol)</span>
+                  </a>
+                </li>
+                <li class="app-summary-card__actions-list-item">
+                  <a class="govuk-link" href="#">
+                      Trace data<span class="govuk-visually-hidden"> (The University of Bristol)</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </header>
+          <div class="app-summary-card__body">
+            <table class="govuk-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header">Field</th>
+                  <th scope="col" class="govuk-table__header">Value</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                {% set recordData = [
+                  {
+                    'field': 'name',
+                    'value': 'Wheathampstead'
+                  },
+                  {
+                    'field': 'entry-date',
+                    'value': '2021-09-23'
+                  },
+                  {
+                    'field': 'start-date',
+                    'value': '1969-03-24'
+                  },
+                  {
+                    'field': 'end-date',
+                    'value': ''
+                  },
+                  {
+                    'field': 'entity',
+                    'value': '3015314'
+                  },
+                  {
+                    'field': 'dataset',
+                    'value': 'Conservation area'
+                  },
+                  {
+                    'field': 'typology',
+                    'value': 'geography'
+                  },
+                  {
+                    'field': 'reference',
+                    'value': '5067'
+                  },
+                  {
+                    'field': 'prefix',
+                    'value': 'conservation-area'
+                  },
+                  {
+                    'field': 'organisation-entity',
+                    'value': '16'
+                  }
+                ] %}
+
+                {% for row in recordData %}
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">{{ row.field }}</td>
+                    <td class="govuk-table__cell">{{ row.value }}</td>
+                    <td class="govuk-table__cell">{{ row.history }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <footer class="app-summary-card__footer">
+            Data provided by <a href="#">Historic England</a>, <a href="#">DLUHC</a> and <a href="#">Lambeth Council</a>
+          </footer>
+        </section>
+
       </div>
     </div>
   </main>
