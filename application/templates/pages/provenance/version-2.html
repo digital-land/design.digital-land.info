@@ -1,34 +1,44 @@
 {% extends "layouts/layout.html" %}
+{%- from "digital-land-frontend/components/sub-nav-tabs/macro.jinja" import dlSubNavTabs %}
 {% block pageTitle %}Provenance - Digital Land{% endblock %}
 {% block content %}
 
   <main id="content" role="main">
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-grid-column-full">
         <span class="govuk-caption-xl">Conservation area</span>
         <h1 class="govuk-heading-xl">Wheathampstead</h1>
+
+        <div class="govuk-tabs">
+          <h2 class="govuk-tabs__title">
+            Contents
+          </h2>
+          <nav class="dl-subnav" aria-label="Sub navigation">
+            <ul class="dl-subnav__list">
+              <li class="dl-subnav__list-item dl-subnav__list-item--selected">
+                <a class="dl-subnav__list-item__link" href="#record" aria-selected="true">
+                Record
+                </a>
+              </li>
+              <li class="dl-subnav__list-item">
+                <a class="dl-subnav__list-item__link" href="#history">
+                View history
+                </a>
+              </li>
+              <li class="dl-subnav__list-item">
+                <a class="dl-subnav__list-item__link" href="#history">
+                View provenance
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+        </div>
+
       </div>
+
       <div class="govuk-grid-column-two-thirds">
         <section class="app-summary-card govuk-!-margin-bottom-6">
-          <header class="app-summary-card__header">
-            <h2 class="app-summary-card__title">
-              Record
-            </h2>
-            <div class="app-summary-card__actions">
-              <ul class="app-summary-card__actions-list">
-                <li class="app-summary-card__actions-list-item">
-                  <a class="govuk-link" href="#">
-                      View history<span class="govuk-visually-hidden"> (Wheathampstead)</span>
-                  </a>
-                </li>
-                <li class="app-summary-card__actions-list-item">
-                  <a class="govuk-link" href="#">
-                      View provenance<span class="govuk-visually-hidden"> (Wheathampstead)</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </header>
           <div class="app-summary-card__body">
             <table class="govuk-table">
               <thead class="govuk-table__head">

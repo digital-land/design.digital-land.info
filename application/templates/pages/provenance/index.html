@@ -9,7 +9,8 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
         <span class="govuk-caption-xl">Prototypes</span>
-        <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">Provenance</h1>
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Provenance</h1>
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
         {% set overviewHTML %}
 
         <h2 class="govuk-heading-m">User needs</h2>
@@ -30,10 +31,13 @@
         </ul>
         {% endset %}
 
+        {{ overviewHTML }}
+
+        {# 
         {{ govukDetails({
           'summaryText': "Userneeds and Hypothesis for these designs",
           'text': overviewHTML
-        })}}
+        })}} #}
 
         <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
       </div>
@@ -42,10 +46,18 @@
       <div class="govuk-grid-column-two-thirds">
 
         <h3 class="govuk-heading-m">
-          <a href="version-1.html" class="govuk-link">Basic provenance page</a>
+          <a href="version-1.html" class="govuk-link">Simple record page with additional views</a>
         </h3>
         <ul class="govuk-list govuk-list--bullet">
-          <li>Initial sketch of a provenance page</li>
+          <li>Question: Should 'View provenance' be 'Trace data'? </li>
+          <li>Links within the summary record card to view provenance and history of the data</li>
+        </ul>
+
+        <h3 class="govuk-heading-m">
+          <a href="version-2.html" class="govuk-link">Record page with additional views</a>
+        </h3>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Links to examine the the provenance, history and other features in a sub navigation</li>
         </ul>
 
       </div>
