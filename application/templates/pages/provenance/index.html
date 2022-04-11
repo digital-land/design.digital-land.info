@@ -1,0 +1,66 @@
+{% extends "layouts/layout.html" %}
+
+{%- from 'govuk_frontend_jinja/components/details/macro.html' import govukDetails -%}
+
+{% block pageTitle %}Prototypes - Digital Land{% endblock %}
+{% block content %}
+
+  <main id="content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <span class="govuk-caption-xl">Prototypes</span>
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">Provenance</h1>
+        {% set overviewHTML %}
+
+        <h2 class="govuk-heading-m">User needs</h2>
+
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+          <li>As somebody looking for data I need to be able to trust the data planning.data.gov.uk provides is accurate, up-to-date and authoritative. </li>
+          <li>As a data provider I need to understand how the data we share is processed and used by the platform to trust that the data is still accurate and correct.</li>
+        </ul>
+
+        <h2 class="govuk-heading-m">Hypothesis</h2>
+
+        <p>For users to to trust the data planning.data.gov.uk provides we have the following hypothesis:</p>
+
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+          <li>If we show users where this data came from (Which organisation(s) provided it) that will build trust in the data</li>
+          <li>If we show users where individual field values came it will help them to understand the authoritative rules DLUHC applies and build trust in the data</li>
+          <li>If we show users how the data has changed over time, they will understand how the data is kept up-to-date and accurate which will increase trust in the data</li>
+        </ul>
+        {% endset %}
+
+        {{ govukDetails({
+          'summaryText': "Userneeds and Hypothesis for these designs",
+          'text': overviewHTML
+        })}}
+
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+      </div>
+    </div>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h3 class="govuk-heading-m">
+          <a href="version-1.html" class="govuk-link">Basic provenance page</a>
+        </h3>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Initial sketch of a provenance page</li>
+        </ul>
+
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-m">Quick links</h2>
+        <ul class="govuk-list govuk-list--spaced">
+          <li>
+            <a href="https://trello.com/c/yX9W1nLA" target="_blank">Trello ticket</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+{% endblock %}
+
+{% block bodyEnd %}
+  {{ super() }}
+{% endblock bodyEnd %}
