@@ -1,5 +1,6 @@
 {% extends "layouts/layout.html" %}
 {%- from "digital-land-frontend/components/sub-nav-tabs/macro.jinja" import dlSubNavTabs %}
+{%- from 'govuk_frontend_jinja/components/details/macro.html' import govukDetails -%}
 {% block pageTitle %}Provenance - Digital Land{% endblock %}
 {% block content %}
 
@@ -20,16 +21,11 @@
                 Entity
                 </a>
               </li>
-              <li class="dl-subnav__list-item">
-                <a class="dl-subnav__list-item__link" href="#history">
-                Annotated entity
-                </a>
-              </li>
-              <li class="dl-subnav__list-item">
+              {# <li class="dl-subnav__list-item">
                 <a class="dl-subnav__list-item__link" href="#history">
                 History
                 </a>
-              </li>
+              </li> #}
             </ul>
           </nav>
         </div>
@@ -51,7 +47,7 @@
               <tbody class="govuk-table__body">
                 {% set actionsObject = {
                   'provenance': {
-                    'text': 'Details',
+                    'text': 'Source',
                     'url': '#provenance'
                   }
                 } %}
@@ -126,7 +122,34 @@
           </footer>
         </section>
 
-        <p>To get more information about each field you can click the details link, which will show you where the data came from and why it was used.</p>
+        {% set overviewHTML %}
+
+        <h3 class="govuk-heading-s">Entity</h3>
+
+        <p>An entity is the label we have given to a group of data fields about a specific thing. An entity can represent anything, this page shows the entity for 'Wheathampstead', which we have established from the value of the 'name' field.</p>
+
+        <h3 class="govuk-heading-s">Field</h3>
+
+        <p>A field is a single piece of data (sometimes called a row of data) about a specific thing. A field has a name (sometimes called a 'column name') and a possible value.</p>
+
+        <p>Each field has a source link, clicking it will show you:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>where that data (the field and it's value) were was collected from</li>
+          <li>why that data is being used (if there are multiple possible sources available)</li>
+        </ul>
+
+        {% endset %}
+
+        {{ govukDetails({
+          'summaryText': "Help understanding this entity table",
+          'text': overviewHTML
+        })}}
+
+        <section class="app-history-summary">
+          <p>kjdkjdkdj</p>
+        </section>
+        <!-- /.app-history-summary -->
 
       </div>
     </div>
