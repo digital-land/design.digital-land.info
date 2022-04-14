@@ -119,20 +119,20 @@
 
         {% set overviewHTML %}
 
-          <h3 class="govuk-heading-s">Entity</h3>
+        <h3 class="govuk-heading-s">Entity</h3>
 
-          <p>An entity is the label we have given to a group of data fields about a specific thing. An entity can represent anything, this page shows the entity for 'Wheathampstead', which we have established from the value of the 'name' field.</p>
+        <p>An entity is the label we have given to a group of data fields about a specific thing. An entity can represent anything, this page shows the entity for 'Wheathampstead', which we have established from the value of the 'name' field.</p>
 
-          <h3 class="govuk-heading-s">Field</h3>
+        <h3 class="govuk-heading-s">Field</h3>
 
-          <p>A field is a single piece of data (sometimes called a row of data) about a specific thing. A field has a name (sometimes called a 'column name') and a possible value.</p>
+        <p>A field is a single piece of data (sometimes called a row of data) about a specific thing. A field has a name (sometimes called a 'column name') and a possible value.</p>
 
-          <p>Each field has a source link, clicking it will show you:</p>
+        <p>Each field has a source link, clicking it will show you:</p>
 
-          <ul class="govuk-list govuk-list--bullet">
-            <li>where that data (the field and it's value) were was collected from</li>
-            <li>why that data is being used (if there are multiple possible sources available)</li>
-          </ul>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>where that data (the field and it's value) were was collected from</li>
+          <li>why that data is being used (if there are multiple possible sources available)</li>
+        </ul>
 
         {% endset %}
 
@@ -142,9 +142,79 @@
         })}}
 
         <section class="app-c-key-dates">
-          <p class="app-c-key-dates__item govuk-!-font-size-14">First collected: 1 April 2020</p>
+          <p class="app-c-key-dates__item">First collected 12 April 2020</p>
+          <p class="app-c-key-dates__item">Last updated 1 Feb 2022 <a href="#updatesfull" class="toggle" data-toggled-text="- Hide all updates" data-default-text="+ Show all updates">+ Show all updates</a>
+          </p>
+          <div class="app-c-key-dates__additional" id="updatesfull">
+            <ol class="app-c-key-dates__list">
+              <li class="app-c-key-dates__list-item">
+                <time class="app-c-key-dates__list-date timestamp" datetime="2022-04-12T16:47:41.000+01:00">12 April 2020</time>
+                <p class="app-c-key-dates__list-note">
+                  <a href="#">First collected</a>
+                </p>
+              </li>
+              <li class="app-c-key-dates__list-item">
+                <time class="app-c-key-dates__list-date timestamp" datetime="2022-04-01T08:27:00.000+01:00">1 Feb 2022</time>
+                <p class="app-c-key-dates__list-note">
+                  <a href="#">Field name was updated</a>
+                </p>
+              </li>
+            </ol>
+          </div>
         </section>
         <!-- /.app-history-summary -->
+
+        <script>
+
+          // this is utter garbage to test an idea. If you read this comment
+          // in a product code base. Something has gone very very wrong!
+
+          var show = function (elem) {
+            elem.style.display = 'block';
+          };
+
+          var hide = function (elem) {
+            elem.style.display = 'none';
+          };
+
+          var toggle = function (elem, $toggler, defaultText, toggledText) {
+
+            // If the element is visible, hide it
+            if (window.getComputedStyle(elem).display === 'block') {
+              hide(elem);
+              $toggler.innerHTML = defaultText;
+            } else {
+              // Otherwise, show it
+              show(elem);
+              $toggler.innerHTML = toggledText;
+            }
+
+          };
+
+          // Listen for click events
+          document.addEventListener('click', function (event) {
+
+            // Make sure clicked element is our toggle
+            if (!event.target.classList.contains('toggle')) 
+              return;
+            
+            // Prevent default link behavior
+            event.preventDefault();
+
+            // Get the content
+            var $toggler = event.target;
+            var defaultText = $toggler.getAttribute('data-default-text');
+            var toggledText = $toggler.getAttribute('data-toggled-text');
+            var content = document.querySelector($toggler.hash);
+
+            if (!content) 
+              return;
+            
+            // Toggle the content
+            toggle(content, $toggler, defaultText, toggledText);
+
+          }, false);
+        </script>
 
       </div>
     </div>
