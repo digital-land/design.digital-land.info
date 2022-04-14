@@ -5,9 +5,13 @@
 
 .app-entity-version-1 {
 
-  .app-history-summary {
+  .app-c-key-dates {
     padding: govuk-spacing(3) 0;
     border-top: 1px solid $govuk-border-colour;
+  }
+
+  .app-c-key-dates__item {
+    font-size: govuk-font-size(14);
   }
 
 }
