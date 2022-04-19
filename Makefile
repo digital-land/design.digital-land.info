@@ -1,9 +1,9 @@
+run:
+	npm start
+
 init:
 	pip install -r requirements.txt
 	npm install
-
-run:
-	npm start
 
 frontend-assets: javascripts stylesheets govassets
 
@@ -17,7 +17,9 @@ stylesheets:
 
 govassets:
 	npm run copygovuk
-	
+
+lint:: black-check flake8
+
 black:
 	black .
 
@@ -25,4 +27,4 @@ black-check:
 	black --check .
 
 flake8:
-	flake8 --exclude .venv,node_modules
+	flake8
