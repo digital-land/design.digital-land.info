@@ -38,4 +38,11 @@
   .app-c-key-dates__list-note {
     @include govuk-font($size: 16);
   }
+
+  .app-c-data-table {
+    &__reference {
+      color: $govuk-secondary-text-colour;
+      @include govuk-font($size: 16);
+    }
+  }
 }

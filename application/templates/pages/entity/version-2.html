@@ -1,6 +1,7 @@
 {% extends "layouts/layout.html" %}
 {%- from "digital-land-frontend/components/sub-nav-tabs/macro.jinja" import dlSubNavTabs %}
 {%- from 'govuk_frontend_jinja/components/details/macro.html' import govukDetails -%}
+{%- from 'govuk_frontend_jinja/components/tabs/macro.html' import govukTabs -%}
 {% block pageTitle %}Provenance - Digital Land{% endblock %}
 {% block content %}
 
@@ -119,6 +120,22 @@
             Data provided by <a href="#">Historic England</a>, <a href="#">DLUHC</a> and <a href="#">Lambeth Council</a>
           </footer>
         </section>
+
+        {% set rawDataHTML %}
+          <p>raw data</p>
+        {% endset %}
+
+        {{ govukTabs({
+          items: [
+            {
+              label: "Raw data",
+              id: "raw-data",
+              panel: {
+                html: rawDataHTML
+              }
+            }
+          ]
+        }) }}
 
         {% set overviewHTML %}
 
