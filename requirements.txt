@@ -1,6 +1,7 @@
 appdirs
 black
-Flask==1.1.1
+flake8
+Flask
 Flask-Assets
 Flask-BasicAuth
 Flask-Script
