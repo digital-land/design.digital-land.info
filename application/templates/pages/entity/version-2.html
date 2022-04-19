@@ -128,14 +128,16 @@
         {{ govukTabs({
           items: [
             {
-              label: "Raw data",
-              id: "raw-data",
-              panel: {
-                html: rawDataHTML
+              'label': "Raw data",
+              'id': "raw-data",
+              'panel': {
+                'html': '<p>dkjkdjd<p>' | safe
               }
             }
           ]
         }) }}
+
+        <h2>kfjkjfkfj</h2>
 
         {% set overviewHTML %}
 
@@ -243,4 +245,5 @@
 
 {% block bodyEnd %}
   {{ super() }}
+  <script src="/static/javascripts/test.js"></script>
 {% endblock bodyEnd %}
