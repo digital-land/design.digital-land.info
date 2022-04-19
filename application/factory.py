@@ -2,9 +2,7 @@
 """
 Flask app factory class
 """
-import os
-
-from flask import Flask, render_template, session
+from flask import Flask
 from flask.cli import load_dotenv
 
 load_dotenv()

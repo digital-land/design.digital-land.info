@@ -1,13 +1,15 @@
 import json
 import os
 
-from flask import render_template, Blueprint, current_app, redirect, url_for
+from flask import Blueprint, redirect, render_template, url_for
 
 base = Blueprint("base", __name__)
+
 
 @base.context_processor
 def set_globals():
     return {"staticPath": "https://digital-land.github.io"}
+
 
 def read_json_file(data_file_path):
     f = open(
@@ -17,64 +19,72 @@ def read_json_file(data_file_path):
     f.close()
     return data
 
+
 # this attempts to take a URL path and render a matching template
-@base.route('/', defaults={'path': 'index.html'})
+@base.route("/", defaults={"path": "index.html"})
 @base.route("/<path:path>")
 def match_template(path):
 
     # if URL ends in a slash append index.html
-    if path[-1] == '/':
-        path += 'index.html'
-    
-    file = 'application/templates/' + path
-    
+    if path[-1] == "/":
+        path += "index.html"
+
+    file = "application/templates/" + path
+
     # this code is a quick and messy was of giving each template
     # a distinc class to hook off when trying different versions
     # of prototypes
-    versionClasses = ''
+    versionClasses = ""
     # split the path variable on '/' slashes
-    splitPath = path.split('/')
+    splitPath = path.split("/")
     print(splitPath)
     # get length of split path array/list
     length = len(splitPath)
 
-    ## if length is 1 then we know we're not in a subdirectory
+    # if length is 1 then we know we're not in a subdirectory
     if length == 1:
-        versionClasses += 'agnostic'
+        versionClasses += "agnostic"
     # else assume in a subdirectory for a specific prototype
     else:
         for i in range(length):
             # if item is after the 1st we know it is not the /pages/ directory
             if i > 0:
                 versionClasses += splitPath[i]
-                if i < length-1:
+                if i < length - 1:
                     versionClasses += "-"
 
-    versionClasses = 'app-' + versionClasses.replace(".html", "", 1)
+    versionClasses = "app-" + versionClasses.replace(".html", "", 1)
 
-    print('look for: ', path, file)
+    print("look for: ", path, file)
     if os.path.exists(file):
         return render_template(path, versionClasses=versionClasses)
-    
+
     # else show no template
-    return redirect(url_for('base.notemplate')) 
+    return redirect(url_for("base.notemplate"))
+
 
 @base.route("/template-note-found")
 def notemplate():
     return render_template("pages/no-template.html")
 
+
 @base.route("/homepage")
 def homepage():
     return render_template("pages/homepage.html")
 
+
 @base.route("/pages/entity")
 @base.route("/pages/entity/")
 def entity():
-    return render_template("pages/entity/version-1.html", versionClasses="app-entity-version-1")
+    return render_template(
+        "pages/entity/version-1.html", versionClasses="app-entity-version-1"
+    )
+
 
 @base.route("/about/<name>")
 def about(name):
     return render_template("index.html", name=name)
+
 
 @base.route("/resource")
 @base.route("/resource/")
@@ -83,6 +93,7 @@ def resource(id):
     # proposed interface
     data = read_json_file("application/data/resource.json")
     return render_template("pages/resource.html", id=id, resource=data)
+
 
 @base.route("/resource/no-table")
 @base.route("/resource/no-table/<id>")
