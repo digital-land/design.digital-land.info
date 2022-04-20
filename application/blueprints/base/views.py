@@ -73,8 +73,8 @@ def homepage():
     return render_template("pages/homepage.html")
 
 
-@base.route("/pages/entity")
-@base.route("/pages/entity/")
+@base.route("/entity")
+@base.route("/entity/")
 def entity():
     return render_template(
         "pages/entity/version-1.html", versionClasses="app-entity-version-1"
