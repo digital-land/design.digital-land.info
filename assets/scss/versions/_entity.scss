@@ -103,6 +103,7 @@
       // color: #fff;
       @include govuk-font($size: 19);
       font-family: monospace;
+      overflow: auto;
     }
   }
 
