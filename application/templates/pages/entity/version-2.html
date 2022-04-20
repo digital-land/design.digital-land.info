@@ -10,27 +10,11 @@
       <div class="govuk-grid-column-full">
         <span class="govuk-caption-xl">Conservation area</span>
         <h1 class="govuk-heading-xl">Wheathampstead</h1>
-
-        {# <div class="govuk-tabs">
-          <h2 class="govuk-tabs__title">
-            Contents
-          </h2>
-          <nav class="dl-subnav" aria-label="Sub navigation">
-            <ul class="dl-subnav__list">
-              <li class="dl-subnav__list-item dl-subnav__list-item--selected">
-                <a class="dl-subnav__list-item__link" href="#record" aria-selected="true">
-                Entity
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div> #}
-
       </div>
 
       <div class="govuk-grid-column-two-thirds">
 
-        <section class="app-summary-card govuk-!-margin-bottom-6">
+        <section class="app-summary-card govuk-!-margin-bottom-0">
           <div class="app-summary-card__body">
             <table class="govuk-table">
               <thead class="govuk-table__head">
@@ -116,44 +100,65 @@
               </tbody>
             </table>
           </div>
-          <footer class="app-summary-card__footer">
-            Data provided by <a href="#">Historic England</a>, <a href="#">DLUHC</a> and <a href="#">Lambeth Council</a>
-          </footer>
         </section>
 
-        {% set rawDataHTML %}
-          <p>raw data</p>
-        {% endset %}
+        {%- set jsonHTML -%}
+          <div class="app-c-content">
+          <pre class="govuk-!-margin-0"><code class="language="json">{
+  "entity": "3015314",
+  "dataset": "conservation-area",	
+  "organisation-entity": "16",
+  "prefix": "conservation-area-bor",
+  "reference": "CA01",
+  "name": "Wheathampstead",
+  "typology": "geography",
+  "start-date": "1969-03-24",
+  "end-date": "",
+  "entry-date": "2021-09-23"
+}</code></pre>
+          </div>
+        {%- endset -%}
+
+        {%- set csvHTML -%}
+          <div class="app-c-content">
+            <p>CSV</p>
+          </div>
+        {%- endset -%}
 
         {{ govukTabs({
-          items: [
+          'classes': 'govuk-tabs--entity govuk-!-margin-bottom-0',
+          'items': [
             {
-              'label': "Raw data",
-              'id': "rawdata",
+              'label': "JSON",
+              'id': "jsondata",
               'panel': {
-                'html': '<p>dkjkdjd<p>' | safe
+                'html': jsonHTML
+              }
+            },
+            {
+              'label': "CSV",
+              'id': "csvdata",
+              'panel': {
+                'html': csvHTML
               }
             }
           ]
         }) }}
 
-        {% set overviewHTML %}
+        <div class="app-c-sources-panel govuk-!-margin-bottom-6">
+            Data provided by <a href="#">Historic England</a> and <a href="#">Lambeth Council</a>
+        </div>
 
-        <h3 class="govuk-heading-s">Entity</h3>
-
-        <p>An entity is the label we have given to a group of data fields about a specific thing. An entity can represent anything, this page shows the entity for 'Wheathampstead', which we have established from the value of the 'name' field.</p>
-
-        <h3 class="govuk-heading-s">Field</h3>
-
-        <p>A field is a single piece of data (sometimes called a row of data) about a specific thing. A field has a name (sometimes called a 'column name') and a possible value.</p>
-
-        <p>Each field has a source link, clicking it will show you:</p>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li>where that data (the field and it's value) were was collected from</li>
-          <li>why that data is being used (if there are multiple possible sources available)</li>
-        </ul>
-
+        {% set overviewHTML %}        
+          <h3 class="govuk-heading-s">Entity</h3>
+          <p>An entity is the label we have given to a group of data fields about a specific thing. An entity can represent anything, this page shows the entity for 'Wheathampstead', which we have established from the value of the 'name' field.</p>
+          <h3 class="govuk-heading-s">Field</h3>
+          <p>A field is a single piece of data (sometimes called a row of data) about a specific thing. A field has a name (sometimes called a 'column name') and a possible value.</p>
+          <p>Each field has a source link, clicking it will show you:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>where that data (the field and it's value) were was collected from</li>
+            <li>why that data is being used (if there are multiple possible sources available)</li>
+          </ul>
         {% endset %}
 
         {{ govukDetails({
@@ -243,5 +248,135 @@
 
 {% block bodyEnd %}
   {{ super() }}
-  <script src="/static/javascripts/test.js"></script>
+  {# <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/styles/a11y-dark.min.css"> #}
+<style>
+/*!
+  Theme: StackOverflow Light
+  Description: Light theme as used on stackoverflow.com
+  Author: stackoverflow.com
+  Maintainer: @Hirse
+  Website: https://github.com/StackExchange/Stacks
+  License: MIT
+  Updated: 2021-05-15
+
+  Updated for @stackoverflow/stacks v0.64.0
+  Code Blocks: /blob/v0.64.0/lib/css/components/_stacks-code-blocks.less
+  Colors: /blob/v0.64.0/lib/css/exports/_stacks-constants-colors.less
+*/
+
+.hljs {
+  /* var(--highlight-csolor) */
+  color: #2f3337;
+  /* var(--highlight-bg) */
+  background: #f6f6f6;
+}
+
+.hljs-subst {
+  /* var(--highlight-color) */
+  color: #2f3337;
+}
+
+.hljs-comment {
+  /* var(--highlight-comment) */
+  color: #656e77;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-meta .hljs-keyword,
+.hljs-doctag,
+.hljs-section {
+  /* var(--highlight-keyword) */
+  color: #015692;
+}
+
+.hljs-attr {
+  /* var(--highlight-attribute); */
+  color: #015692;
+}
+
+.hljs-attribute {
+  /* var(--highlight-symbol) */
+  color: #803378;
+}
+
+.hljs-name,
+.hljs-type,
+.hljs-number,
+.hljs-selector-id,
+.hljs-quote,
+.hljs-template-tag {
+  /* var(--highlight-namespace) */
+  color: #b75501;
+}
+
+.hljs-selector-class {
+  /* var(--highlight-keyword) */
+  color: #015692;
+}
+
+.hljs-string,
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr {
+  /* var(--highlight-variable) */
+  color: #54790d;
+}
+
+.hljs-meta,
+.hljs-selector-pseudo {
+  /* var(--highlight-keyword) */
+  color: #015692;
+}
+
+.hljs-built_in,
+.hljs-title,
+.hljs-literal {
+  /* var(--highlight-literal) */
+  color: #b75501;
+}
+
+.hljs-bullet,
+.hljs-code {
+  /* var(--highlight-punctuation) */
+  color: #535a60;
+}
+
+.hljs-meta .hljs-string {
+  /* var(--highlight-variable) */
+  color: #54790d;
+}
+
+.hljs-deletion {
+  /* var(--highlight-deletion) */
+  color: #c02d2e;
+}
+
+.hljs-addition {
+  /* var(--highlight-addition) */
+  color: #2f6f44;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-formula,
+.hljs-operator,
+.hljs-params,
+.hljs-property,
+.hljs-punctuation,
+.hljs-tag {
+  /* purposely ignored */
+}
+</style>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
 {% endblock bodyEnd %}

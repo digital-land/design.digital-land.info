@@ -48,6 +48,10 @@
 }
 
 .app-entity-version-2 {
+  .app-summary-card__footer {
+    border-top: 1px solid $govuk-border-colour;
+  }
+
   .app-c-key-dates {
     padding: govuk-spacing(3) 0;
     border-top: 1px solid $govuk-border-colour;
@@ -88,6 +92,80 @@
     &__reference {
       color: $govuk-secondary-text-colour;
       @include govuk-font($size: 16);
+    }
+  }
+
+  .app-c-content {
+    code {
+      display: block;
+      padding: govuk-spacing(4);
+      // background: #000;
+      // color: #fff;
+      @include govuk-font($size: 19);
+      font-family: monospace;
+    }
+  }
+
+  .govuk-tabs--entity {
+    margin-top: 0;
+    border-left: 1px solid $govuk-border-colour;
+    border-right: 1px solid $govuk-border-colour;
+    .govuk-tabs__list-item {
+      margin-right: 0;
+      background: 0;
+      padding: 16px 20px;
+      border-left: 1px solid $govuk-border-colour;
+      border-right: 1px solid $govuk-border-colour;
+      &:first-of-type {
+        border-left: 0;
+        border-right: 0;
+      }
+    }
+    .govuk-tabs__list {
+      z-index: 2;
+      position: relative;
+      border-bottom: 0;
+    }
+    .govuk-tabs__list-item--selected {
+      border-top: 0;
+      margin-top: 0;
+      margin-right: 0;
+    }
+    .govuk-tabs__panel {
+      border-left: 0;
+      border-right: 0;
+    }
+    .govuk-tabs__tab {
+      color: $govuk-link-colour;
+    }
+  }
+
+  .app-c-sources-panel {
+    background-color: govuk-colour('light-grey');
+    border: 1px solid $govuk-border-colour;
+    padding: govuk-spacing(3);
+    @include govuk-font($size: 14);
+
+    @include govuk-media-query($from: desktop) {
+      // display: flex;
+      // justify-content: space-between;
+      align-items: start;
+    }
+  }
+
+  .js-enabled {
+    .govuk-tabs__list-item--selected {
+      background: #fff;
+      position: relative;
+      .govuk-tabs__tab {
+        color: $govuk-text-colour;
+      }
+    }
+    .govuk-tabs__panel {
+      margin-top: -1px;
+      z-index: 1;
+      position: relative;
+      border-top: 1px solid $govuk-border-colour;
     }
   }
 }
