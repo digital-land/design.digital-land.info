@@ -1,0 +1,147 @@
+#!/usr/bin/env python3
+
+import requests
+import json
+import hashlib
+
+entities = ["3030363", "192", "16"]
+
+data = {
+    "entity": {},
+    "fact": {},
+    "resource": {},
+    "source": {},
+    "endpoint": {},
+    "log": {},
+}
+
+
+def fact_hash(entity, field, value):
+    data = f"{entity}:{field}:{value}"
+    return hashlib.sha256(data.encode("utf-8")).hexdigest()
+
+
+def get(url):
+    print(url)
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+
+def entity_curie(entity):
+    e = data["entity"][entity]
+    return f'{e["prefix"]}:{e["reference"]}'
+
+
+# load entities
+for entity in entities:
+    # API currently doesn't return the geometry and point
+    o = get(f"https://www.digital-land.info/entity/{entity}.json")
+    o["entity"] = str(o["entity"])
+    data["entity"][entity] = o
+
+
+for entity in entities:
+    # hoist any json elements ..
+    e = data["entity"][entity]
+    if "json" in e:
+        for field, value in e["json"].items():
+            e[field] = value
+        del e["json"]
+
+    if "geojson" in e and "properties" in e["geojson"]:
+        del e["geojson"]["properties"]
+
+    # default the organisation
+    if e["organisation-entity"] and not e.get("organisation", ""):
+        e["organisation"] = entity_curie(e["organisation-entity"])
+
+
+# load entity properties missing from the current JSON
+for entity in entities:
+    dataset = data["entity"][entity]["dataset"]
+    e = get(
+        f"https://datasette.digital-land.info/{dataset}/entity.json?entity__exact={entity}&_shape=object"
+    )
+    if e:
+        data["entity"][entity]["geometry"] = e[entity]["geometry"]
+        data["entity"][entity]["point"] = e[entity]["point"]
+
+
+# load entity facts
+for entity in entities:
+    dataset = data["entity"][entity]["dataset"]
+    r = get(
+        f"https://datasette.digital-land.info/{dataset}/fact.json?entity__exact={entity}&_shape=object"
+    )
+    if r:
+        for fact, s in r.items():
+            o = {}
+            for field, value in s.items():
+                o[field.replace("_", "-")] = str(value)
+            data["fact"][fact] = o
+
+            # add fact to entity
+            p = data["entity"][o["entity"]].setdefault("provenance", {
+                "field-fact": {},
+                "fact-field": {}})
+            p["fact-field"][o["fact"]] = o["field"]
+            if data["entity"][o["entity"]][o["field"]] == o["value"]:
+                p["field-fact"][o["field"]] = o["fact"]
+
+
+    # load fact resources
+    r = get(
+        f"https://datasette.digital-land.info/{dataset}.json?sql=select+fact.fact%2C+resource+from+fact%2C+fact_resource+where+fact.entity+%3D+%3Ap0+and+fact_resource.fact+%3D+fact.fact&p0={entity}"
+    )
+    if r:
+        for fact, resource in r["rows"]:
+            data["fact"][fact].setdefault("resource", [])
+            data["fact"][fact]["resource"].append(resource)
+            data["resource"].setdefault(resource, {})
+
+# list of resources
+resources = ""
+sep = ""
+for resource in data["resource"]:
+    resources += f"{sep}%22{resource}%22"
+    sep = "%2C"
+
+# get logs
+fields = [
+    "resource",
+    "status",
+    "bytes",
+    "content-type",
+    "elapsed",
+    "endpoint",
+    "entry-date",
+    "resource",
+    "status",
+]
+field_list = "%2C".join(fields).replace("-", "_")
+r = get(
+    f"https://datasette.digital-land.info/digital-land.json?sql=select+{field_list}+from+log+where+%22resource%22+in+%28{resources}%29"
+)
+for row in r["rows"]:
+    o = dict(zip(fields, row))
+    date = o["entry-date"][:10]
+    resource = o["resource"]
+    data["resource"][resource].setdefault("log", {})
+    data["resource"][resource]["log"][date] = o
+
+# add
+# https://datasette.digital-land.info/digital-land?sql=select+resource%2C+organisation+from+resource_organisation+where+resource+in+%28%2280709f042768e421a82f4aaa523f34b837e77af71b4c8afcd7f4f05938e9e98b%22%29
+
+# hack the data ..
+for entity, field, value in (
+    ("3030363", "reference", "CA01"),
+    ("3030363", "organisation-entity", "192"),
+    ("3030363", "organisation", "local-authority-eng:LBH"),
+):
+    data["entity"][entity][field] = value
+
+
+with open("data.json", "w") as f:
+    json.dump(data, f, sort_keys=True, indent=4)
