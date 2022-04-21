@@ -1,4 +1,9 @@
 {
+    "dataset": {
+        "conservation-area": {},
+        "government-organisation": {},
+        "local-authority-eng": {}
+    },
     "endpoint": {},
     "entity": {
         "16": {
@@ -774,7 +779,23 @@
                     "prefix": "cbf8209155f15ef64346c65a8374b45c6af675202647d94877414463f47c2d9a",
                     "reference": "7e60be3b526d78f7f8c44c5c8dc65e9489666b6953e4002091a86cc8dd170a14",
                     "start-date": "32a7b86f7f48082c2b80576b9f038b7b07d627b857398511510d788344c64c4d"
-                }
+                },
+                "organisation": [
+                    "local-authority-eng:GLA",
+                    "government-organisation:D4",
+                    "local-authority-eng:SWK",
+                    "local-authority-eng:LBH",
+                    "government-organisation:PB1164"
+                ],
+                "resource": [
+                    "f498f7e6f6eab582c68aa42a62bf61b74a01cf938d664fe44aaa0bb5ba23d845",
+                    "e1acccbd6a46963b7c34ea51d1255e28d605b35264a7a7d583121de641b54bbf",
+                    "f617d13ef7ff061424ec50ed641f05779797ff03beb2cde6935f2a307c01ab44",
+                    "c2f5fcc2524537d98ac79da451ceb62f1bd3b3640fb1ea726636cbe517b67bff",
+                    "f8aaf696417923bac77e7c2d7fedeff24a9c4be81cf33e4e7a800fc8d70c2c0c",
+                    "5261479c4f52b03d2b6432eed1df1941dc9912b2e87269ed8bcf5d3eb6162410",
+                    "083a55a37f8bcf36f3b51cbc7a7ea97bb60107478a6470f0c9fa9df13196ca63"
+                ]
             },
             "reference": "CA01",
             "start-date": "1968-06-20",
@@ -1046,9 +1067,20 @@
             "value": "local-authority-eng:LBH"
         }
     },
-    "log": {},
     "resource": {
         "083a55a37f8bcf36f3b51cbc7a7ea97bb60107478a6470f0c9fa9df13196ca63": {
+            "dataset": {
+                "conservation-area": {
+                    "entity-count": 7433,
+                    "entry-count": 7516,
+                    "entry-date": "2022-04-21T00:16:38Z",
+                    "internal-mime-type": "x-gis/x-shapefile",
+                    "internal-path": "/20210705_Conservation_Areas_INSPIRE_Dataset.shp",
+                    "line-count": 7517,
+                    "mime-type": "application/zip",
+                    "resource": "083a55a37f8bcf36f3b51cbc7a7ea97bb60107478a6470f0c9fa9df13196ca63"
+                }
+            },
             "log": {
                 "2021-09-06": {
                     "bytes": 32408808,
@@ -1203,10 +1235,41 @@
                     "resource": "083a55a37f8bcf36f3b51cbc7a7ea97bb60107478a6470f0c9fa9df13196ca63",
                     "status": "200"
                 }
-            }
+            },
+            "organisation": [
+                "government-organisation:PB1164"
+            ]
         },
-        "5261479c4f52b03d2b6432eed1df1941dc9912b2e87269ed8bcf5d3eb6162410": {},
+        "5261479c4f52b03d2b6432eed1df1941dc9912b2e87269ed8bcf5d3eb6162410": {
+            "dataset": {
+                "conservation-area": {
+                    "entity-count": 7454,
+                    "entry-count": 7544,
+                    "entry-date": "2022-04-21T00:19:59Z",
+                    "internal-mime-type": "x-gis/x-shapefile",
+                    "internal-path": "/20220405_Conservation_Areas_INSPIRE_Dataset.shp",
+                    "line-count": 7775,
+                    "mime-type": "application/zip",
+                    "resource": "5261479c4f52b03d2b6432eed1df1941dc9912b2e87269ed8bcf5d3eb6162410"
+                }
+            },
+            "organisation": [
+                "government-organisation:PB1164"
+            ]
+        },
         "c2f5fcc2524537d98ac79da451ceb62f1bd3b3640fb1ea726636cbe517b67bff": {
+            "dataset": {
+                "conservation-area": {
+                    "entity-count": 109,
+                    "entry-count": 109,
+                    "entry-date": "2022-04-21T00:23:40Z",
+                    "internal-mime-type": "",
+                    "internal-path": "",
+                    "line-count": 111,
+                    "mime-type": "text/csv;charset=ASCII",
+                    "resource": "c2f5fcc2524537d98ac79da451ceb62f1bd3b3640fb1ea726636cbe517b67bff"
+                }
+            },
             "log": {
                 "2021-05-08": {
                     "bytes": 31185,
@@ -3890,9 +3953,24 @@
                     "resource": "c2f5fcc2524537d98ac79da451ceb62f1bd3b3640fb1ea726636cbe517b67bff",
                     "status": "200"
                 }
-            }
+            },
+            "organisation": [
+                "government-organisation:D4"
+            ]
         },
         "e1acccbd6a46963b7c34ea51d1255e28d605b35264a7a7d583121de641b54bbf": {
+            "dataset": {
+                "conservation-area": {
+                    "entity-count": 109,
+                    "entry-count": 109,
+                    "entry-date": "2022-04-21T00:24:48Z",
+                    "internal-mime-type": "",
+                    "internal-path": "",
+                    "line-count": 111,
+                    "mime-type": "text/csv;charset=ASCII",
+                    "resource": "e1acccbd6a46963b7c34ea51d1255e28d605b35264a7a7d583121de641b54bbf"
+                }
+            },
             "log": {
                 "2021-04-12": {
                     "bytes": 31176,
@@ -4128,9 +4206,24 @@
                     "resource": "e1acccbd6a46963b7c34ea51d1255e28d605b35264a7a7d583121de641b54bbf",
                     "status": "200"
                 }
-            }
+            },
+            "organisation": [
+                "government-organisation:D4"
+            ]
         },
         "f498f7e6f6eab582c68aa42a62bf61b74a01cf938d664fe44aaa0bb5ba23d845": {
+            "dataset": {
+                "conservation-area": {
+                    "entity-count": 62,
+                    "entry-count": 62,
+                    "entry-date": "2022-04-21T00:25:42Z",
+                    "internal-mime-type": "",
+                    "internal-path": "",
+                    "line-count": 63,
+                    "mime-type": "application/json;charset=ASCII",
+                    "resource": "f498f7e6f6eab582c68aa42a62bf61b74a01cf938d664fe44aaa0bb5ba23d845"
+                }
+            },
             "log": {
                 "2020-09-04": {
                     "bytes": 893311,
@@ -4294,9 +4387,24 @@
                     "resource": "f498f7e6f6eab582c68aa42a62bf61b74a01cf938d664fe44aaa0bb5ba23d845",
                     "status": "200"
                 }
-            }
+            },
+            "organisation": [
+                "local-authority-eng:LBH"
+            ]
         },
         "f617d13ef7ff061424ec50ed641f05779797ff03beb2cde6935f2a307c01ab44": {
+            "dataset": {
+                "conservation-area": {
+                    "entity-count": 1009,
+                    "entry-count": 1009,
+                    "entry-date": "2022-04-21T00:25:53Z",
+                    "internal-mime-type": "",
+                    "internal-path": "",
+                    "line-count": 1036,
+                    "mime-type": "application/geopackage+sqlite3",
+                    "resource": "f617d13ef7ff061424ec50ed641f05779797ff03beb2cde6935f2a307c01ab44"
+                }
+            },
             "log": {
                 "2020-09-04": {
                     "bytes": 5648384,
@@ -8627,9 +8735,25 @@
                     "resource": "f617d13ef7ff061424ec50ed641f05779797ff03beb2cde6935f2a307c01ab44",
                     "status": "200"
                 }
-            }
+            },
+            "organisation": [
+                "local-authority-eng:GLA",
+                "local-authority-eng:SWK"
+            ]
         },
         "f8aaf696417923bac77e7c2d7fedeff24a9c4be81cf33e4e7a800fc8d70c2c0c": {
+            "dataset": {
+                "conservation-area": {
+                    "entity-count": 7452,
+                    "entry-count": 7543,
+                    "entry-date": "2022-04-21T00:26:51Z",
+                    "internal-mime-type": "x-gis/x-shapefile",
+                    "internal-path": "/20210922_Conservation_Areas_INSPIRE_dataset.shp",
+                    "line-count": 7544,
+                    "mime-type": "application/zip",
+                    "resource": "f8aaf696417923bac77e7c2d7fedeff24a9c4be81cf33e4e7a800fc8d70c2c0c"
+                }
+            },
             "log": {
                 "2021-09-23": {
                     "bytes": 32379679,
@@ -10071,7 +10195,10 @@
                     "resource": "f8aaf696417923bac77e7c2d7fedeff24a9c4be81cf33e4e7a800fc8d70c2c0c",
                     "status": "200"
                 }
-            }
+            },
+            "organisation": [
+                "government-organisation:PB1164"
+            ]
         }
     },
     "source": {}

@@ -85,6 +85,8 @@ for entity in entities:
 
             # add fact to entity
             p = data["entity"][o["entity"]].setdefault("provenance", {
+                "resource" : set(),
+                "organisation": set(),
                 "field-fact": {},
                 "fact-field": {}})
             p["fact-field"][o["fact"]] = o["field"]
@@ -132,9 +134,24 @@ for row in r["rows"]:
     data["resource"][resource].setdefault("log", {})
     data["resource"][resource]["log"][date] = o
 
-# add
-# https://datasette.digital-land.info/digital-land?sql=select+resource%2C+organisation+from+resource_organisation+where+resource+in+%28%2280709f042768e421a82f4aaa523f34b837e77af71b4c8afcd7f4f05938e9e98b%22%29
 
+# add resource-organisation
+fields = [
+    "resource",
+    "organisation",
+]
+field_list = "%2C".join(fields).replace("-", "_")
+r = get(
+    f"https://datasette.digital-land.info/digital-land.json?sql=select+{field_list}+from+resource_organisation+where+resource+in+%28{resources}%29"
+)
+for row in r["rows"]:
+    o = dict(zip(fields, row))
+    resource = o["resource"]
+    data["resource"][resource].setdefault("organisation", set())
+    data["resource"][resource]["organisation"].add(o["organisation"])
+
+
+# add dataset-resource
 fields = [
     "resource",
     "entry-date",
@@ -155,6 +172,14 @@ for dataset in data["dataset"]:
             data["resource"][resource].setdefault("dataset", {})
             data["resource"][resource]["dataset"][dataset] = o
 
+# add resources and organisations to each entity
+for fact, f in data["fact"].items():
+    for resource in f["resource"]:
+        data["entity"][f["entity"]]["provenance"]["resource"].add(resource)
+        for organisation in data["resource"][resource]["organisation"]:
+            data["entity"][f["entity"]]["provenance"]["organisation"].add(organisation)
+
+
 # patch the data ..
 for entity, field, value in (
     ("3030363", "reference", "CA01"),
@@ -165,4 +190,4 @@ for entity, field, value in (
 
 
 with open("data.json", "w") as f:
-    json.dump(data, f, sort_keys=True, indent=4)
+    json.dump(data, f, sort_keys=True, indent=4, default=tuple)
