@@ -7,12 +7,12 @@ import hashlib
 entities = ["3030363", "192", "16"]
 
 data = {
+    "dataset": {},
     "entity": {},
     "fact": {},
     "resource": {},
     "source": {},
     "endpoint": {},
-    "log": {},
 }
 
 
@@ -40,6 +40,7 @@ for entity in entities:
     o = get(f"https://www.digital-land.info/entity/{entity}.json")
     o["entity"] = str(o["entity"])
     data["entity"][entity] = o
+    data["dataset"].setdefault(o["dataset"], {})
 
 
 for entity in entities:
@@ -134,7 +135,27 @@ for row in r["rows"]:
 # add
 # https://datasette.digital-land.info/digital-land?sql=select+resource%2C+organisation+from+resource_organisation+where+resource+in+%28%2280709f042768e421a82f4aaa523f34b837e77af71b4c8afcd7f4f05938e9e98b%22%29
 
-# hack the data ..
+fields = [
+    "resource",
+    "entry-date",
+    "entity-count",
+    "entry-count",
+    "line-count",
+    "mime-type",
+    "internal-path",
+    "internal-mime-type",
+]
+field_list = "%2C".join(fields).replace("-", "_")
+for dataset in data["dataset"]:
+    r = get(f"https://datasette.digital-land.info/{dataset}.json?sql=select+{field_list}+from+dataset_resource+where+%22resource%22+in+%28{resources}%29")
+    if r:
+        for row in r["rows"]:
+            o = dict(zip(fields, row))
+            resource = o["resource"]
+            data["resource"][resource].setdefault("dataset", {})
+            data["resource"][resource]["dataset"][dataset] = o
+
+# patch the data ..
 for entity, field, value in (
     ("3030363", "reference", "CA01"),
     ("3030363", "organisation-entity", "192"),
