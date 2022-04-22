@@ -4,7 +4,22 @@ import requests
 import json
 import hashlib
 
-entities = ["3030363", "192", "16"]
+entities = ["3030363", "192", "16", "329", "144"]
+
+# until we resolve primary/secondary source ..
+patches = (
+    ("3030363", "reference", "CA01"),
+    ("3030363", "organisation-entity", "192"),
+    ("3030363", "organisation", "local-authority-eng:LBH"),
+)
+
+# pipeline should provide these ..
+references = {
+    "5336": "3030363",
+    "COA00000265": "3030363",
+    "CA01": "3030363",
+    "53": "3030363",
+}
 
 data = {
     "dataset": {},
@@ -13,6 +28,7 @@ data = {
     "resource": {},
     "source": {},
     "endpoint": {},
+    "curie": {},
 }
 
 
@@ -179,14 +195,27 @@ for fact, f in data["fact"].items():
         for organisation in data["resource"][resource]["organisation"]:
             data["entity"][f["entity"]]["provenance"]["organisation"].add(organisation)
 
-
 # patch the data ..
-for entity, field, value in (
-    ("3030363", "reference", "CA01"),
-    ("3030363", "organisation-entity", "192"),
-    ("3030363", "organisation", "local-authority-eng:LBH"),
-):
+for entity, field, value in patches:
     data["entity"][entity][field] = value
+
+# curie index
+for entity in data["entity"]:
+    data["curie"][entity_curie(entity)] = entity
+
+# patch fact reference-entity values
+references = references | data["curie"]
+for fact, f in data["fact"].items():
+    if f["value"] in references:
+        f["reference-entity"] = references[f["value"]]
+
+# dataset info
+for dataset in data["dataset"]:
+    o = get(
+        f"https://datasette.digital-land.info/digital-land/dataset.json?dataset__exact={dataset}&_shape=object"
+    )
+    if o:
+        data["dataset"][dataset] = o
 
 
 with open("data.json", "w") as f:
