@@ -217,6 +217,19 @@ for dataset in data["dataset"]:
     if o:
         data["dataset"][dataset] = o
 
+# add endpoints
+for resource, ro in data["resource"].items():
+    for log, l in ro["log"].items():
+        endpoint = l["endpoint"]
+        if endpoint not in data["endpoint"]:
+            r = get(f"https://datasette.digital-land.info/digital-land/endpoint.json?endpoint__exact={endpoint}&_shape=object")
+            data["endpoint"][endpoint] = r[endpoint]
+
+# add sources
+for endpoint in data["endpoint"]:
+    r = get(f"https://datasette.digital-land.info/digital-land/source.json?endpoint__exact={endpoint}&_shape=object")
+    for source, s in r.items():
+        data["source"][source] = s
 
 with open("data.json", "w") as f:
     json.dump(data, f, sort_keys=True, indent=4, default=tuple)
