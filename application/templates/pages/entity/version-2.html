@@ -5,30 +5,33 @@
 {% block pageTitle %}Provenance - Digital Land{% endblock %}
 {% block content %}
 
-  <main id="content" role="main">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-        <span class="govuk-caption-xl">Conservation area</span>
-        <h1 class="govuk-heading-xl">Wheathampstead</h1>
-      </div>
+    <main id="content" role="main">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+                <span class="govuk-caption-xl">Conservation area</span>
+                <h1 class="govuk-heading-xl">Wheathampstead</h1>
+            </div>
 
-      <div class="govuk-grid-column-two-thirds">
+            <div class="govuk-grid-column-two-thirds">
 
-        <section class="app-summary-card govuk-!-margin-bottom-0">
-          <div class="app-summary-card__body">
-            <table class="govuk-table">
-              <thead class="govuk-table__head">
-                <tr class="govuk-table__row">
-                  <th scope="col" class="govuk-table__header">Field</th>
-                  <th scope="col" class="govuk-table__header">Value</th>
-                  <th scope="col" class="govuk-table__header"></th>
-                </tr>
-              </thead>
-              <tbody class="govuk-table__body">
-                {% set actionsObject = {
+                <section class="app-summary-card govuk-!-margin-bottom-0">
+                    <div class="app-summary-card__body">
+                        <table class="govuk-table">
+                            <thead class="govuk-table__head">
+                                <tr class="govuk-table__row">
+                                    <th scope="col" class="govuk-table__header">Field</th>
+                                    <th scope="col" class="govuk-table__header">Value</th>
+                                    <th scope="col" class="govuk-table__header"></th>
+                                </tr>
+                            </thead>
+
+                            <div></div>
+
+                            <tbody class="govuk-table__body">
+                                {% set actionsObject = {
                   'provenance': {
-                    'text': 'Inspect',
-                    'url': '#provenance'
+                    'text': 'Source',
+                    'url': 'version-2-provenance.html'
                   }
                 } %}
 
@@ -85,28 +88,29 @@
                     'actions': actionsObject
                   }
                 ] %}
+                
                 {% for row in recordData %}
-                  <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">{{ row.field }}</td>
-                    <td class="govuk-table__cell">
-                      <span class="u-data-value">{{ row.value }}</span>
-                    </td>
-                    <td class="govuk-table__cell govuk-!-font-size-14 govuk-!-text-align-right">
-                      {% if row.actions.provenance %}
-                        <a href="{{ row.actions.provenance.url | default('', true) }}">{{ row.actions.provenance.text }}</a>
-                      {% endif %}
-                    </td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          </div>
-        </section>
+                                    <tr class="govuk-table__row">
+                                        <td class="govuk-table__cell">{{ row.field }}</td>
+                                        <td class="govuk-table__cell">
+                                            <span class="u-data-value">{{ row.value }}</span>
+                                        </td>
+                                        <td class="govuk-table__cell govuk-!-font-size-14 govuk-!-text-align-right">
+                                            {% if row.actions.provenance %}
+                                                <a href="{{ row.actions.provenance.url | default('', true) }}">{{ row.actions.provenance.text }}</a>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
 
-        {%- set jsonHTML -%}
-          <div class="app-c-content">
-          <h3 class="govuk-heading-s govuk-!-visually-hidden-from-tablet">JSON</h3>
-          <pre class="govuk-!-margin-0"><code class="language="json">{
+                {%- set jsonHTML -%}
+                <div class="app-c-content">
+                    <h3 class="govuk-heading-s govuk-!-visually-hidden-from-tablet">JSON</h3>
+                    <pre class="govuk-!-margin-0"><code class="language="json">{
   "entity": "3015314",
   "dataset": "conservation-area",	
   "organisation-entity": "16",
@@ -118,18 +122,18 @@
   "end-date": "",
   "entry-date": "2021-09-23"
 }</code></pre>
-          </div>
-        {%- endset -%}
+                </div>
+{%- endset -%}
 
-        {%- set csvHTML -%}
-          <div class="app-c-content">
-          <h3 class="govuk-heading-s govuk-!-visually-hidden-from-tablet">CSV</h3>
-<pre class="govuk-!-margin-0"><code class="language="csv">entity,dataset,organisation-entity,prefix,reference,name,typology,start-date,end-date,entry-date
+{%- set csvHTML -%}
+<div class="app-c-content">
+    <h3 class="govuk-heading-s govuk-!-visually-hidden-from-tablet">CSV</h3>
+    <pre class="govuk-!-margin-0"><code class="language="csv">entity,dataset,organisation-entity,prefix,reference,name,typology,start-date,end-date,entry-date
 3015314,conservation-area,16,conservation-area-bor,CA01,Wheathampstead,geography,1969-03-24,,2021-09-23</code></pre>
-          </div>
-        {%- endset -%}
+</div>
+{%- endset -%}
 
-        {{ govukTabs({
+{{ govukTabs({
           'classes': 'govuk-tabs--entity govuk-!-margin-bottom-0',
           'items': [
             {
@@ -149,112 +153,110 @@
           ]
         }) }}
 
-        <div class="app-c-sources-panel govuk-!-margin-bottom-6">
-            Data provided by <a href="#">Historic England</a> and <a href="#">Lambeth Council</a>
-        </div>
+<div class="app-c-sources-panel govuk-!-margin-bottom-6">
+    Data provided by <a href="#">Historic England</a> and <a href="#">Lambeth Council</a>
+</div>
 
-        {% set overviewHTML %}        
-          <h3 class="govuk-heading-s">Entity</h3>
-          <p>An entity is the label we have given to a group of data fields about a specific thing. An entity can represent anything, this page shows the entity for 'Wheathampstead', which we have established from the value of the 'name' field.</p>
-          <h3 class="govuk-heading-s">Field</h3>
-          <p>A field is a single piece of data (sometimes called a row of data) about a specific thing. A field has a name (sometimes called a 'column name') and a possible value.</p>
-          <p>Each field has a source link, clicking it will show you:</p>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>where that data (the field and it's value) were was collected from</li>
-            <li>why that data is being used (if there are multiple possible sources available)</li>
-          </ul>
-        {% endset %}
+{% set overviewHTML %}
+<h3 class="govuk-heading-s">Entity</h3>
+<p>An entity is the label we have given to a group of data fields about a specific thing. An entity can represent anything, this page shows the entity for 'Wheathampstead', which we have established from the value of the 'name' field.</p>
+<h3 class="govuk-heading-s">Field</h3>
+<p>A field is a single piece of data (sometimes called a row of data) about a specific thing. A field has a name (sometimes called a 'column name') and a possible value.</p>
+<p>Each field has a source link, clicking it will show you:</p>
+<ul class="govuk-list govuk-list--bullet">
+    <li>where that data (the field and it's value) were was collected from</li>
+    <li>why that data is being used (if there are multiple possible sources available)</li>
+</ul>
+{% endset %}
 
-        {{ govukDetails({
+{{ govukDetails({
           'summaryText': "Help understanding this table",
           'text': overviewHTML
         })}}
 
-        <section class="app-c-key-dates">
-          <p class="app-c-key-dates__item">First collected 12 April 2020</p>
-          <p class="app-c-key-dates__item">Last updated 09 Dec 2021 <a href="#updatesfull" class="toggle" data-toggled-text="- Hide all updates" data-default-text="+ Show all updates">+ Show all updates</a>
-          </p>
-          <div class="app-c-key-dates__additional" id="updatesfull">
-            <ol class="app-c-key-dates__list">
-              <li class="app-c-key-dates__list-item">
+<section class="app-c-key-dates">
+    <p class="app-c-key-dates__item">First collected 12 April 2020</p>
+    <p class="app-c-key-dates__item">Last updated 09 Dec 2021 <a href="#updatesfull" class="toggle" data-toggled-text="- Hide all updates" data-default-text="+ Show all updates">+ Show all updates</a>
+    </p>
+    <div class="app-c-key-dates__additional" id="updatesfull">
+        <ol class="app-c-key-dates__list">
+            <li class="app-c-key-dates__list-item">
                 <time class="app-c-key-dates__list-date timestamp" datetime="2022-04-01T08:27:00.000+01:00">1 Feb 2022</time>
                 <p class="app-c-key-dates__list-note">
-                  <a href="version-2-history.html#lastupdated">Field name was updated</a>
+                    <a href="version-2-history.html#lastupdated">Field name was updated</a>
                 </p>
-              </li>
-              <li class="app-c-key-dates__list-item">
+            </li>
+            <li class="app-c-key-dates__list-item">
                 <time class="app-c-key-dates__list-date timestamp" datetime="2022-04-12T16:47:41.000+01:00">12 April 2020</time>
                 <p class="app-c-key-dates__list-note">
-                  <a href="version-2-history.html#firstcollected">First collected</a>
+                    <a href="version-2-history.html#firstcollected">First collected</a>
                 </p>
-              </li>
-            </ol>
-          </div>
-        </section>
-        <!-- /.app-history-summary -->
-
-        <script>
-
-          // this is utter garbage to test an idea. If you read this comment
-          // in a product code base. Something has gone very very wrong!
-
-          var show = function (elem) {
-            elem.style.display = 'block';
-          };
-
-          var hide = function (elem) {
-            elem.style.display = 'none';
-          };
-
-          var toggle = function (elem, $toggler, defaultText, toggledText) {
-
-            // If the element is visible, hide it
-            if (window.getComputedStyle(elem).display === 'block') {
-              hide(elem);
-              $toggler.innerHTML = defaultText;
-            } else {
-              // Otherwise, show it
-              show(elem);
-              $toggler.innerHTML = toggledText;
-            }
-
-          };
-
-          // Listen for click events
-          document.addEventListener('click', function (event) {
-
-            // Make sure clicked element is our toggle
-            if (!event.target.classList.contains('toggle')) 
-              return;
-            
-            // Prevent default link behavior
-            event.preventDefault();
-
-            // Get the content
-            var $toggler = event.target;
-            var defaultText = $toggler.getAttribute('data-default-text');
-            var toggledText = $toggler.getAttribute('data-toggled-text');
-            var content = document.querySelector($toggler.hash);
-
-            if (!content) 
-              return;
-            
-            // Toggle the content
-            toggle(content, $toggler, defaultText, toggledText);
-
-          }, false);
-        </script>
-
-      </div>
+            </li>
+        </ol>
     </div>
-  </main>
+</section>
+<!-- /.app-history-summary -->
+
+<script>
+    // this is utter garbage to test an idea. If you read this comment
+    // in a product code base. Something has gone very very wrong!
+
+    var show = function(elem) {
+        elem.style.display = 'block';
+    };
+
+    var hide = function(elem) {
+        elem.style.display = 'none';
+    };
+
+    var toggle = function(elem, $toggler, defaultText, toggledText) {
+
+        // If the element is visible, hide it
+        if (window.getComputedStyle(elem).display === 'block') {
+            hide(elem);
+            $toggler.innerHTML = defaultText;
+        } else {
+            // Otherwise, show it
+            show(elem);
+            $toggler.innerHTML = toggledText;
+        }
+
+    };
+
+    // Listen for click events
+    document.addEventListener('click', function(event) {
+
+        // Make sure clicked element is our toggle
+        if (!event.target.classList.contains('toggle'))
+            return;
+
+        // Prevent default link behavior
+        event.preventDefault();
+
+        // Get the content
+        var $toggler = event.target;
+        var defaultText = $toggler.getAttribute('data-default-text');
+        var toggledText = $toggler.getAttribute('data-toggled-text');
+        var content = document.querySelector($toggler.hash);
+
+        if (!content)
+            return;
+
+        // Toggle the content
+        toggle(content, $toggler, defaultText, toggledText);
+
+    }, false);
+</script>
+
+</div>
+</div>
+</main>
 {% endblock %}
 
 {% block bodyEnd %}
-  {{ super() }}
-  {# <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/styles/a11y-dark.min.css"> #}
-<style>
-/*!
+    {{ super() }} 
+    <style>
+        /*!
   Theme: StackOverflow Light
   Description: Light theme as used on stackoverflow.com
   Author: stackoverflow.com
@@ -268,119 +270,121 @@
   Colors: /blob/v0.64.0/lib/css/exports/_stacks-constants-colors.less
 */
 
-.hljs {
-  /* var(--highlight-csolor) */
-  color: #2f3337;
-  /* var(--highlight-bg) */
-  background: #f6f6f6;
-}
+        .hljs {
+            /* var(--highlight-csolor) */
+            color: #2f3337;
+            /* var(--highlight-bg) */
+            background: #f6f6f6;
+        }
 
-.hljs-subst {
-  /* var(--highlight-color) */
-  color: #2f3337;
-}
+        .hljs-subst {
+            /* var(--highlight-color) */
+            color: #2f3337;
+        }
 
-.hljs-comment {
-  /* var(--highlight-comment) */
-  color: #656e77;
-}
+        .hljs-comment {
+            /* var(--highlight-comment) */
+            color: #656e77;
+        }
 
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-meta .hljs-keyword,
-.hljs-doctag,
-.hljs-section {
-  /* var(--highlight-keyword) */
-  color: #015692;
-}
+        .hljs-keyword,
+        .hljs-selector-tag,
+        .hljs-meta .hljs-keyword,
+        .hljs-doctag,
+        .hljs-section {
+            /* var(--highlight-keyword) */
+            color: #015692;
+        }
 
-.hljs-attr {
-  /* var(--highlight-attribute); */
-  color: #015692;
-}
+        .hljs-attr {
+            /* var(--highlight-attribute); */
+            color: #015692;
+        }
 
-.hljs-attribute {
-  /* var(--highlight-symbol) */
-  color: #803378;
-}
+        .hljs-attribute {
+            /* var(--highlight-symbol) */
+            color: #803378;
+        }
 
-.hljs-name,
-.hljs-type,
-.hljs-number,
-.hljs-selector-id,
-.hljs-quote,
-.hljs-template-tag {
-  /* var(--highlight-namespace) */
-  color: #b75501;
-}
+        .hljs-name,
+        .hljs-type,
+        .hljs-number,
+        .hljs-selector-id,
+        .hljs-quote,
+        .hljs-template-tag {
+            /* var(--highlight-na mespace) */
+            color: #b75501;
+        }
 
-.hljs-selector-class {
-  /* var(--highlight-keyword) */
-  color: #015692;
-}
+        .hljs-selector-class {
+            /* var(--highlight-keyword) */
+            color: #015692;
+        }
 
-.hljs-string,
-.hljs-regexp,
-.hljs-symbol,
-.hljs-variable,
-.hljs-template-variable,
-.hljs-link,
-.hljs-selector-attr {
-  /* var(--highlight-variable) */
-  color: #54790d;
-}
+        .hljs-string,
+        .hljs-regexp,
+        .hljs-symbol,
+        .hljs-variable,
+        .hljs-template-variable,
+        .hljs-link,
+        .hljs-selector-attr {
+            /* var(--highlight-variable) */
+            color: #54790d;
+        }
 
-.hljs-meta,
-.hljs-selector-pseudo {
-  /* var(--highlight-keyword) */
-  color: #015692;
-}
+        .hljs-meta,
+        .hljs-selector-pseudo {
+            /* var(--highlight-keyword) */
+            color: #015692;
+        }
 
-.hljs-built_in,
-.hljs-title,
-.hljs-literal {
-  /* var(--highlight-literal) */
-  color: #b75501;
-}
+        .hljs-built_in,
+        .hljs-title,
+        .hljs-literal {
+            /* var(--highlight-literal) */
+            color: #b75501;
+        }
 
-.hljs-bullet,
-.hljs-code {
-  /* var(--highlight-punctuation) */
-  color: #535a60;
-}
+        .hljs-bullet,
+        .hljs-code {
+            /* var(--highlight-punctuation) */
+            color: #535a60;
+        }
 
-.hljs-meta .hljs-string {
-  /* var(--highlight-variable) */
-  color: #54790d;
-}
+        .hljs-meta .hljs-string {
+            /* var(--highlight-variable) */
+            color: #54790d;
+        }
 
-.hljs-deletion {
-  /* var(--highlight-deletion) */
-  color: #c02d2e;
-}
+        .hljs-deletion {
+            /* var(--highlight-deletion) */
+            color: #c02d2e;
+        }
 
-.hljs-addition {
-  /* var(--highlight-addition) */
-  color: #2f6f44;
-}
+        .hljs-addition {
+            /* var(--highlight-addition) */
+            color: #2f6f44;
+        }
 
-.hljs-emphasis {
-  font-style: italic;
-}
+        .hljs-emphasis {
+            font-style: italic;
+        }
 
-.hljs-strong {
-  font-weight: bold;
-}
+        .hljs-strong {
+            font-weight: bold;
+        }
 
-.hljs-formula,
-.hljs-operator,
-.hljs-params,
-.hljs-property,
-.hljs-punctuation,
-.hljs-tag {
-  /* purposely ignored */
-}
-</style>
-  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
-<script>hljs.highlightAll();</script>
-{% endblock bodyEnd %}
+        .hljs-formula,
+        .hljs-operator,
+        .hljs-params,
+        .hljs-property,
+        .hljs-punctuation,
+        .hljs-tag {
+            /* purposely ignored */
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
+{% endblock bodyEnd %} 

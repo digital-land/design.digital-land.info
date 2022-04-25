@@ -56,8 +56,9 @@ def match_template(path):
     versionClasses = "app-" + versionClasses.replace(".html", "", 1)
 
     print("look for: ", path, file)
+    provenanceData = read_json_file("data/provenance/data.json")
     if os.path.exists(file):
-        return render_template(path, versionClasses=versionClasses)
+        return render_template(path, versionClasses=versionClasses, provenanceData=provenanceData)
 
     # else show no template
     return redirect(url_for("base.notemplate"))

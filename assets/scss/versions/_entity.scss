@@ -1,8 +1,40 @@
 // this anything in here will be in scope for all ripa prototypes
-[class*='app-entity'] {
+[class*="app-entity"] {
 }
 
-[class*='app-entity-version-2'] {
+[class*="app-entity-version-2"] {
+  .app-u-breakword {
+    word-break: break-all;
+    line-height: 1.1em;
+    position: relative;
+    max-height: calc(1.1em);
+    overflow: hidden;
+    padding-right: 0.65em; /* space for ellipsis */
+    display: block;
+    &:hover {
+      max-height: calc(1.1em * 5);
+    }
+  }
+  .app-u-breakword::before {
+    // color: $govuk-border-colour;
+    position: absolute;
+    content: "...";
+    inset-block-end: 0; /* "bottom" */
+    inset-inline-end: 0; /* "right" */
+  }
+  .app-u-breakword::after {
+    content: "";
+    position: absolute;
+    inset-inline-end: 0; /* "right" */
+    width: 1em;
+    height: 1em;
+    background: white;
+  }
+
+  .app-u-width-one-quarter {
+    width: 25%;
+  }
+
   .app-c-timeline {
     padding-left: 0;
     list-style-type: none;
@@ -14,7 +46,7 @@
       list-style-type: none;
     }
     .app-c-nested-timeline__wrapper {
-      border-left: 4px solid govuk-colour('mid-grey');
+      border-left: 4px solid govuk-colour("mid-grey");
       position: relative;
       margin-top: 10px;
     }
@@ -24,10 +56,10 @@
       position: relative;
       top: -10px;
       &:before {
-        content: ' ';
+        content: " ";
         height: 4px;
         width: 10px;
-        background: govuk-colour('mid-grey');
+        background: govuk-colour("mid-grey");
         display: inline-block;
         position: absolute;
         top: 10px;
@@ -163,7 +195,7 @@
   }
 
   .app-c-sources-panel {
-    background-color: govuk-colour('light-grey');
+    background-color: govuk-colour("light-grey");
     border: 1px solid $govuk-border-colour;
     padding: govuk-spacing(3);
     @include govuk-font($size: 14);
