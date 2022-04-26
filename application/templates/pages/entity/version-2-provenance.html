@@ -21,7 +21,6 @@
             <table class="govuk-table">
               <thead class="govuk-table__head">
                 <tr class="govuk-table__row">
-                  <th scope="col" class="govuk-table__header app-u-width-one-quarter">Fact</th>
                   <th scope="col" class="govuk-table__header app-u-width-one-quarter">Field</th>
                   <th scope="col" class="govuk-table__header app-u-width-one-quarter">Value</th>
                   <th scope="col" class="govuk-table__header app-u-width-one-quarter">Resources</th>
@@ -30,14 +29,15 @@
               <tbody class="govuk-table__body">
 
               {% set factData = provenanceData.fact %}
+                {{ factData | debug | safe }}
                 {% for key, value in factData.items() %}
                   <tr class="govuk-table__row">
-                    <td class="govuk-table__cell app-u-width-one-quarter">
+                    {# <td class="govuk-table__cell app-u-width-one-quarter">
                       <span class="app-u-breakword">
                         {{ key }}
                       </span>
-                    </td>
-                    <td class="govuk-table__cell">{{ value.field }}</td>
+                    </td> #}
+                    <td class="govuk-table__cell"><a href="/{{ key }}">{{ value.field }}</a></td>
                     <td class="govuk-table__cell">
                       <span class="u-data-value">
                       {% if value.field == 'geometry' %}
