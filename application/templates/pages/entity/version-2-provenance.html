@@ -21,6 +21,7 @@
             <table class="govuk-table">
               <thead class="govuk-table__head">
                 <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header app-u-width-one-quarter">Fact</th>
                   <th scope="col" class="govuk-table__header app-u-width-one-quarter">Field</th>
                   <th scope="col" class="govuk-table__header app-u-width-one-quarter">Value</th>
                   <th scope="col" class="govuk-table__header app-u-width-one-quarter">Resources</th>
@@ -32,11 +33,11 @@
                 {{ factData | debug | safe }}
                 {% for key, value in factData.items() %}
                   <tr class="govuk-table__row">
-                    {# <td class="govuk-table__cell app-u-width-one-quarter">
+                    <td class="govuk-table__cell app-u-width-one-quarter">
                       <span class="app-u-breakword">
-                        {{ key }}
+                        <a href="#">{{ key }}</a>
                       </span>
-                    </td> #}
+                    </td>
                     <td class="govuk-table__cell"><a href="/{{ key }}">{{ value.field }}</a></td>
                     <td class="govuk-table__cell">
                       <span class="u-data-value">
@@ -53,7 +54,11 @@
                       {% if value.resource %}
                         <ul class="govuk-list govuk-!-margin-bottom-0">
                         {% for resourceItem in value.resource  %}
-                          <li style="display:inline-block;"><a href="#">{{ loop.index }}</a></li>
+                          <li style="display:inline-block;">
+                          <span class="app-u-breakword">
+                            <a href="#">{{ resourceItem }}
+                          </span>
+                          </a></li>
                         {% endfor %}
                         </ul>
                       {% endif %}
