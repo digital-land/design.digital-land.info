@@ -5,7 +5,6 @@ from flask import Blueprint, redirect, render_template, url_for
 
 base = Blueprint("base", __name__)
 
-
 @base.context_processor
 def set_globals():
     return {"staticPath": "https://digital-land.github.io"}
@@ -57,8 +56,36 @@ def match_template(path):
 
     print("look for: ", path, file)
     provenanceData = read_json_file("data/provenance/data.json")
+    performanceThing = {
+        "local-authority-eng:LBH":{
+            "area-of-outstanding-natural-beauty":None,
+            "article-4-direction-area":False,
+            "central-activities-zone":True,
+            "conservation-area":False,
+            "listed-building":None,
+            "listed-building-outline":False,
+            "national-park":None,
+            "scheduled-monuments":None,
+            "site-of-special-scientific-interest":None,
+            "tree-preservation-order":None
+        }
+    }
+
+    datasets = [
+      "area-of-outstanding-natural-beauty",
+      "article-4-direction-area",
+      "central-activities-zone",
+      "conservation-area",
+      "listed-building",
+      "listed-building-outline",
+      "national-park",
+      "scheduled-monuments",
+      "site-of-special-scientific-interest",
+      "tree-preservation-order"
+    ]
+
     if os.path.exists(file):
-        return render_template(path, versionClasses=versionClasses, provenanceData=provenanceData)
+        return render_template(path, versionClasses=versionClasses, provenanceData=provenanceData, performanceThing=performanceThing, datasets=datasets)
 
     # else show no template
     return redirect(url_for("base.notemplate"))
