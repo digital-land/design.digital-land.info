@@ -7,3 +7,7 @@ def hex_to_rgb_string(hex):
 
 def debug(thing):
   return f"<script>console.log({json.dumps(thing)});</script>"
+
+def unhyphenate(myString):
+    tx = myString.replace('-',' ')
+    return tx

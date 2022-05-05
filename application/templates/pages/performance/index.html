@@ -9,176 +9,65 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
 
-      {# {{ performanceThing }} #}
-
-      {# <ul class="govuk-list govuk-list--bullet">
-      {% for la in performanceThing %}
-          <li>
-            {{ la }}
-            <ul>
-              {% for d in datasets  %}
-              <li>{{ d }} {{ performanceThing[la][d] }}</li>
-              {% endfor %}
-            </ul>
-          </li>
-      {% endfor %}
-      </ul> #}
-
-      {% set jsonData = {
-        "local-authority-eng:LBH":{
-            "area-of-outstanding-natural-beauty":None,
-            "article-4-direction-area":False,
-            "central-activities-zone":True,
-            "conservation-area":False,
-            "listed-building":None,
-            "listed-building-outline":False,
-            "national-park":None,
-            "scheduled-monuments":None,
-            "site-of-special-scientific-interest":None,
-            "tree-preservation-order":None
-        }
-    }  %}
-
-      {{ jsonData | debug | safe }}
-
       <div class="app-c-test-grid">
 
-{% set gridrow  %}
+      {% set gridrow  %}
 
         <div class="app-c-test-grid__row">
           <div class="app-c-test-grid__label">
-            Bucks
+            LondonBorough of Lambeth
           </div>
           <div class="app-c-test-grid__items">
-            <div class="app-c-test-grid__item">
-              <span class="app-c-test-grid-result app-c-test-grid-result--pass">
-                Area of outstanding natural beauty
-              </span>
-            </div>
-            <div class="app-c-test-grid__item">
-              <span class="app-c-test-grid-result app-c-test-grid-result--pass">
-                Article 4 direction area
-              </span>
-            </div>
-            <div class="app-c-test-grid__item">
-              <span class="app-c-test-grid-result app-c-test-grid-result--fail">
-             Central activities zone
-              </span>
-            </div>
-            <div class="app-c-test-grid__item">
 
-              <span class="app-c-test-grid-result app-c-test-grid-result--fail">
-                Fail
-              </span>
-            </div>
-            <div class="app-c-test-grid__item">
+            {% set datasets = [
+            { 
+              "dataset": "area-of-outstanding-natural-beauty",
+              "result": "pass" 
+            },
+            { 
+              "dataset": "article-4-direction-area",
+              "result": "pass" 
+            },
+            { 
+              "dataset": "central-activities-zone",
+              "result": "pass" 
+            },
+            { 
+              "dataset": "conservation-area",
+              "result": "pass" 
+            },
+            { 
+              "dataset": "listed-building",
+              "result": "fail" 
+            },
+            { 
+              "dataset": "listed-building-outline",
+              "result": "No test" 
+            },
+            { 
+              "dataset": "national-park",
+              "result": "pass" 
+            }
+            ]
+            %}
 
-              <span class="app-c-test-grid-result app-c-test-grid-result--fail">
-                Fail
+            {% for dataset in datasets  %}
+            <div class="app-c-test-grid__item">
+              <span class="app-c-test-grid__result app-c-test-grid__result--{{ dataset.result }}">
+                <span>{{ dataset.dataset | unhyphenate | capitalize }}</span>
+                <span class="app-c-test-grid__result-label">{{ dataset.result | capitalize }}</span>
               </span>
             </div>
-            <div class="app-c-test-grid__item">
+            {% endfor %}
 
-              <span class="app-c-test-grid-result">
-                No test
-              </span>
-            </div>
-            <div class="app-c-test-grid__item">
-
-              <span class="app-c-test-grid-result">
-                No test
-              </span>
-            </div>
-            <div class="app-c-test-grid__item">
-              <span class="app-c-test-grid-result">
-                No test
-              </span>
-            </div>
-            <div class="app-c-test-grid__item">
-              <span class="app-c-test-grid-result">
-                No test
-              </span>
-            </div>
-            <div class="app-c-test-grid__item">
-              <span class="app-c-test-grid-result">
-                No test
-              </span>
-            </div>
           </div>
         </div>
       
-{% endset %}
+      {% endset %}
 
-{% set gridrow2  %}
-
-        <div class="app-c-test-grid__row">
-          <div class="app-c-test-grid__label">
-            Lambeth
-          </div>
-          <div class="app-c-test-grid__items">
-            <div class="app-c-test-grid__item">
-              <span class="app-c-test-grid-result app-c-test-grid-result--pass">
-                Pass
-              </span>
-            </div>
-            <div class="app-c-test-grid__item">
-              <span class="app-c-test-grid-result app-c-test-grid-result--pass">
-                Pass
-              </span>
-            </div>
-            <div class="app-c-test-grid__item">
-              <span class="app-c-test-grid-result app-c-test-grid-result--fail">
-                fail
-              </span>
-            </div>
-            <div class="app-c-test-grid__item">
-              <span class="app-c-test-grid-result app-c-test-grid-result--fail">
-                Fail
-              </span>
-            </div>
-            <div class="app-c-test-grid__item">
-              <span class="app-c-test-grid-result app-c-test-grid-result--fail">
-                Fail
-              </span>
-            </div>
-            <div class="app-c-test-grid__item">
-              <span class="app-c-test-grid-result">
-                No test
-              </span>
-            </div>
-            <div class="app-c-test-grid__item">
-              <span class="app-c-test-grid-result">
-                No test
-              </span>
-            </div>
-            <div class="app-c-test-grid__item">
-
-              <span class="app-c-test-grid-result">
-                No test
-              </span>
-            </div>
-            <div class="app-c-test-grid__item">
-
-              <span class="app-c-test-grid-result">
-                No test
-              </span>
-            </div>
-            <div class="app-c-test-grid__item">
-              <span class="app-c-test-grid-result">
-                No test
-              </span>
-            </div>
-          </div>
-        </div>
-      
-{% endset %}
-
-      </div>
-
-
-{{ gridrow }}
-{{ gridrow2 }}
-  
+      {%- for i in range(0, 4) %}
+        {{ gridrow }}
+      {%- endfor %}
 
       </div>
     </div>

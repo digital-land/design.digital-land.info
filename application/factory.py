@@ -2,6 +2,7 @@
 """
 Flask app factory class
 """
+from application.filters import unhyphenate
 from flask import Flask
 from flask.cli import load_dotenv
 
@@ -51,6 +52,7 @@ def register_filters(app):
 
     app.add_template_filter(hex_to_rgb_string, name="hex_to_rgb")
     app.add_template_filter(debug, name="debug")
+    app.add_template_filter(unhyphenate, name="unhyphenate")
 
 
 def register_extensions(app):
