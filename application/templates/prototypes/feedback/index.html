@@ -1,13 +1,90 @@
 {% extends "layouts/layout.html" %}
+{%- from 'govuk_frontend_jinja/components/details/macro.html' import govukDetails -%}
 {% block pageTitle %}Prototypes - Digital Land{% endblock %}
 {% block content %}
 
   <main id="content" role="main">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
-        <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">Feedback</h1>
+        <span class="govuk-caption-xl">Prototypes</span>
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Feedback application</h1>
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
       </div>
     </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        {% set overviewHTML %}
+
+        <h2 class="govuk-heading-m">User needs</h2>
+
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+          <li>As a GIS officer, I need to understand what DL means by a unique reference and why it’s important, so that I can find a suitable solution that works for me and my policy colleagues.</li>
+          <li>As a GIS/policy officer, I need to know the deadline for resolving an issue, to that I know how quickly I need to act.</li>
+          <li>As a GIS officer, I need to see the sources DL has, so that I can check them.</li>
+          <li>As a GIS/policy officer, I need to be notified of actions, so that I know when there are changes that need my attention.</li>
+          <li>As a GIS/policy officer, I need to resolve actions so that I don’t have to repetitively check (something that isn’t wrong).</li>
+          <li>As a planning policy officer, I need something unique to identify an error, so that I can find (the entity) within my own datasets.</li>
+          <li>As a GIS/policy officer, I need to visualise my data on a map, so that I can see the data and errors more quickly.</li>
+          <li>As a GIS/policy officer, I need to see which points on the map have errors or missing attributes, so that I can investigate them.</li>
+        </ul>
+
+
+        <h2 class="govuk-heading-m">Things the prototype should include</h2>
+
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+          <li>Actions and recommendations per dataset</li>
+          <li>Map and text view or errors </li>
+          <li>Unique reference for entity that the user can use to search their own data</li>
+          <li>Dynamic errors/actions</li>
+          <li>Dynamic naming rather than entity</li>
+        </ul>
+        
+        <h2 class="govuk-heading-m">Iterations from v1 to v2</h2>
+
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+          <li>Remove summary section from all pages</li>
+          <li>Include timeframe for action to be taken</li>
+          <li>Separate actions that are needed vs recommendations within the data collection report </li>
+          <li>Compile / include a list of errors and make them more relevant to the ways users are providing data and the kinds of datasets</li>
+          <li>offer a way to ignore/remove something that isn't actually an error/problem (maybe an email to JIRA for now?)</li>
+          <li>Use whatever the 'unique ID' for an entity is, rather than address</li>
+          <li>Change map red dots to be all entities that need action rather than only entities outside of the LPA boundary</li>
+          <li>Potentially? combine the map view and text view of the data subset page</li>
+          <li>Get rid of the word entity and replace with dynamic word for each dataset, eg. TPOs, conservations areas, listed buildings</li>
+        </ul>
+
+
+        {% endset %}
+
+        {{ govukDetails({
+          'summaryText': "Userneeds and Hypothesis for these designs",
+          'text': overviewHTML,
+          'classes': "govuk-!-margin-bottom-0"
+        })}}
+
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
+          <li>
+            <a href="/pages/entity/">'Entity' page</a><br>Prototype designs of webpages intended to show and help users to understand individual entities.
+          </li>
+          <li class="govuk-!-margin-bottom-0">
+            <a href="/pages/ripa-guidance/">How to publish your data</a><br>Prototype designs of guidance for Local Planning Authorities intended to help them publish data required by planning.data.gov.uk.
+          </li>
+        </ul>
+      </div>
+    </div>
+
   </main>
 {% endblock %}
 
