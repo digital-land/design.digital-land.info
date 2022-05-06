@@ -11,7 +11,7 @@
       <div class="govuk-grid-column-two-thirds">
         <span class="govuk-caption-xl">Organisation</span>
         <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">Manchester City Council</h1>
-        <p class="govuk-body-l">Feedback to help organisations and The Department for Levelling Up, Housing and Communities publish good data.</p>
+        <p class="govuk-body-l">Feedback to help your organisation publish planning data.</p>
       </div>
       <div class="govuk-grid-column-full">
       <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-top-0 govuk-section-break--visible">
@@ -20,7 +20,7 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-l">Datasets</h2>
+        {# <h2 class="govuk-heading-l">Datasets</h2> #}
         <p>The following is a list of the datasets DLUHC creates using data published by each local authority with a status from the last time data was collected.</p>
 
         {% set confObj = {
@@ -40,7 +40,7 @@
               'rows': [
                 [
                   {
-                    'text': 'Brownfield land'
+                    'html': '<a href="#">Brownfield land</a>'
                   }, 
                   {
                     'html': govukTag({'text': confObj.status.actions }), 
@@ -49,7 +49,7 @@
                 ],
                 [
                   {
-                    'text': 'Article 4 direction'
+                    'html': '<a href="#">Article 4 direction</a>'
                   },
                   {
                     'html': govukTag({ 'text': confObj.status.actions }),
@@ -58,7 +58,7 @@
                 ],
                 [
                   {
-                    'text': 'Brownfield site'
+                    'html': '<a href="#">Brownfield site</a>'
                   },
                   {
                     'html': govukTag({ 'text': confObj.status.actions }),
@@ -67,7 +67,52 @@
                 ],
                 [
                   {
-                    'text': 'Conservation area'
+                    'html': '<a href="#">Conservation area</a>'
+                  },
+                  {
+                    'html': govukTag({ 
+                      'text': confObj.status.recommendations,
+                      'classes': 'govuk-tag--blue'
+                    }),
+                    'format': 'numeric'
+                  }
+                ],
+                [
+                  {
+                    'html': '<a href="#">Developer agreement</a>'
+                  },
+                  {
+                    'html': govukTag({ 
+                      'text': confObj.status.recommendations,
+                      'classes': 'govuk-tag--blue'
+                    }),
+                    'format': 'numeric'
+                  }
+                ],
+                [
+                  {
+                    'html': '<a href="#">Developer agreement contribution</a>'
+                  },
+                  {
+                    'html': '',
+                    'format': 'numeric'
+                  }
+                ],
+                [
+                  {
+                    'html': '<a href="#">Developer agreement transaction</a>'
+                  },
+                  {
+                    'html': govukTag({ 
+                      'text': confObj.status.recommendations,
+                      'classes': 'govuk-tag--blue'
+                    }),
+                    'format': 'numeric'
+                  }
+                ],
+                [
+                  {
+                    'html': '<a href="#">Employment allocation</a>'
                   },
                   {
                     'html': govukTag({ 'text': confObj.status.actions }),
@@ -76,7 +121,7 @@
                 ],
                 [
                   {
-                    'text': 'Developer agreement'
+                    'html': '<a href="#">Tree</a>'
                   },
                   {
                     'html': govukTag({ 'text': confObj.status.actions }),
@@ -85,43 +130,7 @@
                 ],
                 [
                   {
-                    'text': 'Developer agreement contribution'
-                  },
-                  {
-                    'html': govukTag({ 'text': confObj.status.actions }),
-                    'format': 'numeric'
-                  }
-                ],
-                [
-                  {
-                    'text': 'Developer agreement transaction'
-                  },
-                  {
-                    'html': govukTag({ 'text': confObj.status.actions }),
-                    'format': 'numeric'
-                  }
-                ],
-                [
-                  {
-                    'text': 'Employment allocation'
-                  },
-                  {
-                    'html': govukTag({ 'text': confObj.status.actions }),
-                    'format': 'numeric'
-                  }
-                ],
-                [
-                  {
-                    'text': 'Tree'
-                  },
-                  {
-                    'html': govukTag({ 'text': confObj.status.actions }),
-                    'format': 'numeric'
-                  }
-                ],
-                [
-                  {
-                    'text': 'Tree preservation order'
+                    'html': '<a href="#">Tree preservation order</a>'
                   },
                   {
                     'html': govukTag({ 'text': confObj.status.actions }),
@@ -132,6 +141,8 @@
             }
           )
         }}
+
+        <p class="govuk-!-font-size-14">This page was last updated {{ '06-05-2022' }}</p>
 
       </div>
     </div>
