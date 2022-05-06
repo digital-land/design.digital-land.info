@@ -1,7 +1,7 @@
 import json
 import os
 
-from flask import Blueprint, redirect, render_template, url_for
+from flask import Blueprint, redirect, render_template, url_for, request
 
 base = Blueprint("base", __name__)
 
@@ -84,8 +84,10 @@ def match_template(path):
       "tree-preservation-order"
     ]
 
+    qs = request.args;
+
     if os.path.exists(file):
-        return render_template(path, versionClasses=versionClasses, provenanceData=provenanceData, performanceThing=performanceThing, datasets=datasets)
+        return render_template(path, versionClasses=versionClasses, provenanceData=provenanceData, performanceThing=performanceThing, datasets=datasets, qs=qs)
 
     # else show no template
     return redirect(url_for("base.notemplate"))

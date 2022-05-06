@@ -5,12 +5,18 @@
 {% block pageTitle %}Feedback{% endblock %}
 {% block content %}
 
+{{ qs | debug | safe }}
+
+{% set pageData = {
+  'dataset': qs.dataset | default('No set')
+} %}
+
   <main id="content" role="main">
     
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <span class="govuk-caption-xl">Dataset</span>
-        <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">Trees</h1>
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-1">{{ pageData.dataset }}</h1>
         <p class="govuk-body-l">Collected from <a href="index.html">Manchester City Council</a></p>
       </div>
       <div class="govuk-grid-column-full">
@@ -20,11 +26,9 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-l">Datasets</h2>
-        <p>The following is a list of the datasets DLUHC creates using data published by each local authority with a status from the last time data was collected.</p>
+        <p>Data about {{ pageData.dataset }} provided by Manchester City Council and collected by the Department for Levelling Up, Housing and Communities.</p>
       </div>
     </div>
-
 
   </main>
 {% endblock %}
