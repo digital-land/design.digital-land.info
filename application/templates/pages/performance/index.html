@@ -62,9 +62,10 @@
 
           {%- for i in range(0, items) %}
             <div class="app-c-test-grid__item">
-              <span class="app-c-test-grid__result app-c-test-grid__result--{{ ['pass', 'fail', 'none'] | random }}">
-                <span><a href="#">A longer label</a></span>
-                <span class="app-c-test-grid__result-label">Label</span>
+              {% set result = ['pass', 'fail', 'n/a'] | random %}
+              <span class="app-c-test-grid__result app-c-test-grid__result--{{ result }}">
+                <span><a href="#">{{ ['Dataset name', 'A longer dataset name', 'Dataset'] | random }}</a></span>
+                <span class="app-c-test-grid__result-label">{{ result }}</span>
               </span>
             </div>
           {%- endfor %}
@@ -73,6 +74,8 @@
         </div>
       
       {% endmacro %}
+
+      {{ gridrow(277) }}
 
       {%- for i in range(0, 4) %}
         {{ gridrow([8, 3, 5, 12, 156, 202, 300] | random) }}
