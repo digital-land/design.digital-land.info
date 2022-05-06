@@ -5,12 +5,16 @@
 {% block pageTitle %}Feedback{% endblock %}
 {% block content %}
 
+{% set pageData = {
+  'orgname': qs.orgname | default('Manchester City Council')
+ } %}
+
   <main id="content" role="main">
     
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <span class="govuk-caption-xl">Organisation</span>
-        <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">Manchester City Council</h1>
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">{{ qs.orgname | default('Manchester City Council') }}</h1>
         <p class="govuk-body-l">Feedback to help your organisation publish planning data.</p>
       </div>
       <div class="govuk-grid-column-full">
@@ -21,7 +25,7 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         {# <h2 class="govuk-heading-l">Datasets</h2> #}
-        <p>The following is a list of the datasets DLUHC creates using data published by each local authority with a status from the last time data was collected.</p>
+        <p>The following is a list of the datasets DLUHC creates using data published by {{ qs.orgname | default('Manchester City Council') }} with a status from the last time data was collected.</p>
 
         {% set confObj = {
           'status' : {
@@ -40,7 +44,7 @@
               'rows': [
                 [
                   {
-                    'html': '<a href="dataset-index.html?dataset=Brownfield land">Brownfield land</a>'
+                    'html': '<a href="dataset-index.html?orgname=' + pageData.orgname + '&dataset=Brownfield land">Brownfield land</a>'
                   }, 
                   {
                     'html': govukTag({'text': confObj.status.actions }), 
@@ -49,7 +53,7 @@
                 ],
                 [
                   {
-                    'html': '<a href="dataset-index.html?dataset=Article 4 direction">Article 4 direction</a>'
+                    'html': '<a href="dataset-index.html?orgname=' + pageData.orgname + '&dataset=Article 4 direction">Article 4 direction</a>'
                   },
                   {
                     'html': govukTag({ 'text': confObj.status.actions }),
@@ -58,7 +62,7 @@
                 ],
                 [
                   {
-                    'html': '<a href="dataset-index.html?dataset=Brownfield site">Brownfield site</a>'
+                    'html': '<a href="dataset-index.html?orgname=' + pageData.orgname + '&dataset=Brownfield site">Brownfield site</a>'
                   },
                   {
                     'html': govukTag({ 'text': confObj.status.actions }),
@@ -67,7 +71,7 @@
                 ],
                 [
                   {
-                    'html': '<a href="dataset-index.html?dataset=Conservation area">Conservation area</a>'
+                    'html': '<a href="dataset-index.html?orgname=' + pageData.orgname + '&dataset=Conservation area">Conservation area</a>'
                   },
                   {
                     'html': govukTag({ 
@@ -79,7 +83,7 @@
                 ],
                 [
                   {
-                    'html': '<a href="dataset-index.html?dataset=Developer agreement">Developer agreement</a>'
+                    'html': '<a href="dataset-index.html?orgname=' + pageData.orgname + '&dataset=Developer agreement">Developer agreement</a>'
                   },
                   {
                     'html': govukTag({ 
@@ -91,7 +95,7 @@
                 ],
                 [
                   {
-                    'html': '<a href="dataset-index.html?dataset=Developer agreement contribution">Developer agreement contribution</a>'
+                    'html': '<a href="dataset-index.html?orgname=' + pageData.orgname + '&dataset=Developer agreement contribution">Developer agreement contribution</a>'
                   },
                   {
                     'html': '',
@@ -100,7 +104,7 @@
                 ],
                 [
                   {
-                    'html': '<a href="dataset-index.html?dataset=Developer agreement transaction">Developer agreement transaction</a>'
+                    'html': '<a href="dataset-index.html?orgname=' + pageData.orgname + '&dataset=Developer agreement transaction">Developer agreement transaction</a>'
                   },
                   {
                     'html': govukTag({ 
@@ -112,7 +116,7 @@
                 ],
                 [
                   {
-                    'html': '<a href="dataset-index.html?dataset=Employment allocation">Employment allocation</a>'
+                    'html': '<a href="dataset-index.html?orgname=' + pageData.orgname + '&dataset=Employment allocation">Employment allocation</a>'
                   },
                   {
                     'html': govukTag({ 'text': confObj.status.actions }),
@@ -121,7 +125,7 @@
                 ],
                 [
                   {
-                    'html': '<a href="dataset-index.html?dataset=Trees">Tree</a>'
+                    'html': '<a href="dataset-index.html?orgname=' + pageData.orgname + '&dataset=Trees">Tree</a>'
                   },
                   {
                     'html': govukTag({ 'text': confObj.status.actions }),
@@ -130,7 +134,7 @@
                 ],
                 [
                   {
-                    'html': '<a href="dataset-index.html?dataset=Tree preservation order">Tree preservation order</a>'
+                    'html': '<a href="dataset-index.html?orgname=' + pageData.orgname + '&dataset=Tree preservation order">Tree preservation order</a>'
                   },
                   {
                     'html': govukTag({ 'text': confObj.status.actions }),
