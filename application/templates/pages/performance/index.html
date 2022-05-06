@@ -11,11 +11,11 @@
 
       <div class="app-c-test-grid">
 
-      {% set gridrow  %}
+      {% macro gridrow(items)  %}
 
         <div class="app-c-test-grid__row">
           <div class="app-c-test-grid__label">
-            LondonBorough of Lambeth
+            Name of organisation
           </div>
           <div class="app-c-test-grid__items">
 
@@ -51,22 +51,31 @@
             ]
             %}
 
-            {% for dataset in datasets  %}
+            {# {% for dataset in datasets  %}
             <div class="app-c-test-grid__item">
               <span class="app-c-test-grid__result app-c-test-grid__result--{{ dataset.result }}">
                 <span>{{ dataset.dataset | unhyphenate | capitalize }}</span>
                 <span class="app-c-test-grid__result-label">{{ dataset.result | capitalize }}</span>
               </span>
+            </div>            
+            {% endfor %} #}
+
+          {%- for i in range(0, items) %}
+            <div class="app-c-test-grid__item">
+              <span class="app-c-test-grid__result app-c-test-grid__result--{{ ['pass', 'fail', 'none'] | random }}">
+                <span><a href="#">A longer label</a></span>
+                <span class="app-c-test-grid__result-label">Label</span>
+              </span>
             </div>
-            {% endfor %}
+          {%- endfor %}
 
           </div>
         </div>
       
-      {% endset %}
+      {% endmacro %}
 
       {%- for i in range(0, 4) %}
-        {{ gridrow }}
+        {{ gridrow([8, 3, 5, 12, 156, 202, 300] | random) }}
       {%- endfor %}
 
       </div>
