@@ -14,7 +14,7 @@
   },
   'page': 'index'
 } %}
-{% block pageTitle %}Collection report {{ pageData.dataset}}{% endblock %}
+{% block pageTitle %}Feedback report {{ pageData.dataset}}{% endblock %}
 {% block content %}
 
 
@@ -22,7 +22,7 @@
     
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <span class="govuk-caption-xl">Collection report</span>
+        <span class="govuk-caption-xl">Dataset feedback</span>
         <h1 class="govuk-heading-xl govuk-!-margin-bottom-1">{{ pageData.dataset }}</h1>
         <p class="govuk-body-l">Collected from <a href="index.html">{{ pageData.organisation }}</a></p>
       </div>
@@ -41,7 +41,8 @@
             }) 
           }}
           </h3>
-        <p class="govuk-hint">Feedback about {{ pageData.dataset }} dataset that we think needs action from {{ pageData.organisation }} to them.</p>
+        <p class="govuk-hint">Feedback about {{ pageData.dataset }} data we think needs action from {{ pageData.organisation }}.</p>
+        <p class="govuk-hint">These are things required to meet the data standard.</p>
       </div>
       <div class="govuk-grid-column-two-thirds">
         {{
@@ -80,7 +81,7 @@
                   'html': 'Incorrect values' | safe
                 }, 
                 'value': {
-                  'text': '22 ' + pageData.dataset + 's have field with what we believe are incorrect values'
+                  'text': '22 ' + pageData.dataset + 's have fields with what we believe are incorrect values'
                 },
                 'actions': {
                   'items': [
@@ -119,7 +120,8 @@
             }) 
           }}
           </h3>
-        <p class="govuk-hint">Recommendations we think will improve the {{ pageData.dataset }} data published {{ pageData.organisation }}.</p>
+        <p class="govuk-hint">Recommendations for {{ pageData.dataset }} data published {{ pageData.organisation }}.</p>
+        <p class="govuk-hint">These are things that will make the dataset more complete.</p>
       </div>
       <div class="govuk-grid-column-two-thirds">
         {{
@@ -213,6 +215,62 @@
 
       </div>
     </div>     #}
+
+
+          <section class="app-summary-card govuk-!-margin-bottom-3">
+            <header class="app-summary-card__header">
+              <h2 class="app-summary-card__title">
+                Key dates
+              </h2>
+              {# <div class="app-summary-card__actions">
+                <ul class="app-summary-card__actions-list">
+                  <li class="app-summary-card__actions-list-item">
+                    <a class="govuk-link" href="#">
+                      Flag<span class="govuk-visually-hidden"> (Source {{ loop.index }})</span>
+                    </a>
+                  </li>  
+                </ul>
+              </div> #}
+            </header>
+            <div class="app-summary-card__body">
+                {{
+              govukSummaryList({ 
+                'rows': [
+                  {
+                    'key': {
+                      'classes': 'govuk-!-width-one-half', 
+                      'html': 'Last checked for new data' | safe
+                    }, 
+                    'value': {
+                      'classes': 'govuk-!-width-one-half govuk-!-padding-right-0', 
+                      'text': pageData.dates["check-date"]
+                    },
+                  }, 
+                  {
+                    'key': {
+                      'classes': 'govuk-!-width-one-half', 
+                      'text': 'New data was last found'
+                    }, 
+                    'value': {
+                      'classes': 'govuk-!-width-one-half govuk-!-padding-right-0', 
+                      'html': pageData.dates["updated-date"] + ' <span class="govuk-hint govuk-!-display-inline">(1 Day ago)</span>' | safe
+                    },
+                  }, 
+                  {
+                    'key': {
+                      'classes': 'govuk-!-width-one-half', 
+                      'text': pageData.dataset + 'data collection began'
+                    }, 
+                    'value': {
+                      'classes': 'govuk-!-width-one-half govuk-!-padding-right-0', 
+                      'text': pageData.dates["start-date"]
+                    },
+                  }, 
+                ]
+              })
+            }} 
+            </div>
+          </section>
 
   </main>
 {% endblock %}

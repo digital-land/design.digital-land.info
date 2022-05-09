@@ -3,7 +3,7 @@
 {%- from 'govuk_frontend_jinja/components/tag/macro.html' import govukTag -%}
 {%- from 'govuk_frontend_jinja/components/summary-list/macro.html' import govukSummaryList -%}
 {{ govukTag(fixture.options)}}
-{% block pageTitle %}Feedback{% endblock %}
+{% block pageTitle %}About this dataset - Feedback{% endblock %}
 {% block content %}
 
 {% set pageData = {
@@ -23,7 +23,7 @@
     
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <span class="govuk-caption-xl">Dataset</span>
+        <span class="govuk-caption-xl">About this dataset</span>
         <h1 class="govuk-heading-xl govuk-!-margin-bottom-1">{{ pageData.dataset }}</h1>
         <p class="govuk-body-l">Collected from <a href="index.html">{{ pageData.organisation }}</a></p>
       </div>
@@ -118,11 +118,11 @@
             </div>
           </section>
         {% endfor %}
+        
 
-
-{{ govukInsetText({
-  'html': 'Are these sources correct? If you think these are out of date or incorrect you can <a href="#">email the planning data team</a>'
-})}}
+        {{ govukInsetText({
+          'html': 'If you think these are out of date or incorrect you can <a href="#">email the planning data team</a>'
+        })}}
 
 
       </div>
