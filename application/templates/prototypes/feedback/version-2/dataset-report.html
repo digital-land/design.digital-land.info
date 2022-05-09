@@ -1,0 +1,200 @@
+{% extends "layouts/layout.html" %}
+{%- from 'govuk_frontend_jinja/components/table/macro.html' import govukTable -%}
+{%- from 'govuk_frontend_jinja/components/tag/macro.html' import govukTag -%}
+{%- from 'govuk_frontend_jinja/components/summary-list/macro.html' import govukSummaryList -%}
+{% set pageData = {
+  'dataset': qs.dataset | default('Not set'),
+  'organisation': qs.orgname | default('Not set'),
+  'domain': qs.orgname | default('manchester city council') | replace(" ", "-") | lower,
+  'dates': {
+    'start-date': '04 Febuary 2020',
+    'end-date': '',
+    'updated-date': '10 May 2022',
+    'check-date': '11 May 2022'
+  },
+  'page': 'index'
+} %}
+{% block pageTitle %}Collection report {{ pageData.dataset}}{% endblock %}
+{% block content %}
+
+
+  <main id="content" role="main">
+    
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">Collection report</span>
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-1">{{ pageData.dataset }}</h1>
+        <p class="govuk-body-l">Collected from <a href="index.html">{{ pageData.organisation }}</a></p>
+      </div>
+      <div class="govuk-grid-column-full">
+        {% include "prototypes/feedback/version-2/tabs.html" with context %}
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-l govuk-!-margin-bottom-3">
+          {{ 
+            govukTag({ 
+              'text': 'Action needed',
+              'classes': 'govuk-!-font-size-19'
+            }) 
+          }}
+          </h3>
+        <p class="govuk-hint">Feedback about {{ pageData.dataset }} dataset that we think needs action from your organisation for them to be resolved</p>
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+        {{
+          govukSummaryList({ 
+            'classes': 'govuk-!-margin-top-0',
+            'rows': [
+              {
+                'key': {
+                  'classes': 'govuk-!-padding-top-0', 
+                  'html': 'Missing values' | safe
+                }, 
+                'value': {
+                  'classes': 'govuk-!-padding-right-0 govuk-!-padding-top-0', 
+                  'text': 'There are 22 ' + pageData.dataset + 's with missing values'
+                },
+              },
+              {
+                'key': { 
+                  'html': 'Incorrect values' | safe
+                }, 
+                'value': {
+                  'text': 'There are 22 ' + pageData.dataset + 's with missing values'
+                },
+              },
+              {
+                'key': {
+                  'html': 'Duplicates' | safe
+                }, 
+                'value': {
+                  'text': 'There are 22 ' + pageData.dataset + 's with missing values'
+                },
+              },
+              {
+                'key': {
+                  'html': 'Missing values' | safe
+                }, 
+                'value': {
+                  'text': 'There are 22 ' + pageData.dataset + 's with missing values'
+                },
+              },
+            ]
+          })
+        }}
+      </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-top-0">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-l govuk-!-margin-bottom-3">
+          {{ 
+            govukTag({ 
+              'text': 'Recommendations',
+              'classes': 'govuk-!-font-size-19 govuk-tag--blue'
+            }) 
+          }}
+          </h3>
+        <p class="govuk-hint">Feedback about {{ pageData.dataset }} dataset that we think needs action from your organisation for them to be resolved</p>
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+        {{
+          govukSummaryList({ 
+            'classes': 'govuk-!-margin-top-0',
+            'rows': [
+              {
+                'key': {
+                  'classes': 'govuk-!-padding-top-0', 
+                  'html': 'Missing values' | safe
+                }, 
+                'value': {
+                  'classes': 'govuk-!-padding-right-0 govuk-!-padding-top-0', 
+                  'text': 'There are 22 ' + pageData.dataset + 's with missing values'
+                },
+              },
+              {
+                'key': { 
+                  'html': 'Incorrect values' | safe
+                }, 
+                'value': {
+                  'text': 'There are 22 ' + pageData.dataset + 's with missing values'
+                },
+              },
+              {
+                'key': {
+                  'html': 'Duplicates' | safe
+                }, 
+                'value': {
+                  'text': 'There are 22 ' + pageData.dataset + 's with missing values'
+                },
+              },
+              {
+                'key': {
+                  'html': 'Missing values' | safe
+                }, 
+                'value': {
+                  'text': 'There are 22 ' + pageData.dataset + 's with missing values'
+                },
+              },
+            ]
+          })
+        }}
+      </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-top-0">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+            {{
+              govukSummaryList({ 
+                'rows': [
+                  {
+                    'key': {
+                      'classes': 'govuk-!-width-one-half', 
+                      'html': 'Last checked for new data' | safe
+                    }, 
+                    'value': {
+                      'classes': 'govuk-!-width-one-half govuk-!-padding-right-0', 
+                      'text': pageData.dates["check-date"]
+                    },
+                  }, 
+                  {
+                    'key': {
+                      'classes': 'govuk-!-width-one-half', 
+                      'text': 'New data was last found'
+                    }, 
+                    'value': {
+                      'classes': 'govuk-!-width-one-half govuk-!-padding-right-0', 
+                      'text': pageData.dates["updated-date"]
+                    },
+                  }, 
+                  {
+                    'key': {
+                      'classes': 'govuk-!-width-one-half', 
+                      'text': pageData.dataset + 'data collection began'
+                    }, 
+                    'value': {
+                      'classes': 'govuk-!-width-one-half govuk-!-padding-right-0', 
+                      'text': pageData.dates["start-date"]
+                    },
+                  }, 
+                ]
+              })
+            }}  
+
+      </div>
+    </div>
+    
+
+  </main>
+{% endblock %}
+
+{% block bodyEnd %}
+  {{ super() }}
+{% endblock bodyEnd %}

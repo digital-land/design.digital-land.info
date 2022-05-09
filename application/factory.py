@@ -66,13 +66,14 @@ def register_templates(app):
     """
     Register templates from packages
     """
-    from jinja2 import PackageLoader, PrefixLoader, ChoiceLoader
+    from jinja2 import PackageLoader, PrefixLoader, ChoiceLoader, FileSystemLoader
 
     multi_loader = ChoiceLoader(
         [
             app.jinja_loader,
             PrefixLoader(
                 {
+                    "relative_path": FileSystemLoader(searchpath="/"),
                     "govuk_frontend_jinja": PackageLoader("govuk_frontend_jinja"),
                     "digital-land-frontend": PackageLoader("digital_land_frontend"),
                 }
