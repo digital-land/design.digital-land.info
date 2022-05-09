@@ -73,7 +73,7 @@
               <h2 class="app-summary-card__title">
                 Source {{ loop.index }}
               </h2>
-              <div class="app-summary-card__actions">
+              {# <div class="app-summary-card__actions">
                 <ul class="app-summary-card__actions-list">
                   <li class="app-summary-card__actions-list-item">
                     <a class="govuk-link" href="#">
@@ -81,7 +81,7 @@
                     </a>
                   </li>  
                 </ul>
-              </div>
+              </div> #}
             </header>
             <div class="app-summary-card__body">
 
@@ -119,7 +119,11 @@
           </section>
         {% endfor %}
 
-        <p>You can flag a source if you believe it is incorrect or no longer publishes up-to-date data</p>
+
+{{ govukInsetText({
+  'html': 'Are these sources correct? If think these are out of date or incorrect you can <a href="#">email the planning data team</a>'
+})}}
+
 
       </div>
     </div>
