@@ -41,7 +41,7 @@
             }) 
           }}
           </h3>
-        <p class="govuk-hint">Feedback about {{ pageData.dataset }} dataset that we think needs action from your organisation for them to be resolved</p>
+        <p class="govuk-hint">Feedback about {{ pageData.dataset }} dataset that we think needs action from your organisation to resolve them.</p>
       </div>
       <div class="govuk-grid-column-two-thirds">
         {{
@@ -51,36 +51,55 @@
               {
                 'key': {
                   'classes': 'govuk-!-padding-top-0', 
+                  'html': 'Missing fields' | safe
+                }, 
+                'value': {
+                  'text': '2 ' + pageData.dataset + 's have missing fields'
+                },
+                'actions': {
+                  'items': [
+                    {'href': '#', 'text': 'View', 'visuallyHiddenText': 'Duplicates'},
+                  ]
+                }
+              },
+              {
+                'key': {
                   'html': 'Missing values' | safe
                 }, 
                 'value': {
-                  'classes': 'govuk-!-padding-right-0 govuk-!-padding-top-0', 
-                  'text': 'There are 22 ' + pageData.dataset + 's with missing values'
+                  'text': '22 ' + pageData.dataset + 's have fields with missing values'
                 },
+                'actions': {
+                  'items': [
+                    {'href': '#', 'text': 'View', 'visuallyHiddenText': 'Duplicates'},
+                  ]
+                }
               },
               {
                 'key': { 
                   'html': 'Incorrect values' | safe
                 }, 
                 'value': {
-                  'text': 'There are 22 ' + pageData.dataset + 's with missing values'
+                  'text': '22 ' + pageData.dataset + 's have field with what we believe are incorrect values'
                 },
+                'actions': {
+                  'items': [
+                    {'href': '#', 'text': 'View', 'visuallyHiddenText': 'Duplicates'},
+                  ]
+                }
               },
               {
                 'key': {
                   'html': 'Duplicates' | safe
                 }, 
                 'value': {
-                  'text': 'There are 22 ' + pageData.dataset + 's with missing values'
+                  'text': '7 ' + pageData.dataset + 's we believe are duplicates'
                 },
-              },
-              {
-                'key': {
-                  'html': 'Missing values' | safe
-                }, 
-                'value': {
-                  'text': 'There are 22 ' + pageData.dataset + 's with missing values'
-                },
+                'actions': {
+                  'items': [
+                    {'href': '#', 'text': 'View', 'visuallyHiddenText': 'Duplicates'},
+                  ]
+                }
               },
             ]
           })
@@ -89,6 +108,7 @@
     </div>
 
     <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-top-0">
+
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-one-third">
         <h3 class="govuk-heading-l govuk-!-margin-bottom-3">
@@ -99,7 +119,7 @@
             }) 
           }}
           </h3>
-        <p class="govuk-hint">Feedback about {{ pageData.dataset }} dataset that we think needs action from your organisation for them to be resolved</p>
+        <p class="govuk-hint">Recommendations about {{ pageData.dataset }} data. These are things we think will improve the data {{ pageData.organisation }} publishes.</p>
       </div>
       <div class="govuk-grid-column-two-thirds">
         {{
@@ -109,37 +129,31 @@
               {
                 'key': {
                   'classes': 'govuk-!-padding-top-0', 
-                  'html': 'Missing values' | safe
+                  'html': 'Add notes' | safe
                 }, 
                 'value': {
-                  'classes': 'govuk-!-padding-right-0 govuk-!-padding-top-0', 
-                  'text': 'There are 22 ' + pageData.dataset + 's with missing values'
+                  'classes': '', 
+                  'html': 'We recommend that you add a notes field with any notes related to each ' + pageData.dataset + '.'
                 },
+                'actions': {
+                  'items': [
+                    {'href': '#', 'text': 'Guidance'},
+                  ]
+                }
               },
               {
                 'key': { 
-                  'html': 'Incorrect values' | safe
+                  'html': 'Add point data' | safe
                 }, 
                 'value': {
-                  'text': 'There are 22 ' + pageData.dataset + 's with missing values'
+                  'text': 'If your GIS application provides additional point data then we can add this to the data we collect alongside the geometry.'
                 },
-              },
-              {
-                'key': {
-                  'html': 'Duplicates' | safe
-                }, 
-                'value': {
-                  'text': 'There are 22 ' + pageData.dataset + 's with missing values'
-                },
-              },
-              {
-                'key': {
-                  'html': 'Missing values' | safe
-                }, 
-                'value': {
-                  'text': 'There are 22 ' + pageData.dataset + 's with missing values'
-                },
-              },
+                'actions': {
+                  'items': [
+                    {'href': '#', 'text': 'Guidance', 'visuallyHiddenText': 'name'},
+                  ]
+                }
+              }
             ]
           })
         }}
@@ -148,49 +162,57 @@
 
     <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-top-0">
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
+    {# <div class="govuk-grid-row">
+      
+      <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-m">Data sources</h2>
+      </div>
 
-            {{
-              govukSummaryList({ 
-                'rows': [
-                  {
-                    'key': {
-                      'classes': 'govuk-!-width-one-half', 
-                      'html': 'Last checked for new data' | safe
-                    }, 
-                    'value': {
-                      'classes': 'govuk-!-width-one-half govuk-!-padding-right-0', 
-                      'text': pageData.dates["check-date"]
-                    },
-                  }, 
-                  {
-                    'key': {
-                      'classes': 'govuk-!-width-one-half', 
-                      'text': 'New data was last found'
-                    }, 
-                    'value': {
-                      'classes': 'govuk-!-width-one-half govuk-!-padding-right-0', 
-                      'text': pageData.dates["updated-date"]
-                    },
-                  }, 
-                  {
-                    'key': {
-                      'classes': 'govuk-!-width-one-half', 
-                      'text': pageData.dataset + 'data collection began'
-                    }, 
-                    'value': {
-                      'classes': 'govuk-!-width-one-half govuk-!-padding-right-0', 
-                      'text': pageData.dates["start-date"]
-                    },
-                  }, 
-                ]
-              })
-            }}  
+      <div class="govuk-grid-column-two-thirds">
+
+        <p>These are the web addresses (URLs) used by planning.data.gov.uk to collect {{ pageData.dataset }} data.</p>
+
+        {% set sources = [
+          {
+            'url': 'https://www.' + pageData.domain  + '.gov.uk/' + pageData.dataset | lower | replace(' ', '') + '/data'
+          },
+          {
+            'url': 'https://www.' + pageData.domain  + '.gov.uk/about-us/organisations-we-work/old-oak-and-park-royal-development-corporation-opdc'
+          },
+        ] %}
+
+        {% for source in sources %}
+          <section class="app-summary-card govuk-!-margin-bottom-6">
+            <header class="app-summary-card__header">
+              <h2 class="app-summary-card__title">
+                Source {{ loop.index }}
+              </h2>
+              <div class="app-summary-card__actions">
+                <ul class="app-summary-card__actions-list">
+                  <li class="app-summary-card__actions-list-item">
+                    <a class="govuk-link" href="#">
+                      Flag<span class="govuk-visually-hidden"> (Source {{ loop.index }})</span>
+                    </a>
+                  </li>  
+                </ul>
+              </div>
+            </header>
+            <div class="app-summary-card__body">
+
+              <div class="app-c-url-display">
+                <a href="{{ source.url }}">
+                  {{ source.url }}
+                </a>
+              </div>
+
+            </div>
+          </section>
+        {% endfor %}
+
+        <p>You can flag a source if you believe it is incorrect or no longer publishes up-to-date data</p>
 
       </div>
-    </div>
-    
+    </div>     #}
 
   </main>
 {% endblock %}
