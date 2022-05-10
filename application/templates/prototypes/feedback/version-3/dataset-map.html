@@ -1,0 +1,72 @@
+{% extends "layouts/layout.html" %}
+{%- from 'govuk_frontend_jinja/components/table/macro.html' import govukTable -%}
+{%- from 'govuk_frontend_jinja/components/tag/macro.html' import govukTag -%}
+{%- from 'govuk_frontend_jinja/components/summary-list/macro.html' import govukSummaryList -%}
+{{ govukTag(fixture.options)}}
+{% block pageTitle %}Feedback{% endblock %}
+{% block content %}
+
+{% set pageData = {
+  'dataset': qs.dataset | default('Not set'),
+  'organisation': qs.orgname | default('Not set'),
+  'domain': qs.orgname | default('manchester city council') | replace(" ", "-") | lower,
+  'dates': {
+    'start-date': '04 Febuary 2020',
+    'end-date': '',
+    'updated-date': '10 May 2022',
+    'check-date': '11 May 2022'
+  },
+  'page': 'map'
+} %}
+
+  <main id="content" role="main">
+    
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">Map of</span>
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-1">{{ pageData.dataset }}</h1>
+        <p class="govuk-body-l">Collected from <a href="index.html">{{ pageData.organisation }}</a></p>
+      </div>
+      <div class="govuk-grid-column-full">
+
+        {% include "prototypes/feedback/version-2/tabs.html" with context %}
+
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+        <div class="app-demo-map-data">
+          <div class="app-demo-map-data__body">
+            <img src="/static/images/map-base.png" alt="" id="map">
+          </div>
+          <div class="app-demo-map-data__buttons">
+            <button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" id="map-button-1" data-image="/static/images/map-missing.png">Show missing values</button>
+            <button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" id="map-button-2" data-image="/static/images/map-recommendations.png">Show recommendations</button>
+            <button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0" id="map-button-3" data-image="/static/images/map-duplicates.png">Show duplicates</button>
+          </div>
+        </div>
+
+        <script>
+          var $map = document.querySelector('#map');
+          var btns = document.querySelectorAll('button[id^=map]')
+          btns.forEach(btn => {
+            btn.addEventListener('click', event => {
+                var $thisButton = event.target;
+                $map.setAttribute('src', $thisButton.dataset.image);
+            });
+          });
+
+        </script>
+      
+      </div>
+    </div>
+    <!-- /.govuk-grid-row -->
+
+  </main>
+{% endblock %}
+
+{% block bodyEnd %}
+  {{ super() }}
+{% endblock bodyEnd %}

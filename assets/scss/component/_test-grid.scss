@@ -94,9 +94,11 @@
     background: govuk-colour("light-grey");
     padding: 0.5em;
     box-sizing: border-box;
+
     &--pass {
       background: govuk-colour("green");
     }
+    
     &--fail {
       background: govuk-colour("red");
     }
