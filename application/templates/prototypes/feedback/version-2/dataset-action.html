@@ -1,0 +1,105 @@
+{% extends "layouts/layout.html" %}
+{%- from 'govuk_frontend_jinja/components/table/macro.html' import govukTable -%}
+{%- from 'govuk_frontend_jinja/components/tag/macro.html' import govukTag -%}
+{%- from 'govuk_frontend_jinja/components/summary-list/macro.html' import govukSummaryList -%}
+{{ govukTag(fixture.options)}}
+{% block pageTitle %}Feedback{% endblock %}
+{% block content %}
+
+{% set pageData = {
+  'dataset': qs.dataset | default('Not set'),
+  'organisation': qs.orgname | default('Not set'),
+  'domain': qs.orgname | default('manchester city council') | replace(" ", "-") | lower,
+  'dates': {
+    'start-date': '04 Febuary 2020',
+    'end-date': '',
+    'updated-date': '10 May 2022',
+    'check-date': '11 May 2022'
+  },
+  'page': 'index',
+  'issue': qs.issue
+} %}
+
+  <main id="content" role="main">
+    
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">Action needed</span>
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-1">{{ pageData.dataset }} with {{ pageData.issue | default('missing values') | lower }}s</h1>
+        <p class="govuk-body-l">Collected from <a href="index.html">{{ pageData.organisation }}</a></p>
+      </div>
+      <div class="govuk-grid-column-full">
+
+        {% include "prototypes/feedback/version-2/tabs.html" with context %}
+
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+      {% set entities = [
+        {
+          'title': 'H-STPETE-061'
+        },
+        {
+          'title': 'H-STPETE-277'
+        },
+        {
+          'title': 'H-STPETE-145'
+        },
+        {
+          'title': 'H-STPETE-140'
+        },
+        {
+          'title': 'H-STPETE-009'
+        },
+        {
+          'title': 'H-STPETE-066'
+        },
+        {
+          'title': 'H-STPETE-070'
+        },
+        {
+          'title': 'H-STPETE-666'
+        },
+      ] %}
+
+          {% for entity in entities  %}
+            <section class="app-summary-card govuk-!-margin-bottom-3">
+              <header class="app-summary-card__header">
+                <h2 class="app-summary-card__title">
+                  {{ entity.title }}
+                </h2>
+              </header>
+              <div class="app-summary-card__body">
+                  {{
+                govukSummaryList({ 
+                  'rows': [
+                    {
+                      'key': {
+                        'classes': 'govuk-!-width-one-half', 
+                        'html': pageData.issue | safe
+                      }, 
+                      'value': {
+                        'classes': 'govuk-!-width-one-half govuk-!-padding-right-0', 
+                        'text': ['start-date', 'name', 'geometry'] | random
+                      },
+                    }
+                  ]
+                })
+              }} 
+              </div>
+            </section>
+          {% endfor %}
+      
+      </div>
+    </div>
+    <!-- /.govuk-grid-row -->
+
+  </main>
+{% endblock %}
+
+{% block bodyEnd %}
+  {{ super() }}
+{% endblock bodyEnd %}

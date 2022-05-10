@@ -45,6 +45,9 @@
         <p class="govuk-hint">These are things required to meet the data standard.</p>
       </div>
       <div class="govuk-grid-column-two-thirds">
+
+        {% set actionLink = 'dataset-action.html?orgname=' + pageData.organisation + '&dataset=' + pageData.dataset + ''  %}
+
         {{
           govukSummaryList({ 
             'classes': 'govuk-!-margin-top-0',
@@ -59,7 +62,11 @@
                 },
                 'actions': {
                   'items': [
-                    {'href': '#', 'text': 'View', 'visuallyHiddenText': 'Duplicates'},
+                    {
+                      'href': actionLink + '&issue=Missing field', 
+                      'text': 'View', 
+                      'visuallyHiddenText': 'Duplicates'
+                    },
                   ]
                 }
               },
@@ -72,7 +79,11 @@
                 },
                 'actions': {
                   'items': [
-                    {'href': '#', 'text': 'View', 'visuallyHiddenText': 'Duplicates'},
+                    {
+                      'href': actionLink + '&issue=Missing value', 
+                      'text': 'View', 
+                      'visuallyHiddenText': 'missing values'
+                    },
                   ]
                 }
               },
@@ -85,7 +96,11 @@
                 },
                 'actions': {
                   'items': [
-                    {'href': '#', 'text': 'View', 'visuallyHiddenText': 'Duplicates'},
+                    {
+                      'href': actionLink + '&issue=Incorrect value', 
+                      'text': 'View', 
+                      'visuallyHiddenText': 'incorrect values'
+                    },
                   ]
                 }
               },
@@ -164,73 +179,12 @@
 
     <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-top-0">
 
-    {# <div class="govuk-grid-row">
-      
-      <div class="govuk-grid-column-one-third">
-        <h2 class="govuk-heading-m">Data sources</h2>
-      </div>
-
-      <div class="govuk-grid-column-two-thirds">
-
-        <p>These are the web addresses (URLs) used by planning.data.gov.uk to collect {{ pageData.dataset }} data.</p>
-
-        {% set sources = [
-          {
-            'url': 'https://www.' + pageData.domain  + '.gov.uk/' + pageData.dataset | lower | replace(' ', '') + '/data'
-          },
-          {
-            'url': 'https://www.' + pageData.domain  + '.gov.uk/about-us/organisations-we-work/old-oak-and-park-royal-development-corporation-opdc'
-          },
-        ] %}
-
-        {% for source in sources %}
-          <section class="app-summary-card govuk-!-margin-bottom-6">
-            <header class="app-summary-card__header">
-              <h2 class="app-summary-card__title">
-                Source {{ loop.index }}
-              </h2>
-              <div class="app-summary-card__actions">
-                <ul class="app-summary-card__actions-list">
-                  <li class="app-summary-card__actions-list-item">
-                    <a class="govuk-link" href="#">
-                      Flag<span class="govuk-visually-hidden"> (Source {{ loop.index }})</span>
-                    </a>
-                  </li>  
-                </ul>
-              </div>
-            </header>
-            <div class="app-summary-card__body">
-
-              <div class="app-c-url-display">
-                <a href="{{ source.url }}">
-                  {{ source.url }}
-                </a>
-              </div>
-
-            </div>
-          </section>
-        {% endfor %}
-
-        <p>You can flag a source if you believe it is incorrect or no longer publishes up-to-date data</p>
-
-      </div>
-    </div>     #}
-
 
           <section class="app-summary-card govuk-!-margin-bottom-3">
             <header class="app-summary-card__header">
               <h2 class="app-summary-card__title">
                 Key dates
               </h2>
-              {# <div class="app-summary-card__actions">
-                <ul class="app-summary-card__actions-list">
-                  <li class="app-summary-card__actions-list-item">
-                    <a class="govuk-link" href="#">
-                      Flag<span class="govuk-visually-hidden"> (Source {{ loop.index }})</span>
-                    </a>
-                  </li>  
-                </ul>
-              </div> #}
             </header>
             <div class="app-summary-card__body">
                 {{
