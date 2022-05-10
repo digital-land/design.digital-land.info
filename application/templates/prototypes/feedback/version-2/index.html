@@ -2,12 +2,12 @@
 {%- from 'govuk_frontend_jinja/components/table/macro.html' import govukTable -%}
 {%- from 'govuk_frontend_jinja/components/tag/macro.html' import govukTag -%}
 {{ govukTag(fixture.options)}}
-{% block pageTitle %}Feedback{% endblock %}
-{% block content %}
-
 {% set pageData = {
   'orgname': qs.orgname | default('Manchester City Council')
  } %}
+{% block pageTitle %}Feedback for {{ pageData.orgname }}{% endblock %}
+{% block content %}
+
 
   <main id="content" role="main">
     
