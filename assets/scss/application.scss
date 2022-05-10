@@ -41,3 +41,5 @@ $govuk-new-link-styles: true;
 @import "versions/ripa";
 @import "versions/entity";
 @import "versions/feedback";
+
+#global-cookie-message { display: none; height: 0; overflow: hidden; }
