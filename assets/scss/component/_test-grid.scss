@@ -98,17 +98,32 @@
     &--pass {
       background: govuk-colour("green");
     }
+
+    &--warn {
+      background: lighten(govuk-colour("orange"),10);
+      border: 3px solid govuk-colour("orange");
+      background: lighten(govuk-colour("orange"),8);
+      box-sizing: border-box;
+    }
     
     &--fail {
       background: govuk-colour("red");
     }
 
     &--pass,
-    &--fail {
+    &--fail,
+    &--warn {
       color: white;
       a {
-        color: white;
+        color: inherit;
         display: block;
+      }
+    }
+
+    &--warn {
+      color: #000;
+      a {
+        color: black;
       }
     }
 

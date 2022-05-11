@@ -30,7 +30,7 @@
             },
             { 
               "dataset": "central-activities-zone",
-              "result": "pass" 
+              "result": "warn" 
             },
             { 
               "dataset": "conservation-area",
@@ -38,7 +38,7 @@
             },
             { 
               "dataset": "listed-building",
-              "result": "fail" 
+              "result": "warn" 
             },
             { 
               "dataset": "listed-building-outline",
@@ -62,7 +62,7 @@
 
           {%- for i in range(0, items) %}
             <div class="app-c-test-grid__item">
-              {% set result = ['pass', 'fail', 'n/a'] | random %}
+              {% set result = ['pass', 'fail', 'n-a', 'warn'] | random %}
               <span class="app-c-test-grid__result app-c-test-grid__result--{{ result }}">
                 <span><a href="#">{{ ['Name', 'A longer name', 'An even longer name'] | random }}</a></span>
                 <span class="app-c-test-grid__result-label">{{ result }}</span>
