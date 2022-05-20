@@ -354,7 +354,7 @@
         {# <p class="govuk-body govuk-!-margin-bottom-6">The organisations listed below publish planning and housing data</p> #}
       </div>
       <div class="govuk-grid-column-two-thirds">
-        <form class="govuk-!-margin-bottom-6" data-module="dl-list-filter-form">
+        <form class="govuk-!-margin-bottom-6">
           <label class="govuk-label govuk-label--m govuk-!-font-weight-bold" for="filter-organisations-list">Search for a data publisher</label>
           <input class="govuk-input" type="text" id="filter-organisations-list" placeholder="For example, Lambeth">
         </form>      
@@ -368,15 +368,15 @@
         {% set letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" | list %}
         {% for char in letters %}
           {% set theseLPAs = lpas | get_items_beginning_with(char) %}
-          <div class="govuk-grid-row">
+          <div class="govuk-grid-row js-filter-item">
             <div class="govuk-grid-column-one-third">
               <h2 class="govuk-heading-xl">{{ char }}</h2>
             </div>         
             <div class="govuk-grid-column-two-thirds">
               {% if (theseLPAs | length) > 0 %}
-              <ul class="govuk-list govuk-!-margin-bottom-0" data-filter="list">
+              <ul class="govuk-list govuk-!-margin-bottom-0">
                 {% for lpa in theseLPAs | sort %}
-                  <li data-filter="item" class="govuk-!-margin-bottom-1">
+                  <li class="govuk-!-margin-bottom-1 js-filter-item">
                     <a href="/{{ lpa | lower | replace(' ', '-') | replace('.','') | replace(',','') | replace("'","") }}" class="govuk-link">{{ lpa }}</a>
                   </li>
                 {% endfor %}
@@ -398,5 +398,30 @@
 {% endblock %}
 
 {% block bodyEnd %}
+  <script>
+    let filterItems = document.querySelectorAll('.js-filter-item')
+    function liveSearch() {
+        let search_query = document.getElementById("filter-organisations-list").value;
+        
+        //Use innerText if all contents are visible
+        //Use textContent for including hidden elements
+        for (var i = 0; i < filterItems.length; i++) {
+            if(filterItems[i].textContent.toLowerCase()
+                    .includes(search_query.toLowerCase())) {
+                filterItems[i].classList.remove("govuk-visually-hidden");
+            } else {
+                filterItems[i].classList.add("govuk-visually-hidden");
+            }
+        }
+    }
+    //A little delay
+    let typingTimer;               
+    let typeInterval = 500;  
+    let searchInput = document.getElementById('filter-organisations-list');
+    searchInput.addEventListener('keyup', () => {
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(liveSearch, typeInterval);
+    });
+  </script>
   {{ super() }}
 {% endblock bodyEnd %}
