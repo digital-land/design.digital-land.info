@@ -1,0 +1,32 @@
+[class*="app-feedback-version-2"] {
+
+  .app-c-url-display {
+    * {
+      font-family: monospace;
+    }
+  }
+    
+    .app-demo-map-data {
+
+      margin-bottom: govuk-spacing(6);
+
+      &__body {
+        position: relative;
+        img {
+          max-width: 100%;
+          border: 1px solid $govuk-border-colour;
+          box-sizing: border-box;
+          display: block;
+        }
+      }
+      
+      &__buttons {
+        display: flex;
+        padding: govuk-spacing(3);
+        border: 1px solid $govuk-border-colour;
+        align-items: flex-start;
+        gap: govuk-spacing(2);
+      }
+
+    }
+}

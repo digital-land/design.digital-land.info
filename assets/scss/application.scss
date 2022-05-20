@@ -40,7 +40,7 @@ $govuk-new-link-styles: true;
 
 @import "versions/ripa";
 @import "versions/entity";
-@import "versions/feedback";
+@import "versions/feedback/index";
 
 .app-heading--section-break {
   padding-bottom: govuk-spacing(3);
