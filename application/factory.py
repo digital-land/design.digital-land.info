@@ -48,10 +48,11 @@ def register_context_processors(app):
 
 
 def register_filters(app):
-    from application.filters import hex_to_rgb_string, debug
+    from application.filters import hex_to_rgb_string, debug, get_items_beginning_with
 
     app.add_template_filter(hex_to_rgb_string, name="hex_to_rgb")
     app.add_template_filter(debug, name="debug")
+    app.add_template_filter(get_items_beginning_with, name="get_items_beginning_with")
     app.add_template_filter(unhyphenate, name="unhyphenate")
 
 
