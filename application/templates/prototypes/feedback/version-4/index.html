@@ -344,7 +344,8 @@
       <div class="govuk-grid-column-two-thirds">
         <div class="govuk-caption-xl">Feedback</div>
         <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">Publishing your planning and housing data</h1>
-        <p class="govuk-body-l govuk-!-margin-bottom-6">Get feedback and support to publish data that meets data standards by The Department for Levelling Up, Housing and Communities.</p>
+        <p class="govuk-body-l govuk-!-margin-bottom-6">
+          Get feedback and support to publish data that meets standards from the Department for Levelling Up, Housing and Communities.</p>
       </div>
     </div>
 
@@ -355,7 +356,7 @@
       </div>
       <div class="govuk-grid-column-two-thirds">
         <form class="govuk-!-margin-bottom-6">
-          <label class="govuk-label govuk-label--m govuk-!-font-weight-bold" for="filter-organisations-list">Search for a data publisher</label>
+          <label class="govuk-label govuk-label--m govuk-!-font-weight-bold" for="filter-organisations-list">Search for your organisation</label>
           <input class="govuk-input" type="text" id="filter-organisations-list" placeholder="For example, Lambeth">
         </form>      
       </div>
@@ -402,7 +403,6 @@
     let filterItems = document.querySelectorAll('.js-filter-item')
     function liveSearch() {
         let search_query = document.getElementById("filter-organisations-list").value;
-        
         //Use innerText if all contents are visible
         //Use textContent for including hidden elements
         for (var i = 0; i < filterItems.length; i++) {
