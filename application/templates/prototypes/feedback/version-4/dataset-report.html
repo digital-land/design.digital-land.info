@@ -17,6 +17,26 @@
   'noactions': qs.noactions | default('false')
 } %}
 {% block pageTitle %}Feedback report {{ pageData.dataset}}{% endblock %}
+
+{%- block breadcrumbs -%}
+  {{- govukBreadcrumbs({
+    "items": [
+        {
+          "text": "Feedback home",
+          "href": "/"
+        },
+        {
+          "text": pageData.organisation,
+          "href": "organisation-summary.html?orgname=" + pageData.organisation
+        },
+        {
+          "text": pageData.dataset,
+          "href": "dataset-report.html?orgname=" + pageData.organisation + "&dataset=" + pageData.dataset
+        }
+    ]
+    }) -}}
+{%- endblock -%}
+
 {% block content %}
 
 
