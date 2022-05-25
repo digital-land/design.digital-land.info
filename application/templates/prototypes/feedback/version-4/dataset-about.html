@@ -37,20 +37,21 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-one-third">
 
-        <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
+        <h4 class="govuk-heading-s govuk-!-margin-bottom-1" id="check-date">
+          Sources last checked
+        </h4>
+        <p>{{ pageData.dates["check-date"] }}</p>
+
+        <h4 class="govuk-heading-s govuk-!-margin-bottom-1" id="updated-date">
+          New data was last found
+        </h4>
+        <p>{{ pageData.dates["updated-date"] }}</p>
+
+        <h4 class="govuk-heading-s govuk-!-margin-bottom-1" id="start-date">
           {{ pageData.dataset }} data collection began
         </h4>
         <p>{{ pageData.dates["start-date"] }}</p>
 
-        <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
-          Sources last checked
-        </h4>
-        <p>{{ pageData.dates["start-date"] }}</p>
-
-        <h4 class="govuk-heading-s govuk-!-margin-bottom-1">
-          New data was last found
-        </h4>
-        <p>{{ pageData.dates["start-date"] }}</p>
 
       </div>
       <div class="govuk-grid-column-two-thirds">
