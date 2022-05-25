@@ -84,10 +84,15 @@ def match_template(path):
       "tree-preservation-order"
     ]
 
+    pathInfo = {
+        'full': path,
+        'split': splitPath
+    }
+
     qs = request.args;
 
     if os.path.exists(file):
-        return render_template(path, versionClasses=versionClasses, provenanceData=provenanceData, performanceThing=performanceThing, datasets=datasets, qs=qs)
+        return render_template(path, versionClasses=versionClasses, provenanceData=provenanceData, performanceThing=performanceThing, datasets=datasets, qs=qs, path=pathInfo)
 
     # else show no template
     return redirect(url_for("base.notemplate"))

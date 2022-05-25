@@ -30,7 +30,7 @@
       </div>
       <div class="govuk-grid-column-full">
 
-        {% include "prototypes/feedback/version-2/tabs.html" with context %}
+        {% include path.full | replace(path.split[3], 'tabs.html') with context %}
 
       </div>
     </div>

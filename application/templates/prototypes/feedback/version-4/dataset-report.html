@@ -26,10 +26,11 @@
       <div class="govuk-grid-column-two-thirds">
         <span class="govuk-caption-xl">Dataset feedback</span>
         <h1 class="govuk-heading-xl govuk-!-margin-bottom-1">{{ pageData.dataset }}</h1>
-        <p class="govuk-body-l">Collected from <a href="index.html?orgname={{ pageData.organisation }}">{{ pageData.organisation }}</a></p>
+        <p class="govuk-body-l govuk-!-margin-bottom-6">Collected from <a href="index.html?orgname={{ pageData.organisation }}">{{ pageData.organisation }}</a></p>
+        <p class="govuk-body">This feedback was last updated on {{ pageData.dates["updated-date"] }}</p>
       </div>
       <div class="govuk-grid-column-full">
-        {% include "prototypes/feedback/version-2/tabs.html" with context %}
+        {% include path.full | replace(path.split[3], 'tabs.html') with context %}
       </div>
     </div>
 
@@ -45,160 +46,156 @@
 
       {% if pageData.noactions != 'true' %}
 
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-one-third">
-
-          <h3 class="govuk-heading-l govuk-!-margin-bottom-3">
-            {{ 
-              govukTag({ 
-                'text': 'Action needed',
-                'classes': 'govuk-!-font-size-19'
-              }) 
-            }}
-            </h3>
-          <p class="govuk-hint">Feedback about {{ pageData.dataset }} data we think needs action from {{ pageData.organisation }}.</p>
-          <p class="govuk-hint">These are things required to meet the data standard.</p>
-        </div>
-        <div class="govuk-grid-column-two-thirds">
-
-          {% set actionLink = 'dataset-action.html?orgname=' + pageData.organisation + '&dataset=' + pageData.dataset + ''  %}
-
-          {{
-            govukSummaryList({ 
-              'classes': 'govuk-!-margin-top-0',
-              'rows': [
-                {
-                  'key': {
-                    'classes': 'govuk-!-padding-top-0', 
-                    'html': 'Missing fields' | safe
-                  }, 
-                  'value': {
-                    'text': '2 ' + pageData.dataset + 's have missing fields'
-                  },
-                  'actions': {
-                    'items': [
-                      {
-                        'href': actionLink + '&issue=Missing field', 
-                        'text': 'View', 
-                        'visuallyHiddenText': 'Duplicates'
-                      },
-                    ]
-                  }
-                },
-                {
-                  'key': {
-                    'html': 'Missing values' | safe
-                  }, 
-                  'value': {
-                    'text': '22 ' + pageData.dataset + 's have fields with missing values'
-                  },
-                  'actions': {
-                    'items': [
-                      {
-                        'href': actionLink + '&issue=Missing value', 
-                        'text': 'View', 
-                        'visuallyHiddenText': 'missing values'
-                      },
-                    ]
-                  }
-                },
-                {
-                  'key': { 
-                    'html': 'Incorrect values' | safe
-                  }, 
-                  'value': {
-                    'text': '22 ' + pageData.dataset + 's have fields with what we believe are incorrect values'
-                  },
-                  'actions': {
-                    'items': [
-                      {
-                        'href': actionLink + '&issue=Incorrect value', 
-                        'text': 'View', 
-                        'visuallyHiddenText': 'incorrect values'
-                      },
-                    ]
-                  }
-                },
-                {
-                  'key': {
-                    'html': 'Duplicates' | safe
-                  }, 
-                  'value': {
-                    'text': '7 ' + pageData.dataset + 's we believe are duplicates'
-                  },
-                  'actions': {
-                    'items': [
-                      {'href': '#', 'text': 'View', 'visuallyHiddenText': 'Duplicates'},
-                    ]
-                  }
-                },
-              ]
-            })
-          }}
-        </div>
-      </div>
-      
-        <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-top-0">
-
-      {% endif %}
-
         <div class="govuk-grid-row">
-          <div class="govuk-grid-column-one-third">
-            <h3 class="govuk-heading-l govuk-!-margin-bottom-3">
-              {{ 
-                govukTag({ 
-                  'text': 'Recommendations',
-                  'classes': 'govuk-!-font-size-19 govuk-tag--blue'
-                }) 
-              }}
-              </h3>
-            <p class="govuk-hint">Recommendations for {{ pageData.dataset }} data published {{ pageData.organisation }}.</p>
-            <p class="govuk-hint">These are things that will make the dataset more complete.</p>
-          </div>
-          <div class="govuk-grid-column-two-thirds">
+          <div class="govuk-grid-column-three-quarters">
+
+            <h2 class="govuk-heading-l govuk-!-margin-bottom-4">
+                {{ 
+                  govukTag({ 
+                    'text': 'Actions',
+                    'classes': 'govuk-!-font-size-24'
+                  }) 
+                }}
+            </h2>
+
+            <p class="govuk-body govuk-hint govuk-!-margin-bottom-6">Important feedback about the planning and housing data published by {{ pageData.organisation }}. They are listed as actions the organisation should take.</p>
+
+            {% set actionLink = 'dataset-action.html?orgname=' + pageData.organisation + '&dataset=' + pageData.dataset + ''  %}
+
             {{
               govukSummaryList({ 
-                'classes': 'govuk-!-margin-top-0',
+                'classes': 'govuk-summary-list--border-top',
                 'rows': [
                   {
                     'key': {
                       'classes': 'govuk-!-padding-top-0', 
-                      'html': 'Add notes' | safe
+                      'html': 'Add missing fields' | safe
                     }, 
                     'value': {
-                      'classes': '', 
-                      'html': 'We recommend that you add a notes field with any notes related to each ' + pageData.dataset + '.'
+                      'text': '2 ' + pageData.dataset + 's have missing fields'
                     },
                     'actions': {
                       'items': [
-                        {'href': '#', 'text': 'Guidance'},
+                        {
+                          'href': actionLink + '&issue=Missing field', 
+                          'text': 'View', 
+                          'visuallyHiddenText': 'Duplicates'
+                        },
+                      ]
+                    }
+                  },
+                  {
+                    'key': {
+                      'html': 'Add missing values' | safe
+                    }, 
+                    'value': {
+                      'text': '22 ' + pageData.dataset + 's have fields with missing values'
+                    },
+                    'actions': {
+                      'items': [
+                        {
+                          'href': actionLink + '&issue=Missing value', 
+                          'text': 'View', 
+                          'visuallyHiddenText': 'missing values'
+                        },
                       ]
                     }
                   },
                   {
                     'key': { 
-                      'html': 'Add point data' | safe
+                      'html': 'Check values' | safe
                     }, 
                     'value': {
-                      'text': 'If your GIS application provides additional point data then we can add this to the data we collect alongside the geometry.'
+                      'text': '22 ' + pageData.dataset + 's have fields with what we believe are incorrect values'
                     },
                     'actions': {
                       'items': [
-                        {'href': '#', 'text': 'Guidance', 'visuallyHiddenText': 'name'},
+                        {
+                          'href': actionLink + '&issue=Incorrect value', 
+                          'text': 'View', 
+                          'visuallyHiddenText': 'incorrect values'
+                        },
                       ]
                     }
-                  }
+                  },
+                  {
+                    'key': {
+                      'html': 'Check duplicates' | safe
+                    }, 
+                    'value': {
+                      'text': '7 ' + pageData.dataset + 's we believe are duplicates'
+                    },
+                    'actions': {
+                      'items': [
+                        {'href': '#', 'text': 'View', 'visuallyHiddenText': 'Duplicates'},
+                      ]
+                    }
+                  },
                 ]
               })
             }}
+          </div>
+        </div>
+        
+        <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-top-0">
+
+      {% endif %}
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-three-quarters">
+            <h2 class="govuk-heading-l govuk-!-margin-bottom-4">
+              {{ 
+                govukTag({ 
+                  'text': 'Recommendations',
+                  'classes': 'govuk-!-font-size-24 govuk-tag--blue'
+                }) 
+              }}
+              </h2>
+            
+              <p class="govuk-body govuk-hint govuk-!-margin-bottom-6">Recommendations for {{ pageData.dataset }} data published {{ pageData.organisation }}. These are things that will make the dataset more complete.</p>
+          
+              {{
+                govukSummaryList({ 
+                  'classes': 'govuk-!-margin-top-0',
+                  'rows': [
+                    {
+                      'key': {
+                        'classes': 'govuk-!-padding-top-0', 
+                        'html': 'Add notes' | safe
+                      }, 
+                      'value': {
+                        'classes': '', 
+                        'html': 'We recommend that you add a notes field with any notes related to each ' + pageData.dataset + '.'
+                      },
+                      'actions': {
+                        'items': [
+                          {'href': '#', 'text': 'Guidance'},
+                        ]
+                      }
+                    },
+                    {
+                      'key': { 
+                        'html': 'Add point data' | safe
+                      }, 
+                      'value': {
+                        'text': 'If your GIS application provides additional point data then we can add this to the data we collect alongside the geometry.'
+                      },
+                      'actions': {
+                        'items': [
+                          {'href': '#', 'text': 'Guidance', 'visuallyHiddenText': 'name'},
+                        ]
+                      }
+                    }
+                  ]
+                })
+              }}
 
           </div>
         </div>
 
     {% endif %}
 
-
-    <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-top-0">
+    {# <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-top-0">
 
     <section class="app-summary-card govuk-!-margin-bottom-3">
       <header class="app-summary-card__header">
@@ -244,7 +241,7 @@
         })
       }} 
       </div>
-    </section>
+    </section> #}
 
   </main>
 {% endblock %}

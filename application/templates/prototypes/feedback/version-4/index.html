@@ -342,10 +342,10 @@
     
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <div class="govuk-caption-xl">Feedback</div>
-        <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">Publishing your planning and housing data</h1>
+        {# <div class="govuk-caption-xl">Feedback</div> #}
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">Help to publish your planning and housing data</h1>
         <p class="govuk-body-l govuk-!-margin-bottom-6">
-          Get feedback and support to publish data that meets standards from the Department for Levelling Up, Housing and Communities.</p>
+          Get feedback and support to publish data that meets standards set by the Department for Levelling Up, Housing and Communities.</p>
       </div>
     </div>
 
@@ -370,23 +370,23 @@
         {% for char in letters %}
           {% set theseLPAs = lpas | get_items_beginning_with(char) %}
           {% if (theseLPAs | length) > 0 %}
-          <div class="govuk-grid-row js-filter-item">
-            <div class="govuk-grid-column-one-third">
-              <h2 class="govuk-heading-xl">{{ char }}</h2>
-            </div>         
-            <div class="govuk-grid-column-two-thirds">
-              <ul class="govuk-list govuk-!-margin-bottom-0">
-                {% for lpa in theseLPAs | sort %}
-                  <li class="govuk-!-margin-bottom-1 js-filter-item">
-                    <a href="/{{ lpa | lower | replace(' ', '-') | replace('.','') | replace(',','') | replace("'","") }}" class="govuk-link">{{ lpa }}</a>
-                  </li>
-                {% endfor %}
-              </ul>
+            <div class="govuk-grid-row js-filter-item">
+              <div class="govuk-grid-column-one-third">
+                <h2 class="govuk-heading-xl">{{ char }}</h2>
+              </div>         
+              <div class="govuk-grid-column-two-thirds">
+                <ul class="govuk-list govuk-!-margin-bottom-0">
+                  {% for lpa in theseLPAs | sort %}
+                    <li class="govuk-!-margin-bottom-1 js-filter-item">
+                      <a href="organisation-summary.html?orgname={{ lpa | replace('.','') | replace(',','') | replace("'","") }}" class="govuk-link">{{ lpa }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="govuk-grid-column-full">
+                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+              </div>
             </div>
-            <div class="govuk-grid-column-full">
-              <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            </div>
-          </div>
           {% endif %}
           <!-- /.govuk-grid-row -->
         {% endfor %}
