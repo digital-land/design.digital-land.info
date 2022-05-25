@@ -29,10 +29,6 @@
         <p class="govuk-body-l govuk-!-margin-bottom-6">Collected from <a href="index.html?orgname={{ pageData.organisation }}">{{ pageData.organisation }}</a></p>
         <p class="govuk-body">This feedback was last updated on {{ pageData.dates["updated-date"] }}</p>
       </div>
-      {# <div class="govuk-column-one-third">
-      <p class="govuk-body">This feedback was last updated on <br>{{ pageData.dates["updated-date"] }}</p>
-      </div> #}
-      <!-- /.govuk-column-one-third -->
       <div class="govuk-grid-column-full">
         {% include path.full | replace(path.split[3], 'tabs.html') with context %}
       </div>
@@ -57,7 +53,7 @@
                 {{ 
                   govukTag({ 
                     'text': 'Actions',
-                    'classes': 'govuk-!-font-size-24'
+                    'classes': 'govuk-!-font-size-24 govuk-tag--error'
                   }) 
                 }}
             </h2>

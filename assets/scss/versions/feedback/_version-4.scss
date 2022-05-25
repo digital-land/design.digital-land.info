@@ -31,8 +31,14 @@
     }
 
     .govuk-tag--error {
-      background: $govuk-error-colour;
-      color: white;
+      background: lighten($govuk-error-colour,45);
+      color: darken($govuk-error-colour,10);
+    }
+
+    .govuk-tag--warn {
+      background: #fff;
+      color: govuk-colour("orange");;
+      border: 2px solid govuk-colour("orange");;
     }
 
     .govuk-tag--orange {
