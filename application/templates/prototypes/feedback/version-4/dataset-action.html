@@ -2,9 +2,8 @@
 {%- from 'govuk_frontend_jinja/components/table/macro.html' import govukTable -%}
 {%- from 'govuk_frontend_jinja/components/tag/macro.html' import govukTag -%}
 {%- from 'govuk_frontend_jinja/components/summary-list/macro.html' import govukSummaryList -%}
-{{ govukTag(fixture.options)}}
+{%- from "digital-land-frontend/components/data-table/macro.jinja" import dlDataTableWrapper %}
 {% block pageTitle %}Feedback{% endblock %}
-{% block content %}
 
 {% set pageData = {
   'dataset': qs.dataset | default('Not set'),
@@ -20,6 +19,28 @@
   'issue': qs.issue
 } %}
 
+{%- block breadcrumbs -%}
+  {{- govukBreadcrumbs({
+    "items": [
+        {
+          "text": pageData.organisation,
+          "href": "organisation-summary.html?orgname=" + pageData.organisation
+        },
+        {
+          "text": pageData.dataset,
+          "href": "dataset-report.html?orgname=" + pageData.organisation + "&dataset=" + pageData.dataset
+        },
+        {
+          "text": pageData.issue,
+          "href": "dataset-action.html?orgname=" + pageData.organisation + "&dataset=" + pageData.dataset
+        }
+    ]
+    }) -}}
+{%- endblock -%}
+
+{% block content %}
+
+
   <main id="content" role="main">
     
     <div class="govuk-grid-row">
@@ -29,73 +50,304 @@
         <p class="govuk-body-l">Collected from <a href="index.html?orgname={{ pageData.organisation }}">{{ pageData.organisation }}</a></p>
       </div>
       <div class="govuk-grid-column-full">
-
         {% include path.full | replace(path.split[3], 'tabs.html') with context %}
-
       </div>
     </div>
 
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-grid-column-full">
 
-      {% set entities = [
-        {
-          'title': 'H-STPETE-061'
-        },
-        {
-          'title': 'H-STPETE-277'
-        },
-        {
-          'title': 'H-STPETE-145'
-        },
-        {
-          'title': 'H-STPETE-140'
-        },
-        {
-          'title': 'H-STPETE-009'
-        },
-        {
-          'title': 'H-STPETE-066'
-        },
-        {
-          'title': 'H-STPETE-070'
-        },
-        {
-          'title': 'H-STPETE-666'
-        },
-      ] %}
+        {% set entities = [
+          {
+            "entry-date":"2018-12-21",
+            "start-date":"2017-11-01",
+            "end-date":"",
+            "entity":1700000,
+            "name":"BFR001",
+            "dataset":"brownfield-land",
+            "typology":"geography",
+            "reference":"BFR001",
+            "prefix":"brownfield-land",
+            "organisation-entity":"336",
+            "geometry":"",
+            "point":"POINT (-6.810177 52.448509)",
+            "notes":"Part of this site was started in 2002, no progress since so remaining as brownfield land",
+            "hectares":"0.26",
+            "deliverable":"yes",
+            "site-address":"Glendaragh, Barn Park Road, Teignmouth TQ14 8PN",
+            "site-plan-url":"https://www.teignbridge.gov.uk/planning/forms/planning-application-details/?Type=Application&Refval=01%2f03478%2fCOU",
+            "ownership-status":"not owned by a public authority",
+            "maximum-net-dwellings":"15",
+            "minimum-net-dwellings":"15",
+            "planning-permission-date":"2001-10-26",
+            "planning-permission-type":"full planning permission",
+            "planning-permission-status":"permissioned"
+          },
+          {
+            "entry-date":"2018-12-21",
+            "start-date":"2017-11-01",
+            "end-date":"",
+            "entity":1700001,
+            "name":"BFR002",
+            "dataset":"brownfield-land",
+            "typology":"geography",
+            "reference":"BFR002",
+            "prefix":"brownfield-land",
+            "organisation-entity":"336",
+            "geometry":"",
+            "point":"POINT (-6.823469 52.362977)",
+            "notes":"Groundworks commenced keeping this live, so this remains on the brownfield register",
+            "hectares":"0.12",
+            "deliverable":"yes",
+            "site-address":"Rosemary Avenue, Newton Abbot TQ12 1SB",
+            "site-plan-url":"https://www.teignbridge.gov.uk/planning/forms/planning-application-details/?Type=Application&Refval=05%2f04278%2fFUL",
+            "ownership-status":"not owned by a public authority",
+            "maximum-net-dwellings":"6",
+            "minimum-net-dwellings":"6",
+            "planning-permission-date":"2006-03-22",
+            "planning-permission-type":"full planning permission",
+            "planning-permission-status":"permissioned"
+          },
+          {
+            "entry-date":"2018-12-21",
+            "start-date":"2017-11-01",
+            "end-date":"2019-07-24",
+            "entity":1700002,
+            "name":"BFR003",
+            "dataset":"brownfield-land",
+            "typology":"geography",
+            "reference":"BFR003",
+            "prefix":"brownfield-land",
+            "organisation-entity":"336",
+            "geometry":"",
+            "point":"POINT (-6.825071 52.43578)",
+            "notes":"started - this is partly completed and rest started so there is an end date, this will no longer be on the brownfield register",
+            "hectares":"0.47",
+            "deliverable":"yes",
+            "site-address":"Platway House, Torquay Road, Shaldon TQ14 0AU",
+            "site-plan-url":"https://www.teignbridge.gov.uk/planning/forms/planning-application-details/?Type=Application&Refval=16%2f03261%2fMAJ",
+            "ownership-status":"not owned by a public authority",
+            "maximum-net-dwellings":"9",
+            "minimum-net-dwellings":"9",
+            "planning-permission-date":"2008-07-01",
+            "planning-permission-type":"full planning permission",
+            "planning-permission-status":"permissioned"
+          },
+          {
+            "entry-date":"2018-12-21",
+            "start-date":"2017-11-01",
+            "end-date":"2018-03-16",
+            "entity":1700003,
+            "name":"BFR004",
+            "dataset":"brownfield-land",
+            "typology":"geography",
+            "reference":"BFR004",
+            "prefix":"brownfield-land",
+            "organisation-entity":"336",
+            "geometry":"",
+            "point":"POINT (-6.760727 52.468159)",
+            "notes":"completed",
+            "hectares":"0.04",
+            "deliverable":"yes",
+            "site-address":"Shapters Yard, Strand Hill, Dawlish EX7 9PS",
+            "site-plan-url":"http://www.teignbridge.gov.uk/planning/forms/planning-application-details/?Type=Application&Refval=12%2f01811%2fFUL",
+            "ownership-status":"not owned by a public authority",
+            "maximum-net-dwellings":"9",
+            "minimum-net-dwellings":"9",
+            "planning-permission-date":"2012-07-31",
+            "planning-permission-type":"full planning permission",
+            "planning-permission-status":"permissioned"
+          },
+          {
+            "entry-date":"2018-12-21",
+            "start-date":"2017-11-01",
+            "end-date":"",
+            "entity":1700004,
+            "name":"BFR005",
+            "dataset":"brownfield-land",
+            "typology":"geography",
+            "reference":"BFR005",
+            "prefix":"brownfield-land",
+            "organisation-entity":"336",
+            "geometry":"",
+            "point":"POINT (-6.845949 52.365169)",
+            "notes":"started",
+            "hectares":"1.14",
+            "deliverable":"yes",
+            "site-address":"Former Wolborough Hospital, Old Totnes Road, Newton Abbot TQ12 6AA",
+            "site-plan-url":"https://www.teignbridge.gov.uk/planning/forms/planning-application-details/?Type=Application&Refval=13%2f01497%2fMAJ",
+            "ownership-status":"not owned by a public authority",
+            "maximum-net-dwellings":"79",
+            "minimum-net-dwellings":"13",
+            "planning-permission-date":"2013-01-21",
+            "planning-permission-type":"full planning permission",
+            "planning-permission-status":"permissioned"
+          },
+          {
+            "entry-date":"2018-12-21",
+            "start-date":"2017-11-01",
+            "end-date":"2018-08-28",
+            "entity":1700005,
+            "name":"BFR006",
+            "dataset":"brownfield-land",
+            "typology":"geography",
+            "reference":"BFR006",
+            "prefix":"brownfield-land",
+            "organisation-entity":"336",
+            "geometry":"",
+            "point":"POINT (-6.789549 52.461963)",
+            "notes":"completed",
+            "hectares":"0.73",
+            "deliverable":"yes",
+            "site-address":"Holcombe Hall, Holcombe Drive, Dawlish EX7 0JW",
+            "site-plan-url":"http://www.teignbridge.gov.uk/planning/forms/planning-application-details/?Type=Application&Refval=13%2f02517%2fFUL",
+            "ownership-status":"not owned by a public authority",
+            "maximum-net-dwellings":"7",
+            "minimum-net-dwellings":"7",
+            "planning-permission-date":"2014-10-10",
+            "planning-permission-type":"full planning permission",
+            "planning-permission-status":"permissioned"
+          },
+          {
+            "entry-date":"2018-12-21",
+            "start-date":"2017-11-01",
+            "end-date":"2020-02-01",
+            "entity":1700006,
+            "name":"BFR007",
+            "dataset":"brownfield-land",
+            "typology":"geography",
+            "reference":"BFR007",
+            "prefix":"brownfield-land",
+            "organisation-entity":"336",
+            "geometry":"",
+            "point":"POINT (-6.762472 52.461817)",
+            "notes":"started - near completions Feb 2020 therefore end date as will no longer be brownfield",
+            "hectares":"0.04",
+            "deliverable":"yes",
+            "site-address":"14 Barton Villas, Dawlish EX7 9QJ",
+            "site-plan-url":"https://www.teignbridge.gov.uk/planning/forms/planning-application-details/?Type=Application&Refval=13%2f03658%2fFUL",
+            "ownership-status":"not owned by a public authority",
+            "maximum-net-dwellings":"5",
+            "minimum-net-dwellings":"5",
+            "planning-permission-date":"2014-10-10",
+            "planning-permission-type":"full planning permission",
+            "planning-permission-status":"permissioned"
+          },
+          {
+            "entry-date":"2018-12-21",
+            "start-date":"2017-11-01",
+            "end-date":"",
+            "entity":1700007,
+            "name":"BFR008",
+            "dataset":"brownfield-land",
+            "typology":"geography",
+            "reference":"BFR008",
+            "prefix":"brownfield-land",
+            "organisation-entity":"336",
+            "geometry":"",
+            "point":"POINT (-6.832244 52.370771)",
+            "notes":"started",
+            "hectares":"0.18",
+            "deliverable":"yes",
+            "site-address":"22 - 26 Wolborough Street, Newton Abbot TQ12 1JJ",
+            "site-plan-url":"https://www.teignbridge.gov.uk/planning/forms/planning-application-details/?Type=Application&Refval=14%2f01015%2fMAJ",
+            "ownership-status":"not owned by a public authority",
+            "maximum-net-dwellings":"27",
+            "minimum-net-dwellings":"27",
+            "planning-permission-date":"2014-10-10",
+            "planning-permission-type":"full planning permission",
+            "planning-permission-status":"permissioned"
+          },
+          {
+            "entry-date":"2018-12-21",
+            "start-date":"2017-11-01",
+            "end-date":"2020-02-01",
+            "entity":1700008,
+            "name":"BFR009",
+            "dataset":"brownfield-land",
+            "typology":"geography",
+            "reference":"BFR009",
+            "prefix":"brownfield-land",
+            "organisation-entity":"336",
+            "geometry":"",
+            "point":"POINT (-6.813638 52.443391)",
+            "notes":"2 phase scheme part 1 completed in 2009 - this phase started - under construction Feb 2020 therefore end date as will no longer be brownfield",
+            "hectares":"0.08",
+            "deliverable":"yes",
+            "site-address":"Clay Lane, Teignmouth TQ14 8FW",
+            "site-plan-url":"https://www.teignbridge.gov.uk/planning/forms/planning-application-details/?Type=Application&Refval=14%2f01918%2fMAJ",
+            "ownership-status":"not owned by a public authority",
+            "maximum-net-dwellings":"21",
+            "minimum-net-dwellings":"21",
+            "planning-permission-date":"2014-10-09",
+            "planning-permission-type":"full planning permission",
+            "planning-permission-status":"permissioned"
+          },
+          {
+            "entry-date":"2018-12-21",
+            "start-date":"2017-11-01",
+            "end-date":"",
+            "entity":1700009,
+            "name":"BFR010",
+            "dataset":"brownfield-land",
+            "typology":"geography",
+            "reference":"BFR010",
+            "prefix":"brownfield-land",
+            "organisation-entity":"336",
+            "geometry":"",
+            "point":"POINT (-6.777552 52.345978)",
+            "notes":"unimplemented",
+            "hectares":"26.45",
+            "deliverable":"yes",
+            "site-address":"land at Ilford Park, Stover, Newton Abbot TQ12 6PW",
+            "site-plan-url":"https://www.teignbridge.gov.uk/planning/forms/planning-application-details/?Type=Application&Refval=14%2f02580%2fMAJ",
+            "ownership-status":"not owned by a public authority",
+            "maximum-net-dwellings":"23",
+            "minimum-net-dwellings":"23",
+            "planning-permission-date":"2016-06-01",
+            "planning-permission-type":"full planning permission",
+            "planning-permission-status":"permissioned"
+          }
+        ], 
+        %} 
 
-          {% for entity in entities  %}
-            <section class="app-summary-card govuk-!-margin-bottom-3">
-              <header class="app-summary-card__header">
-                <h2 class="app-summary-card__title">
-                  {{ entity.title }}
-                </h2>
-              </header>
-              <div class="app-summary-card__body">
-                  {{
-                govukSummaryList({ 
-                  'rows': [
-                    {
-                      'key': {
-                        'classes': 'govuk-!-width-one-half', 
-                        'html': pageData.issue | safe
-                      }, 
-                      'value': {
-                        'classes': 'govuk-!-width-one-half govuk-!-padding-right-0', 
-                        'text': ['start-date', 'name', 'geometry'] | random
-                      },
-                    }
-                  ]
-                })
-              }} 
-              </div>
-            </section>
-          {% endfor %}
+        {%- set tableHTML %}
+        <table class="dl-data-table">
+            <thead>
+                {% set firstItem = entities | first | first %}
+                {% for key, value in firstItem | items %}
+                  {% if key %}
+                    <th>{{ key }}</th>
+                  {% endif %}
+                {% endfor %}
+            </thead>
+            <tbody>
+              {% for entity in entities | first  %}
+                <tr>                
+                {% for key, value in entity | items  %}
+                  {# {% if not value and key != 'end-date' or key == 'reference' %}
+                    <td>{{ value if key == 'reference' else 'missing' }}</td>
+                  {% endif %} #}
+                  <td>
+                    {% if not value and key != 'end-date' %}
+                      {{ govukTag({ 'text': 'Missing value', 'classes': 'govuk-tag--error' }) }}
+                    {% else %}
+                      {{ value if value }}
+                    {% endif %}
+                  </td>
+                {% endfor %}
+                </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+        {% endset -%}
+        {{ dlDataTableWrapper({
+            "tableHTML": tableHTML
+        }) }}      
       
-      </div>
     </div>
-    <!-- /.govuk-grid-row -->
+  </div>
+  <!-- /.govuk-grid-row -->
 
   </main>
 {% endblock %}

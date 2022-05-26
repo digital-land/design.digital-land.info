@@ -33,7 +33,7 @@
         <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">{{ qs.orgname | default('Manchester City Council') }}</h1>
         <p class="govuk-body-l">Feedback to help your organisation publish planning data.</p>
       </div>
-      <div class="govuk-grid-column-full">
+      <div class="govuk-grid-column-two-thirds">
       <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-top-0 govuk-section-break--visible">
       </div>
     </div>
@@ -49,7 +49,7 @@
             'recommendations': govukTag({ 'text': 'Has recommendations','classes': 'govuk-tag--blue' }),
             'good': govukTag({ 'text': 'Standard met', 'classes': 'govuk-tag--green' })
           }
-        } %}
+        } %}        
 
         {{ 
           govukTable(
