@@ -1,0 +1,168 @@
+{% extends "layouts/layout.html" %}
+{%- from 'govuk_frontend_jinja/components/table/macro.html' import govukTable -%}
+{%- from 'govuk_frontend_jinja/components/tag/macro.html' import govukTag -%}
+{{ govukTag(fixture.options)}}
+{% set pageData = {
+  'orgname': qs.orgname | default('Not set')
+ } %}
+{% block pageTitle %}Feedback for {{ pageData.orgname }}{% endblock %}
+
+{%- block breadcrumbs -%}
+  {{- govukBreadcrumbs({
+    "items": [
+        {
+          "text": "Feedback",
+          "href": "index.html"
+        },
+        {
+          "text": pageData.orgname,
+          "href": "#top"
+        }
+    ]
+    }) -}}
+{%- endblock -%}
+
+{% block content %}
+
+
+  <main id="content" role="main">
+    
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">Organisation</span>
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">{{ qs.orgname | default('Manchester City Council') }}</h1>
+        <p class="govuk-body-l">Feedback to help your organisation publish planning data.</p>
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+      <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-top-0 govuk-section-break--visible">
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        {# <h2 class="govuk-heading-l">Datasets</h2> #}
+        <p>The following is a list of the datasets DLUHC creates using data published by {{ qs.orgname | default('Manchester City Council') }} with a status from the last time data was collected.</p>
+
+        {% set confObj = {
+          'status' : {
+            'actions' : govukTag({ 'text': 'Action needed', 'classes': 'govuk-tag--error' }),
+            'recommendations': govukTag({ 'text': 'Has recommendations','classes': 'govuk-tag--blue' }),
+            'good': govukTag({ 'text': 'Standard met', 'classes': 'govuk-tag--green' })
+          }
+        } %}        
+
+        {{ 
+          govukTable(
+            {
+              'head': [
+                {'text': 'Dataset'},
+                {'text': 'Status', 'format': 'numeric'},
+              ], 
+              'rows': [
+                [
+                  {
+                    'html': '<a href="dataset-report.html?orgname=' + pageData.orgname + '&dataset=Brownfield land">Brownfield land</a>'
+                  }, 
+                  {
+                    'html': confObj.status.actions, 
+                    'format': 'numeric'
+                  }
+                ],
+                [
+                  {
+                    'html': '<a href="dataset-report.html?orgname=' + pageData.orgname + '&dataset=Article 4 direction">Article 4 direction</a>'
+                  },
+                  {
+                    'html': confObj.status.actions,
+                    'format': 'numeric'
+                  }
+                ],
+                [
+                  {
+                    'html': '<a href="dataset-report.html?orgname=' + pageData.orgname + '&dataset=Brownfield site">Brownfield site</a>'
+                  },
+                  {
+                    'html': confObj.status.actions,
+                    'format': 'numeric'
+                  }
+                ],
+                [
+                  {
+                    'html': '<a href="dataset-report.html?orgname=' + pageData.orgname + '&dataset=Conservation area&noactions=true">Conservation area</a>'
+                  },
+                  {
+                    'html': confObj.status.recommendations,
+                    'format': 'numeric'
+                  }
+                ],
+                [
+                  {
+                    'html': '<a href="dataset-report.html?orgname=' + pageData.orgname + '&dataset=Developer agreement&noactions=true">Developer agreement</a>'
+                  },
+                  {
+                    'html': confObj.status.recommendations,
+                    'format': 'numeric'
+                  }
+                ],
+                [
+                  {
+                    'html': '<a href="dataset-report.html?orgname=' + pageData.orgname + '&dataset=Developer agreement contribution&none=true">Developer agreement contribution</a>'
+                  },
+                  {
+                    'html': confObj.status.good, 
+                    'format': 'numeric'
+                  }
+                ],
+                [
+                  {
+                    'html': '<a href="dataset-report.html?orgname=' + pageData.orgname + '&dataset=Developer agreement transaction&noactions=true">Developer agreement transaction</a>'
+                  },
+                  {
+                    'html': confObj.status.recommendations,
+                    'format': 'numeric'
+                  }
+                ],
+                [
+                  {
+                    'html': '<a href="dataset-report.html?orgname=' + pageData.orgname + '&dataset=Employment allocation">Employment allocation</a>'
+                  },
+                  {
+                    'html': confObj.status.actions,
+                    'format': 'numeric'
+                  }
+                ],
+                [
+                  {
+                    'html': '<a href="dataset-report.html?orgname=' + pageData.orgname + '&dataset=Tree">Tree</a>'
+                  },
+                  {
+                    'html': confObj.status.actions,
+                    'format': 'numeric'
+                  }
+                ],
+                [
+                  {
+                    'html': '<a href="dataset-report.html?orgname=' + pageData.orgname + '&dataset=Tree preservation order">Tree preservation order</a>'
+                  },
+                  {
+                    'html': confObj.status.actions,
+                    'format': 'numeric'
+                  }
+                ]
+              ]
+            }
+          )
+        }}
+
+        <p class="govuk-!-font-size-16">This page was last updated {{ '06 May 2022' }}</p>
+
+      </div>
+    </div>
+
+
+  </main>
+{% endblock %}
+
+{% block bodyEnd %}
+  {{ super() }}
+{% endblock bodyEnd %}

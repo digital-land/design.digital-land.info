@@ -9,18 +9,17 @@
     position: relative;
     max-height: calc(1.1em);
     overflow: hidden;
-    padding-right: 0.65em; /* space for ellipsis */
+    padding-right: 0.65em; // space for ellipsis 
     display: block;
     &:hover {
       max-height: calc(1.1em * 5);
     }
   }
   .app-u-breakword::before {
-    // color: $govuk-border-colour;
     position: absolute;
     content: "...";
-    inset-block-end: 0; /* "bottom" */
-    inset-inline-end: 0; /* "right" */
+    inset-block-end: 0; // "bottom"
+    inset-inline-end: 0; // "right"
   }
   .app-u-breakword::after {
     content: "";
