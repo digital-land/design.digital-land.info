@@ -39,7 +39,6 @@
 
 {% block content %}
 
-
   <main id="content" role="main">
     
     <div class="govuk-grid-row">
@@ -47,7 +46,7 @@
         <span class="govuk-caption-xl">Dataset feedback</span>
         <h1 class="govuk-heading-xl govuk-!-margin-bottom-1">{{ pageData.dataset }}</h1>
         <p class="govuk-body-l govuk-!-margin-bottom-6">Collected from <a href="organisation-summary.html?orgname={{ pageData.organisation }}">{{ pageData.organisation }}</a></p>
-        <p class="govuk-body">This feedback was last updated on {{ pageData.dates["updated-date"] }}</p>
+        {# <p class="govuk-body">This feedback was last updated on {{ pageData.dates["updated-date"] }}</p> #}
       </div>
       <div class="govuk-grid-column-full">
         {% include path.full | replace(path.split[3], 'tabs.html') with context %}
@@ -66,10 +65,21 @@
 
       {% if pageData.noactions != 'true' %}
 
+      {{ 
+        govukPanel({
+          'titleHtml': 'Action needed',
+          'classes': "app-panel--issues",
+          'headingLevel': '2',
+          'text': 'to improve this dataset'
+        })
+      }}
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-!-margin-top-0">
+
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-full">
 
-            <h2 class="govuk-heading-l govuk-!-margin-bottom-4">
+            <h2 class="govuk-heading-l">
              Data structure
             </h2>
 
@@ -78,101 +88,165 @@
             </div>
             <!-- /.govuk-!-width-two-thirds -->
 
+            <hr class="govuk-section-break govuk-section-break--m govuk-!-margin-top-0">
+
             {% macro tpoFeedbackItem(params) %}
               <ul class="govuk-list govuk-list--spaced">
                 {% if params.key | lower == "point" %}
-                <li>22 {{ params.dataset }} are missing {{ params.key | lower }} data {{ govukTag({ "text": "issue", "classes": "govuk-tag--red" }) }}</li>
+                <li>22 {{ params.dataset }} are missing {{ params.key | lower }} data</li>
                 {% else %}
-                <li>All {{ params.dataset }}(s) have a {{ params.key | lower }} {{ govukTag({ "text": "met", "classes": "govuk-tag--green" }) }}</li>
+                <li>All {{ params.dataset }}(s) have a {{ params.key | lower }}</li>
                 {% endif %}
               </ul>
             {% endmacro %}
 
-            {% set tpoFeedback = [
-              {
-                "key": {
-                  "text": "Reference"
-                },
-                "value": {
-                  "text": "a reference or ID that is unique to each tree preservation order, tree or tree zone/area"
-                },
-                "feedback": tpoFeedbackItemBlock
-              },
-              {
-                "key": {
-                  "text": "Name"
-                },
-                "value": {
-                  "text": "the name of the tree preservation order, tree or tree zone/area"
-                },
-                "feedback": tpoFeedbackItemBlock
-              },
-              {
-                "key": {
-                  "text": "Document URL"
-                },
-                "value": {
-                  "text": "the url to an official document or web page that details the tree preservation order"
-                },
-                "feedback": tpoFeedbackItemBlock
-              },
-              {
-                "key": {
-                  "text": "Species"
-                },
-                "value": {
-                  "text": "the species of the tree, or the species of tree within a tree zone/area"
-                },
-                "feedback": tpoFeedbackItemBlock
-              },
-              {
-                "key": {
-                  "text": "Tree preservation order type"
-                },
-                "value": {
-                  "text": "whether the data relates to an individual tree or a tree zone/area"
-                },
-                "feedback": tpoFeedbackItemBlock
-              },
-              {
-                "key": {
-                  "text": "Geometry"
-                },
-                "value": {
-                  "text": "polygon coordinates for each tree zone/area"
-                },
-                "feedback": tpoFeedbackItemBlock
-              },
-              {
-                "key": {
-                  "text": "Point"
-                },
-                "value": {
-                  "text": "the point coordinates of an individual tree"
-                },
-                "feedback": tpoFeedbackItemBlock
-              }
-            ] %}
+            <section class="app-summary-card govuk-!-margin-bottom-6">
+              <header class="app-summary-card__header">
+                <h2 class="app-summary-card__title">
+                  '{{ pageData.dataset }}' data standard
+                </h2>
+              </header>
+              <div class="app-summary-card__body">
 
-            <dl class="govuk-summary-list">
-              {% for specItem in tpoFeedback %}
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
-                    <h3 class="govuk-heading-s govuk-!-margin-bottom-2">{{ specItem.key.text }}</h3>
-                    <div class="govuk-hint govuk-!-font-size-16">{{ specItem.value.text }}</div>
-                  </dt>
-                  {# <dd class="govuk-summary-list__value govuk-!-width-one-third">
-                    {{ specItem.value.text }}
-                  </dd> #}
-                  <dd class="govuk-summary-list__actions govuk-!-width-one-third govuk-!-text-align-left">
-                    {{ tpoFeedbackItem({
-                      "key": specItem.key.text,
-                      "dataset": pageData.dataset
-                    }) }}
-                  </dd>
-                </div>
-              {% endfor %}
-            </dl>
+{% macro fieldMarkup(params) %}
+  <h3 class="govuk-heading-s govuk-!-margin-bottom-1">{{ params.key }}</h3>
+  <p class="govuk-hint govuk-!-font-size-16">{{ params.value }}</p>
+{% endmacro %}
+
+{% set statusHTML %}
+{{ govukTag({ 'text': 'DONE', 'classes': 'govuk-tag--green' }) }}
+{% endset %}
+
+{{ govukTable({
+  'firstCellIsHeader': true,
+  'head': [
+    {
+      'text': "Field",
+      'classes': 'govuk-!-width-one-quarter'
+    },
+    {
+      'text': "Feedback",
+      'classes': 'govuk-!-width-two-quarters govuk-!-text-align-centre'
+    },
+    {
+      'text': "Status",
+      'classes': 'govuk-!-width-one-quarter govuk-!-text-align-right'
+    }
+  ],
+  'rows': [
+    [
+      {
+        'html': fieldMarkup({ 'key' : 'Reference', 'value' : 'a reference or ID that is unique to each conservation area' })
+      },
+      {
+        'html': feedbackItem
+      },
+      {
+        'html': statusHTML,
+        'classes': 'govuk-!-text-align-right app-table__cell--middle',
+      }
+    ],
+    [
+      {
+        'html': fieldMarkup({ 'key' : 'Name', 'value' : 'the name of the conservation area' })
+      },
+      {
+        'html': feedbackItem
+      },
+      {
+        'html': statusHTML,
+        'classes': 'govuk-!-text-align-right app-table__cell--middle',
+      }
+    ],
+    [
+      {
+        'html': fieldMarkup({ 'key' : 'Geometry', 'value' : 'polygon coordinates for each conservation area site boundary' })
+      },
+      {
+        'html': feedbackItem
+      },
+      {
+        'html': statusHTML,
+        'classes': 'govuk-!-text-align-right app-table__cell--middle',
+      },
+    ],
+    [
+      {
+        'html': fieldMarkup({ 'key' : 'Start date', 'value' : 'the date that the conservation area was officially designated' })
+      },
+      {
+        'html': feedbackItem
+      },
+      {
+        'html': statusHTML,
+        'classes': 'govuk-!-text-align-right app-table__cell--middle',
+      },
+    ],
+    [
+      {
+        'html': fieldMarkup({ 'key' : 'Legislation', 'value' : 'the act of legislation that was used to define the conservation area' })
+      },
+      {
+        'html': feedbackItem
+      },
+      {
+        'html': statusHTML,
+        'classes': 'govuk-!-text-align-right app-table__cell--middle',
+      },
+    ],
+    [
+      {
+        'html': fieldMarkup({ 'key' : 'Notes', 'value' : 'any notes related to a conservation area' })
+      },
+      {
+        'html': feedbackItem
+      },
+      {
+        'html': statusHTML,
+        'classes': 'govuk-!-text-align-right app-table__cell--middle',
+      },
+    ],
+    [
+      {
+        'html': fieldMarkup({ 'key' : 'Point', 'value' : 'if your GIS application provides additional point data then we can add this to the data we collect alongside the geometry' })
+      },
+      {
+        'html': feedbackItem
+      },
+      {
+        'html': statusHTML,
+        'classes': 'govuk-!-text-align-right app-table__cell--middle',
+      },
+    ],
+    [
+      {
+        'html': fieldMarkup({ 'key' : 'End date', 'value' : 'the data on which an article 4 direction ceased to be designated' })
+      },
+      {
+        'html': feedbackItem
+      },
+      {
+        'html': statusHTML,
+        'classes': 'govuk-!-text-align-right app-table__cell--middle',
+      },
+    ],
+    [
+      {
+        'html': fieldMarkup({ 'key' : 'Document URL', 'value' : 'the url to an authoritative document or web page that details the conservation area' })
+      },
+      {
+        'html': feedbackItem
+      },
+      {
+        'html': statusHTML,
+        'classes': 'govuk-!-text-align-right app-table__cell--middle',
+      },
+    ]
+  ]
+}) }}
+
+              </div>
+            </section>
 
           </div>
         </div>

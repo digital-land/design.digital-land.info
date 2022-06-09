@@ -1,0 +1,70 @@
+[class*="app-feedback-version-5"] {
+
+  .app-c-url-display {
+    * {
+      font-family: monospace;
+    }
+  }
+    
+    .app-demo-map-data {
+
+      margin-bottom: govuk-spacing(6);
+
+      &__body {
+        position: relative;
+        img {
+          max-width: 100%;
+          border: 1px solid $govuk-border-colour;
+          box-sizing: border-box;
+          display: block;
+        }
+      }
+      
+      &__buttons {
+        display: flex;
+        padding: govuk-spacing(3);
+        border: 1px solid $govuk-border-colour;
+        align-items: flex-start;
+        gap: govuk-spacing(2);
+      }
+
+    }
+
+    .govuk-tag--error {
+      background: lighten($govuk-error-colour,45);
+      color: darken($govuk-error-colour,10);
+    }
+
+    .govuk-tag--warn {
+      background: #fff;
+      color: govuk-colour("orange");;
+      border: 2px solid govuk-colour("orange");;
+    }
+
+    .govuk-tag--orange {
+      background: govuk-colour("orange");
+      color: white;
+    }
+
+    .govuk-tag--green {
+      background: govuk-colour("green");
+      color: white;
+    }
+
+    .app-panel {
+      &--issues {
+        color: govuk-colour("white");
+        background: govuk-colour("blue");
+        .govuk-panel {
+          &__title {
+            margin-bottom: govuk-spacing(1);
+            @include govuk-font($size: 48, $weight: bold);
+          }
+          &__body {
+            @include govuk-font($size: 27);
+          }
+        }
+      }
+    }
+
+}
