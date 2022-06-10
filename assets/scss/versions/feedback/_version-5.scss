@@ -53,8 +53,8 @@
 
     .app-panel {
       &--issues {
-        color: govuk-colour("white");
-        background: govuk-colour("blue");
+        background: lighten($govuk-error-colour,45);
+        color: darken($govuk-error-colour,10);
         .govuk-panel {
           &__title {
             margin-bottom: govuk-spacing(1);
