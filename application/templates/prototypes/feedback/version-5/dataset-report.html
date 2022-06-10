@@ -99,7 +99,7 @@
                       <img src="{{ assetPath }}/images/content/error-icon.svg" alt="Action needed: " height="25" width="25" alt="">
                     </span>
                     <span class="app-itemised-feedback__message">
-                      <a href="#">{{ params.number | default(fakeTotal) }} {{ params.dataset | default(pageData.dataset) }}(s)</a> are missing {{ params.key | lower }} data
+                      <a href="#">{{ params.number | default(fakeTotal) }} {{ params.dataset | default(pageData.dataset) }}s</a> are missing {{ params.key | lower }} data
                     </span>
                   </li>
                 {% elif key == "notes" or key == "point" %}
@@ -108,7 +108,7 @@
                       <img src="{{ assetPath }}/images/content/feedback-icon.svg"  alt="Feedback: " height="25" width="25" alt="">
                     </span>
                     <span class="app-itemised-feedback__message">
-                      <a href="#">{{ params.number | default(fakeTotal) }} {{ params.dataset | default(pageData.dataset) }}(s)</a> are missing {{ params.key | lower }} which would improve this dataset.
+                      <a href="#">{{ params.number | default(fakeTotal) }} {{ params.dataset | default(pageData.dataset) }}s</a> are missing {{ params.key | lower }} which would improve this dataset.
                     </span>
                   </li>
                   {% if key == "point" %}
@@ -117,7 +117,7 @@
                       <img src="{{ assetPath }}/images/content/warn-icon.svg" alt="Warning: " height="25" width="25" alt="">
                     </span>
                     <span class="app-itemised-feedback__message">
-                      <a href="#">10 {{ params.dataset | default(pageData.dataset) }}(s)</a> have point data in a format different to the data standard.
+                      <a href="#">10 {{ params.dataset | default(pageData.dataset) }}s</a> have point data in a format different to the data standard.
                     </span>
                   </li>
                   {% endif %}
@@ -127,7 +127,7 @@
                       <img src="{{ assetPath }}/images/content/good-icon.svg" height="25" width="25" alt="">
                     </span>
                     <span class="app-itemised-feedback__message">
-                      {{ fakeTotal }} {{ params.dataset | default(pageData.dataset) }}(s) have met the data standard for {{ params.key | lower }}.
+                      {{ fakeTotal }} {{ params.dataset | default(pageData.dataset) }}s have met the data standard for {{ params.key | lower }}.
                     </span>
                   </li>
                 {% endif %}
