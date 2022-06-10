@@ -69,8 +69,7 @@
         govukPanel({
           'titleHtml': 'Action needed',
           'classes': "app-panel--issues",
-          'headingLevel': '2',
-          'text': 'to improve this dataset'
+          'headingLevel': '2'
         })
       }}
 
@@ -80,7 +79,7 @@
           <div class="govuk-grid-column-full">
 
             <h2 class="govuk-heading-l">
-             Feedback by Data structure
+             Feedback about data structure
             </h2>
 
             <div class="govuk-!-width-three-quarters">
@@ -90,12 +89,47 @@
 
             <hr class="govuk-section-break govuk-section-break--m govuk-!-margin-top-0">
 
-            {% macro tpoFeedbackItem(params) %}
-              <ul class="govuk-list govuk-list--spaced">
-                {% if params.key | lower == "point" %}
-                <li>22 {{ params.dataset }} are missing {{ params.key | lower }} data</li>
+            {% macro feedbackItem(params) %}
+              {% set key = params.key | lower %}
+              {% set fakeTotal = "300"  %}
+              <ul class="app-itemised-feedback">
+                {% if key == "geometry" %}
+                  <li class="app-itemised-feedback__item">
+                    <span class="app-itemised-feedback__icon">
+                      <img src="{{ assetPath }}/images/content/error-icon.svg" heigh="25" width="25" alt="">
+                    </span>
+                    <span class="app-itemised-feedback__message">
+                      {{ params.number | default(fakeTotal) }} {{ params.dataset | default(pageData.dataset) }}(s) are missing {{ params.key | lower }} data
+                    </span>
+                  </li>
+                {% elif key == "notes" or key == "point" %}
+                  <li class="app-itemised-feedback__item">
+                    <span class="app-itemised-feedback__icon">
+                      <img src="{{ assetPath }}/images/content/feedback-icon.svg" heigh="25" width="25" alt="">
+                    </span>
+                    <span class="app-itemised-feedback__message">
+                      {{ params.number | default(fakeTotal) }} {{ params.dataset | default(pageData.dataset) }}(s) are missing {{ params.key | lower }} which would improve this dataset.
+                    </span>
+                  </li>
+                  {% if key == "point" %}
+                  <li class="app-itemised-feedback__item">
+                    <span class="app-itemised-feedback__icon">
+                      <img src="{{ assetPath }}/images/content/warn-icon.svg" heigh="25" width="25" alt="">
+                    </span>
+                    <span class="app-itemised-feedback__message">
+                      10 {{ params.dataset | default(pageData.dataset) }}(s) have point data in a format different to the data standard.
+                    </span>
+                  </li>
+                  {% endif %}
                 {% else %}
-                <li>All {{ params.dataset }}(s) have a {{ params.key | lower }}</li>
+                  <li class="app-itemised-feedback__item">
+                    <span class="app-itemised-feedback__icon">
+                      <img src="{{ assetPath }}/images/content/good-icon.svg" heigh="25" width="25" alt="">
+                    </span>
+                    <span class="app-itemised-feedback__message">
+                      {{ fakeTotal }} {{ params.dataset | default(pageData.dataset) }}(s) have met the data standard for {{ params.key | lower }}.
+                    </span>
+                  </li>
                 {% endif %}
               </ul>
             {% endmacro %}
@@ -108,142 +142,102 @@
               </header>
               <div class="app-summary-card__body">
 
-{% macro fieldMarkup(params) %}
-  <h3 class="govuk-heading-s govuk-!-margin-bottom-1">{{ params.key }}</h3>
-  <p class="govuk-hint govuk-!-font-size-16">{{ params.value }}</p>
-{% endmacro %}
+                {% macro fieldMarkup(params) %}
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-1">{{ params.key }}</h3>
+                  <p class="govuk-hint govuk-!-font-size-16">{{ params.value }}</p>
+                {% endmacro %}
 
-{% set statusHTML %}
-{{ govukTag({ 'text': 'DONE', 'classes': 'govuk-tag--green' }) }}
-{% endset %}
+                {% set statusHTML %}
+                  {{ govukTag({ 'text': 'DONE', 'classes': 'govuk-tag--green' }) }}
+                {% endset %}
 
-{{ govukTable({
-  'firstCellIsHeader': true,
-  'head': [
-    {
-      'text': "Field",
-      'classes': 'govuk-!-width-one-quarter'
-    },
-    {
-      'text': "Feedback",
-      'classes': 'govuk-!-width-two-quarters govuk-!-text-align-centre'
-    },
-    {
-      'text': "Status",
-      'classes': 'govuk-!-width-one-quarter govuk-!-text-align-right'
-    }
-  ],
-  'rows': [
-    [
-      {
-        'html': fieldMarkup({ 'key' : 'Reference', 'value' : 'a reference or ID that is unique to each conservation area' })
-      },
-      {
-        'html': feedbackItem
-      },
-      {
-        'html': statusHTML,
-        'classes': 'govuk-!-text-align-right app-table__cell--middle',
-      }
-    ],
-    [
-      {
-        'html': fieldMarkup({ 'key' : 'Name', 'value' : 'the name of the conservation area' })
-      },
-      {
-        'html': feedbackItem
-      },
-      {
-        'html': statusHTML,
-        'classes': 'govuk-!-text-align-right app-table__cell--middle',
-      }
-    ],
-    [
-      {
-        'html': fieldMarkup({ 'key' : 'Geometry', 'value' : 'polygon coordinates for each conservation area site boundary' })
-      },
-      {
-        'html': feedbackItem
-      },
-      {
-        'html': statusHTML,
-        'classes': 'govuk-!-text-align-right app-table__cell--middle',
-      },
-    ],
-    [
-      {
-        'html': fieldMarkup({ 'key' : 'Start date', 'value' : 'the date that the conservation area was officially designated' })
-      },
-      {
-        'html': feedbackItem
-      },
-      {
-        'html': statusHTML,
-        'classes': 'govuk-!-text-align-right app-table__cell--middle',
-      },
-    ],
-    [
-      {
-        'html': fieldMarkup({ 'key' : 'Legislation', 'value' : 'the act of legislation that was used to define the conservation area' })
-      },
-      {
-        'html': feedbackItem
-      },
-      {
-        'html': statusHTML,
-        'classes': 'govuk-!-text-align-right app-table__cell--middle',
-      },
-    ],
-    [
-      {
-        'html': fieldMarkup({ 'key' : 'Notes', 'value' : 'any notes related to a conservation area' })
-      },
-      {
-        'html': feedbackItem
-      },
-      {
-        'html': statusHTML,
-        'classes': 'govuk-!-text-align-right app-table__cell--middle',
-      },
-    ],
-    [
-      {
-        'html': fieldMarkup({ 'key' : 'Point', 'value' : 'if your GIS application provides additional point data then we can add this to the data we collect alongside the geometry' })
-      },
-      {
-        'html': feedbackItem
-      },
-      {
-        'html': statusHTML,
-        'classes': 'govuk-!-text-align-right app-table__cell--middle',
-      },
-    ],
-    [
-      {
-        'html': fieldMarkup({ 'key' : 'End date', 'value' : 'the data on which an article 4 direction ceased to be designated' })
-      },
-      {
-        'html': feedbackItem
-      },
-      {
-        'html': statusHTML,
-        'classes': 'govuk-!-text-align-right app-table__cell--middle',
-      },
-    ],
-    [
-      {
-        'html': fieldMarkup({ 'key' : 'Document URL', 'value' : 'the url to an authoritative document or web page that details the conservation area' })
-      },
-      {
-        'html': feedbackItem
-      },
-      {
-        'html': statusHTML,
-        'classes': 'govuk-!-text-align-right app-table__cell--middle',
-      },
-    ]
-  ]
-}) }}
+                {{ govukTable({
+                  'firstCellIsHeader': true,
+                  'head': [
+                    {
+                      'text': "Field",
+                      'classes': 'govuk-!-width-one-third'
+                    },
+                    {
+                      'text': "Feedback",
+                      'classes': 'govuk-!-width-two-thirds'
+                    }
+                  ],
+                  'rows': [
+                    [
+                      {
+                        'html': fieldMarkup({ 'key' : 'Reference', 'value' : 'a reference or ID that is unique to each conservation area' })
+                      },
+                      {
+                        'html': feedbackItem({ 'key' : 'Reference' })
+                      }
+                    ],
+                    [
+                      {
+                        'html': fieldMarkup({ 'key' : 'Name', 'value' : 'the name of the conservation area' })
+                      },
+                      {
+                        'html': feedbackItem({ 'key' : 'name' })
+                      }
+                    ],
+                    [
+                      {
+                        'html': fieldMarkup({ 'key' : 'Geometry', 'value' : 'polygon coordinates for each conservation area site boundary' })
+                      },
+                      {
+                        'html': feedbackItem({ 'key' : 'Geometry' })
+                      },
+                    ],
+                    [
+                      {
+                        'html': fieldMarkup({ 'key' : 'Start date', 'value' : 'the date that the conservation area was officially designated' })
+                      },
+                      {
+                        'html': feedbackItem({ 'key' : 'start-date' })
+                      },
+                    ],
+                    [
+                      {
+                        'html': fieldMarkup({ 'key' : 'Legislation', 'value' : 'the act of legislation that was used to define the conservation area' })
+                      },
+                      {
+                        'html': feedbackItem({ 'key' : 'Legislation' })
+                      },
+                    ],
+                    [
+                      {
+                        'html': fieldMarkup({ 'key' : 'Notes', 'value' : 'any notes related to a conservation area' })
+                      },
+                      {
+                        'html': feedbackItem({ 'key' : 'Notes' })
+                      },
+                    ],
+                    [
+                      {
+                        'html': fieldMarkup({ 'key' : 'Point', 'value' : 'if your GIS application provides additional point data then we can add this to the data we collect alongside the geometry' })
+                      },
+                      {
+                        'html': feedbackItem({ 'key' : 'Point', 'number' : '22' })
+                      },
+                    ],
+                    [
+                      {
+                        'html': fieldMarkup({ 'key' : 'End date', 'value' : 'the data on which an article 4 direction ceased to be designated' })
+                      },
+                      {
+                        'html': feedbackItem({ 'key' : 'end-date' })
+                      },
+                    ],
+                    [
+                      {
+                        'html': fieldMarkup({ 'key' : 'Document URL', 'value' : 'the url to an authoritative document or web page that details the conservation area' })
+                      },
+                      {
+                        'html': feedbackItem({ 'key' : 'document-url' })
+                      },
+                    ]
+                  ]
+                }) }}
 
               </div>
             </section>

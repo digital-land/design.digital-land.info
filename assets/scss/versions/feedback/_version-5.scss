@@ -67,4 +67,23 @@
       }
     }
 
+    .app-itemised-feedback {
+      list-style-type: none;
+      padding: 0;
+      &__item {
+        display: flex;
+        gap: .75em;
+        align-items: flex-start;
+        padding: govuk-spacing(2) govuk-spacing(2);
+        // flex-direction: row-reverse;
+        // justify-content: space-between;
+      }
+      &__message, &__icon {
+        display: block;
+      }
+      &__icon {
+        img { display: block; }
+      }
+    }
+
 }
