@@ -1,7 +1,6 @@
 {% extends "layouts/layout.html" %}
 {%- from 'govuk_frontend_jinja/components/table/macro.html' import govukTable -%}
 {%- from 'govuk_frontend_jinja/components/tag/macro.html' import govukTag -%}
-{{ govukTag(fixture.options)}}
 {% set pageData = {
   'orgname': qs.orgname | default('Not set')
  } %}
