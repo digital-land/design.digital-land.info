@@ -48,10 +48,9 @@
         <p class="govuk-body-l govuk-!-margin-bottom-6">Collected from <a href="organisation-summary.html?orgname={{ pageData.organisation }}">{{ pageData.organisation }}</a></p>
         {# <p class="govuk-body">This feedback was last updated on {{ pageData.dates["updated-date"] }}</p> #}
       </div>
-      <div class="govuk-grid-column-full">
-        {% include path.full | replace(path.split[3], 'tabs.html') with context %}
-      </div>
     </div>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-!-margin-top-0 govuk-section-break--visible">
 
     {% if pageData.none == 'true' %}
 
@@ -73,16 +72,16 @@
         })
       }}
 
-      <hr class="govuk-section-break govuk-section-break--m govuk-!-margin-top-0">
+      <hr class="govuk-section-break govuk-section-break--m">
 
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-full">
 
             <h2 class="govuk-heading-l">
-             Feedback about data structure
+             Data structure
             </h2>
 
-            <div class="govuk-!-width-three-quarters">
+            <div class="govuk-!-width-full">
               <p>The table below gives feedback about the data published by {{ pageData.organisation }} when compared to the data standard defined by The Department for Levelling Up, Housing and Communities.</p>
             </div>
             <!-- /.govuk-!-width-two-thirds -->
@@ -127,7 +126,7 @@
                       <img src="{{ assetPath }}/images/content/good-icon.svg" height="25" width="25" alt="">
                     </span>
                     <span class="app-itemised-feedback__message">
-                      {{ fakeTotal }} {{ params.dataset | default(pageData.dataset) }}s have met the data standard for {{ params.key | lower }}.
+                      {{ fakeTotal }} {{ params.dataset | default(pageData.dataset) }}s have a {{ params.key | lower }}.
                     </span>
                   </li>
                 {% endif %}
@@ -146,6 +145,10 @@
                 {% macro fieldMarkup(params) %}
                   <h3 class="govuk-heading-s govuk-!-margin-bottom-1">{{ params.key }}</h3>
                   <p class="govuk-hint govuk-!-font-size-16">{{ params.value }}</p>
+                  {% if params.required %}
+                    {{ govukTag({ 'text': 'required field', 'classes': 'govuk-tag--grey govuk-!-font-size-14 govuk-!-margin-bottom-3' }) }}
+                    {# <p class="govuk-body govuk-!-font-size-14">{{ 'Required field' }}</p> #}
+                  {% endif %}
                 {% endmacro %}
 
                 {% set statusHTML %}
@@ -167,7 +170,11 @@
                   'rows': [
                     [
                       {
-                        'html': fieldMarkup({ 'key' : 'Reference', 'value' : 'a reference or ID that is unique to each conservation area' })
+                        'html': fieldMarkup({ 
+                          'key' : 'Reference', 
+                          'value' : 'a reference or ID that is unique to each conservation area',
+                          'required': true
+                        })
                       },
                       {
                         'html': feedbackItem({ 'key' : 'Reference' })
@@ -175,7 +182,11 @@
                     ],
                     [
                       {
-                        'html': fieldMarkup({ 'key' : 'Name', 'value' : 'the name of the conservation area' })
+                        'html': fieldMarkup({ 
+                          'key' : 'Name',
+                          'value' : 'the name of the conservation area',
+                          'required': true
+                         })
                       },
                       {
                         'html': feedbackItem({ 'key' : 'name' })
@@ -183,7 +194,11 @@
                     ],
                     [
                       {
-                        'html': fieldMarkup({ 'key' : 'Geometry', 'value' : 'polygon coordinates for each conservation area site boundary' })
+                        'html': fieldMarkup({ 
+                          'key' : 'Geometry',
+                          'value' : 'polygon coordinates for each conservation area site boundary',
+                          'required': true
+                         })
                       },
                       {
                         'html': feedbackItem({ 'key' : 'Geometry' })
@@ -191,7 +206,11 @@
                     ],
                     [
                       {
-                        'html': fieldMarkup({ 'key' : 'Start date', 'value' : 'the date that the conservation area was officially designated' })
+                        'html': fieldMarkup({ 
+                          'key' : 'Start date',
+                          'value' : 'the date that the conservation area was officially designated',
+                          'required': true
+                         })
                       },
                       {
                         'html': feedbackItem({ 'key' : 'start-date' })
@@ -199,7 +218,11 @@
                     ],
                     [
                       {
-                        'html': fieldMarkup({ 'key' : 'Legislation', 'value' : 'the act of legislation that was used to define the conservation area' })
+                        'html': fieldMarkup({ 
+                          'key' : 'Legislation',
+                          'value' : 'the act of legislation that was used to define the conservation area',
+                          'required': false
+                         })
                       },
                       {
                         'html': feedbackItem({ 'key' : 'Legislation' })
@@ -207,7 +230,11 @@
                     ],
                     [
                       {
-                        'html': fieldMarkup({ 'key' : 'Notes', 'value' : 'any notes related to a conservation area' })
+                        'html': fieldMarkup({ 
+                          'key' : 'Notes',
+                          'value' : 'any notes related to a conservation area',
+                          'required': false
+                         })
                       },
                       {
                         'html': feedbackItem({ 'key' : 'Notes' })
@@ -215,15 +242,23 @@
                     ],
                     [
                       {
-                        'html': fieldMarkup({ 'key' : 'Point', 'value' : 'if your GIS application provides additional point data then we can add this to the data we collect alongside the geometry' })
+                        'html': fieldMarkup({ 
+                          'key' : 'Point',
+                          'value' : 'if your GIS application provides additional point data then we can add this to the data we collect alongside the geometry',
+                          'required': false
+                         })
                       },
                       {
-                        'html': feedbackItem({ 'key' : 'Point', 'number' : '22' })
+                        'html': feedbackItem({ 'key' : 'Point', 'number' : '290' })
                       },
                     ],
                     [
                       {
-                        'html': fieldMarkup({ 'key' : 'End date', 'value' : 'the data on which an article 4 direction ceased to be designated' })
+                        'html': fieldMarkup({ 
+                          'key' : 'End date',
+                          'value' : 'the data on which an article 4 direction ceased to be designated',
+                          'required': false
+                         })
                       },
                       {
                         'html': feedbackItem({ 'key' : 'end-date' })
@@ -231,7 +266,11 @@
                     ],
                     [
                       {
-                        'html': fieldMarkup({ 'key' : 'Document URL', 'value' : 'the url to an authoritative document or web page that details the conservation area' })
+                        'html': fieldMarkup({ 
+                          'key' : 'Document URL',
+                          'value' : 'the url to an authoritative document or web page that details the conservation area',
+                          'required': false
+                         })
                       },
                       {
                         'html': feedbackItem({ 'key' : 'document-url' })
@@ -245,60 +284,91 @@
 
           </div>
         </div>
-        
-        <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-top-0">
 
       {% endif %}
 
     {% endif %}
+    <hr class="govuk-section-break govuk-section-break--m">
 
-    {# <hr class="govuk-section-break govuk-section-break--l govuk-!-margin-top-0">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+      
+        <h2 class="govuk-heading-m">Guidance</h2>
+        <p class="govuk-body">You can read guidance on GOVUK about <a href="#">how to publish {{ pageData.dataset }} data</a></p>
 
-    <section class="app-summary-card govuk-!-margin-bottom-3">
-      <header class="app-summary-card__header">
-        <h2 class="app-summary-card__title">
-          Key dates
-        </h2>
-      </header>
-      <div class="app-summary-card__body">
-          {{
-        govukSummaryList({ 
-          'rows': [
-            {
-              'key': {
-                'classes': 'govuk-!-width-one-half', 
-                'html': 'Last checked for new data' | safe
-              }, 
-              'value': {
-                'classes': 'govuk-!-width-one-half govuk-!-padding-right-0', 
-                'text': pageData.dates["check-date"]
-              },
-            }, 
-            {
-              'key': {
-                'classes': 'govuk-!-width-one-half', 
-                'text': 'New data was last found'
-              }, 
-              'value': {
-                'classes': 'govuk-!-width-one-half govuk-!-padding-right-0', 
-                'html': pageData.dates["updated-date"] + ' <span class="govuk-hint govuk-!-display-inline">(1 Day ago)</span>' | safe
-              },
-            }, 
-            {
-              'key': {
-                'classes': 'govuk-!-width-one-half', 
-                'text': pageData.dataset + ' data collection began'
-              }, 
-              'value': {
-                'classes': 'govuk-!-width-one-half govuk-!-padding-right-0', 
-                'text': pageData.dates["start-date"]
-              },
-            }, 
-          ]
-        })
-      }} 
       </div>
-    </section> #}
+      <div class="govuk-grid-column-one-half">
+      
+        <h2 class="govuk-heading-m">Specification</h2>
+        <p class="govuk-body">You can read detailed <a href="#">specification for {{ pageData.dataset }} data</a></p>
+
+      </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h2 class="govuk-heading-m">Where is this data collected from?</h2>
+
+        <p>These are the web addresses (URLs) used by planning.data.gov.uk to collect {{ pageData.dataset }} data.</p>
+
+        {% set sources = [
+          {
+            'url': 'https://www.' + pageData.domain  + '.gov.uk/' + pageData.dataset | lower | replace(' ', '') + '/data'
+          },
+          {
+            'url': 'https://www.' + pageData.domain  + '.gov.uk/about-us/organisations-we-work/old-oak-and-park-royal-development-corporation-opdc'
+          },
+        ] %}
+
+        {% for source in sources %}
+          <section class="app-summary-card govuk-!-margin-bottom-6">
+            <header class="app-summary-card__header">
+              <h2 class="app-summary-card__title">
+                Source {{ loop.index }}
+              </h2>
+            </header>
+            <div class="app-summary-card__body">
+
+              <div class="app-c-url-display">
+                <a href="{{ source.url }}">
+                  {{ source.url }}
+                </a>
+              </div>
+
+            </div>
+          </section>
+        {% endfor %}
+        
+
+        {{ govukInsetText({
+          'html': 'If you think these are out of date or incorrect you can <a href="#">email the planning data team</a>'
+        })}}
+
+
+      </div>
+      <div class="govuk-grid-column-one-third">
+
+        <h4 class="govuk-heading-s govuk-!-margin-bottom-1" id="check-date">
+          Sources last checked
+        </h4>
+        <p>{{ pageData.dates["check-date"] }}</p>
+
+        <h4 class="govuk-heading-s govuk-!-margin-bottom-1" id="updated-date">
+          New data was last found
+        </h4>
+        <p>{{ pageData.dates["updated-date"] }}</p>
+
+        <h4 class="govuk-heading-s govuk-!-margin-bottom-1" id="start-date">
+          {{ pageData.dataset }} data collection began
+        </h4>
+        <p>{{ pageData.dates["start-date"] }}</p>
+
+
+      </div>
+    </div>
 
   </main>
 {% endblock %}
