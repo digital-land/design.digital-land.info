@@ -72,7 +72,7 @@
         })
       }}
 
-      {# <hr class="govuk-section-break govuk-section-break--m">
+      <hr class="govuk-section-break govuk-section-break--m">
 
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
@@ -85,8 +85,16 @@
               <li>Update conservations areas that are missing geometry data</li>
             </ul>
 
+            <h2 class="govuk-heading-m">
+             Recommendations
+            </h2>          
+
+            <ul class="govuk-list govuk-list--number govuk-list--spaced govuk-!-margin-bottom-0">
+              <li>Update conservations areas that are missing geometry data</li>
+            </ul>
+
           </div>
-        </div> #}
+        </div>
 
         <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
@@ -106,7 +114,7 @@
 
             {% macro feedbackItem(params) %}
               {% set key = params.key | lower %}
-              {% set fakeTotal = "300"  %}
+              {% set fakeTotal = "All"  %}
               <ul class="app-itemised-feedback">
                 {% if key == "geometry" %}
                   <li class="app-itemised-feedback__item">
