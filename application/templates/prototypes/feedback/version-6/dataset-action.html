@@ -1,0 +1,121 @@
+{% extends "layouts/layout.html" %}
+{%- from 'govuk_frontend_jinja/components/table/macro.html' import govukTable -%}
+{%- from 'govuk_frontend_jinja/components/tag/macro.html' import govukTag -%}
+{%- from 'govuk_frontend_jinja/components/summary-list/macro.html' import govukSummaryList -%}
+{%- from "digital-land-frontend/components/data-table/macro.jinja" import dlDataTableWrapper %}
+{% block pageTitle %}Feedback{% endblock %}
+
+{% set pageData = {
+  'dataset': qs.dataset | default('Not set'),
+  'organisation': qs.orgname | default('Not set'),
+  'domain': qs.orgname | default('manchester city council') | replace(" ", "-") | lower,
+  'dates': {
+    'start-date': '04 Febuary 2020',
+    'end-date': '',
+    'updated-date': '10 May 2022',
+    'check-date': '11 May 2022'
+  },
+  'page': 'index',
+  'issue': qs.issue
+} %}
+
+{%- block breadcrumbs -%}
+  {{- govukBreadcrumbs({
+    "items": [
+        {
+          "text": pageData.organisation,
+          "href": "organisation-summary.html?orgname=" + pageData.organisation
+        },
+        {
+          "text": pageData.dataset,
+          "href": "dataset-report.html?orgname=" + pageData.organisation + "&dataset=" + pageData.dataset
+        },
+        {
+          "text": pageData.issue,
+          "href": "dataset-action.html?orgname=" + pageData.organisation + "&dataset=" + pageData.dataset
+        }
+    ]
+    }) -}}
+{%- endblock -%}
+
+{% block content %}
+
+
+  <main id="content" role="main">
+    
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">Action needed</span>
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-1">{{ pageData.dataset }} with {{ pageData.issue | default('missing values') | lower }}s</h1>
+        <p class="govuk-body-l">Collected from <a href="index.html?orgname={{ pageData.organisation }}">{{ pageData.organisation }}</a></p>
+      </div>
+      <div class="govuk-grid-column-full">
+        {% include path.full | replace(path.split[3], 'tabs.html') with context %}
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+
+
+        {%- set tableHTML %}
+
+        {% set specFields = [
+          "tree-preservation-order",
+          "document-url",
+          "documentation-url",
+          "entity",
+          "legislation",
+          "name",
+          "notes",
+          "organisation",
+          "reference",
+          "entry-date",
+          "start-date",
+          "end-date",
+        ] %}
+ 
+        {% set entities = 'tpos.csv' | import_csv %}
+
+        <table class="dl-data-table">
+            <thead>
+                {% set firstItem = entities | first %}
+                {% for key, value in firstItem | items %}
+                  {% if key and key != 'entity' %}
+                    <th>{{ key }}</th>
+                  {% endif %}
+                {% endfor %}
+            </thead>
+            <tbody>
+              {% for entity in entities  %}
+                <tr>                
+                {% for key, value in entity | items  %}
+                  <td>
+                    {% if not value and key != 'end-date' %}
+                      {{ govukTag({ 'text': 'Missing value', 'classes': 'govuk-tag--error' }) }}
+                    {% else %}
+                      {% if value and key != 'entity' %}
+                      {{ value if value }}
+                      {% endif %}
+                    {% endif %}
+                  </td>
+                {% endfor %}
+                </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+        {% endset -%}
+        {{ dlDataTableWrapper({
+            "tableHTML": tableHTML
+        }) }}      
+      
+    </div>
+  </div>
+  <!-- /.govuk-grid-row -->
+
+  </main>
+{% endblock %}
+
+{% block bodyEnd %}
+  {{ super() }}
+{% endblock bodyEnd %}

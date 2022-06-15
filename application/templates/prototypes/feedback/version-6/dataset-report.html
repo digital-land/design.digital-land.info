@@ -1,0 +1,145 @@
+{% extends "layouts/layout.html" %}
+{%- from 'govuk_frontend_jinja/components/table/macro.html' import govukTable -%}
+{%- from 'govuk_frontend_jinja/components/tag/macro.html' import govukTag -%}
+{%- from 'govuk_frontend_jinja/components/summary-list/macro.html' import govukSummaryList -%}
+{% set pageData = {
+  'dataset': qs.dataset | default('Brownfield land'),
+  'organisation': qs.orgname | default('London Borough of Lambeth'),
+  'domain': qs.orgname | default('manchester city council') | replace(" ", "-") | lower,
+  'dates': {
+    'start-date': '04 Febuary 2020',
+    'end-date': '',
+    'updated-date': '10 May 2022',
+    'check-date': '11 May 2022'
+  },
+  'page': 'index',
+  'none': qs.none | default('false'),
+  'noactions': qs.noactions | default('false')
+} %}
+{% block pageTitle %}Feedback report {{ pageData.dataset}}{% endblock %}
+
+{%- block breadcrumbs -%}
+  {{- govukBreadcrumbs({
+    "items": [
+        {
+          "text": "Feedback home",
+          "href": "index.html"
+        },
+        {
+          "text": pageData.organisation,
+          "href": "organisation-summary.html?orgname=" + pageData.organisation
+        },
+        {
+          "text": pageData.dataset,
+          "href": "dataset-report.html?orgname=" + pageData.organisation + "&dataset=" + pageData.dataset
+        }
+    ]
+    }) -}}
+{%- endblock -%}
+
+{% block content %}
+
+  <main id="content" role="main">
+    
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-three-quarters">
+        <span class="govuk-caption-xl">How to improve</span>
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">{{ pageData.dataset }} data from {{ pageData.organisation }}</h1>
+        {# <p class="govuk-body-l govuk-!-margin-bottom-6">Collected from <a href="organisation-summary.html?orgname={{ pageData.organisation }}">{{ pageData.organisation }}</a></p> #}
+      </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-!-margin-top-0 govuk-section-break--visible">
+
+    {% if pageData.none == 'true' %}
+
+      {{ 
+        govukPanel({'titleHtml': 'Standard met' })
+      }}
+
+      <p>This dataset fully meets the data standard and guidance from The Department for Levelling Up, Housing and Communities</p>
+    
+    {% else %}
+
+      {% if pageData.noactions != 'true' %}
+
+      <hr class="govuk-section-break govuk-section-break--m">
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+
+            <ol class="app-task-list">
+              <li>
+                <h3 class="app-task-list__section">
+                  <span class="app-task-list__section-number">1. </span>Add missing data
+                </h3>
+                <ul class="app-task-list__items">
+                  <li class="app-task-list__item">
+                    <span class="app-task-list__task-name">
+                      <a href="#" aria-describedby="missing-data-1">All {{ pageData.dataset | lower }}s</a> are missing geometry data
+                    </span>
+                    <strong class="govuk-tag govuk-tag--red app-task-list__tag" id="missing-data-1">Mandatory</strong>
+                  </li>
+                  <li class="app-task-list__item">
+                    <span class="app-task-list__task-name">
+                      <a href="#" aria-describedby="recommendation-1">All {{ pageData.dataset | lower }}s</a> are missing point data
+                    </span>
+                    <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="recommendation-1">Recommendation</strong>
+                  </li>
+                  <li class="app-task-list__item">
+                    <span class="app-task-list__task-name">
+                      <span aria-describedby="recommendation-2">
+                        Add any available notes related to each {{ pageData.dataset | lower }}
+                      </span>
+                    </span>
+                    <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="recommendation-2">Recommendation</strong>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h3 class="app-task-list__section">
+                  <span class="app-task-list__section-number">2. </span> Change data format
+                </h3>
+                <ul class="app-task-list__items">
+                  <li class="app-task-list__item">
+                    <span class="app-task-list__task-name">
+                      <a href="#" aria-describedby="recommendation-3">
+                        22 {{ pageData.dataset }}s</a> have point data in a format different to the data specification
+                    </span>
+                    <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="recommendation-3">Recommendation</strong>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h3 class="app-task-list__section">
+                  <span class="app-task-list__section-number">3. </span> Check data is accurate and correct
+                </h3>
+                <ul class="app-task-list__items">
+                  <li class="app-task-list__item">
+                    <span class="app-task-list__task-name">
+                      <a href="#" aria-describedby="recommendation-4">1 {{ pageData.dataset }}</a> has an entry date in the future which is incorrect
+                    </span>
+                    <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="recommendation-4">Recommendation</strong>
+                  </li>
+                </ul>
+              </li>
+            </ol>
+
+          </div>
+
+        </div>
+
+      {% endif %}
+
+    {% endif %}    
+
+      </div>
+
+    </div>
+
+  </main>
+{% endblock %}
+
+{% block bodyEnd %}
+  {{ super() }}
+{% endblock bodyEnd %}

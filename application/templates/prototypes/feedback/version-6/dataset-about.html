@@ -1,0 +1,144 @@
+{% extends "layouts/layout.html" %}
+{%- from 'govuk_frontend_jinja/components/table/macro.html' import govukTable -%}
+{%- from 'govuk_frontend_jinja/components/tag/macro.html' import govukTag -%}
+{%- from 'govuk_frontend_jinja/components/summary-list/macro.html' import govukSummaryList -%}
+{% set pageData = {
+  'dataset': qs.dataset | default('Brownfield land'),
+  'organisation': qs.orgname | default('London Borough of Lambeth'),
+  'domain': qs.orgname | default('manchester city council') | replace(" ", "-") | lower,
+  'dates': {
+    'start-date': '04 Febuary 2020',
+    'end-date': '',
+    'updated-date': '10 May 2022',
+    'check-date': '11 May 2022'
+  },
+  'page': 'index',
+  'none': qs.none | default('false'),
+  'noactions': qs.noactions | default('false')
+} %}
+{% block pageTitle %}About this dataset - Feedback{% endblock %}
+
+{%- block breadcrumbs -%}
+  {{- govukBreadcrumbs({
+    "items": [
+        {
+          "text": "Feedback home",
+          "href": "index.html"
+        },
+        {
+          "text": pageData.organisation,
+          "href": "organisation-summary.html?orgname=" + pageData.organisation
+        },
+        {
+          "text": pageData.dataset,
+          "href": "dataset-about.html?orgname=" + pageData.organisation + "&dataset=" + pageData.dataset
+        }
+    ]
+    }) -}}
+{%- endblock -%}
+
+{% block content %}
+
+{% set pageData = {
+  'dataset': qs.dataset | default('Not set'),
+  'organisation': qs.orgname | default('Not set'),
+  'domain': qs.orgname | default('manchester city council') | replace(" ", "-") | lower,
+  'dates': {
+    'start-date': '04 Febuary 2020',
+    'end-date': '',
+    'updated-date': '10 May 2022',
+    'check-date': '11 May 2022'
+  },
+  'page': 'about'
+} %}
+
+  <main id="content" role="main">
+    
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-xl">About this dataset</span>
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-1">{{ pageData.dataset }}</h1>
+        <p class="govuk-body-l">Collected from <a href="organisation-summary.html?orgname={{ pageData.organisation }}">{{ pageData.organisation }}</a></p>
+      </div>
+      <div class="govuk-grid-column-full">
+        {% include path.full | replace(path.split[3], 'tabs.html') with context %}
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h2 class="govuk-heading-m">Guidance</h2>
+        <p class="govuk-body">You can read guidance on GOVUK about <a href="#">how to publish {{ pageData.dataset }} data</a></p>
+
+        <h2 class="govuk-heading-m">Specification</h2>
+        <p class="govuk-body">You can read detailed <a href="#">specification for {{ pageData.dataset }} data</a></p>
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+        <h2 class="govuk-heading-m">Data sources</h2>
+
+        <p>These are the web addresses (URLs) used by planning.data.gov.uk to collect {{ pageData.dataset }} data.</p>
+
+        {% set sources = [
+          {
+            'url': 'https://www.' + pageData.domain  + '.gov.uk/' + pageData.dataset | lower | replace(' ', '') + '/data'
+          },
+          {
+            'url': 'https://www.' + pageData.domain  + '.gov.uk/about-us/organisations-we-work/old-oak-and-park-royal-development-corporation-opdc'
+          },
+        ] %}
+
+        {% for source in sources %}
+          <section class="app-summary-card govuk-!-margin-bottom-6">
+            <header class="app-summary-card__header">
+              <h2 class="app-summary-card__title">
+                Source {{ loop.index }}
+              </h2>
+            </header>
+            <div class="app-summary-card__body">
+
+              <div class="app-c-url-display">
+                <a href="{{ source.url }}">
+                  {{ source.url }}
+                </a>
+              </div>
+
+            </div>
+          </section>
+        {% endfor %}
+        
+
+        {{ govukInsetText({
+          'html': 'If you think these are out of date or incorrect you can <a href="#">email the planning data team</a>'
+        })}}
+
+
+      </div>
+      <div class="govuk-grid-column-one-third">
+
+        <h4 class="govuk-heading-s govuk-!-margin-bottom-1" id="check-date">
+          Sources last checked
+        </h4>
+        <p>{{ pageData.dates["check-date"] }}</p>
+
+        <h4 class="govuk-heading-s govuk-!-margin-bottom-1" id="updated-date">
+          New data was last found
+        </h4>
+        <p>{{ pageData.dates["updated-date"] }}</p>
+
+        <h4 class="govuk-heading-s govuk-!-margin-bottom-1" id="start-date">
+          {{ pageData.dataset }} data collection began
+        </h4>
+        <p>{{ pageData.dates["start-date"] }}</p>
+
+
+      </div>
+    </div>
+
+  </main>
+{% endblock %}
+
+{% block bodyEnd %}
+  {{ super() }}
+{% endblock bodyEnd %}

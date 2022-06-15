@@ -1,0 +1,23 @@
+       {% set links = [
+         {
+           'text': 'Feedback',
+           'href': 'dataset-report.html?dataset=' + pageData.dataset + '&orgname=' + pageData.organisation,
+           'name': 'index'
+         }
+       ] %}
+       <div class="govuk-tabs">
+          <h2 class="govuk-tabs__title">
+            Contents
+          </h2>
+          <nav class="dl-subnav" aria-label="Sub navigation">
+            <ul class="dl-subnav__list">
+              {% for link in links %}
+                <li class="dl-subnav__list-item" {% if pageData.page == link.name %}dl-subnav__list-item--selected{% endif %}>
+                  <a class="dl-subnav__list-item__link" href="{{ link.href }}" {% if pageData.page == link.name %} aria-selected="true"{% endif %}>
+                    {{ link.text }}
+                  </a>
+                </li>              
+              {% endfor %}
+            </ul>
+          </nav>
+        </div>
