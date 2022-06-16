@@ -42,14 +42,13 @@
   <main id="content" role="main">
     
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-three-quarters">
-        <span class="govuk-caption-xl">How to improve</span>
-        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">{{ pageData.dataset }} data from {{ pageData.organisation }}</h1>
-        <p class="govuk-body-l govuk-!-margin-bottom-6">Collected from <a href="organisation-summary.html?orgname={{ pageData.organisation }}">{{ pageData.organisation }}</a></p>
+      <div class="govuk-grid-column-full">
+        <span class="govuk-caption-xl">Feedback</span>
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">How to improve {{ pageData.dataset }} data from {{ pageData.organisation }}</h1>
       </div>
     </div>
 
-    <hr class="govuk-section-break govuk-section-break--m govuk-!-margin-top-0 govuk-section-break--visible">
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" aria-hidden="true">
 
     {% if pageData.none == 'true' %}
 
@@ -63,68 +62,78 @@
 
       {% if pageData.noactions != 'true' %}
 
-      <hr class="govuk-section-break govuk-section-break--m">
+      <hr class="govuk-section-break govuk-section-break--m" aria-hidden="true">
 
         <div class="govuk-grid-row">
-          <div class="govuk-grid-column-full">
+          <div class="govuk-grid-column-two-thirds">
 
-            <ol class="app-task-list">
-              <li>
-                <h3 class="app-task-list__section">
-                  <span class="app-task-list__section-number">1. </span>Add missing data
+            <ol class="app-feedback-list" role="list">
+              <li class="app-feedback-list__section">
+                <h3 class="app-feedback-list__section-heading">
+                  <span class="app-feedback-list__section-number">1. </span>
+                  Add missing data
                 </h3>
-                <ul class="app-task-list__items">
-                  <li class="app-task-list__item">
-                    <span class="app-task-list__task-name">
-                      <a href="#" aria-describedby="missing-data-1">All {{ pageData.dataset | lower }}s</a> are missing geometry data
-                    </span>
-                    <strong class="govuk-tag govuk-tag--red app-task-list__tag" id="missing-data-1">Mandatory</strong>
+                <ul class="app-feedback-list__items">
+                  <li class="app-feedback-list__item">
+                    <div class="app-feedback-list__item-text">
+                      <a href="#">View {{ pageData.dataset | lower }}s with missing geometry data</a>
+                    </div>
+                    <div class="app-feedback-list__item-type">
+                      <strong class="govuk-tag govuk-tag--red">Mandatory</strong>
+                    </div>
                   </li>
-                  <li class="app-task-list__item">
-                    <span class="app-task-list__task-name">
-                      <a href="#" aria-describedby="recommendation-1">All {{ pageData.dataset | lower }}s</a> are missing point data
-                    </span>
-                    <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="recommendation-1">Recommendation</strong>
-                  </li>
-                  <li class="app-task-list__item">
-                    <span class="app-task-list__task-name">
-                      <span aria-describedby="recommendation-2">
-                        Add any available notes related to each {{ pageData.dataset | lower }}
-                      </span>
-                    </span>
-                    <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="recommendation-2">Recommendation</strong>
+                  <li class="app-feedback-list__item">
+                    <div class="app-feedback-list__item-text">
+                      <a href="#">View {{ pageData.dataset | lower }}s with missing point data</a>
+                    </div>
+                    <div class="app-feedback-list__item-type">
+                      <strong class="govuk-tag govuk-tag--blue">Recommendation</strong>
+                    </div>
                   </li>
                 </ul>
               </li>
-              <li>
-                <h3 class="app-task-list__section">
-                  <span class="app-task-list__section-number">2. </span> Change data format
+              <li class="app-feedback-list__section">
+                <h3 class="app-feedback-list__section-heading">
+                  <span class="app-feedback-list__section-number">2. </span>
+                  Change the format of data
                 </h3>
-                <ul class="app-task-list__items">
-                  <li class="app-task-list__item">
-                    <span class="app-task-list__task-name">
-                      <a href="#" aria-describedby="recommendation-3">
-                        22 {{ pageData.dataset }}s</a> have point data in a format different to the data specification
-                    </span>
-                    <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="recommendation-3">Recommendation</strong>
+                <ul class="app-feedback-list__items">
+                  <li class="app-feedback-list__item">
+                    <div class="app-feedback-list__item-text">
+                      <a href="#">View {{ pageData.dataset | lower }}s with point data in a format different to the data specification</a>
+                    </div>
+                    <div class="app-feedback-list__item-type">
+                      <strong class="govuk-tag govuk-tag--blue">Recommendation</strong>
+                    </div>
                   </li>
                 </ul>
               </li>
-              <li>
-                <h3 class="app-task-list__section">
-                  <span class="app-task-list__section-number">3. </span> Check data is accurate and correct
+              <li class="app-feedback-list__section">
+                <h3 class="app-feedback-list__section-heading">
+                  <span class="app-feedback-list__section-number">3. </span> 
+                  Check data is accurate and correct
                 </h3>
-                <ul class="app-task-list__items">
-                  <li class="app-task-list__item">
-                    <span class="app-task-list__task-name">
-                      <a href="#" aria-describedby="recommendation-4">1 {{ pageData.dataset }}</a> has an entry date in the future which is incorrect
-                    </span>
-                    <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="recommendation-4">Recommendation</strong>
+                <ul class="app-feedback-list__items">
+                  <li class="app-feedback-list__item">
+                    <div class="app-feedback-list__item-text">
+                      <a href="#">View {{ pageData.dataset | lower }}s with an end-date in the future which is not possible</a>
+                    </div>
+                    <div class="app-feedback-list__item-type">
+                      <strong class="govuk-tag govuk-tag--red">Mandatory</strong>
+                    </div>
                   </li>
                 </ul>
               </li>
             </ol>
 
+          </div>
+
+          <div class="govuk-grid-column-one-third">
+          
+            <h3 class="govuk-heading-s">About this feedback</h3>
+            <p class="govuk-!-font-size-16">This feedback was last updated<br> {{ '15th June 2022' }}.</p>
+            <p class="govuk-!-font-size-16">If you need help to improve data you can <a href="#">contact the Planning Data team</a>.</p>
+          
           </div>
 
         </div>
