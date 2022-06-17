@@ -94,7 +94,7 @@
                 <ul class="app-feedback-list__items">
                   <li class="app-feedback-list__item">
                     <div class="app-feedback-list__item-text">
-                      <a href="#">missing geometry data</a>
+                      <a href="#">geometry data is missing</a>
                     </div>
                     <div class="app-feedback-list__item-type">
                       <strong class="govuk-tag govuk-tag--red">Mandatory</strong>
@@ -102,7 +102,7 @@
                   </li>
                   <li class="app-feedback-list__item">
                     <div class="app-feedback-list__item-text">
-                      <a href="#">missing point data</a>
+                      <a href="#">point data is missing</a>
                     </div>
                     <div class="app-feedback-list__item-type">
                       <strong class="govuk-tag govuk-tag--blue">Recommendation</strong>
@@ -134,7 +134,7 @@
                 <ul class="app-feedback-list__items">
                   <li class="app-feedback-list__item">
                     <div class="app-feedback-list__item-text">
-                      <a href="#">View {{ pageData.dataset | lower }}s with an end-date in the future which is not possible</a>
+                      <a href="#">{{ pageData.dataset | lower }}s with an end-date in the future which is different to the specification</a>
                     </div>
                     <div class="app-feedback-list__item-type">
                       <strong class="govuk-tag govuk-tag--red">Mandatory</strong>
@@ -144,6 +144,13 @@
               </li>
             </ol>
 
+            <p>
+              <a class="govuk-link govuk-link--no-visited-state app-back-to-top" href="#top">
+                <svg role="presentation" focusable="false" class="app-back-to-top__icon govuk-!-margin-right-1" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+                  <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+                </svg>Back to top
+                </a>
+            </p>
 
           </div>
 
@@ -152,7 +159,7 @@
             <h3 class="govuk-heading-s">About this feedback</h3>
             <p class="govuk-!-font-size-16">This feedback was last updated<br> {{ '15th June 2022' }}.</p>
             <p class="govuk-!-font-size-16">This feedback is updated every 24 hours.</p>
-            <p class="govuk-!-font-size-16">If you need help to improve data you can <a href="#">contact the Planning Data team</a>.</p>
+            <p class="govuk-!-font-size-16">If need support you can <a href="#">contact the Planning Data team</a>.</p>
           
           </div>
 
