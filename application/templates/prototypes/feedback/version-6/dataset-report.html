@@ -144,13 +144,39 @@
               </li>
             </ol>
 
-            <p>
+            <div class="app-pagination__wrapper govuk-!-margin-bottom-7">
+              <nav class="app-pagination" role="navigation" aria-label="Pagination">
+                  <div class="app-pagination__button app-pagination__button--next">
+                      <a href="#" class="app-pagination__link" rel="next">
+                          <span class="app-pagination__link-title">
+                              <span class="app-pagination__link-label">
+                                  Next<span class="govuk-visually-hidden"> set of results</span>
+                              </span>
+                          </span>
+                          <span class="app-pagination__link-text">{{ 'Article 4 directions'}}</span>
+                      </a>
+                  </div>
+                  <div class="app-pagination__button app-pagination__button--previous">
+                      <a href="#" class="app-pagination__link" rel="prev">
+                          <span class="app-pagination__link-title">
+                              <span class="app-pagination__link-label">
+                                  Previous<span class="govuk-visually-hidden"> dataset</span>
+                              </span>
+                          </span>
+                          <span class="app-pagination__link-text">{{ 'Tree preservation orders'}}</span>
+                      </a>
+                  </div>
+              </nav>
+
+            </div>
+
+            {# <p>
               <a class="govuk-link govuk-link--no-visited-state app-back-to-top" href="#top">
                 <svg role="presentation" focusable="false" class="app-back-to-top__icon govuk-!-margin-right-1" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
                   <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
                 </svg>Back to top
                 </a>
-            </p>
+            </p> #}
 
           </div>
 
