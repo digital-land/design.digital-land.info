@@ -2,6 +2,8 @@ import json
 import jsonpickle
 import csv
 import os
+from markdown import markdown
+from bs4 import BeautifulSoup
 
 basePath = os.path.abspath(os.path.dirname(__file__))
 
@@ -32,3 +34,24 @@ def import_csv(file):
     with open(filename) as data:
         new_dict = list(csv.DictReader(data))
     return new_dict
+
+def to_markdown(content):
+    soup = BeautifulSoup(markdown(content))
+    _add_attrs(soup)
+    return soup.prettify()
+
+def _add_attrs(soup):
+    for tag in soup.select("p"):
+        tag['class'] = "govuk-body"
+    for tag in soup.select("h1"):
+        tag['class'] = "govuk-heading-xl"
+    for tag in soup.select("h2"):
+        tag['class'] = "govuk-heading-l"
+    for tag in soup.select("h3"):
+        tag['class'] = "govuk-heading-m"
+    for tag in soup.select("h4"):
+        tag['class'] = "govuk-heading-s"
+    for tag in soup.select("ul"):
+        tag['class'] = "govuk-list govuk-list--bullet"
+    for tag in soup.select("a"):
+        tag['class'] = "govuk-link"

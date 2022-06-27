@@ -1,0 +1,38 @@
+[class*="app-guidance-version-1"] {
+
+  &.js-enabled {
+    .app-back-to-top--fixed {
+      position: fixed;
+      top: calc(100% - 50px);
+      bottom: auto;
+      left: auto;
+    }
+  }
+
+  .app-back-to-top__link {
+    margin-top: auto;
+    margin-bottom: 50px;
+  }
+
+  .app-back-to-top__icon {
+    display: inline-block;
+    width: 0.8em;
+    height: 1em;
+    margin-top: -5px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }  
+
+  .app-subnavigation {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    &__item {
+      margin-bottom: govuk-spacing(3);
+      font-weight: bold;
+    }
+
+  }
+
+}
