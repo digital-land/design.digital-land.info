@@ -67,14 +67,12 @@
           <div class="govuk-grid-column-two-thirds">
 
             <h2 class="govuk-heading-l">Step by step feedback</h2>
-            <p>The feedback steps below are activities {{ pageData.organisation }} can do to ensure the {{ pageData.dataset | lower }} data it publishes online meets the data standard and can be used by DLUHC and the general public.</p>
+            <p>The following steps are activities {{ pageData.organisation }} can do to ensure the {{ pageData.dataset | lower }} data it publishes online meets the data standard and can be used by DLUHC and the general public.</p>
 
             {% set stepsOverviewHTML %}
-            {# <h3 class="govuk-heading-m">Which steps should be taken?</h3> #}
-            {# <strong>{{ govukTag({ 'text': 'mandatory', 'classes': 'govuk-tag--red' }) }}</strong> #}
-            <p>Steps that must be completed are marked as mandatory.</p>
-            <p>Steps that are not mandatory but will improve the value and accessibility of the data are marked as a recommendation.</p>
-            <p>Clicking on a step will take you to a page showing more detail about what the feedback is and how to act upon it.</p>
+              <p>Steps that must be completed are marked as mandatory.</p>
+              <p>Steps that are not mandatory but will improve the value and accessibility of the data are marked as a recommendation.</p>
+              <p>Clicking on a step will take you to a page showing more detail about what the feedback is and how to act upon it.</p>
             {% endset %}
 
             {{
@@ -134,7 +132,7 @@
                 <ul class="app-feedback-list__items">
                   <li class="app-feedback-list__item">
                     <div class="app-feedback-list__item-text">
-                      <a href="#">{{ pageData.dataset | lower }}s with an end-date in the future which is different to the specification</a>
+                      <a href="#">{{ pageData.dataset | lower }}s with an end-date in the future</a>
                     </div>
                     <div class="app-feedback-list__item-type">
                       <strong class="govuk-tag govuk-tag--red">Mandatory</strong>
@@ -153,7 +151,7 @@
                                   Next<span class="govuk-visually-hidden"> set of results</span>
                               </span>
                           </span>
-                          <span class="app-pagination__link-text">{{ 'Article 4 directions'}}</span>
+                          <span class="app-pagination__link-text">{{ 'Article 4 directions' }}</span>
                       </a>
                   </div>
                   <div class="app-pagination__button app-pagination__button--previous">
@@ -163,7 +161,7 @@
                                   Previous<span class="govuk-visually-hidden"> dataset</span>
                               </span>
                           </span>
-                          <span class="app-pagination__link-text">{{ 'Tree preservation orders'}}</span>
+                          <span class="app-pagination__link-text">{{ 'Tree preservation orders' }}</span>
                       </a>
                   </div>
               </nav>
