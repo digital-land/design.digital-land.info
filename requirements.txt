@@ -3,7 +3,7 @@ beautifulsoup4==4.11.1
 black==21.12b0
 click==8.0.3
 decorator==5.1.1
-digital_land_frontend==0.2.1
+digital-land-frontend @ git+https://github.com/digital-land/digital-land-frontend.git
 Flask==2.1.0
 Flask-Assets==2.0
 Flask-BasicAuth==0.2.0
