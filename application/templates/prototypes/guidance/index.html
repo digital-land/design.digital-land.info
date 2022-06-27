@@ -1,0 +1,76 @@
+{% extends "layouts/layout.html" %}
+{%- from 'govuk_frontend_jinja/components/details/macro.html' import govukDetails -%}
+{% block pageTitle %}Guidance prototypes{% endblock %}
+{% block content %}
+
+  <main id="content" role="main">
+    <div class="govuk-grid-row"> 
+      <div class="govuk-grid-column-full">
+        <span class="govuk-caption-xl">Prototypes</span>
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">Guidance</h1>
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+    
+      <div class="govuk-grid-column-two-thirds">
+      
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2"> <a href="version-1/">Version 1</a></h2>
+              <p>27th June 2022</p>
+            </div>
+            <!-- /.govuk-grid-column-one-third -->
+            <div class="govuk-grid-column-two-thirds">
+              <h2 class="govuk-heading-m">Iteration notes</h2>
+              <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+                <li>Adds initial guidance for local planning authorities</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+              <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+            </div>
+          </div>
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Archive</h2>
+              <p>March 2022</p>
+            </div>
+            <div class="govuk-grid-column-two-thirds">
+              <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+                <li class="govuk-!-margin-bottom-0">
+                  <a href="/pages/ripa-guidance/">How to publish your data</a><br>Prototype designs of guidance for Local Planning Authorities intended to help them publish data required by planning.data.gov.uk.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+              <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+            </div>
+          </div>
+
+      </div>
+      
+      <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-s">Useful links</h2>
+        <ul class="govuk-list govuk-list--spaced">
+          <li><a href="https://docs.google.com/document/d/1kEfEsrKnWmonAzXaG--ZlZU6fUOgYp2NoShBRXifIjc/edit?usp=sharing">Guidance content document</a></li>
+        </ul>
+      </div>
+    
+    </div>
+
+
+  </main>
+{% endblock %}
+
+{% block bodyEnd %}
+  {{ super() }}
+{% endblock bodyEnd %}
