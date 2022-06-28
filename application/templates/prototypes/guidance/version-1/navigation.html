@@ -8,7 +8,7 @@
     {% endif %}
     <ul class="app-sub-navigation__section">
       {% for item in items %}
-        <li class="app-sub-navigation__section-item{% if item.current or (item.current and item.child) %} app-sub-navigation__section-item--current{% endif %}">
+        <li class="app-sub-navigation__section-item{% if item.current or (item.parent and (item.children | selectattr('current', 'true') | list | length > 0)) %} app-sub-navigation__section-item--current{% endif %}">
           <a class="app-sub-navigation__link" href="{{ item.href }}"{% if item.current %} aria-current="true"{% endif %}>{{ item.text }}</a>
           {% if item.parent and item.children | length > 0 %}
             <ul class="app-sub-navigation__section app-sub-navigation__section--nested">
@@ -26,28 +26,34 @@
 </nav>
 {% endmacro %}
 
-{% set themes = ['Guidance for Local Planning Authorities', 'Specifications guidance for Local Planning Authorities'] %}
+{% set themes = [
+  'Guidance for Local Planning Authorities',
+  'Data specification guidance',
+  'Other guidance'
+] %}
 {% set protoPath = '/prototypes/guidance/version-1/' %}
+
 {{ 
   _appSubNavigation({
   'visuallyHiddenTitle': 'Navigation',
+  'sort': false,
   'links': [
     {
       'text': 'Guidance home',
-      'href': 'index.html',
+      'href': protoPath + 'index.html',
       'theme': themes[0],
       'current': true if pageData.id == '0' else false,
     }, 
     {
       'text': 'Introduction',
-      'href': 'introduction.html',
+      'href': protoPath + 'introduction.html',
       'theme': themes[0],
       'current': true if pageData.id == '1' else false,
     }, 
     {
       'text': 'How to provide data',
       'theme': themes[0],
-      'href': 'how-to-provide-data.html',
+      'href': protoPath + 'how-to-provide-data.html',
       'current': true if pageData.id == '2' else false,
     }, 
     {
@@ -60,30 +66,34 @@
         {
           'text': "Conservation area data",
           'href': protoPath + 'specifications/conservation-area.html',
-          'child': true
+          'child': true,
+          'current': true if pageData.id == '4' else false,
         },
         {
           'text': "List building data",
           'href': protoPath + 'specifications/listed-building.html',
-          'child': true
+          'child': true,
+          'current': true if pageData.id == '5' else false,
         },
         {
           'text': "Article 4 Direction data",
           'href': protoPath + 'specifications/article-4-direction-area.html',
-          'child': true
+          'child': true,
+          'current': true if pageData.id == '6' else false,
         },
         {
           'text': "Tree preservation order data",
           'href': protoPath + 'specifications/tree-preservation-order.html',
-          'child': true
+          'child': true,
+          'current': true if pageData.id == '7' else false,
         }
       ]
     }, 
     {
       'text': 'Technical specifications',
-      'theme': themes[0],
+      'theme': themes[2],
       'href': 'technical-specifications.html',
-      'current': true if pageData.id == '4' else false,
+      'current': true if pageData.id == '8' else false,
     }
   ]
 }) 
