@@ -3,7 +3,7 @@ How to provide data
 
 This is a brief overview of our process for LPAs that are considering getting involved.
 
-When you want to start, there is [step-by-step guidance on how to provide your data](https://docs.google.com/document/u/2/d/1aJLt_aOrz7xhAU3WCf7eZCSwS2QInp-DXucpeSY-deo/edit). 
+When you want to start, there is [step-by-step guidance on how to provide your data](how-to-provide-data.html). 
 
 The data we collect is likely to be held by your LPA already. However, it may need some work to get ready for publishing. This will likely mean: 
 

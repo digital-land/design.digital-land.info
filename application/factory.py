@@ -48,7 +48,7 @@ def register_context_processors(app):
 
 
 def register_filters(app):
-    from application.filters import hex_to_rgb_string, debug, get_items_beginning_with, from_json, import_csv, to_markdown
+    from application.filters import hex_to_rgb_string, debug, get_items_beginning_with, from_json, import_csv, to_markdown, to_slug
 
     app.add_template_filter(hex_to_rgb_string, name="hex_to_rgb")
     app.add_template_filter(debug, name="debug")
@@ -57,6 +57,7 @@ def register_filters(app):
     app.add_template_filter(from_json, name="from_json")
     app.add_template_filter(import_csv, name="import_csv")
     app.add_template_filter(to_markdown, name="markdown")
+    app.add_template_filter(to_slug, name="slugify")
 
 
 def register_extensions(app):

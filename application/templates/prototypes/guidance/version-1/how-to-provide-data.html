@@ -4,8 +4,8 @@
 {%- from 'govuk_frontend_jinja/components/summary-list/macro.html' import govukSummaryList -%}
 
 {% set pageData = {
-  'title': 'Introduction for local planning authorities',
-  'id': '1'
+  'title': 'Provide data for Planning Data',
+  'id': '2'
 } %}
 
 {% set backToTop %}
@@ -43,17 +43,16 @@
       
       <section class="govuk-grid-column-one-third">
 
-      {%- include "prototypes/guidance/version-1/navigation.html" with context -%}
+        {%- include "prototypes/guidance/version-1/navigation.html" with context -%}
 
       </section>
 
       <section class="govuk-grid-column-two-thirds">
 
         <h1 class="govuk-heading-xl">{{ pageData.title }}</h1>
-        <p class="govuk-body-l">The Planning Data platform gathers data from local planning authorities (LPAs) across England. We do this in order to make the data more open and accessible, so better planning decisions are made.</p>
 
         {% filter markdown %}
-        {%- include "prototypes/guidance/version-1/index.md" with context -%}
+        {%- include "prototypes/guidance/version-1/how-to-provide-data.md" with context -%}
         {% endfilter %}
 
         <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">

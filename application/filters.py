@@ -4,6 +4,7 @@ import csv
 import os
 from markdown import markdown
 from bs4 import BeautifulSoup
+from slugify import slugify
 
 basePath = os.path.abspath(os.path.dirname(__file__))
 
@@ -35,14 +36,22 @@ def import_csv(file):
         new_dict = list(csv.DictReader(data))
     return new_dict
 
+
 def to_markdown(content):
     soup = BeautifulSoup(markdown(content))
     _add_attrs(soup)
     return soup.prettify()
 
+
+def to_slug(string):
+    return slugify(string)
+
+
 def _add_attrs(soup):
     for tag in soup.select("p"):
         tag['class'] = "govuk-body"
+    for tag in soup.select("h1, h2, h3, h4, h5"):
+        tag['id'] = slugify(tag.getText())
     for tag in soup.select("h1"):
         tag['class'] = "govuk-heading-xl"
     for tag in soup.select("h2"):
@@ -55,3 +64,7 @@ def _add_attrs(soup):
         tag['class'] = "govuk-list govuk-list--bullet"
     for tag in soup.select("a"):
         tag['class'] = "govuk-link"
+    for tag in soup.select("ol"):
+        tag['class'] = "govuk-list govuk-list--number"
+    for tag in soup.select("hr"):
+        tag['class'] = "govuk-section-break govuk-section-break--l"

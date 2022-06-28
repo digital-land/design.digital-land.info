@@ -1,14 +1,61 @@
-<ul class="app-subnavigation">
-  <li class="app-subnavigation__item{% if pageData.id == '1' %} app-subnavigation__item--active{% endif %}">
-    <a href="" class="govuk-link app-subnavigation__link">Introduction</a>
-  </li>
-  <li class="app-subnavigation__item{% if pageData.id == '2' %} app-subnavigation__item--active{% endif %}">
-    <a href="" class="govuk-link app-subnavigation__link">Provide data for Planning Data</a>
-  </li>
-  <li class="app-subnavigation__item{% if pageData.id == '3' %} app-subnavigation__item--active{% endif %}">
-    <a href="" class="govuk-link app-subnavigation__link">Data specifications guidance</a>
-  </li>
-  <li class="app-subnavigation__item{% if pageData.id == '4' %} app-subnavigation__item--active{% endif %}">
-    <a href="" class="govuk-link app-subnavigation__link">Technical specifications</a>
-  </li>
-</ul>
+{% macro _appSubNavigation(params) %}
+<nav class="app-sub-navigation{%- if params.classes %} {{ params.classes }}{% endif %}" aria-labelledby="app-sub-navigation-heading"
+  {%- for attribute, value in params.attributes %} {{ attribute }}="{{value}}"{% endfor %}>
+  <h2 class="govuk-visually-hidden" id="app-sub-navigation-heading">{{ params.visuallyHiddenTitle or "Pages in this section" }}</h2>
+  {% for theme, items in params.links | groupby("theme") %}
+    {% if theme != "undefined" %}
+      <h3 class="app-sub-navigation__theme">{{ theme }}</h3>
+    {% endif %}
+    <ul class="app-sub-navigation__section">
+      {% for item in items %}
+        <li class="app-sub-navigation__section-item{% if item.current or item.parent %} app-sub-navigation__section-item--current{% endif %}">
+          <a class="app-sub-navigation__link" href="{{ item.href }}"{% if item.current %} aria-current="true"{% endif %}>{{ item.text }}</a>
+          {% if item.parent and item.children | length > 0 %}
+            <ul class="app-sub-navigation__section app-sub-navigation__section--nested">
+              {% for child in item.children %}
+                <li class="app-sub-navigation__section-item">
+                  <a class="app-sub-navigation__link" href="{{ child.href }}"{% if child.current %} aria-current="true"{% endif %}>{{ child.text }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+</nav>
+{% endmacro %}
+
+{% set theme = 'Guidance for Local Planning Authorities' %}
+
+{{ 
+  _appSubNavigation({
+  'visuallyHiddenTitle': 'Navigation',
+  'links': [
+    {
+      'text': 'Introduction',
+      'href': 'index.html',
+      'theme': theme,
+      'current': true if pageData.id == '1' else false,
+    }, 
+    {
+      'text': 'How to provide data',
+      'theme': theme,
+      'href': 'how-to-provide-data.html',
+      'current': true if pageData.id == '2' else false,
+    }, 
+    {
+      'text': 'Data specifications guidance',
+      'theme': theme,
+      'href': 'data-specifications.html',
+      'current': true if pageData.id == '3' else false,
+    }, 
+    {
+      'text': 'Technical specifications',
+      'theme': theme,
+      'href': 'technical-specifications.html',
+      'current': true if pageData.id == '4' else false,
+    }
+  ]
+}) 
+}}
