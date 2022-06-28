@@ -4,8 +4,9 @@
 {%- from 'govuk_frontend_jinja/components/summary-list/macro.html' import govukSummaryList -%}
 
 {% set pageData = {
-  'title': 'Introduction for local planning authorities',
-  'id': '1'
+  'title': 'Guidance for local planning authorities',
+  'crumbText': 'All guidance',
+  'id': '0'
 } %}
 
 {% set backToTop %}
@@ -28,7 +29,7 @@
           "href": "index.html"
         },
         {
-          "text": "Introduction",
+          "text": pageData.crumbText,
           "href": "index.html"
         }
     ]
@@ -50,11 +51,27 @@
       <section class="govuk-grid-column-two-thirds">
 
         <h1 class="govuk-heading-xl">{{ pageData.title }}</h1>
-        <p class="govuk-body-l">The Planning Data platform gathers data from local planning authorities (LPAs) across England. We do this in order to make the data more open and accessible, so better planning decisions are made.</p>
 
-        {% filter markdown %}
-        {%- include "prototypes/guidance/version-1/index.md" with context -%}
-        {% endfilter %}
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-1">
+          <a href="introduction.html">Introduction</a>
+        </h2>
+        <p>A brief overview of the process of providing data and how it’s used to reduce invalid planning applications.</p>
+
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-1">
+          <a href="how-to-provide-data.html">Provide data for Planning Data</a>
+        </h2>
+        <p>A step-by-step instructions on how to publish your data.</p>
+
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-1">
+          <a href="specifications/">Data specifications guidance</a>
+        </h2>
+        <p>What to include in each dataset.</p>
+
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-1">
+          <a href="https://digital-land.github.io/specification/specification/">Technical specifications</a>
+        </h2>
+        <p>Technical guidance on what to include in each dataset.</p>
+
 
         <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
 
