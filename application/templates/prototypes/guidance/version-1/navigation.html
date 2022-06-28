@@ -8,9 +8,10 @@
     {% endif %}
     <ul class="app-sub-navigation__section">
       {% for item in items %}
-        <li class="app-sub-navigation__section-item{% if item.current or (item.parent and (item.children | selectattr('current', 'true') | list | length > 0)) %} app-sub-navigation__section-item--current{% endif %}">
+        {% set isChildItemCurrentItem = (item.children | selectattr('current', 'true') | list | length > 0)  %}
+        <li class="app-sub-navigation__section-item{% if item.current or (item.parent and isChildItemCurrentItem) %} app-sub-navigation__section-item--current{% endif %}">
           <a class="app-sub-navigation__link" href="{{ item.href }}"{% if item.current %} aria-current="true"{% endif %}>{{ item.text }}</a>
-          {% if item.parent and item.children | length > 0 %}
+          {% if item.parent and item.children | length > 0 and isChildItemCurrentItem %}
             <ul class="app-sub-navigation__section app-sub-navigation__section--nested">
               {% for child in item.children %}
                 <li class="app-sub-navigation__section-item govuk-!-font-size-16">
@@ -70,14 +71,14 @@
           'current': true if pageData.id == '4' else false,
         },
         {
-          'text': "List building data",
+          'text': "Listed building data",
           'href': protoPath + 'specifications/listed-building.html',
           'child': true,
           'current': true if pageData.id == '5' else false,
         },
         {
           'text': "Article 4 Direction data",
-          'href': protoPath + 'specifications/article-4-direction-area.html',
+          'href': protoPath + 'specifications/article-4-direction.html',
           'child': true,
           'current': true if pageData.id == '6' else false,
         },
@@ -91,7 +92,7 @@
     }, 
     {
       'text': 'Technical specifications',
-      'theme': themes[2],
+      'theme': themes[0],
       'href': 'technical-specifications.html',
       'current': true if pageData.id == '8' else false,
     }
