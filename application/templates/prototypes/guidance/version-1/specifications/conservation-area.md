@@ -32,13 +32,13 @@ A reference or ID for each conservation area that is: 
 
 If you don't use a reference already, you will need to create one. This can be a short set of letters or numbers.
 
-Example: CA01
+Example: `CA01`
 
 ### name
 
 The official name of the conservation area.
 
-Example: Old Market
+Example: `Old Market`
 
 ### geometry
 
@@ -46,7 +46,7 @@ The boundary for the conservation area as a single polygon or multipolygon value
 
 This should be in GeoJSON format.
 
-Example: MULTIPOLYGON (((1.188829 51.23478,1.188376 51.234909,1.188381 51.234917,1.187912 51.235022...
+Example: `MULTIPOLYGON (((1.188829 51.23478,1.188376 51.234909,1.188381 51.234917,1.187912 51.235022...`
 
 ### documentation-url
 
@@ -58,19 +58,19 @@ Optional text on how this data was made or produced, or how it can be interprete
 
 ### start-date
 
-The date that the conservation area was officially designated, written in YYYY-MM-DD format.
+The date that the conservation area was officially designated, written in `YYYY-MM-DD` format.
 
 Example: `1984-03-28`
 
 ### end-date
 
-If applicable, the date that the conservation area was no longer in effect, written in YYYY-MM-DD format. If this does not apply, leave the cell blank.
+If applicable, the date that the conservation area was no longer in effect, written in `YYYY-MM-DD` format. If this does not apply, leave the cell blank.
 
 Example: `1999-01-20`
 
 ### entry-date
 
-The date this dataset was created or last updated, written in YYYY-MM-DD format.
+The date this dataset was created or last updated, written in `YYYY-MM-DD` format.
 
 Example: `2022-12-20`
 
@@ -124,9 +124,9 @@ The date the document was published, written in YYYY-MM-DD format.
 Example: `1984-03-28`
 
 ### end-date
-The date the document was withdrawn or superseded by another document, written in YYYY-MM-DD format. Leave this blank if the document is still relevant to planning.
+The date the document was withdrawn or superseded by another document, written in `YYYY-MM-DD` format. Leave this blank if the document is still relevant to planning.
 Example: `1984-03-28`
 
 ### entry-date
-The date this entry was created or updated, written in YYYY-MM-DD format.
+The date this entry was created or updated, written in `YYYY-MM-DD` format.
 Example: `1984-03-28`

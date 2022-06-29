@@ -68,3 +68,5 @@ def _add_attrs(soup):
         tag['class'] = "govuk-list govuk-list--number"
     for tag in soup.select("hr"):
         tag['class'] = "govuk-section-break govuk-section-break--l"
+    for tag in soup.select("code"):
+        tag['class'] = 'app-code'
