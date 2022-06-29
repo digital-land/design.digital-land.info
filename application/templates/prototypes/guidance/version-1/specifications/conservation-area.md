@@ -1,12 +1,12 @@
 There are 2 datasets you must provide for conservation area data:
 
--   [conservation area dataset](https://docs.google.com/document/d/17UJ5BP7Sn8Nj6o5xqUxZ8uRB0VbNaH4nf1-U9402Bj0/edit#heading=h.s9vx7ql14zve)
--   [conservation area document dataset](https://docs.google.com/document/d/17UJ5BP7Sn8Nj6o5xqUxZ8uRB0VbNaH4nf1-U9402Bj0/edit#heading=h.d76pil8lr500)
+- [conservation area dataset](#{{ 'conservation area dataset' | slugify }})
+- [conservation area document dataset](#{{ 'Conservation area documents dataset' | slugify }})
 
 Format
 ------
 
-We recommend you provide each dataset as a CSV.
+We recommend you [provide each dataset as a CSV](../how-to-provide-data.html).
 
 If your data includes geospatial information (a point or geometry field), CSV is still preferred but alternatively you can provide it in one of these open data formats:
 
@@ -74,8 +74,7 @@ The date this dataset was created or last updated, written in `YYYY-MM-DD` forma
 
 Example: `2022-12-20`
 
-Conservation area documents dataset
------------------------------------
+## Conservation area documents dataset
 
 This dataset is about documents that provide sources for the information contained in the conservation areas dataset. These documents will be either:
 
