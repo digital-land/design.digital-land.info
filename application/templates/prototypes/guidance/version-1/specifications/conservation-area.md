@@ -10,10 +10,10 @@ We recommend you [provide each dataset as a CSV](../how-to-provide-data.html).
 
 If your data includes geospatial information (a point or geometry field), CSV is still preferred but alternatively you can provide it in one of these open data formats:
 
--   [GeoJSON](https://digital-land.github.io/specification/specification/article-4-direction/#GeoJSON-format)
--   OGC [GML](https://digital-land.github.io/specification/specification/article-4-direction/#GML-format)
--   OGC [Geopackage](https://digital-land.github.io/specification/specification/article-4-direction/#geopackage-format)
--   OGC Keyhole Markup Language [KML](https://digital-land.github.io/specification/specification/article-4-direction/#KML-format)
+-   [GeoJSON](https://digital-land.github.io/specification/specification/conservation-area/#GeoJSON-format)
+-   OGC [GML](https://digital-land.github.io/specification/specification/conservation-area/#GML-format)
+-   OGC [Geopackage](https://digital-land.github.io/specification/specification/conservation-area/#geopackage-format)
+-   OGC Keyhole Markup Language [KML](https://digital-land.github.io/specification/specification/conservation-area/#KML-format)
 
 Conservation area dataset
 -------------------------
