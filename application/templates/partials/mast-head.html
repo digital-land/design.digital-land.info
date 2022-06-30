@@ -1,17 +1,13 @@
 {% from "digital-land-frontend/components/header-bar/macro.jinja" import dlHeaderBar %}
-{{ dlHeaderBar({
-    "fullWidth": fullWidthHeader,
-    "transaction": {
-      "name": "Design"
-    },
-    "items": [
-      {
-        'text': 'Website',
-        'href': 'https://digital-land.info'
-      },
-      {
-        'text': 'Performance',
-        'href': 'https://performance.digital-land.info'
+{%  if pageData and pageData.masthead %}
+  {{ dlHeaderBar(pageData.masthead) }}
+{% else %}
+  {{ 
+    dlHeaderBar({
+      "fullWidth": fullWidthHeader,
+      'transaction': {
+        'name': 'Design'
       }
-    ]
-}) }}
+    })
+  }}
+{% endif %}

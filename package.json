@@ -9,7 +9,7 @@
   "scripts": {
     "postinstall": "npm run copyjs && npm run copygovuk && npm run nps copy.javascripts && npm run nps build.javascripts && npm run nps build.stylesheets",
     "flask": "flask run",
-    "nps": "nps -c ./node_modules/digital-land-frontend/package-scripts.js",
+    "nps": "npx nps -c ./node_modules/digital-land-frontend/package-scripts.js",
     "copyjs": "rsync -ar assets/javascripts/ application/static/javascripts",
     "copygovuk": "rsync -ar assets/govuk/ application/static/govuk",
     "copy:images_shared": "npm run nps copy.images",
