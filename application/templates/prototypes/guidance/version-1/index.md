@@ -37,10 +37,10 @@ Planning Data collects [data about a range of subjects](https://www.digital-land
 
 There are 4 main data subjects that are needed for the RIPA service:
 
--   [Conservation area data](https://docs.google.com/document/u/2/d/17UJ5BP7Sn8Nj6o5xqUxZ8uRB0VbNaH4nf1-U9402Bj0/edit)
--   [Listed building data](https://docs.google.com/document/u/2/d/1YO-cyeH2Veed9_4QVD3fVlrW7SYBPNXTrPeLbI3t6Co/edit)
--   [Article 4 direction data](https://docs.google.com/document/u/2/d/1C-H0onpeJm4s6bht6272NGJosqq0PE9wK0IFRQlH3U8/edit)
--   [Tree preservation order data](https://docs.google.com/document/d/15hXa1D552dZ9gcZ5R6_Jqafq3yCaGgfQRbQ48AdePPQ/edit#)
+-   [Conservation area data](specifications/conservation-area.html)
+-   [Listed building data](specifications/listed-building.html)
+-   [Article 4 direction data](specifications/article-4-direction.html)
+-   [Tree preservation order data](specifications/tree-preservation-order.html)
 
 We recommend publishing at least this data to benefit from RIPA and to allow developers to use it in your area. 
 
@@ -48,7 +48,7 @@ We recommend publishing at least this data to benefit from RIPA and to allow dev
 
 Planning Data can take data in different formats, although some are preferred. Preferred formats will give the most accurate results.
 
-The [specifications for each dataset](https://docs.google.com/document/u/2/d/1238jN1pfz80I2WKVArPi8mhzwOfVrLr5CmYKS0N1uLk/edit)  will tell you which formats to use.
+The [specifications for each dataset](specifications/index.html)  will tell you which formats to use.
 
 ### Checking your data
 
