@@ -36,13 +36,10 @@ You may need to create more than one CSV for each data subject. Guidance on what
 
 The data needed for the RIPA service is:
 
--   [Conservation area data](https://docs.google.com/document/u/2/d/17UJ5BP7Sn8Nj6o5xqUxZ8uRB0VbNaH4nf1-U9402Bj0/edit)
-
--   [Listed building data](https://docs.google.com/document/u/2/d/1YO-cyeH2Veed9_4QVD3fVlrW7SYBPNXTrPeLbI3t6Co/edit)
-
--   [Article 4 direction data](https://docs.google.com/document/u/2/d/1C-H0onpeJm4s6bht6272NGJosqq0PE9wK0IFRQlH3U8/edit)
-
--   [Tree preservation order data](https://docs.google.com/document/d/15hXa1D552dZ9gcZ5R6_Jqafq3yCaGgfQRbQ48AdePPQ/edit#)
+-   [Conservation area data](specifications/conservation-area.html)
+-   [Listed building data](specifications/listed-building.html)
+-   [Article 4 direction data](specifications/article-4-direction.html)
+-   [Tree preservation order data](specifications/tree-preservation-order.html)
 
 {{ govukInsetText({ 'text': 'Save as the file type "CSV"' }) }}
 
