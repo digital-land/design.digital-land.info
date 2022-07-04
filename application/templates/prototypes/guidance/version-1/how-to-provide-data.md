@@ -50,7 +50,7 @@ Step 2: Provide your documentation
 
 For most data subjects, you must also publish links to supporting documentation that gives evidence that the data is correct.
 
-See the [data specifications guidance](https://docs.google.com/document/d/1238jN1pfz80I2WKVArPi8mhzwOfVrLr5CmYKS0N1uLk/edit#) for how to provide this for each different subject.
+See the [data specifications guidance](specifications/) for how to provide this for each different subject.
 
 ---
 
