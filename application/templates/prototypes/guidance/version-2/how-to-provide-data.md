@@ -29,7 +29,7 @@ The data needed for the Digital Planning Services are:
 -   [Article 4 direction data](specifications/article-4-direction.html)
 -   [Tree preservation order data](specifications/tree-preservation-order.html)
 
-You may need to create more than one set of data for each subject. Guidance on what to include is in the [data specifications guidance](speicifications/).
+You may need to create more than one set of data for each subject. Guidance on what to include is in the [data specifications guidance](specifications/).
 
 You can present this data using different formats. We will accept data supplied as: 
 
