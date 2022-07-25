@@ -76,10 +76,17 @@ Example: `2022-12-20`
 
 ## Conservation area documents dataset
 
-This dataset is about documents that provide sources for the information contained in the conservation areas dataset. These documents will be either:
+This dataset is about documents that provide sources for the information contained in the conservation areas dataset.  If you can, you should provide this dataset in addition to the conservation area dataset.
 
--   area appraisals 
+If your conservation area documents are all held in a single page, you add the URL of that page in the conservation area dataset instead of providing a separate conservation area documents dataset. Add the URL in the `documentation-url` field.
+
+These documents are the authoritative source and provide the context around the history and impact of the conservation area. They can be:
+
+-   draft directions
+-   area appraisals
 -   notices of conservation area designations
+-   management plans
+-   gazette entries
 
 The dataset must contain at least one entry (row) for each conservation area document.
 It must containing the following fields (columns):
@@ -123,7 +130,7 @@ The type of document. This must be one of the following values, or left blank:
 Optional text on how this data was made or produced, or how it can be interpreted.
 
 ### start-date
-The date the document was published, written in YYYY-MM-DD format.
+The date the document was published, written in `YYYY-MM-DD` format.
 Example: `1984-03-28`
 
 ### end-date
