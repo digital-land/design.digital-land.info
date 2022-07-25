@@ -1,21 +1,13 @@
 This guidance will take you through the process of publishing data that meets the technical specifications required by the Planning Data platform.
 
-This is the process for publishing data as a CSV file. 
-
-Alternatively, you can publish your data using a web-based interface, such as OGC Web Feature Services. 
-
-This will require more technical ability in your organisation, but will enable you to update data automatically. 
-
-Please message <digitalland@levellingup.gov.uk> if you are interested in setting up this process.
-
 ---
 
-How to publish your data
+How to provide your data
 ------------------------
 
 Publishing is a 5 step process:
 
-1.  [Enter your data in a CSV file](#{{ 'Step 1: Enter your data in a CSV file' | slugify }})
+1.  [Prepare your data](#{{ 'Step 1: Prepare your data' | slugify }})
 
 2.  [Provide your documentation](#{{ 'Step 2: Provide your documentation' | slugify }})
 
@@ -27,21 +19,28 @@ Publishing is a 5 step process:
 
 ---
 
-Step 1: Enter your data in a CSV file
+Step 1: Prepare your data
 -------------------------------------
 
-Create a spreadsheet in Microsoft Excel, Google Sheets, Apple Numbers or another program. 
-
-You may need to create more than one CSV for each data subject. Guidance on what to include is in the [data specifications guidance](https://docs.google.com/document/d/1238jN1pfz80I2WKVArPi8mhzwOfVrLr5CmYKS0N1uLk/edit#).
-
-The data needed for the RIPA service is:
+The data needed for the Digital Planning Services are:
 
 -   [Conservation area data](specifications/conservation-area.html)
 -   [Listed building data](specifications/listed-building.html)
 -   [Article 4 direction data](specifications/article-4-direction.html)
 -   [Tree preservation order data](specifications/tree-preservation-order.html)
 
-{{ govukInsetText({ 'text': 'Save as the file type "CSV"' }) }}
+You may need to create more than one set of data for each subject. Guidance on what to include is in the [data specifications guidance]().
+
+You can present this data using different formats. We will accept data supplied as: 
+
+-   CSV
+-   GeoJSON
+-   GML
+-   Geopackage 
+
+These may be uploaded to a single URL, or served via an OGC WFS or ArcGIS API.
+
+It’s important that the data used in Digital Planning Services is as up to date as possible - whatever data you provide us with must be maintained and updated to reflect changes in your planning constraints.
 
 ---
 
