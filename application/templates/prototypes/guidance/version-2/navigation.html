@@ -1,0 +1,101 @@
+{% macro _appSubNavigation(params) %}
+<nav class="app-sub-navigation{%- if params.classes %} {{ params.classes }}{% endif %}" aria-labelledby="app-sub-navigation-heading"
+  {%- for attribute, value in params.attributes %} {{ attribute }}="{{value}}"{% endfor %}>
+  <h2 class="govuk-visually-hidden" id="app-sub-navigation-heading">{{ params.visuallyHiddenTitle or "Pages in this section" }}</h2>
+  {% for theme, items in params.links | groupby("theme") | sort(reverse=params.sort | default(False)) %}
+    {% if theme != "undefined" %}
+      <h3 class="app-sub-navigation__theme">{{ theme }}</h3>
+    {% endif %}
+    <ul class="app-sub-navigation__section">
+      {% for item in items %}
+        {% set isChildItemCurrentItem = (item.children | selectattr('current', 'true') | list | length > 0)  %}
+        <li class="app-sub-navigation__section-item{% if item.current or (item.parent and isChildItemCurrentItem) %} app-sub-navigation__section-item--current{% endif %}">
+          <a class="app-sub-navigation__link" href="{{ item.href }}"{% if item.current %} aria-current="true"{% endif %}>{{ item.text }}</a>
+          {% if item.parent and item.children | length > 0 and isChildItemCurrentItem %}
+            <ul class="app-sub-navigation__section app-sub-navigation__section--nested">
+              {% for child in item.children %}
+                <li class="app-sub-navigation__section-item govuk-!-font-size-16">
+                  <a class="app-sub-navigation__link" href="{{ child.href }}"{% if child.current %} aria-current="true"{% endif %}>{{ child.text }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+</nav>
+{% endmacro %}
+
+{% set themes = [
+  'Guidance for Local Planning Authorities',
+  'Data specification guidance',
+  'Other guidance'
+] %}
+{% set protoPath = '/prototypes/guidance/version-1/' %}
+
+{{ 
+  _appSubNavigation({
+  'visuallyHiddenTitle': 'Navigation',
+  'sort': false,
+  'links': [
+    {
+      'text': 'Guidance home',
+      'href': protoPath + 'index.html',
+      'theme': themes[0],
+      'current': true if pageData.id == '0' else false,
+    }, 
+    {
+      'text': 'Introduction',
+      'href': protoPath + 'introduction.html',
+      'theme': themes[0],
+      'current': true if pageData.id == '1' else false,
+    }, 
+    {
+      'text': 'How to provide data',
+      'theme': themes[0],
+      'href': protoPath + 'how-to-provide-data.html',
+      'current': true if pageData.id == '2' else false,
+    }, 
+    {
+      'text': 'Data specifications guidance',
+      'theme': themes[0],
+      'href': protoPath + 'specifications/',
+      'current': true if pageData.id == '3' else false,
+      'parent': true,
+      'children': [
+        {
+          'text': "Conservation area data",
+          'href': protoPath + 'specifications/conservation-area.html',
+          'child': true,
+          'current': true if pageData.id == '4' else false,
+        },
+        {
+          'text': "Listed building data",
+          'href': protoPath + 'specifications/listed-building.html',
+          'child': true,
+          'current': true if pageData.id == '5' else false,
+        },
+        {
+          'text': "Article 4 Direction data",
+          'href': protoPath + 'specifications/article-4-direction.html',
+          'child': true,
+          'current': true if pageData.id == '6' else false,
+        },
+        {
+          'text': "Tree preservation order data",
+          'href': protoPath + 'specifications/tree-preservation-order.html',
+          'child': true,
+          'current': true if pageData.id == '7' else false,
+        }
+      ]
+    }, 
+    {
+      'text': 'Technical specifications',
+      'theme': 'Related links',
+      'href': 'https://digital-land.github.io/specification/specification/',
+      'current': true if pageData.id == '8' else false,
+    }
+  ]
+}) 
+}}
