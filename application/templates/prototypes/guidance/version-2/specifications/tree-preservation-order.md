@@ -1,20 +1,20 @@
 There are 3 datasets you must provide for tree preservation orders:
 
 - [tree preservation order dataset](#{{ 'tree preservation order dataset' | slugify }})
-- [tree preservation zone dataset](#{{ 'tree preservation zone dataset' | slugify }})
+- [tree preservation area dataset](#{{ 'tree preservation area dataset' | slugify }})
 - [tree dataset](#{{ 'tree dataset' | slugify }})
 
 Format
 ------
 
-We recommend you [provide each dataset as a CSV](../how-to-provide-data.html).
+You can provide data in one of these formats:
 
-If your data includes geospatial information (a point or geometry field), CSV is still preferred but alternatively you can provide it in one of these open data formats:
+-   CSV
+-   GeoJSON
+-   GML
+-   Geopackage 
 
--   [GeoJSON](https://digital-land.github.io/specification/specification/tree-preservation-order/#GeoJSON-format)
--   OGC [GML](https://digital-land.github.io/specification/specification/tree-preservation-order/#GML-format)
--   OGC [Geopackage](https://digital-land.github.io/specification/specification/tree-preservation-order/#geopackage-format)
--   OGC Keyhole Markup Language [KML](https://digital-land.github.io/specification/specification/tree-preservation-order/#KML-format)
+For more information, see [how to provide your data](../how-to-provide-data.html).
 
 Tree preservation order dataset
 -------------------------------
@@ -47,7 +47,7 @@ This will be the title of the page hosting data about this TPO on our website. T
 
 ### geometry
 
-The boundary for the Tree Preservation Order as a single polygon or multipolygon value. Points must be in the WGS84 coordinate reference system.
+The boundary for the tree preservation order as a single polygon or multipolygon value. Points must be in the WGS84 coordinate reference system.
 
 This should be in GeoJSON format.
 
@@ -92,29 +92,30 @@ Example: `2022-12-20`
 
 --- 
 
-Tree preservation zone dataset
+Tree preservation area dataset
 ------------------------------
 
-This dataset is about tree preservation zones. These are areas of trees that are under a TPO.
+This dataset is about tree preservation areas. These are areas of trees that are under a TPO. You may also know them as tree preservation 
+zones or groups.
 
-The dataset must contain at least one entry (row) for each tree preservation zone.
+The dataset must contain at least one entry (row) for each tree preservation area.
 
 It must containing the following fields (columns):
 
 ### reference
 
-A reference or ID for each tree preservation zone that is: 
+A reference or ID for each tree preservation area that is: 
 
 -   unique within your dataset
 -   permanent - it doesn't change when the dataset is updated
 
 If you don't use a reference already, you will need to create one. This can be a short set of letters or numbers.
 
-Example: `TPZ1`
+Example: `TPA1`
 
 ### name
 
-This will be the display name of the page hosting data about this tree preservation zone on our website. This can be:
+This will be the display name of the page hosting data about this tree preservation area on our website. This can be:
 
 -   name
 -   reference
@@ -123,11 +124,11 @@ This will be the display name of the page hosting data about this tree preservat
 
 ### tree-preservation-order
 
-The reference for the tree preservation order that covers this zone.
+The reference for the tree preservation order that covers this area.
 
 ### geometry
 
-The boundary for the Tree Preservation Zone as a single polygon or multipolygon value. Points must be in the WGS84 coordinate reference system.
+The boundary for the tree preservation area as a single polygon or multipolygon value. Points must be in the WGS84 coordinate reference system.
 
 This should be in GeoJSON format. 
 
@@ -140,13 +141,13 @@ Optional text on how this data was made or produced, or how it can be interprete
 
 ### start-date
 
-The date that the TPZ came into force, written in `YYYY-MM-DD` format.
+The date that the TPA came into force, written in `YYYY-MM-DD` format.
 
 Example: `1984-03-28`
 
 ### end-date
 
-If applicable, the date that the TPZ was no longer in effect, written in `YYYY-MM-DD` format. If it's still in effect, leave the cell blank.
+If applicable, the date that the TPA was no longer in effect, written in `YYYY-MM-DD` format. If it's still in effect, leave the cell blank.
 
 Example: `1999-01-20`
 
@@ -245,3 +246,8 @@ entry-date
 The date this dataset was created or last updated, written in `YYYY-MM-DD` format.
 
 Example: `2022-12-20`
+
+---
+
+Go to [how to provide your data](../how-to-provide-data.html).
+
