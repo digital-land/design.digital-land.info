@@ -6,14 +6,14 @@ There are 2 datasets you must provide for article 4 directions:
 Format
 ------
 
-We recommend you [provide each dataset as a CSV](../how-to-provide-data.html).
+You can provide data in one of these formats:
 
-If your data includes geospatial information (a point or geometry field), CSV is still preferred but alternatively you can provide it in one of these open data formats:
+-   CSV
+-   GeoJSON
+-   GML
+-   Geopackage 
 
--   [GeoJSON](https://digital-land.github.io/specification/specification/article-4-direction/#GeoJSON-format)
--   OGC [GML](https://digital-land.github.io/specification/specification/article-4-direction/#GML-format)
--   OGC [Geopackage](https://digital-land.github.io/specification/specification/article-4-direction/#geopackage-format)
--   OGC Keyhole Markup Language [KML](https://digital-land.github.io/specification/specification/article-4-direction/#KML-format)
+For more information, see [how to provide your data](../how-to-provide-data.html).
 
 --- 
 
@@ -160,3 +160,7 @@ Example: `1999-01-20`
 The date this dataset was created or last updated, written in `YYYY-MM-DD` format.
 
 Example: `2022-12-20`
+
+---
+
+Go to [how to provide your data](../how-to-provide-data.html).
