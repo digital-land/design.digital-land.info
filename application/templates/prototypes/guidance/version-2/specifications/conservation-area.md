@@ -6,14 +6,14 @@ There are 2 datasets you must provide for conservation area data:
 Format
 ------
 
-We recommend you [provide each dataset as a CSV](../how-to-provide-data.html).
+You can provide data in one of these formats:
 
-If your data includes geospatial information (a point or geometry field), CSV is still preferred but alternatively you can provide it in one of these open data formats:
+-   CSV
+-   GeoJSON
+-   GML
+-   Geopackage 
 
--   [GeoJSON](https://digital-land.github.io/specification/specification/conservation-area/#GeoJSON-format)
--   OGC [GML](https://digital-land.github.io/specification/specification/conservation-area/#GML-format)
--   OGC [Geopackage](https://digital-land.github.io/specification/specification/conservation-area/#geopackage-format)
--   OGC Keyhole Markup Language [KML](https://digital-land.github.io/specification/specification/conservation-area/#KML-format)
+For more information, see [how to provide your data](../how-to-provide-data.html).
 
 Conservation area dataset
 -------------------------
@@ -97,6 +97,10 @@ Example: `CADOC01`
 The title of the document.
 Example: `Notice of Old Market conservation area designation`
 
+### conservation-area
+The reference for the conservation area this document refers to, as used in the conservation area dataset.
+Example: `CA1`
+
 ### documentation-url
 The URL of the webpage citing the document.
 
@@ -129,3 +133,7 @@ Example: `1984-03-28`
 ### entry-date
 The date this entry was created or updated, written in `YYYY-MM-DD` format.
 Example: `1984-03-28`
+
+---
+
+Go to [how to provide your data](../how-to-provide-data.html).
