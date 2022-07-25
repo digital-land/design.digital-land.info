@@ -52,7 +52,7 @@
         <h1 class="govuk-heading-xl">{{ pageData.title }}</h1>
 
         {% filter markdown %}
-        {%- include "prototypes/guidance/version-2/how-to-provide-data.md" with context -%}
+        {%- include versionPath + "how-to-provide-data.md" with context -%}
         {% endfilter %}
 
         <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">

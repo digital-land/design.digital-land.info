@@ -56,7 +56,7 @@
         <h1 class="govuk-heading-xl">{{ pageData.title }}</h1>
 
         {% filter markdown %}
-        {%- include "prototypes/guidance/version-1/specifications/listed-building.md" with context -%}
+        {%- include versionPath + "specifications/listed-building.md" with context -%}
         {% endfilter %}
 
         <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
