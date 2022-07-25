@@ -53,4 +53,5 @@
 
 {% block mastHead %}
   {% include 'partials/mast-head.html' %}
+  {{ versionPath | debug | safe if versionPath else 'no version path' | debug | safe }}
 {% endblock mastHead %}

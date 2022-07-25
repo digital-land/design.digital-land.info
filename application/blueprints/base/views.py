@@ -34,9 +34,11 @@ def match_template(path):
     # a distinc class to hook off when trying different versions
     # of prototypes
     versionClasses = ""
+    versionPath = ""
     # split the path variable on '/' slashes
     splitPath = path.split("/")
-    print(splitPath)
+    # print(splitPath)
+    # print(path)
     # get length of split path array/list
     length = len(splitPath)
 
@@ -53,8 +55,14 @@ def match_template(path):
                     versionClasses += "-"
 
     versionClasses = "app-" + versionClasses.replace(".html", "", 1)
+    if "prototypes" in splitPath:
+        _versionPath = splitPath[:-1]
+        for i in range(len(_versionPath)):
+            if i <= 2:
+                versionPath += f"{_versionPath[i]}/"
+        # print("version path ", versionPath)
 
-    print("look for: ", path, file)
+    # print("look for: ", path, file)
     provenanceData = read_json_file("data/provenance/data.json")
     performanceThing = {
         "local-authority-eng:LBH":{
@@ -92,7 +100,7 @@ def match_template(path):
     qs = request.args;
 
     if os.path.exists(file):
-        return render_template(path, versionClasses=versionClasses, provenanceData=provenanceData, performanceThing=performanceThing, datasets=datasets, qs=qs, path=pathInfo)
+        return render_template(path, versionClasses=versionClasses, versionPath=versionPath, provenanceData=provenanceData, performanceThing=performanceThing, datasets=datasets, qs=qs, path=pathInfo)
 
     # else show no template
     return redirect(url_for("base.notemplate"))
