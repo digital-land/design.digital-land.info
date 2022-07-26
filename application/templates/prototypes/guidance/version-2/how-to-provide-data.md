@@ -5,7 +5,7 @@ This guidance will take you through the process of publishing data that meets th
 How to provide your data
 ------------------------
 
-Publishing is a 5 step process:
+Publishing is a 4 step process:
 
 1.  [Prepare your data](#{{ 'Step 1: Prepare your data' | slugify }})
 
@@ -14,8 +14,6 @@ Publishing is a 5 step process:
 3.  [Create or update the webpage hosting your data](#{{ 'Step 3: Create or update the webpage hosting your data' | slugify }})
 
 4.  [Tell Planning Data where the webpage is](#{{ 'Step 4: Tell Planning Data where the webpage is' | slugify }})
-
-5.  [Check that the data has met the specification](#{{ 'Step 5: Check that the data has met the specification' | slugify }})
 
 ---
 
@@ -100,12 +98,3 @@ If you are creating a new webpage, you must tell us the URL. Email the URL of th
 If you have already told us, you can skip this step. The Planning Data platform will regularly collect data from the URL you have given us.
 
 If the URL ever changes, please tell us.
-
----
-
-Step 5: Check that the data has met the specification
------------------------------------------------------
-
-Our feedback tool will check if your data has met the specification.
-
-If there are any fields flagged as "Not met" or "Has recommendations", review these and reupload your files.
