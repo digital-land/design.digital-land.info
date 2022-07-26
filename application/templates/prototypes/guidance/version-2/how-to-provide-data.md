@@ -86,12 +86,9 @@ State that the data is provided under the [Open Government Licence](https://www.
 
 State the date you are creating or updating the webpage.
 
-Upload the CSV files
---------------------
+### Link to your data
 
-Upload the CSV files of data and documentation to your LPA's website. 
-
-Publish them on the webpage you created.
+Publish the links to your data on this page. Depending on what format you supply the data in, this could be the uploaded CSV, GeoJSON or GML files, or the link to the OGC WFS service.  
 
 ---
 
