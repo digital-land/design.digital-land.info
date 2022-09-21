@@ -1,0 +1,150 @@
+[class*="app-feedback-version-7"] {
+
+  .app-c-url-display {
+    * {
+      font-family: monospace;
+    }
+  }
+    
+  .app-demo-map-data {
+
+    margin-bottom: govuk-spacing(6);
+
+    &__body {
+      position: relative;
+      img {
+        max-width: 100%;
+        border: 1px solid $govuk-border-colour;
+        box-sizing: border-box;
+        display: block;
+      }
+    }
+    
+    &__buttons {
+      display: flex;
+      padding: govuk-spacing(3);
+      border: 1px solid $govuk-border-colour;
+      align-items: flex-start;
+      gap: govuk-spacing(2);
+    }
+
+  }
+
+  .govuk-tag--error {
+    background: lighten($govuk-error-colour,45);
+    color: darken($govuk-error-colour,10);
+  }
+
+  .govuk-tag--warn {
+    background: #fff;
+    color: govuk-colour("red");;
+    border: 2px solid govuk-colour("red");;
+  }
+
+  .govuk-tag--orange {
+    background: govuk-colour("orange");
+    color: white;
+  }
+
+  .govuk-tag--green {
+    background: govuk-colour("green");
+    color: white;
+  }
+
+  .app-panel {
+    &--issues {
+      background: lighten($govuk-error-colour,45);
+      color: darken($govuk-error-colour,10);
+      .govuk-panel {
+        &__title {
+          margin-bottom: govuk-spacing(1);
+          @include govuk-font($size: 48, $weight: bold);
+        }
+        &__body {
+          @include govuk-font($size: 27);
+        }
+      }
+    }
+  }
+
+  .app-itemised-feedback {
+    list-style-type: none;
+    padding: 0;
+    &__item {
+      display: flex;
+      gap: .75em;
+      align-items: flex-start;
+      padding: govuk-spacing(2) govuk-spacing(2);
+      // flex-direction: row-reverse;
+      // justify-content: space-between;
+    }
+    &__message, &__icon {
+      display: block;
+    }
+    &__icon {
+      img { display: block; }
+    }
+  }
+  .app-feedback-list {
+    $indent: govuk-spacing(6);
+    $itemPadding: 2;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    @include govuk-responsive-margin(6, "bottom");
+    &__section {
+      
+      &:not(:first-child) {
+        @include govuk-responsive-margin(8, "top");
+      }
+
+      &-heading {
+        display: flex;
+        @include govuk-font($size: 24, $weight: bold);
+        margin: 0;
+        @include govuk-responsive-margin($itemPadding, "bottom");
+      }
+
+      &-number {
+        min-width: $indent;
+        display: inline-block;
+      }
+
+    }
+
+    &__items {
+      padding-left: $indent;
+      list-style-type: none;
+    }
+
+    &__item {
+      padding: 0;
+      @include govuk-responsive-padding($itemPadding, "top");
+      @include govuk-responsive-padding($itemPadding, "bottom");
+      border-bottom: 1px solid $govuk-border-colour;
+
+      &:first-child {
+        border-top: 1px solid $govuk-border-colour;
+      }
+      
+      @include govuk-media-query($from: tablet) {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1em;
+      }
+
+      &-text {
+        @include govuk-font($size: 19);
+        @include govuk-media-query($until: tablet) {
+          padding-bottom: govuk-spacing($itemPadding);
+        }
+        @include govuk-media-query($from: tablet) {
+          max-width: 66.66%;
+        }
+      }
+
+    }
+  }
+
+}

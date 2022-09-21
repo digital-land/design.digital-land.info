@@ -1,0 +1,205 @@
+{% extends "layouts/layout.html" %}
+{%- from 'govuk_frontend_jinja/components/table/macro.html' import govukTable -%}
+{%- from 'govuk_frontend_jinja/components/tag/macro.html' import govukTag -%}
+{%- from 'govuk_frontend_jinja/components/summary-list/macro.html' import govukSummaryList -%}
+{% set pageData = {
+  'dataset': qs.dataset | default('Brownfield land'),
+  'organisation': qs.orgname | default('London Borough of Lambeth'),
+  'domain': qs.orgname | default('manchester city council') | replace(" ", "-") | lower,
+  'dates': {
+    'start-date': '04 Febuary 2020',
+    'end-date': '',
+    'updated-date': '10 May 2022',
+    'check-date': '11 May 2022'
+  },
+  'page': 'index',
+  'none': qs.none | default('false'),
+  'noactions': qs.noactions | default('false')
+} %}
+{% block pageTitle %}Feedback report {{ pageData.dataset}}{% endblock %}
+
+{%- block breadcrumbs -%}
+  {{- govukBreadcrumbs({
+    "items": [
+        {
+          "text": "Feedback home",
+          "href": "index.html"
+        },
+        {
+          "text": pageData.organisation,
+          "href": "organisation-summary.html?orgname=" + pageData.organisation
+        },
+        {
+          "text": pageData.dataset,
+          "href": "dataset-report.html?orgname=" + pageData.organisation + "&dataset=" + pageData.dataset
+        }
+    ]
+    }) -}}
+{%- endblock -%}
+
+{% block content %}
+
+  <main id="content" role="main">
+    
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">How to improve {{ pageData.dataset | lower }} data from {{ pageData.organisation }}</h1>
+      </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" aria-hidden="true">
+
+    {% if pageData.none == 'true' %}
+
+      {{ 
+        govukPanel({'titleHtml': 'Standard met' })
+      }}
+
+      <p>This dataset fully meets the data standard and guidance from The Department for Levelling Up, Housing and Communities</p>
+    
+    {% else %}
+
+      {% if pageData.noactions != 'true' %}
+
+      <hr class="govuk-section-break govuk-section-break--m" aria-hidden="true">
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+
+            <h2 class="govuk-heading-l">Step by step feedback</h2>
+            <p>The following steps are activities {{ pageData.organisation }} can do to ensure the {{ pageData.dataset | lower }} data it publishes online meets the data standard and can be used by DLUHC and the general public.</p>
+
+            {% set stepsOverviewHTML %}
+              <p>Steps that must be completed are marked as mandatory.</p>
+              <p>Steps that are not mandatory but will improve the value and accessibility of the data are marked as a recommendation.</p>
+              <p>Clicking on a step will take you to a page showing more detail about what the feedback is and how to act upon it.</p>
+            {% endset %}
+
+            {{
+              govukDetails({
+                'summaryText': 'How to follow these steps',
+                'html': stepsOverviewHTML,
+                'classes': 'govuk-!-margin-bottom-8'
+              })
+            }}
+
+            <ol class="app-feedback-list govuk-!-margin-bottom-9" role="list">
+              <li class="app-feedback-list__section">
+                <h3 class="app-feedback-list__section-heading">
+                  <span class="app-feedback-list__section-number">1. </span>
+                  Add missing data
+                </h3>
+                <ul class="app-feedback-list__items">
+                  <li class="app-feedback-list__item">
+                    <div class="app-feedback-list__item-text">
+                      <a href="#">geometry data is missing</a>
+                    </div>
+                    <div class="app-feedback-list__item-type">
+                      <strong class="govuk-tag govuk-tag--red">Mandatory</strong>
+                    </div>
+                  </li>
+                  <li class="app-feedback-list__item">
+                    <div class="app-feedback-list__item-text">
+                      <a href="#">point data is missing</a>
+                    </div>
+                    <div class="app-feedback-list__item-type">
+                      <strong class="govuk-tag govuk-tag--blue">Recommendation</strong>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li class="app-feedback-list__section">
+                <h3 class="app-feedback-list__section-heading">
+                  <span class="app-feedback-list__section-number">2. </span>
+                  Change the format of data
+                </h3>
+                <ul class="app-feedback-list__items">
+                  <li class="app-feedback-list__item">
+                    <div class="app-feedback-list__item-text">
+                      <a href="#">point data is in a format different to the specification</a>
+                    </div>
+                    <div class="app-feedback-list__item-type">
+                      <strong class="govuk-tag govuk-tag--blue">Recommendation</strong>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li class="app-feedback-list__section">
+                <h3 class="app-feedback-list__section-heading">
+                  <span class="app-feedback-list__section-number">3. </span> 
+                  Check data is accurate and correct
+                </h3>
+                <ul class="app-feedback-list__items">
+                  <li class="app-feedback-list__item">
+                    <div class="app-feedback-list__item-text">
+                      <a href="#">{{ pageData.dataset | lower }}s with an end-date in the future</a>
+                    </div>
+                    <div class="app-feedback-list__item-type">
+                      <strong class="govuk-tag govuk-tag--red">Mandatory</strong>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ol>
+
+            <div class="app-pagination__wrapper govuk-!-margin-bottom-7">
+              <nav class="app-pagination" role="navigation" aria-label="Pagination">
+                  <div class="app-pagination__button app-pagination__button--next">
+                      <a href="#" class="app-pagination__link" rel="next">
+                          <span class="app-pagination__link-title">
+                              <span class="app-pagination__link-label">
+                                  Next<span class="govuk-visually-hidden"> set of results</span>
+                              </span>
+                          </span>
+                          <span class="app-pagination__link-text">{{ 'Article 4 directions' }}</span>
+                      </a>
+                  </div>
+                  <div class="app-pagination__button app-pagination__button--previous">
+                      <a href="#" class="app-pagination__link" rel="prev">
+                          <span class="app-pagination__link-title">
+                              <span class="app-pagination__link-label">
+                                  Previous<span class="govuk-visually-hidden"> dataset</span>
+                              </span>
+                          </span>
+                          <span class="app-pagination__link-text">{{ 'Tree preservation orders' }}</span>
+                      </a>
+                  </div>
+              </nav>
+
+            </div>
+
+            {# <p>
+              <a class="govuk-link govuk-link--no-visited-state app-back-to-top" href="#top">
+                <svg role="presentation" focusable="false" class="app-back-to-top__icon govuk-!-margin-right-1" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+                  <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+                </svg>Back to top
+                </a>
+            </p> #}
+
+          </div>
+
+          <div class="govuk-grid-column-one-third">
+          
+            <h3 class="govuk-heading-s">About this feedback</h3>
+            <p class="govuk-!-font-size-16">This feedback was last updated<br> {{ '15th June 2022' }}.</p>
+            <p class="govuk-!-font-size-16">This feedback is updated every 24 hours.</p>
+            <p class="govuk-!-font-size-16">If need support you can <a href="#">contact the Planning Data team</a>.</p>
+          
+          </div>
+
+        </div>
+
+      {% endif %}
+
+    {% endif %}    
+
+      </div>
+
+    </div>
+
+  </main>
+{% endblock %}
+
+{% block bodyEnd %}
+  {{ super() }}
+{% endblock bodyEnd %}
