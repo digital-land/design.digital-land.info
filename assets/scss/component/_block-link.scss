@@ -1,0 +1,22 @@
+.dl-block-link {
+  display: block;
+  background: govuk-colour("light-grey");
+  border: 1px solid govuk-colour("mid-grey");
+  padding: 1em;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 1em;
+  min-height: 6.5em;
+  text-decoration: none!important;
+  &:hover {
+    border-color: govuk-colour("dark-grey");
+  }
+  &__heading {
+    text-decoration: underline;
+    @include govuk-font($size: 19, $weight: bold);
+  }
+  &__description {
+    color: govuk-colour("dark-grey");
+  }
+}
