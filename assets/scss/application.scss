@@ -44,6 +44,7 @@ $govuk-new-link-styles: true;
 @import "versions/entity";
 @import "versions/feedback/feedback";
 @import "versions/guidance/guidance";
+@import "versions/data-manager/data-manager";
 
 .app-heading--section-break {
   padding-bottom: govuk-spacing(3);
