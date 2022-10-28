@@ -1,5 +1,16 @@
 {% extends "layouts/layout.html" %}
 {% block pageTitle %}Design - The Planning Data Service{% endblock %}
+
+{% set pageData = {
+  'title': 'Data manager',
+  'masthead': {
+    'transaction': {
+      'name':'Design',
+      'organisation': 'planning.data.gov.uk'
+    }
+  }
+} %}
+
 {% block content %}
 
   <main id="content" role="main">
