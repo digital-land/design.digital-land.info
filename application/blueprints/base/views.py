@@ -27,6 +27,8 @@ def match_template(path):
     # if URL ends in a slash append index.html
     if path[-1] == "/":
         path += "index.html"
+    if path[-1:] != "/" and path[-5:] != ".html":
+        path += '/index.html'
 
     file = "application/templates/" + path
 
@@ -38,7 +40,6 @@ def match_template(path):
     # split the path variable on '/' slashes
     splitPath = path.split("/")
     # print(splitPath)
-    # print(path)
     # get length of split path array/list
     length = len(splitPath)
 
@@ -61,6 +62,11 @@ def match_template(path):
             if i <= 2:
                 versionPath += f"{_versionPath[i]}/"
         # print("version path ", versionPath)
+    else:
+        file = file.replace("templates/", "templates/pages/")
+        splitPath.insert(0, "pages")
+        path = f"pages/{path}"
+
 
     # print("look for: ", path, file)
     provenanceData = read_json_file("data/provenance/data.json")
@@ -94,7 +100,8 @@ def match_template(path):
 
     pathInfo = {
         'full': path,
-        'split': splitPath
+        'split': splitPath,
+        'dir': path.replace("index.html","")
     }
 
     qs = request.args;
@@ -122,11 +129,6 @@ def entity():
     return render_template(
         "pages/entity/version-1.html", versionClasses="app-entity-version-1"
     )
-
-
-@base.route("/about/<name>")
-def about(name):
-    return render_template("index.html", name=name)
 
 
 @base.route("/resource")

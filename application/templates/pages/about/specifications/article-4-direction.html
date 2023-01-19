@@ -1,0 +1,75 @@
+{% extends "layouts/layout.html" %}
+{%- from 'govuk_frontend_jinja/components/table/macro.html' import govukTable -%}
+{%- from 'govuk_frontend_jinja/components/tag/macro.html' import govukTag -%}
+{%- from 'govuk_frontend_jinja/components/summary-list/macro.html' import govukSummaryList -%}
+
+{% set pageData = {
+  'title': 'Article 4 Direction data',
+  'id': '6'
+} %}
+
+{% set backToTop %}
+<p>
+  <a class="govuk-link govuk-link--no-visited-state app-back-to-top__link" href="#top">
+    <svg role="presentation" focusable="false" class="app-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+      <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+    </svg>Back to top
+    </a>
+</p>
+{% endset %}
+
+{% block pageTitle %}{{ pageData.title }}{% endblock %}
+
+{%- block breadcrumbs -%}
+  {{- govukBreadcrumbs({
+    "items": [
+        {
+          "text": "Guidance",
+          "href": "index.html"
+        },
+        {
+          "text": "Data specifications guidance",
+          "href": "index.html"
+        },
+        {
+          "text": pageData.title,
+          "href": "#top"
+        }
+    ]
+    }) -}}
+{%- endblock -%}
+
+{% block content %}
+
+  <main id="content" role="main">
+
+    <div class="govuk-grid-row">
+      
+      <section class="govuk-grid-column-one-third">
+
+        {%- include versionPath + "/navigation.html" with context -%}
+
+      </section>
+
+      <section class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">{{ pageData.title }}</h1>
+
+        {% filter markdown %}
+        {%- include versionPath + "specifications/article-4-direction.md" with context -%}
+        {% endfilter %}
+
+        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+        {{ backToTop }}
+        
+      </section>
+
+    </div>
+
+  </main>
+{% endblock %}
+
+{% block bodyEnd %}
+  {{ super() }}
+{% endblock bodyEnd %}

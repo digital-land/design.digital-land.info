@@ -1,0 +1,33 @@
+{% extends "layouts/layout.html" %}
+{% block pageTitle %}Design - The Planning Data Service{% endblock %}
+
+{% set pageData = {
+  'title': 'Data manager',
+  'masthead': {
+    'transaction': {
+      'name':'Design',
+      'organisation': 'planning.data.gov.uk'
+    }
+  }
+} %}
+
+{% block content %}
+
+  <main id="content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+      kjkdjkdj
+      </div>
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">About the Planning Data Service</h1>
+        <p class="govuk-body-l">A data platform designed, developed and operated by the planning data team at The Department for Levelling Up, Housing and Communities.</p>
+        <hr class="govuk-section-break govuk-section-break--m">
+      </div>
+    </div>
+
+  </main>
+{% endblock %}
+
+{% block bodyEnd %}
+  {{ super() }}
+{% endblock bodyEnd %}
