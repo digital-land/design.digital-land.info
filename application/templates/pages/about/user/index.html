@@ -4,9 +4,8 @@
 {%- from 'govuk_frontend_jinja/components/summary-list/macro.html' import govukSummaryList -%}
 
 {% set pageData = {
-  'title': 'Data Specifications',
-  'crumbText': 'Data specifications',
-  'id': '3'
+  'title': 'Our users',
+  'id': '6'
 } %}
 
 {% set backToTop %}
@@ -25,12 +24,16 @@
   {{- govukBreadcrumbs({
     "items": [
         {
-          "text": "Guidance",
-          "href": "index.html"
+          "text": "Home",
+          "href": "/index.html"
         },
         {
-          "text": pageData.crumbText,
-          "href": "index.html"
+          "text": "About",
+          "href": "/about/index.html"
+        },
+        {
+          "text": pageData.title,
+          "href": "#top"
         }
     ]
     }) -}}
@@ -44,7 +47,7 @@
       
       <section class="govuk-grid-column-one-third">
 
-      {%- include versionPath + "/navigation.html" with context -%}
+        {%- include path.dirParent + "navigation.html" with context -%}
 
       </section>
 
@@ -52,17 +55,11 @@
 
         <h1 class="govuk-heading-xl">{{ pageData.title }}</h1>
 
-        <p class="govuk-body-l">Guidance about how to collate each dataset including examples of data for each of the fields (rows).</p>
+        {% filter markdown %}
+        {%- include path.dir + "index.md" with context -%}
+        {% endfilter %}
 
-
-        <ul class="govuk-list govuk-list--spaced">
-          <li><a href="conservation-area.html">Conservation area data</a></li>
-          <li><a href="listed-building.html">Listed building data</a></li>
-          <li><a href="article-4-direction.html">Article 4 Direction data</a></li>
-          <li><a href="tree-preservation-order.html">Tree preservation order data</a></li>
-        </ul>
-
-        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
+        <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
 
         {{ backToTop }}
         

@@ -28,11 +28,9 @@
 {% endmacro %}
 
 {% set themes = [
-  'Guidance for Local Planning Authorities',
-  'Data specification guidance',
-  'Other guidance'
+  'The planning data service'
 ] %}
-{% set protoPath = '/prototypes/guidance/version-1/' %}
+{% set thisPath = '/about/' %}
 
 {{ 
   _appSubNavigation({
@@ -40,61 +38,43 @@
   'sort': false,
   'links': [
     {
-      'text': 'Guidance home',
-      'href': protoPath + 'index.html',
+      'text': 'About',
+      'href': thisPath + 'index.html',
       'theme': themes[0],
       'current': true if pageData.id == '0' else false,
-    }, 
+    },  
     {
-      'text': 'Introduction',
-      'href': protoPath + 'introduction.html',
+      'text': 'Our users',
       'theme': themes[0],
+      'href': thisPath + 'user/',
       'current': true if pageData.id == '1' else false,
-    }, 
-    {
-      'text': 'How to provide data',
-      'theme': themes[0],
-      'href': protoPath + 'how-to-provide-data.html',
-      'current': true if pageData.id == '2' else false,
-    }, 
-    {
-      'text': 'Data specifications guidance',
-      'theme': themes[0],
-      'href': protoPath + 'specifications/',
-      'current': true if pageData.id == '3' else false,
       'parent': true,
       'children': [
         {
           'text': "Conservation area data",
-          'href': protoPath + 'specifications/conservation-area.html',
+          'href': thisPath + 'specifications/conservation-area.html',
           'child': true,
           'current': true if pageData.id == '4' else false,
         },
         {
           'text': "Listed building data",
-          'href': protoPath + 'specifications/listed-building.html',
+          'href': thisPath + 'specifications/listed-building.html',
           'child': true,
           'current': true if pageData.id == '5' else false,
         },
         {
           'text': "Article 4 Direction data",
-          'href': protoPath + 'specifications/article-4-direction.html',
+          'href': thisPath + 'specifications/article-4-direction.html',
           'child': true,
           'current': true if pageData.id == '6' else false,
         },
         {
           'text': "Tree preservation order data",
-          'href': protoPath + 'specifications/tree-preservation-order.html',
+          'href': thisPath + 'specifications/tree-preservation-order.html',
           'child': true,
           'current': true if pageData.id == '7' else false,
         }
       ]
-    }, 
-    {
-      'text': 'Technical specifications',
-      'theme': 'Related links',
-      'href': 'https://digital-land.github.io/specification/specification/',
-      'current': true if pageData.id == '8' else false,
     }
   ]
 }) 

@@ -98,10 +98,18 @@ def match_template(path):
       "tree-preservation-order"
     ]
 
+    pathDir = ""
+    pathParentDir = ""
+    for thing in range(len(splitPath) -1):
+        pathDir += splitPath[thing] + "/"
+    for thing in range(len(splitPath) -2):
+        pathParentDir += splitPath[thing] + "/"
+
     pathInfo = {
         'full': path,
         'split': splitPath,
-        'dir': path.replace("index.html","")
+        'dir':pathDir,
+        'dirParent': pathParentDir
     }
 
     qs = request.args;
