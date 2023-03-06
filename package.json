@@ -33,7 +33,8 @@
   "homepage": "https://github.com/digital-land/govuk-flask-prototyping#readme",
   "dependencies": {
     "digital-land-frontend": "https://gitpkg.now.sh/digital-land/digital-land-frontend/package?main",
-    "jinja2-beautify": "^1.2.0"
+    "jinja2-beautify": "^1.2.0",
+    "node-sass": "npm:sass@^1.58.3"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5"
