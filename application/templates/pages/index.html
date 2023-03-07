@@ -5,7 +5,6 @@
   'title': 'Data manager',
   'masthead': {
     'transaction': {
-      'name':'Design',
       'organisation': 'Digital Planning'
     }
   }
@@ -16,27 +15,59 @@
   <main id="content" role="main">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
-        <h1 class="govuk-heading-xl govuk-!-margin-bottom-5">Digital Planning</h1>
-        <p class="govuk-body-l">Design documents and resources from the Digital Planning directorate at The Department for Levelling Up, Housing and Communities.</p>
-        <hr class="govuk-section-break govuk-section-break--m">
+        <h1 class="govuk-heading-xl govuk-!-margin-bottom-3">Digital Planning</h1>
+        {# <hr class="govuk-section-break govuk-section-break--m"> #}
+      </div>
+      <div class="govuk-grid-column-three-quarters">
+        <p class="govuk-body-l">The Department for Levelling Up, Housing and Communities is working to reform the planning system.</p>
+        {# <hr class="govuk-section-break govuk-section-break--m"> #}
       </div>
     </div>
 
-    <section id="keylinks">
+    {# <section id="about">
 
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
-          <h2 class="govuk-heading-l app-heading--section-break govuk-!-margin-bottom-5">About digital planning</h2>
-          <p class="govuk-body">'Living' or 'Working' design documents for the planning data service.</p>
+          <h2 class="govuk-heading-l app-heading--section-break govuk-!-margin-bottom-5">About</h2>
+          <hr class="govuk-section-break govuk-section-break--m">
+        </div>
+      </div>
+
+      <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-two-thirds">
+
+        <p>A critical aspect of planning reform is the move to a digital, data-led approach to the enable following key outcomes:</p>
+        <ul class="govuk-list govuk-list--spaced govuk-list--number">
+          <li>Standards for the way planning information is submitted, processed and published <em>as data</em>.</li>
+          <li>Adoption of modern, data-driven development management software.</li>
+          <li>Adoption of digital engagement.</li>
+        </ul>
+
+        </div>
+      </div>
+
+    </section>
+
+    <hr class="govuk-section-break govuk-section-break--m"> #}
+
+    <section id="planning-data">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-l app-heading--section-break govuk-!-margin-bottom-5">Planning Data</h2>
           <hr class="govuk-section-break govuk-section-break--m">
         </div>
       </div>
 
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-third">
-          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Design documents</h2>
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Documentation</h2>
+          {# <p class="govuk-hint govuk-!-font-size-16">Prototype page designs, components, interaction/user flows used in research or collaborative workshops</p> #}
         </div>
+        <!-- /.govuk-grid-column-one-third -->
         <div class="govuk-grid-column-two-thirds">
+
           <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
             <li class="govuk-!-margin-bottom-6">
               <a href="https://docs.google.com/document/d/1eDCBTlMWc5qlNvBOlLMrroIpBtIZwydyPseOwgrnvio/edit?usp=sharing">
@@ -57,34 +88,27 @@
               A regularly updated service map used to help visualise the Planning Data Service.
             </li>
           </ul>
+
         </div>
       </div>
 
-    </section>
-
-    <hr class="govuk-section-break govuk-section-break--m">
-
-    <section id="prototypes">
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
       <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-          <h2 class="govuk-heading-l app-heading--section-break govuk-!-margin-bottom-5">Prototypes</h2>
-          <p class="govuk-body">Prototype page designs, components, interaction/user flows used in research or collaborative workshops.</p>
-          <hr class="govuk-section-break govuk-section-break--m">
-        </div>
-      </div>
-
-      <div class="govuk-grid-row">
+        
         <div class="govuk-grid-column-one-third">
-          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Manage data about planning and housing</h2>
-          <p class="govuk-hint govuk-!-font-size-16">A sub-service of the Planning Data Service (Platform)</p>
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Prototypes</h2>
+          <p class="govuk-hint govuk-!-font-size-16">Prototype page designs, components, interaction/user flows used in research or collaborative workshops</p>
+          <p class="govuk-!-font-size-16"><a href="https://github.com/digital-land/">Prototype code is on Github</a></p>
         </div>
         <!-- /.govuk-grid-column-one-third -->
+
         <div class="govuk-grid-column-two-thirds">
-          <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
-            <li class="">
+          {# <h3 class="govuk-heading-m">Manage data about planning and housing</h3> #}
+          <ul class="govuk-list govuk-list--spaced">
+            {# <li class="">
               <a href="/prototypes/data-manager/">Data manager application</a><br>Prototypes of an application to manage data collected from local planning authorities.
-            </li>
+            </li> #}
             <li>
               <a href="/performance/">Performance grid</a>
               <br>Design experiment for showing health of datasets for RIPA.
@@ -93,19 +117,9 @@
                 <a href="https://local-plans-prototype.herokuapp.com/" target="_blank">Housing numbers (opens in a new window)</a><br>Experimental work on collection of housing numbers from local plans.
               </li>
           </ul>
-        </div>
-      </div>
 
-      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-one-third">
-          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Publish planning and housing data</h2>
-          <p class="govuk-hint govuk-!-font-size-16">A sub-service of the Planning Data Service (Platform)</p>
-        </div>
-        <!-- /.govuk-grid-column-one-third -->
-        <div class="govuk-grid-column-two-thirds">
-          <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
+          {# <h3 class="govuk-heading-m">Publish planning and housing data</h3> #}
+          <ul class="govuk-list govuk-list--spaced">
             <li class="">
               <a href="/prototypes/guidance/">Guidance for local planning authorities</a><br>Prototype designs of guidance for Local Planning Authorities intended to help them publish data required by planning.data.gov.uk.
             </li>
@@ -119,59 +133,28 @@
                 <a href="https://brownfield-sites-validator.herokuapp.com/" target="_blank">Brownfield sites validator (opens in a new window)</a><br>Prototype data validation for Brownfield sites.
               </li>
           </ul>
+
+          {# <h3 class="govuk-heading-m">Find data about planning and housing</h3> #}
+          <ul class="govuk-list govuk-list--spaced">
+            <li>
+              <a href="/entity/">'Entity' page</a><br>Prototype designs of webpages intended to show and help users to understand individual entities.
+            </li>
+          </ul>
+
         </div>
       </div>
 
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
       <div class="govuk-grid-row">
+        
         <div class="govuk-grid-column-one-third">
-          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Find data about planning and housing</h2>
-          <p class="govuk-hint govuk-!-font-size-16">A sub-service of the Planning Data Service (Platform)</p>
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Resources</h2>
         </div>
         <!-- /.govuk-grid-column-one-third -->
+
         <div class="govuk-grid-column-two-thirds">
-          <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
-            <li>
-              <a href="/entity/">'Entity' page</a><br>Prototype designs of webpages intended to show and help users to understand individual entities.
-            </li>
-          </ul>
-        </div>
-      </div>
-  
-        <div class="govuk-grid-row">
-          <div class="govuk-grid-column-full">
-            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-          </div>
-          <div class="govuk-grid-column-two-thirds">
-            <ul class="govuk-list">
-              <li>
-                <a href="https://github.com/digital-land/">The code for these prototypes on Github</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <hr class="govuk-section-break govuk-section-break--l">
-
-    </section>
-
-    <section id="resources">
-
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-          <h2 class="govuk-heading-l app-heading--section-break govuk-!-margin-bottom-5">Resources</h2>
-          <hr class="govuk-section-break govuk-section-break--m">
-        </div>
-      </div>
-
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-one-third">
-          <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Artefacts</h2>
-          <p class="govuk-hint govuk-!-font-size-16">Links to things you may need to design and build digital-land services</p>
-        </div>
-        <!-- /.govuk-grid-column-one-third -->
-        <div class="govuk-grid-column-two-thirds">
+          <h3 class="govuk-heading-m">Artefacts</h3>
           <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
             <li>
               <a href="https://drive.google.com/drive/folders/1C6J124EOQ_Rltwxld981fk-_nmQ2j6Ta?usp=sharing">Sketch sheets</a><br>
@@ -182,11 +165,10 @@
               A google drive folder of logos and other assets such as icons for files, department logos.
             </li>
           </ul>
+
         </div>
       </div>
 
-      <hr class="govuk-section-break govuk-section-break--l">
-    
     </section>
 
   </main>
