@@ -136,7 +136,7 @@ Example: `A4D1`
 
 The references of the article 4 direction rules that apply to this area, as found in the Planning Data article 4 direction list.
 
-If the rule you need does not exist in our list, please contact [digitalland@levellingup.gov.uk](digitalland@levellingup.gov.uk).
+If the rule you need does not exist in our list, please contact [digitalland@communities.gov.uk](digitalland@communities.gov.uk).
 
 Example: `A4Dr1;A4Dr2`
 
