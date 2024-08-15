@@ -6,7 +6,7 @@ Alternatively, you can publish your data using a web-based interface, such as OG
 
 This will require more technical ability in your organisation, but will enable you to update data automatically. 
 
-Please message <digitalland@levellingup.gov.uk> if you are interested in setting up this process.
+Please message <digitalland@communities.gov.uk> if you are interested in setting up this process.
 
 ---
 
@@ -65,7 +65,7 @@ If you aren't able or authorised to do this, please speak to a person who update
 
 Create a separate webpage for each dataset. This webpage must have a URL that does not change, so the Planning Data platform can keep collecting the data.
 
-If the URL does change, please email <digitalland@levellingup.gov.uk>.
+If the URL does change, please email <digitalland@communities.gov.uk>.
 
 You may want to use an alias to create a short URL that is easy to remember. For example: https://www.yourLPA.gov.uk/conservation-area-data
 
@@ -99,7 +99,7 @@ Publish them on the webpage you created.
 Step 4: Tell Planning Data where the webpage is
 -----------------------------------------------
 
-If you are creating a new webpage, you must tell us the URL. Email the URL of the webpage containing your files to <digitalland@levellingup.gov.uk>.
+If you are creating a new webpage, you must tell us the URL. Email the URL of the webpage containing your files to <digitalland@communities.gov.uk>.
 
 If you have already told us, you can skip this step. The Planning Data platform will regularly collect data from the URL you have given us.
 
