@@ -5,7 +5,7 @@ $govuk-global-styles: true;
 $govuk-new-link-styles: true;
 
 // import all govuk frontend scss
-@import "node_modules/digital-land-frontend/digital-land-frontend/dl-frontend";
+@import "digital-land-frontend/dl-frontend";
 
 // digital-land.info specific styles
 // --------------------------------------------------------
@@ -48,7 +48,7 @@ $govuk-new-link-styles: true;
 
 .app-heading--section-break {
   padding-bottom: govuk-spacing(3);
-  border-bottom: 5px solid govuk-colour(blue);
+  border-bottom: 5px solid govuk-colour("blue");
 }
 
 #global-cookie-message { display: none; height: 0; overflow: hidden; }
