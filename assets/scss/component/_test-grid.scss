@@ -104,7 +104,7 @@
       background: #ffa537;
       box-sizing: border-box;
     }
-    
+
     &--fail {
       background: govuk-colour("red");
     }
@@ -124,9 +124,9 @@
     }
 
     &--warn {
-      color: darken(govuk-colour(orange),50);
+      color: darken(govuk-colour("orange"),50);
       a {
-        color: darken(govuk-colour(orange),50);
+        color: darken(govuk-colour("orange"),50);
       }
     }
 
